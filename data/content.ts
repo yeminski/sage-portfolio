@@ -8,6 +8,7 @@ export interface Project {
   competition: string;
   year: string;
   problem: string;
+  solution?: string;
   myRole: string;
   keyDecisions: string[];
   outcome: string;
@@ -233,62 +234,6 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
-    id: "clearpath-wallet",
-    slug: "clearpath-wallet",
-    title: "ClearPath — Embedded Wallet for Gig Workers",
-    category: "Case Competition",
-    competition: "UCLA Anderson Fintech Case Competition",
-    year: "2024",
-    problem:
-      "Gig workers (drivers, freelancers, delivery couriers) lack access to real-time pay and basic banking tools. Traditional banks reject them due to irregular income, leaving 16M+ US workers underbanked and reliant on high-fee check-cashing services.",
-    myRole:
-      "Product Lead — owned problem framing, user research synthesis, feature prioritization, and prototype narrative. Coordinated a 4-person cross-functional team across product, design, and financial modeling tracks.",
-    keyDecisions: [
-      "Chose embedded wallet over standalone app to reduce friction — integrating directly into existing gig platform SDKs so workers don't need to download another app.",
-      "Prioritized instant pay (< 30-second settlement) as the anchor feature after user interviews revealed cash-flow anxiety as the #1 pain point over savings or credit.",
-      "Scoped out crypto features despite team pressure — determined they added regulatory complexity without material user value for the target segment.",
-      "Designed a thin-file underwriting model using earnings velocity (not credit score) to unlock a small credit line for income volatility smoothing.",
-    ],
-    outcome:
-      "Placed 2nd overall. Judges cited the earnings-velocity underwriting model as the most differentiated insight. Presented to a panel of Fintech VCs and banking executives.",
-    tags: [
-      "Embedded Finance",
-      "Payments",
-      "Gig Economy",
-      "Underwriting",
-      "User Research",
-      "Go-to-Market",
-    ],
-  },
-  {
-    id: "verdant-wealth",
-    slug: "verdant-wealth",
-    title: "Verdant — ESG Robo-Advisor for First-Time Investors",
-    category: "Case Competition",
-    competition: "USC Marshall FinovateX Product Challenge",
-    year: "2025",
-    problem:
-      "Millennials and Gen Z want their investments to reflect their values, but ESG investing is plagued by greenwashing, opaque ratings, and high minimums. Existing robo-advisors bolt on ESG as an afterthought, leaving a trust gap with a generation that controls $30T in incoming wealth transfer.",
-    myRole:
-      "Product Manager & Presenter — led product strategy and roadmap definition, designed the onboarding flow and ESG preference framework, and delivered the 10-minute pitch to judges.",
-    keyDecisions: [
-      "Built a proprietary 'Impact Score' aggregating 3rd-party ESG data, controversy screening, and carbon intensity — presented transparently on every holding to address greenwashing concerns.",
-      "Set $1 minimum investment to remove the wealth barrier; monetized via 0.25% AUM fee only above $1K to align incentives with user growth.",
-      "Introduced a 'Values Conflict Alert' that notifies users when a company in their portfolio acts against their stated preferences — turning transparency into a retention mechanism.",
-      "Deferred tax-loss harvesting to V2 to keep the MVP focused on trust-building onboarding rather than advanced tax features that first-time investors don't yet need.",
-    ],
-    outcome:
-      "Won 1st place. Judges highlighted the Values Conflict Alert as a novel retention mechanic not seen in existing products. Featured in Marshall's Fintech newsletter.",
-    tags: [
-      "Wealth Tech",
-      "ESG",
-      "Robo-Advisor",
-      "Onboarding",
-      "Retention",
-      "B2C",
-    ],
-  },
-  {
     id: "pilled",
     slug: "pilled",
     title: "PillEd — Smart Medication Management",
@@ -296,7 +241,9 @@ export const projects: Project[] = [
     competition: "Anderson Product Innovation Challenge",
     year: "2022",
     problem:
-      "50% of US adults are nonadherent to their prescriptions, 30% of adults 60+ take 5 or more medications simultaneously, and only 12% have sufficient health literacy — creating a $50B annual burden from medication misuse and making adverse drug interactions the 5th leading cause of death in the US.",
+      "Medication nonadherence affects 50% of US adults and costs the healthcare system $50B annually — yet most patients lack the tools to manage complex drug regimens safely.",
+    solution:
+      "PillEd uses OCR scanning, automated drug interaction alerts, and plain-language drug information to make medication management safer and simpler for every patient.",
     myRole:
       "Product Manager & Strategist — defined product vision, roadmap, and phased go-to-market strategy. Led competitive analysis, TAM/SAM/SOM market sizing across the Caregiver and Mother segments, user persona development, and 5-year revenue modeling across three monetization streams.",
     keyDecisions: [
@@ -317,6 +264,30 @@ export const projects: Project[] = [
       "HIPAA",
     ],
     detailHref: "/projects/pilled",
+  },
+  {
+    id: "yaya",
+    slug: "yaya",
+    title: "Yaya — AI-Powered Financial Inclusion Platform",
+    category: "Case Competition",
+    competition: "CMU Tepper Tech Innovation Challenge 2022",
+    year: "2022",
+    problem:
+      "Working mothers from disadvantaged backgrounds face sudden childcare expense shocks — averaging $12K in Year 1 alone — without the financial tools or literacy to navigate them.",
+    solution:
+      "Yaya is an AI-powered mobile platform built for PNC that delivers personalized spending insights, vetted financial product recommendations, and long-term goal planning to help families achieve economic mobility.",
+    myRole:
+      "Product Manager — led product strategy, user research, persona development, and prototyping. Structured the competition narrative from problem framing through financials, securing finalist placement at CMU Tepper.",
+    keyDecisions: [
+      "Built a self-improving model outcome flywheel as Yaya's core moat — recommendations get smarter with every user outcome, creating a defensible edge competitors cannot quickly replicate.",
+      "Prioritized 'Monica' (new working mother, $70K HHI) as the primary persona over broader segments — highest urgency, most acute expense shock, and clearest product-market fit.",
+      "Chose B2C-first GTM through referral and digital channels before layering in B2B partnerships — to seed the flywheel with real user data before institutional distribution.",
+      "Scoped MVP to two features only (Savings Recommendations + Spending Alerts) — enough to demonstrate immediate value and start the data flywheel without overbuilding.",
+    ],
+    outcome:
+      "Finalist at CMU Tepper Tech Innovation Challenge 2022. Judges cited the model outcome flywheel as the most defensible moat in the cohort. Projected $173M incremental revenue for PNC over 5 years.",
+    tags: ["FinTech", "Financial Inclusion", "AI/ML", "B2C", "Mobile App", "User Research"],
+    detailHref: "/projects/yaya",
   },
 ];
 

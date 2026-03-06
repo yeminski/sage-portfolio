@@ -60,7 +60,7 @@ const tools = [
     label: "SQL",
     logo: (
       <div className="h-12 px-4 rounded-lg bg-ink flex items-center justify-center">
-        <span className="text-sm font-bold text-paper tracking-wide">SQL</span>
+        <span className="text-base font-bold text-white tracking-wide">SQL</span>
       </div>
     ),
   },
@@ -87,8 +87,8 @@ export default function CredentialsTools() {
         <div className="flex flex-col md:flex-row md:items-start gap-10 md:gap-0">
 
           {/* Credentials */}
-          <div className="flex-1 bg-gray-50 rounded-xl p-6">
-            <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-8">
+          <div className="flex-1 bg-blue-50 rounded-xl p-6">
+            <p className="text-xs font-semibold text-ink uppercase tracking-widest mb-8">
               Credentials
             </p>
             <div className="flex gap-14">
@@ -104,13 +104,20 @@ export default function CredentialsTools() {
 
           {/* Tools */}
           <div className="flex-[2] bg-accent/5 rounded-xl p-6">
-            <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-8">
+            <p className="text-xs font-semibold text-ink uppercase tracking-widest mb-8">
               Tools
             </p>
-            <div className="flex flex-wrap gap-x-12 gap-y-8">
-              {tools.map(({ label, logo }) => (
-                <ItemCol key={label} label={label} logo={logo} />
-              ))}
+            <div className="flex flex-wrap items-start gap-y-8">
+              <div className="flex gap-x-20">
+                {tools.slice(0, 3).map(({ label, logo }) => (
+                  <ItemCol key={label} label={label} logo={logo} />
+                ))}
+              </div>
+              <div className="flex gap-x-16 ml-16">
+                {tools.slice(3).map(({ label, logo }) => (
+                  <ItemCol key={label} label={label} logo={logo} />
+                ))}
+              </div>
             </div>
           </div>
 

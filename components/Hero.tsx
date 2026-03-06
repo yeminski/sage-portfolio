@@ -37,8 +37,8 @@ export default function Hero() {
               </a>
               <EmailButton />
               <a
-                href="/resume.pdf"
-                download
+                href="/sage-resume.pdf"
+                download="Yeji (Sage) Seo - Resume.pdf"
                 className="flex items-center gap-2 text-sm text-ink/60 hover:text-ink transition-colors"
               >
                 <ResumeIcon />

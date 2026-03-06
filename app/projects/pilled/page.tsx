@@ -15,13 +15,15 @@ export default function PillEdPage() {
       <Navbar />
       <main className="pt-16 bg-paper">
         <PageHero />
+        <MyRoleSection />
         <ProblemSection />
         <PersonasSection />
         <SolutionSection />
+        <UserJourneySection />
+        <ArchSection />
         <CompetitorSection />
         <MarketSection />
         <GTMSection />
-        <MyRoleSection />
       </main>
       <Footer />
     </>
@@ -38,7 +40,7 @@ function SectionLabel({ index, children }: { index: string; children: React.Reac
   );
 }
 
-/* ─── 1. Page Hero ───────────────────────────────────────────────────────── */
+/* ─── 0. Page Hero ───────────────────────────────────────────────────────── */
 
 function PageHero() {
   const tags = ["HealthTech", "Mobile App", "Product Management", "B2C", "HIPAA"];
@@ -82,17 +84,66 @@ function PageHero() {
           ))}
         </div>
 
-        <div className="mt-8">
-          <a
-            href="/pilled-deck.pdf"
-            download
-            className="inline-flex items-center gap-2 text-sm font-medium text-accent border border-accent/30 px-4 py-2 rounded hover:bg-accent/5 transition-colors"
-          >
-            <DownloadIcon /> Download Pitch Deck
-          </a>
-        </div>
       </div>
     </div>
+  );
+}
+
+/* ─── 1. My Role ─────────────────────────────────────────────────────────── */
+
+const contributions = [
+  {
+    emoji: "🎯",
+    bg: "bg-teal-50",
+    title: "Product Strategy",
+    description: "Defined product vision, roadmap, and phased go-to-market strategy. Led competitive analysis that identified the unique OCR + DI + health literacy combination as the primary differentiator.",
+  },
+  {
+    emoji: "📊",
+    bg: "bg-blue-50",
+    title: "Market Analysis",
+    description: "Conducted TAM/SAM/SOM sizing across the Caregiver and Mother segments. Validated market opportunity through demographic trends and telemedicine growth data.",
+  },
+  {
+    emoji: "👥",
+    bg: "bg-purple-50",
+    title: "User Research & Segmentation",
+    description: "Developed three core personas through pain-point analysis. Mapped the end-to-end user journey from onboarding through daily medication management and price comparison.",
+  },
+  {
+    emoji: "💵",
+    bg: "bg-amber-50",
+    title: "Financial Modeling",
+    description: "Built 5-year revenue projection across three monetization streams (subscription, advertising, transaction fees). Structured cost analysis at $1.2M/year operating budget.",
+  },
+];
+
+function MyRoleSection() {
+  return (
+    <section className="py-16 bg-paper border-b border-gray-100">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <SectionLabel index="01">My Contribution</SectionLabel>
+        <h2 className="text-3xl font-bold text-ink mb-2">What I Did as Product Manager</h2>
+        <p className="text-ink/60 max-w-2xl mb-10">
+          As Product Manager and Strategist, I owned problem framing, product vision, and cross-functional coordination across a 5-person team of MD/MBA and MBA candidates.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {contributions.map((c) => (
+            <div
+              key={c.title}
+              className="border border-gray-200 rounded-xl p-6 hover:border-accent transition-colors"
+            >
+              <div className={`w-10 h-10 ${c.bg} rounded-xl flex items-center justify-center text-xl mb-4`}>
+                {c.emoji}
+              </div>
+              <h3 className="font-semibold text-ink mb-2">{c.title}</h3>
+              <p className="text-sm text-ink/60 leading-relaxed">{c.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -109,9 +160,9 @@ const problemStats = [
 
 function ProblemSection() {
   return (
-    <section className="py-20 bg-paper">
+    <section className="py-20 bg-gray-50">
       <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="01">Problem</SectionLabel>
+        <SectionLabel index="02">Problem</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Pharmaceuticals &amp; the American Consumer</h2>
         <p className="text-ink/60 max-w-2xl mb-12">
           Millions of Americans face serious health risks from medication mismanagement. The data reveals
@@ -122,7 +173,7 @@ function ProblemSection() {
           {problemStats.map((s) => (
             <div
               key={s.label}
-              className="border border-gray-200 rounded-xl p-6 hover:border-accent transition-colors"
+              className="border border-gray-200 rounded-xl p-6 bg-paper hover:border-accent transition-colors"
             >
               <p className={`text-4xl font-bold mb-2 ${s.warning ? "text-red-500" : "text-accent"}`}>
                 {s.number}
@@ -164,9 +215,9 @@ const personas = [
 
 function PersonasSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-paper">
       <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="02">Target Users</SectionLabel>
+        <SectionLabel index="03">Target Users</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Who We&apos;re Building For</h2>
         <p className="text-ink/60 max-w-2xl mb-12">
           Three distinct user segments with a shared need: reliable, understandable medication guidance.
@@ -207,9 +258,9 @@ const features = [
 
 function SolutionSection() {
   return (
-    <section className="py-20 bg-paper">
+    <section className="py-20 bg-gray-50">
       <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="03">Solution</SectionLabel>
+        <SectionLabel index="04">Solution</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Core Features</h2>
         <p className="text-ink/60 max-w-2xl mb-12">
           PillEd integrates six critical capabilities into a single app — a combination no competitor currently offers.
@@ -219,7 +270,7 @@ function SolutionSection() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="group border border-gray-200 rounded-xl p-6 hover:border-accent transition-colors relative overflow-hidden"
+              className="group bg-paper border border-gray-200 rounded-xl p-6 hover:border-accent transition-colors relative overflow-hidden"
             >
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
               <div className={`w-10 h-10 ${f.bg} rounded-xl flex items-center justify-center text-xl mb-4`}>
@@ -235,7 +286,52 @@ function SolutionSection() {
   );
 }
 
-/* ─── 5. Competitive Matrix ──────────────────────────────────────────────── */
+/* ─── 5. User Journey ────────────────────────────────────────────────────── */
+
+const journeySteps = [
+  { step: "1", title: "Sign Up", description: "Create profile with health details" },
+  { step: "2", title: "Scan Meds", description: "Camera OCR to add medications" },
+  { step: "3", title: "DI Check", description: "Auto drug interaction screening" },
+  { step: "4", title: "Review Info", description: "Digestible drug details" },
+  { step: "5", title: "Schedule", description: "Set dosing times & alarms" },
+  { step: "6", title: "Get Reminded", description: "Push notifications at dose time" },
+  { step: "7", title: "Track & Shop", description: "History, compare prices, buy" },
+];
+
+function UserJourneySection() {
+  return (
+    <section className="py-20 bg-paper">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <SectionLabel index="05">User Journey</SectionLabel>
+        <h2 className="text-3xl font-bold text-ink mb-4">End-to-End Experience Flow</h2>
+        <p className="text-ink/60 max-w-2xl mb-12">
+          From onboarding to daily medication management — a seamless, guided experience designed for users with low health literacy.
+        </p>
+
+        <div className="overflow-x-auto pb-4">
+          <div className="flex items-start gap-0 min-w-max">
+            {journeySteps.map((s, i) => (
+              <div key={s.step} className="flex items-start">
+                <div className="flex flex-col items-center w-36 text-center">
+                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold text-sm mb-3">
+                    {s.step}
+                  </div>
+                  <p className="text-sm font-semibold text-ink mb-1">{s.title}</p>
+                  <p className="text-xs text-ink/50 leading-snug px-2">{s.description}</p>
+                </div>
+                {i < journeySteps.length - 1 && (
+                  <div className="mt-5 text-gray-300 text-lg px-1">→</div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── 6. Competitive Matrix ──────────────────────────────────────────────── */
 
 const competitorFeatures = [
   "Drug-Drug Interaction Checker",
@@ -259,7 +355,7 @@ function CompetitorSection() {
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="04">Competitive Landscape</SectionLabel>
+        <SectionLabel index="07">Competitive Landscape</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Feature Comparison Matrix</h2>
         <p className="text-ink/60 max-w-2xl mb-12">
           Existing solutions address fragments of the problem. PillEd is the only platform covering all critical capabilities.
@@ -303,7 +399,7 @@ function CompetitorSection() {
   );
 }
 
-/* ─── 6. Market ──────────────────────────────────────────────────────────── */
+/* ─── 7. Market ──────────────────────────────────────────────────────────── */
 
 function MarketSection() {
   const funnel = [
@@ -321,13 +417,12 @@ function MarketSection() {
   return (
     <section className="py-20 bg-paper">
       <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="05">Market Opportunity</SectionLabel>
+        <SectionLabel index="08">Market Opportunity</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Market Sizing</h2>
         <p className="text-ink/60 max-w-2xl mb-12">
           Targeting the &ldquo;Mother&rdquo; (4.0M) and &ldquo;Caregiver&rdquo; (7.3M) segments with a $50/year freemium subscription model.
         </p>
 
-        {/* TAM/SAM/SOM funnel */}
         <div className="max-w-2xl space-y-4 mb-16">
           {funnel.map(({ label, sub, widthClass, color }) => (
             <div key={label} className="flex items-center gap-5">
@@ -339,7 +434,6 @@ function MarketSection() {
           ))}
         </div>
 
-        {/* Growth drivers */}
         <h3 className="font-bold text-ink mb-6">Growth Drivers</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {drivers.map((d) => (
@@ -354,7 +448,7 @@ function MarketSection() {
   );
 }
 
-/* ─── 7. Go-to-Market ────────────────────────────────────────────────────── */
+/* ─── 8. Go-to-Market ────────────────────────────────────────────────────── */
 
 const phases = [
   {
@@ -383,7 +477,7 @@ function GTMSection() {
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="06">Go-to-Market Strategy</SectionLabel>
+        <SectionLabel index="09">Go-to-Market Strategy</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Phased Market Entry</h2>
         <p className="text-ink/60 max-w-2xl mb-12">
           A B2B-first approach to build medical credibility before scaling to consumers — reducing CAC by leveraging
@@ -408,53 +502,95 @@ function GTMSection() {
   );
 }
 
-/* ─── 8. My Role ─────────────────────────────────────────────────────────── */
+/* ─── 9. System Architecture + Tech Stack ────────────────────────────────── */
 
-const contributions = [
+const archLayers = [
   {
-    emoji: "🎯",
-    bg: "bg-teal-50",
-    title: "Product Strategy",
-    description: "Defined product vision, roadmap, and phased go-to-market strategy. Led competitive analysis that identified the unique OCR + DI + health literacy combination as the primary differentiator.",
+    label: "Presentation Layer",
+    boxes: [{ text: "Mobile App (iOS / Android)", style: "bg-teal-50 text-teal-700 border border-teal-200" }],
   },
   {
-    emoji: "📊",
-    bg: "bg-blue-50",
-    title: "Market Analysis",
-    description: "Conducted TAM/SAM/SOM sizing across the Caregiver and Mother segments. Validated market opportunity through demographic trends and telemedicine growth data.",
+    label: "Processing Layer",
+    boxes: [
+      { text: "OCR Module", style: "bg-blue-50 text-blue-700 border border-blue-200" },
+      { text: "DI Module", style: "bg-blue-50 text-blue-700 border border-blue-200" },
+      { text: "Notification Engine", style: "bg-blue-50 text-blue-700 border border-blue-200" },
+      { text: "Image Recognition", style: "bg-blue-50 text-blue-700 border border-blue-200" },
+    ],
   },
   {
-    emoji: "👥",
-    bg: "bg-purple-50",
-    title: "User Research & Segmentation",
-    description: "Developed three core personas through pain-point analysis. Mapped the end-to-end user journey from onboarding through daily medication management and price comparison.",
+    label: "Data Layer",
+    boxes: [
+      { text: "User DB", style: "bg-purple-50 text-purple-700 border border-purple-200" },
+      { text: "Meds DB", style: "bg-purple-50 text-purple-700 border border-purple-200" },
+      { text: "Medicine DB", style: "bg-purple-50 text-purple-700 border border-purple-200" },
+      { text: "DI DB", style: "bg-purple-50 text-purple-700 border border-purple-200" },
+      { text: "Schedule DB", style: "bg-purple-50 text-purple-700 border border-purple-200" },
+      { text: "Bio DB", style: "bg-purple-50 text-purple-700 border border-purple-200" },
+    ],
   },
   {
-    emoji: "💵",
-    bg: "bg-amber-50",
-    title: "Financial Modeling",
-    description: "Built 5-year revenue projection across three monetization streams (subscription, advertising, transaction fees). Structured cost analysis at $1.2M/year operating budget.",
+    label: "External Sources",
+    boxes: [
+      { text: "FDA Drug Data", style: "bg-amber-50 text-amber-700 border border-amber-200" },
+      { text: "Research Web", style: "bg-amber-50 text-amber-700 border border-amber-200" },
+      { text: "Corporate Partners", style: "bg-amber-50 text-amber-700 border border-amber-200" },
+      { text: "Retail APIs", style: "bg-amber-50 text-amber-700 border border-amber-200" },
+    ],
   },
 ];
 
-function MyRoleSection() {
+const techStack = [
+  { emoji: "☁️", label: "Azure Servers ×4" },
+  { emoji: "📦", label: "AWS S3 Storage" },
+  { emoji: "🤖", label: "AI/ML OCR Engine" },
+  { emoji: "📸", label: "Image Recognition" },
+  { emoji: "🔔", label: "Push Notifications" },
+  { emoji: "🔒", label: "HIPAA Compliant" },
+];
+
+function ArchSection() {
   return (
     <section className="py-20 bg-paper">
       <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="07">My Contribution</SectionLabel>
-        <h2 className="text-3xl font-bold text-ink mb-4">What I Did as Product Manager</h2>
+        <SectionLabel index="06">Technical Architecture</SectionLabel>
+        <h2 className="text-3xl font-bold text-ink mb-4">System Overview</h2>
+        <p className="text-ink/60 max-w-2xl mb-12">
+          Modular architecture designed for scalability — dedicated processing modules for OCR, drug interaction analysis,
+          and notification delivery, fed by a multi-source external data layer.
+        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {contributions.map((c) => (
-            <div
-              key={c.title}
-              className="border border-gray-200 rounded-xl p-6 hover:border-accent transition-colors"
-            >
-              <div className={`w-10 h-10 ${c.bg} rounded-xl flex items-center justify-center text-xl mb-4`}>
-                {c.emoji}
+        {/* Architecture diagram */}
+        <div className="border border-gray-200 rounded-xl p-8 bg-gray-50 overflow-x-auto mb-14">
+          <div className="flex flex-col gap-5 min-w-[560px]">
+            {archLayers.map((layer, i) => (
+              <div key={layer.label}>
+                <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-3">{layer.label}</p>
+                <div className="flex flex-wrap gap-3">
+                  {layer.boxes.map((box) => (
+                    <div key={box.text} className={`px-4 py-2 rounded-lg text-sm font-medium ${box.style}`}>
+                      {box.text}
+                    </div>
+                  ))}
+                </div>
+                {i < archLayers.length - 1 && (
+                  <div className="mt-4 text-gray-300 text-sm pl-2">↓</div>
+                )}
               </div>
-              <h3 className="font-semibold text-ink mb-2">{c.title}</h3>
-              <p className="text-sm text-ink/60 leading-relaxed">{c.description}</p>
+            ))}
+          </div>
+        </div>
+
+        {/* Tech stack */}
+        <h3 className="font-bold text-ink mb-6">Tech Stack</h3>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+          {techStack.map((t) => (
+            <div
+              key={t.label}
+              className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center hover:border-accent transition-colors"
+            >
+              <span className="text-2xl block mb-2">{t.emoji}</span>
+              <span className="text-xs font-medium text-ink/60">{t.label}</span>
             </div>
           ))}
         </div>

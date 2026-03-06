@@ -51,12 +51,21 @@ export default function ProjectCarousel() {
                   transform: `scale(${isActive ? 1 : 0.9})`,
                   transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                   transformOrigin: "center top",
-                  cursor: isActive ? "default" : "pointer",
+                  cursor: project.id === "coming-soon" ? "default" : isActive ? "default" : "pointer",
                   position: "relative",
                 }}
-                onClick={() => !isActive && setActive(i)}
+                onClick={() => project.id !== "coming-soon" && !isActive && setActive(i)}
               >
                 {/* Card */}
+                {project.id === "coming-soon" ? (
+                  <div className="rounded-2xl overflow-hidden bg-gray-50 border border-dashed border-gray-300">
+                    <div className="w-full aspect-[16/10] flex flex-col items-center justify-center gap-3">
+                      <span className="text-3xl">🔒</span>
+                      <p className="text-sm font-medium text-ink/40">Case Study Coming Soon</p>
+                      <p className="text-xs text-ink/25">Currently being documented</p>
+                    </div>
+                  </div>
+                ) : (
                 <div
                   className="rounded-2xl overflow-hidden bg-paper border border-gray-200"
                   style={{
@@ -79,12 +88,31 @@ export default function ProjectCarousel() {
                     <p className="text-xs font-semibold text-accent tracking-widest uppercase mb-1">
                       {project.category} · {project.year}
                     </p>
-                    <h3 className="text-xl font-bold text-ink mb-3 leading-snug">
+                    <h3 className="text-xl font-bold text-ink mb-4 leading-snug">
                       {project.title}
                     </h3>
-                    <p className="text-sm text-ink/60 leading-relaxed mb-4 line-clamp-3">
+
+                    {/* Problem */}
+                    <p className="text-sm text-ink/55 leading-relaxed line-clamp-2 mb-3">
                       {project.problem}
                     </p>
+
+                    {/* Problem → Solution bridge */}
+                    {project.solution && (
+                      <>
+                        <div className="flex items-center gap-2 mb-3">
+                          <div className="flex-1 h-px bg-gray-100" />
+                          <span className="text-gray-300 text-xs">↓</span>
+                          <div className="flex-1 h-px bg-gray-100" />
+                        </div>
+                        {/* Solution */}
+                        <div className="border-l-2 border-accent bg-accent/5 rounded-r-lg px-3 py-2 mb-4">
+                          <p className="text-sm text-ink/70 leading-relaxed line-clamp-2">
+                            {project.solution}
+                          </p>
+                        </div>
+                      </>
+                    )}
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-x-4 gap-y-1 mb-5">
@@ -109,6 +137,7 @@ export default function ProjectCarousel() {
                     )}
                   </div>
                 </div>
+                )}
 
                 {/* Inactive overlay */}
                 {!isActive && (
