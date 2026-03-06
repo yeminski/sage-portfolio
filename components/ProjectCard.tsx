@@ -43,20 +43,19 @@ function ProjectInfo({ project }: { project: Project }) {
         </h2>
       </div>
 
-      {/* Dark description box */}
-      <div className="bg-neutral-900 rounded-xl p-6 shadow-xl">
-        <p className="text-sm text-white leading-relaxed">
-          {project.problem}
-        </p>
-        {project.solution && (
-          <>
-            <div className="my-4 h-px bg-white/10" />
-            <p className="text-sm text-white leading-relaxed">
-              {project.solution}
-            </p>
-          </>
-        )}
+      {/* Problem */}
+      <div className="border-l-2 border-gray-200 pl-4">
+        <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">Problem</p>
+        <p className="text-sm text-ink/55 leading-relaxed">{project.problem}</p>
       </div>
+
+      {/* Solution */}
+      {project.solution && (
+        <div className="border-l-2 border-accent pl-4">
+          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">Solution</p>
+          <p className="text-sm text-ink/80 leading-relaxed">{project.solution}</p>
+        </div>
+      )}
 
       {/* Tags — plain text, spaced */}
       <div className="flex flex-wrap gap-x-5 gap-y-1">
