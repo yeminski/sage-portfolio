@@ -270,7 +270,7 @@ export const projects: Project[] = [
   {
     id: "yaya",
     slug: "yaya",
-    title: "Yaya — AI-Powered Financial Inclusion Platform",
+    title: "AI Financial Coach — AI-Powered Financial Inclusion Platform",
     category: "Case Competition",
     competition: "CMU Tepper Tech Innovation Challenge 2022",
     year: "2022",

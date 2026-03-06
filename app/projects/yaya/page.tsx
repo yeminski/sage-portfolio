@@ -4,12 +4,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Yaya — AI-Powered Financial Inclusion Platform | Sage",
+  title: "AI Financial Coach — AI-Powered Financial Inclusion Platform | Sage",
   description:
-    "Product case study: Yaya — helping working mothers of disadvantaged backgrounds achieve economic mobility through personalized, AI-driven financial guidance.",
+    "Product case study: AI Financial Coach — helping working mothers of disadvantaged backgrounds achieve economic mobility through personalized, AI-driven financial guidance.",
 };
 
-export default function YayaPage() {
+export default function AIFinancialCoachPage() {
   return (
     <>
       <Navbar />
@@ -69,13 +69,13 @@ function PageHero() {
           ))}
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-ink mb-2">Yaya</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-ink mb-2">AI Financial Coach</h1>
         <p className="text-xl text-ink/60 mb-10 max-w-2xl">
           An AI-powered personal finance platform designed to help underbanked, low-income
           Americans achieve economic mobility through personalized, real-time financial guidance.
         </p>
 
-        <div className="flex flex-wrap gap-10 mb-12">
+        <div className="flex flex-wrap gap-10">
           {meta.map(({ label, value }) => (
             <div key={label}>
               <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-1">{label}</p>
@@ -83,15 +83,6 @@ function PageHero() {
             </div>
           ))}
         </div>
-
-        {/* Main product image */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/yaya_main_image.png"
-          alt="Yaya app — personalized financial guidance dashboard showing spending insights and financial product recommendations"
-          className="w-full rounded-2xl object-contain"
-        />
-
       </div>
     </div>
   );
@@ -235,7 +226,7 @@ function PersonasSection() {
         <SectionLabel index="03">Target Users</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Who We&apos;re Building For</h2>
         <p className="text-ink/60 max-w-2xl mb-12">
-          Yaya is designed for underbanked, low-income Americans who lack the tools and literacy to navigate financial decisions on their own.
+          AI Financial Coach is designed for underbanked, low-income Americans who lack the tools and literacy to navigate financial decisions on their own.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -314,7 +305,7 @@ function SolutionSection() {
         <SectionLabel index="04">Solution</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Core Features</h2>
         <p className="text-ink/60 max-w-2xl mb-12">
-          Yaya combines real-time spending intelligence, personalized financial product access, and
+          AI Financial Coach combines real-time spending intelligence, personalized financial product access, and
           long-term goal planning in one platform — powered by a self-improving data engine.
         </p>
 
@@ -341,10 +332,10 @@ function SolutionSection() {
 /* ─── 05. User Journey ───────────────────────────────────────────────────── */
 
 const journeySteps = [
-  { step: "1", title: "Download", description: "Discover Yaya via referral, social, or partner" },
+  { step: "1", title: "Download", description: "Discover AI Financial Coach via referral, social, or partner" },
   { step: "2", title: "Onboard", description: "Complete profile with income and goals" },
   { step: "3", title: "Connect", description: "Link bank accounts via Plaid integration" },
-  { step: "4", title: "Analyze", description: "Yaya ingests spending and builds baseline" },
+  { step: "4", title: "Analyze", description: "AI Financial Coach ingests spending and builds baseline" },
   { step: "5", title: "Recommend", description: "First personalized savings recommendation" },
   { step: "6", title: "Plan", description: "Set long-term financial goals with guided plans" },
   { step: "7", title: "Improve", description: "Model flywheel learns from outcomes over time" },
@@ -357,7 +348,7 @@ function UserJourneySection() {
         <SectionLabel index="05">User Journey</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">End-to-End Experience Flow</h2>
         <p className="text-ink/60 max-w-2xl mb-12">
-          From first download to first personalized recommendation — Yaya is designed to deliver
+          From first download to first personalized recommendation — AI Financial Coach is designed to deliver
           immediate, tangible value.
         </p>
 
@@ -403,7 +394,7 @@ const archLayers = [
     ],
   },
   {
-    label: "Yaya Backend Engine",
+    label: "AI Financial Coach Backend Engine",
     boxes: [
       { text: "Model Outcome Flywheel", style: "bg-teal-50 text-teal-700 border border-teal-200" },
       { text: "Recommendation Engine", style: "bg-teal-50 text-teal-700 border border-teal-200" },
@@ -432,9 +423,9 @@ function ArchSection() {
     <section className="py-20 bg-gray-50">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="06">Technical Architecture</SectionLabel>
-        <h2 className="text-3xl font-bold text-ink mb-4">Yaya&apos;s Model Outcome Flywheel</h2>
+        <h2 className="text-3xl font-bold text-ink mb-4">AI Financial Coach&apos;s Model Outcome Flywheel</h2>
         <p className="text-ink/60 max-w-2xl mb-12">
-          Yaya&apos;s strategic moat is its data engine — a self-improving flywheel that gets smarter with
+          AI Financial Coach&apos;s strategic moat is its data engine — a self-improving flywheel that gets smarter with
           every user outcome, creating recommendations competitors cannot replicate.
         </p>
 
@@ -485,7 +476,7 @@ const competitorFeatures = [
   "Personalized financial product recommendations",
   "Targeted for underserved / low-income segment",
 ];
-const competitors = ["Yaya", "Traditional Banks", "Mint / Advisory Apps"];
+const competitors = ["AI Financial Coach", "Traditional Banks", "Mint / Advisory Apps"];
 const matrix = [
   [true, false, false],
   [true, false, true],
@@ -502,7 +493,7 @@ function CompetitorSection() {
         <SectionLabel index="07">Competitive Landscape</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Feature Comparison Matrix</h2>
         <p className="text-ink/60 max-w-2xl mb-12">
-          Yaya is the only platform combining bank-level data access, cross-institution spending
+          AI Financial Coach is the only platform combining bank-level data access, cross-institution spending
           visibility, and a self-improving recommendation engine — all tailored to an underserved segment.
         </p>
 
@@ -564,8 +555,8 @@ function MarketSection() {
 
   const revenueStats = [
     { number: "$173M", label: "Projected incremental revenue for PNC over 5 years" },
-    { number: "$110", label: "Incremental annual revenue per Yaya customer" },
-    { number: "20%", label: "Share of Yaya users projected to become net new PNC customers" },
+    { number: "$110", label: "Incremental annual revenue per AI Financial Coach customer" },
+    { number: "20%", label: "Share of AI Financial Coach users projected to become net new PNC customers" },
   ];
 
   return (
@@ -628,7 +619,7 @@ const phases = [
     phase: "Long-term",
     title: "Generational Retention",
     description:
-      "Encourage mothers to open PNC accounts for their children — creating a generational retention flywheel and expanding Yaya's addressable market over time.",
+      "Encourage mothers to open PNC accounts for their children — creating a generational retention flywheel and expanding AI Financial Coach's addressable market over time.",
   },
 ];
 
