@@ -243,7 +243,7 @@ export const projects: Project[] = [
     problem:
       "Medication nonadherence affects 50% of US adults and costs the healthcare system $50B annually — yet most patients lack the tools to manage complex drug regimens safely.",
     solution:
-      "PillEd uses OCR scanning, automated drug interaction alerts, and plain-language drug information to make medication management safer and simpler for every patient.",
+      "PillEd is a mobile app that uses OCR scanning, automated drug interaction alerts, and plain-language drug information to make medication management safer and simpler for every patient.",
     myRole:
       "Product Manager & Strategist — defined product vision, roadmap, and phased go-to-market strategy. Led competitive analysis, TAM/SAM/SOM market sizing across the Caregiver and Mother segments, user persona development, and 5-year revenue modeling across three monetization streams.",
     keyDecisions: [
@@ -273,9 +273,9 @@ export const projects: Project[] = [
     competition: "CMU Tepper Tech Innovation Challenge 2022",
     year: "2022",
     problem:
-      "Working mothers from disadvantaged backgrounds face sudden childcare expense shocks — averaging $12K in Year 1 alone — without the financial tools or literacy to navigate them.",
+      "Millions of underbanked Americans lack the financial tools and literacy to manage everyday expenses, avoid predatory products, and build toward long-term goals.",
     solution:
-      "Yaya is an AI-powered mobile platform built for PNC that delivers personalized spending insights, vetted financial product recommendations, and long-term goal planning to help families achieve economic mobility.",
+      "Yaya is an AI-powered mobile platform that delivers personalized spending insights, vetted financial product recommendations, and goal-based planning — helping low-income families achieve economic mobility.",
     myRole:
       "Product Manager — led product strategy, user research, persona development, and prototyping. Structured the competition narrative from problem framing through financials, securing finalist placement at CMU Tepper.",
     keyDecisions: [

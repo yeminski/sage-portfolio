@@ -61,9 +61,17 @@ function ProjectInfo({ project }: { project: Project }) {
 
       {/* Dark description box */}
       <div className="bg-neutral-900 rounded-xl p-6 shadow-xl">
-        <p className="text-sm text-white/75 leading-relaxed">
+        <p className="text-sm text-white leading-relaxed">
           {project.problem}
         </p>
+        {project.solution && (
+          <>
+            <div className="my-4 h-px bg-white/10" />
+            <p className="text-sm text-white leading-relaxed">
+              {project.solution}
+            </p>
+          </>
+        )}
       </div>
 
       {/* Tags — plain text, spaced */}
