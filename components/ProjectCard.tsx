@@ -10,34 +10,18 @@ export default function ProjectCard({ project, index }: Props) {
   const imageLeft = index % 2 === 0;
 
   return (
-    <article id={project.slug} className="py-16 border-b border-gray-100 last:border-b-0">
+    <article id={project.slug} className="py-14 border-b border-gray-100 last:border-b-0">
+      <div className={`flex flex-col md:flex-row items-center gap-10 ${imageLeft ? "" : "md:flex-row-reverse"}`}>
 
-      {/* ── Mobile: stacked. Desktop: side-by-side with overlap ── */}
-      <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-8 md:gap-0">
+        {/* Image — 40% width */}
+        <div className="w-full md:w-[40%] flex-shrink-0">
+          <ImageBlock image={project.image} title={project.title} />
+        </div>
 
-        {imageLeft ? (
-          <>
-            {/* Image — cols 1-8 */}
-            <div className="md:col-start-1 md:col-span-8 md:row-start-1">
-              <ImageBlock />
-            </div>
-            {/* Text — cols 6-12 (overlaps image at cols 6-8) */}
-            <div className="md:col-start-6 md:col-span-7 md:row-start-1 z-10 flex flex-col gap-6 md:py-10 md:pl-10">
-              <ProjectInfo project={project} />
-            </div>
-          </>
-        ) : (
-          <>
-            {/* Text — cols 1-7 */}
-            <div className="md:col-start-1 md:col-span-7 md:row-start-1 z-10 flex flex-col gap-6 md:py-10 md:pr-10 order-2 md:order-1">
-              <ProjectInfo project={project} />
-            </div>
-            {/* Image — cols 5-12 (overlaps text at cols 5-7) */}
-            <div className="md:col-start-5 md:col-span-8 md:row-start-1 order-1 md:order-2">
-              <ImageBlock />
-            </div>
-          </>
-        )}
+        {/* Text — 60% width */}
+        <div className="flex-1 flex flex-col gap-6">
+          <ProjectInfo project={project} />
+        </div>
 
       </div>
     </article>
@@ -100,13 +84,24 @@ function ProjectInfo({ project }: { project: Project }) {
   );
 }
 
-function ImageBlock() {
+function ImageBlock({ image, title }: { image?: string; title: string }) {
   return (
-    <div className="w-full aspect-[16/11] bg-gray-100 rounded-2xl border border-gray-200 flex flex-col items-center justify-center gap-3">
-      <ScreenshotIcon />
-      <span className="text-sm text-gray-400 font-medium">
-        Prototype screenshot coming soon
-      </span>
+    <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-50 flex items-center justify-center">
+      {image ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={`${image}?v=2`}
+          alt={title}
+          className="w-full h-full object-contain"
+        />
+      ) : (
+        <div className="flex flex-col items-center gap-3">
+          <ScreenshotIcon />
+          <span className="text-sm text-gray-400 font-medium">
+            Prototype screenshot coming soon
+          </span>
+        </div>
+      )}
     </div>
   );
 }

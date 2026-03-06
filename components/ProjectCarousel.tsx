@@ -75,12 +75,23 @@ export default function ProjectCarousel() {
                     transition: "box-shadow 0.5s",
                   }}
                 >
-                  {/* Image placeholder */}
-                  <div className="w-full aspect-[16/10] bg-gray-100 border-b border-gray-200 flex flex-col items-center justify-center gap-2">
-                    <ScreenshotIcon />
-                    <span className="text-xs text-gray-400">
-                      Prototype screenshot coming soon
-                    </span>
+                  {/* Product image */}
+                  <div className="w-full aspect-[16/10] bg-gray-100 border-b border-gray-200 overflow-hidden flex items-center justify-center">
+                    {project.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={`${project.image}?v=2`}
+                        alt={project.title}
+                        className="w-full h-full object-contain"
+                      />
+                    ) : (
+                      <>
+                        <ScreenshotIcon />
+                        <span className="text-xs text-gray-400">
+                          Prototype screenshot coming soon
+                        </span>
+                      </>
+                    )}
                   </div>
 
                   {/* Content */}
