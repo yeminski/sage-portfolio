@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PillEd — Smart Medication Management Platform</title>
+<style>
+  /* ============ RESET & BASE ============ */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #fafafa;
+    color: #1a1a2e;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ TYPOGRAPHY ============ */
+  h1, h2, h3, h4 { font-weight: 700; line-height: 1.25; }
+  h1 { font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: -0.03em; }
+  h2 { font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.02em; }
+  h3 { font-size: 1.15rem; }
+  p { color: #444; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ============ UTILITIES ============ */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .badge {
+    display: inline-block; padding: 4px 14px; border-radius: 100px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .badge--teal { background: #e0f5f0; color: #0d7a5f; }
+  .badge--blue { background: #e8f0fe; color: #1a56db; }
+  .badge--rose { background: #fce4ec; color: #c62828; }
+  .badge--amber { background: #fff8e1; color: #f57f17; }
+  .badge--purple { background: #f3e5f5; color: #7b1fa2; }
+  .divider { height: 1px; background: #e8e8e8; margin: 64px 0; }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.85); backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
+  nav .nav-inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between; height: 60px;
+  }
+  nav .logo { font-weight: 800; font-size: 1.1rem; color: #0d7a5f; }
+  nav .logo span { color: #1a1a2e; }
+  nav .nav-links { display: flex; gap: 28px; }
+  nav .nav-links a {
+    font-size: 0.85rem; font-weight: 500; color: #666;
+    transition: color 0.2s;
+  }
+  nav .nav-links a:hover { color: #0d7a5f; }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 140px 0 80px;
+    background: linear-gradient(165deg, #f0faf6 0%, #fafafa 50%, #f5f0ff 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,122,95,0.06) 0%, transparent 70%);
+  }
+  .hero .container { position: relative; }
+  .hero-top { display: flex; gap: 10px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+  .hero h1 { margin-bottom: 16px; }
+  .hero h1 span { color: #0d7a5f; }
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem); color: #555; max-width: 680px; margin-bottom: 32px;
+  }
+  .hero-meta {
+    display: flex; gap: 40px; flex-wrap: wrap;
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .hero-meta-item .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #999; font-weight: 600; }
+  .hero-meta-item .value { font-size: 0.95rem; font-weight: 600; color: #1a1a2e; }
+
+  /* ============ SECTION ============ */
+  .section { padding: 80px 0; }
+  .section-label {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+    color: #0d7a5f; font-weight: 700; margin-bottom: 12px;
+  }
+  .section-title { margin-bottom: 16px; }
+  .section-desc { color: #555; max-width: 640px; margin-bottom: 48px; font-size: 1.05rem; }
+  .section--gray { background: #f3f4f6; }
+
+  /* ============ STAT GRID ============ */
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;
+  }
+  .stat-card {
+    background: #fff; border-radius: 16px; padding: 28px 24px;
+    border: 1px solid #eee; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+  .stat-number {
+    font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #0d7a5f, #14b88c);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-number.red {
+    background: linear-gradient(135deg, #c62828, #e57373);
+    -webkit-background-clip: text; background-clip: text;
+  }
+  .stat-label { font-size: 0.85rem; color: #666; margin-top: 6px; font-weight: 500; }
+
+  /* ============ FEATURE CARDS ============ */
+  .feature-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+  }
+  .feature-card {
+    background: #fff; border-radius: 16px; padding: 32px 28px;
+    border: 1px solid #eee; transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+  .feature-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #0d7a5f, #14b88c);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-icon {
+    width: 44px; height: 44px; border-radius: 12px; display: flex;
+    align-items: center; justify-content: center; font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+  .feature-icon--teal { background: #e0f5f0; }
+  .feature-icon--blue { background: #e8f0fe; }
+  .feature-icon--rose { background: #fce4ec; }
+  .feature-icon--amber { background: #fff8e1; }
+  .feature-icon--purple { background: #f3e5f5; }
+  .feature-icon--gray { background: #f3f4f6; }
+  .feature-card h3 { margin-bottom: 8px; }
+  .feature-card p { font-size: 0.9rem; color: #666; line-height: 1.6; }
+
+  /* ============ COMPETITOR TABLE ============ */
+  .table-wrap {
+    overflow-x: auto; border-radius: 16px; border: 1px solid #eee; background: #fff;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  thead { background: #f8faf9; }
+  th {
+    text-align: left; padding: 14px 18px; font-weight: 600; color: #333;
+    border-bottom: 2px solid #e8e8e8; white-space: nowrap;
+  }
+  td { padding: 12px 18px; border-bottom: 1px solid #f0f0f0; color: #555; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { font-weight: 600; color: #1a1a2e; }
+  .check { color: #0d7a5f; font-weight: 700; }
+  .cross { color: #ccc; }
+  .highlight-col { background: rgba(13,122,95,0.04); }
+
+  /* ============ PERSONA CARDS ============ */
+  .persona-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+  }
+  .persona-card {
+    background: #fff; border-radius: 16px; padding: 32px 28px;
+    border: 1px solid #eee; text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .persona-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+  .persona-avatar {
+    width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 16px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+  }
+  .persona-card h3 { margin-bottom: 4px; }
+  .persona-role { font-size: 0.82rem; color: #999; margin-bottom: 16px; font-weight: 500; }
+  .persona-quote {
+    font-style: italic; color: #666; font-size: 0.92rem;
+    padding: 16px; background: #f8f9fa; border-radius: 12px;
+    border-left: 3px solid #0d7a5f;
+    text-align: left;
+  }
+
+  /* ============ USER JOURNEY ============ */
+  .journey-flow {
+    display: flex; align-items: flex-start; gap: 0; overflow-x: auto;
+    padding: 20px 0;
+  }
+  .journey-step {
+    min-width: 160px; text-align: center; position: relative; flex-shrink: 0;
+  }
+  .journey-dot {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, #0d7a5f, #14b88c);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem; margin: 0 auto 12px;
+  }
+  .journey-step h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 4px; color: #1a1a2e; }
+  .journey-step p { font-size: 0.75rem; color: #888; padding: 0 8px; }
+  .journey-arrow {
+    min-width: 40px; display: flex; align-items: center; justify-content: center;
+    color: #ccc; font-size: 1.2rem; padding-top: 8px;
+  }
+
+  /* ============ MARKET ============ */
+  .market-funnel {
+    display: flex; flex-direction: column; gap: 16px; max-width: 600px;
+  }
+  .funnel-row {
+    display: flex; align-items: center; gap: 20px;
+  }
+  .funnel-bar {
+    height: 48px; border-radius: 8px; display: flex; align-items: center;
+    padding: 0 20px; color: #fff; font-weight: 700; font-size: 0.95rem;
+    transition: transform 0.2s;
+  }
+  .funnel-bar:hover { transform: scaleX(1.02); }
+  .funnel-bar--tam { background: linear-gradient(90deg, #0d7a5f, #14b88c); width: 100%; }
+  .funnel-bar--sam { background: linear-gradient(90deg, #1a56db, #60a5fa); width: 70%; }
+  .funnel-bar--som { background: linear-gradient(90deg, #7b1fa2, #ce93d8); width: 35%; }
+  .funnel-label { font-size: 0.82rem; color: #888; min-width: 180px; }
+
+  /* ============ REVENUE MODEL ============ */
+  .revenue-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;
+  }
+  .revenue-card {
+    background: #fff; border-radius: 16px; padding: 28px 24px;
+    border: 1px solid #eee; text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .revenue-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+  .revenue-price {
+    font-size: 1.8rem; font-weight: 800; color: #0d7a5f; margin: 12px 0 4px;
+  }
+  .revenue-card h3 { font-size: 1rem; }
+  .revenue-card p { font-size: 0.85rem; color: #888; margin-top: 8px; }
+
+  /* ============ TIMELINE ============ */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+    width: 2px; background: linear-gradient(to bottom, #0d7a5f, #ce93d8);
+  }
+  .timeline-item { position: relative; margin-bottom: 36px; }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .timeline-dot {
+    position: absolute; left: -32px; top: 4px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #fff; border: 3px solid #0d7a5f;
+  }
+  .timeline-item:nth-child(2) .timeline-dot { border-color: #1a56db; }
+  .timeline-item:nth-child(3) .timeline-dot { border-color: #f57f17; }
+  .timeline-item:nth-child(4) .timeline-dot { border-color: #7b1fa2; }
+  .timeline-date {
+    font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: #0d7a5f; margin-bottom: 4px;
+  }
+  .timeline-item:nth-child(2) .timeline-date { color: #1a56db; }
+  .timeline-item:nth-child(3) .timeline-date { color: #f57f17; }
+  .timeline-item:nth-child(4) .timeline-date { color: #7b1fa2; }
+  .timeline-item h3 { font-size: 1rem; margin-bottom: 4px; }
+  .timeline-item p { font-size: 0.88rem; color: #666; }
+
+  /* ============ TECH STACK ============ */
+  .tech-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px;
+  }
+  .tech-pill {
+    background: #fff; border: 1px solid #eee; border-radius: 12px;
+    padding: 16px; text-align: center; font-size: 0.85rem; font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .tech-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .tech-pill .tech-emoji { font-size: 1.5rem; display: block; margin-bottom: 8px; }
+
+  /* ============ COST TABLE ============ */
+  .cost-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;
+  }
+  .cost-card {
+    background: #fff; border-radius: 16px; padding: 24px;
+    border: 1px solid #eee;
+  }
+  .cost-card h4 { font-size: 0.9rem; color: #999; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .cost-item { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.88rem; }
+  .cost-item span:last-child { font-weight: 600; color: #1a1a2e; }
+  .cost-total {
+    margin-top: 12px; padding-top: 12px; border-top: 2px solid #0d7a5f;
+    display: flex; justify-content: space-between;
+    font-weight: 800; font-size: 1.1rem; color: #0d7a5f;
+  }
+
+  /* ============ ARCH DIAGRAM ============ */
+  .arch-diagram {
+    background: #fff; border-radius: 16px; border: 1px solid #eee;
+    padding: 40px; overflow-x: auto;
+  }
+  .arch-layer {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    margin-bottom: 16px; flex-wrap: wrap;
+  }
+  .arch-box {
+    padding: 10px 20px; border-radius: 10px; font-size: 0.82rem;
+    font-weight: 600; text-align: center; min-width: 120px;
+  }
+  .arch-box--app { background: #e0f5f0; color: #0d7a5f; border: 1px solid #b2dfdb; }
+  .arch-box--module { background: #e8f0fe; color: #1a56db; border: 1px solid #bbdefb; }
+  .arch-box--db { background: #f3e5f5; color: #7b1fa2; border: 1px solid #e1bee7; }
+  .arch-box--ext { background: #fff8e1; color: #f57f17; border: 1px solid #ffecb3; }
+  .arch-arrow { color: #ccc; font-size: 1.2rem; }
+  .arch-label {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: #aaa; font-weight: 700; margin-bottom: 8px; text-align: center;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 48px 0; text-align: center; border-top: 1px solid #e8e8e8;
+  }
+  footer p { font-size: 0.85rem; color: #999; }
+  footer .team { margin-top: 12px; font-size: 0.82rem; color: #bbb; }
+
+  /* ============ SCROLL ANIMATION ============ */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    .hero-meta { gap: 20px; }
+    .journey-flow { gap: 0; }
+    .journey-step { min-width: 130px; }
+    .nav-links { display: none; }
+    .section { padding: 60px 0; }
+    .funnel-label { min-width: 120px; font-size: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo"><span>Sage</span>Seo</a>
+    <div class="nav-links">
+      <a href="#problem">Problem</a>
+      <a href="#solution">Solution</a>
+      <a href="#market">Market</a>
+      <a href="#gtm">Go-to-Market</a>
+      <a href="#tech">Architecture</a>
+      <a href="#financials">Financials</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-top">
+      <span class="badge badge--teal">Healthcare</span>
+      <span class="badge badge--blue">Mobile App</span>
+      <span class="badge badge--purple">Product Management</span>
+    </div>
+    <h1>Pill<span>Ed</span></h1>
+    <p class="hero-subtitle">
+      A user-friendly mobile platform that tackles Polypharmacy, Medication Nonadherence,
+      and Poor Health Literacy &mdash; making medication management safer, smarter, and simpler.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Role</span>
+        <span class="value">Product Manager</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Context</span>
+        <span class="value">Anderson Product Innovation Challenge</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Duration</span>
+        <span class="value">Nov 2022</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Team</span>
+        <span class="value">5 Members (MD/MBA + MBA)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="section" id="problem">
+  <div class="container">
+    <p class="section-label fade-up">01 &mdash; Problem</p>
+    <h2 class="section-title fade-up">Pharmaceuticals &amp; the American Consumer</h2>
+    <p class="section-desc fade-up">
+      Millions of Americans face serious health risks from medication mismanagement.
+      The data reveals a systemic crisis at the intersection of polypharmacy, nonadherence, and low health literacy.
+    </p>
+
+    <div class="stat-grid fade-up">
+      <div class="stat-card">
+        <div class="stat-number">50%</div>
+        <div class="stat-label">Adults nonadherent to medications as prescribed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">30%</div>
+        <div class="stat-label">Adults 60+ report polypharmacy (5+ medications)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">12%</div>
+        <div class="stat-label">Adults considered proficient in health literacy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number red">$50B</div>
+        <div class="stat-label">Annual healthcare cost attributed to medication misuse</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number red">5th</div>
+        <div class="stat-label">Leading cause of death in the USA from adverse drug interactions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number red">30%</div>
+        <div class="stat-label">Of all hospital admissions linked to drug interactions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PERSONAS ============ -->
+<section class="section section--gray" id="personas">
+  <div class="container">
+    <p class="section-label fade-up">02 &mdash; Target Users</p>
+    <h2 class="section-title fade-up">Who We're Building For</h2>
+    <p class="section-desc fade-up">
+      Three distinct user segments with a shared need: reliable, understandable medication guidance.
+    </p>
+
+    <div class="persona-grid fade-up">
+      <div class="persona-card">
+        <div class="persona-avatar" style="background:#fce4ec;">&#x1F930;</div>
+        <h3>"Mother"</h3>
+        <p class="persona-role">Pregnant &middot; Seeking medication safety</p>
+        <div class="persona-quote">
+          "Will my baby be ok if I take Advil?"
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-avatar" style="background:#e0f5f0;">&#x1F9D1;&#x200D;&#x1F91D;&#x200D;&#x1F9D1;</div>
+        <h3>"Caregiver"</h3>
+        <p class="persona-role">Adult &middot; No medical training &middot; Managing elderly parent</p>
+        <div class="persona-quote">
+          "My dad is on 9 medications. Is it safe for him to take Benadryl?"
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-avatar" style="background:#e8f0fe;">&#x1FA7A;</div>
+        <h3>"Healthcare Provider"</h3>
+        <p class="persona-role">Physicians &middot; Hospital staff</p>
+        <div class="persona-quote">
+          "Why do I spend so much time reviewing meds with my patients?"
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOLUTION ============ -->
+<section class="section" id="solution">
+  <div class="container">
+    <p class="section-label fade-up">03 &mdash; Solution</p>
+    <h2 class="section-title fade-up">Core Features</h2>
+    <p class="section-desc fade-up">
+      PillEd integrates six critical capabilities into a single app &mdash;
+      a combination no competitor currently offers.
+    </p>
+
+    <div class="feature-grid fade-up">
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--teal">&#x1F4F7;</div>
+        <h3>OCR Medication Scan</h3>
+        <p>Point your camera at any medication to instantly identify it. Our image recognition engine matches pills against a comprehensive drug database.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--rose">&#x26A0;&#xFE0F;</div>
+        <h3>Drug Interaction Alerts</h3>
+        <p>Automatic drug-drug interaction checking with risk level classification (High/Medium/Low). Real-time contraindication warnings based on user profile.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--blue">&#x23F0;</div>
+        <h3>Smart Scheduling</h3>
+        <p>Personalized dosing schedules with push notifications. Snooze support, dose tracking history, and adherence analytics built in.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--purple">&#x1F4D6;</div>
+        <h3>Digestible Drug Info</h3>
+        <p>Medical jargon translated into plain, understandable language. Dosage, storage, side effects, and precautions presented clearly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--amber">&#x1F4B0;</div>
+        <h3>Price Comparison</h3>
+        <p>Compare prices across retail pharmacy partners. Add medications to a wishlist and purchase directly through in-app integrations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--gray">&#x1F464;</div>
+        <h3>Personalized Profile</h3>
+        <p>Age, gender, weight, pregnancy status, allergies &mdash; all factored into personalized contraindication alerts and recommendations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPETITOR MATRIX ============ -->
+<section class="section section--gray">
+  <div class="container">
+    <p class="section-label fade-up">04 &mdash; Competitive Landscape</p>
+    <h2 class="section-title fade-up">Feature Comparison Matrix</h2>
+    <p class="section-desc fade-up">
+      Existing solutions address fragments of the problem. PillEd is the only platform covering all critical capabilities.
+    </p>
+
+    <div class="table-wrap fade-up">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="highlight-col">PillEd</th>
+            <th>MediSafe / Dosecast</th>
+            <th>UpToDate / Medscape</th>
+            <th>Drugs.com / Epocrates</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Drug-Drug Interaction Checker</td>
+            <td class="highlight-col"><span class="check">&#10003;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+          </tr>
+          <tr>
+            <td>Contraindication Alerts</td>
+            <td class="highlight-col"><span class="check">&#10003;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+          </tr>
+          <tr>
+            <td>Automation of Alerts</td>
+            <td class="highlight-col"><span class="check">&#10003;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+          </tr>
+          <tr>
+            <td>Drug Scheduling</td>
+            <td class="highlight-col"><span class="check">&#10003;</span></td>
+            <td><span class="check">&#10003;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+            <td><span class="check">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Camera Identification (OCR)</td>
+            <td class="highlight-col"><span class="check">&#10003;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+          </tr>
+          <tr>
+            <td>Understandable Drug Info</td>
+            <td class="highlight-col"><span class="check">&#10003;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+            <td><span class="check">&#10003;</span></td>
+            <td><span class="cross">&#10005;</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ USER JOURNEY ============ -->
+<section class="section">
+  <div class="container">
+    <p class="section-label fade-up">05 &mdash; User Journey</p>
+    <h2 class="section-title fade-up">End-to-End Experience Flow</h2>
+    <p class="section-desc fade-up">
+      From onboarding to daily medication management &mdash; a seamless, guided experience.
+    </p>
+
+    <div class="journey-flow fade-up">
+      <div class="journey-step">
+        <div class="journey-dot">1</div>
+        <h4>Sign Up</h4>
+        <p>Create profile with health details</p>
+      </div>
+      <div class="journey-arrow">&rarr;</div>
+      <div class="journey-step">
+        <div class="journey-dot">2</div>
+        <h4>Scan Meds</h4>
+        <p>Camera OCR to add medications</p>
+      </div>
+      <div class="journey-arrow">&rarr;</div>
+      <div class="journey-step">
+        <div class="journey-dot">3</div>
+        <h4>DI Check</h4>
+        <p>Auto drug interaction screening</p>
+      </div>
+      <div class="journey-arrow">&rarr;</div>
+      <div class="journey-step">
+        <div class="journey-dot">4</div>
+        <h4>Review Info</h4>
+        <p>Digestible drug details</p>
+      </div>
+      <div class="journey-arrow">&rarr;</div>
+      <div class="journey-step">
+        <div class="journey-dot">5</div>
+        <h4>Schedule</h4>
+        <p>Set dosing times &amp; alarms</p>
+      </div>
+      <div class="journey-arrow">&rarr;</div>
+      <div class="journey-step">
+        <div class="journey-dot">6</div>
+        <h4>Get Reminded</h4>
+        <p>Push notifications at dose time</p>
+      </div>
+      <div class="journey-arrow">&rarr;</div>
+      <div class="journey-step">
+        <div class="journey-dot">7</div>
+        <h4>Track &amp; Shop</h4>
+        <p>History, compare prices, buy</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARKET ============ -->
+<section class="section section--gray" id="market">
+  <div class="container">
+    <p class="section-label fade-up">06 &mdash; Market Opportunity</p>
+    <h2 class="section-title fade-up">Market Sizing</h2>
+    <p class="section-desc fade-up">
+      Targeting the "Mother" (4.0M) and "Caregiver" (7.3M) segments with a $50/year subscription model.
+    </p>
+
+    <div class="market-funnel fade-up">
+      <div class="funnel-row">
+        <div class="funnel-bar funnel-bar--tam">TAM &mdash; $565B</div>
+        <span class="funnel-label">Total market: 11.3M users &times; subscription</span>
+      </div>
+      <div class="funnel-row">
+        <div class="funnel-bar funnel-bar--sam">SAM &mdash; $200.5B</div>
+        <span class="funnel-label">30% caregivers + 40% pregnant willing to download</span>
+      </div>
+      <div class="funnel-row">
+        <div class="funnel-bar funnel-bar--som">SOM &mdash; $16M</div>
+        <span class="funnel-label">10% caregivers + 5% pregnant subscribe</span>
+      </div>
+    </div>
+
+    <div style="margin-top:48px;">
+      <h3 class="fade-up" style="margin-bottom:20px;">Growth Drivers</h3>
+      <div class="stat-grid fade-up">
+        <div class="stat-card">
+          <div class="stat-number">90M</div>
+          <div class="stat-label">Projected adults 65+ by 2050 (from 46M today)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4,000%</div>
+          <div class="stat-label">Telemedicine visit growth from 2018 to 2019</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$219B</div>
+          <div class="stat-label">Preventative health market projection (2022)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GO-TO-MARKET ============ -->
+<section class="section" id="gtm">
+  <div class="container">
+    <p class="section-label fade-up">07 &mdash; Go-to-Market Strategy</p>
+    <h2 class="section-title fade-up">Phased Market Entry</h2>
+    <p class="section-desc fade-up">
+      A B2B-first approach to build medical credibility before scaling to consumers.
+    </p>
+
+    <div class="timeline fade-up">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Q1 2023</div>
+        <h3>Hospital Partnerships</h3>
+        <p>Partner with hospitals to optimize medication reconciliation and build legitimacy within the medical community.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Q2 2023</div>
+        <h3>Clinical Channel Expansion</h3>
+        <p>Partner with skilled nursing facilities, obstetricians, and geriatricians to promote app downloads. Serving busy outpatient clinics and under-resourced nursing facilities.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Q4 2023</div>
+        <h3>B2B Healthcare Retail</h3>
+        <p>B2B partnerships with healthcare retail to provide promotion coupons from pharmaceutical companies to attract new customers.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Q1 2025</div>
+        <h3>Product Launch</h3>
+        <p>Full public launch with established medical community trust, retail partnerships, and a validated product-market fit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARCHITECTURE ============ -->
+<section class="section section--gray" id="tech">
+  <div class="container">
+    <p class="section-label fade-up">08 &mdash; Technical Architecture</p>
+    <h2 class="section-title fade-up">System Overview</h2>
+    <p class="section-desc fade-up">
+      Modular architecture designed for scalability, with dedicated modules for OCR, drug interaction analysis, and notification delivery.
+    </p>
+
+    <div class="arch-diagram fade-up">
+      <div class="arch-label">Presentation Layer</div>
+      <div class="arch-layer">
+        <div class="arch-box arch-box--app">Mobile App (iOS/Android)</div>
+      </div>
+
+      <div style="text-align:center;color:#ccc;margin:8px 0;">&#9660;</div>
+
+      <div class="arch-label">Processing Layer</div>
+      <div class="arch-layer">
+        <div class="arch-box arch-box--module">OCR Module</div>
+        <div class="arch-box arch-box--module">DI Module</div>
+        <div class="arch-box arch-box--module">Notification Engine</div>
+        <div class="arch-box arch-box--module">Image Recognition</div>
+      </div>
+
+      <div style="text-align:center;color:#ccc;margin:8px 0;">&#9660;</div>
+
+      <div class="arch-label">Data Layer</div>
+      <div class="arch-layer">
+        <div class="arch-box arch-box--db">User DB</div>
+        <div class="arch-box arch-box--db">Meds DB</div>
+        <div class="arch-box arch-box--db">Medicine DB</div>
+        <div class="arch-box arch-box--db">DI DB</div>
+        <div class="arch-box arch-box--db">Schedule DB</div>
+        <div class="arch-box arch-box--db">Bio DB</div>
+      </div>
+
+      <div style="text-align:center;color:#ccc;margin:8px 0;">&#9660;</div>
+
+      <div class="arch-label">External Sources</div>
+      <div class="arch-layer">
+        <div class="arch-box arch-box--ext">FDA Drug Data</div>
+        <div class="arch-box arch-box--ext">Research Web</div>
+        <div class="arch-box arch-box--ext">Corporate Partners</div>
+        <div class="arch-box arch-box--ext">Retail APIs</div>
+      </div>
+    </div>
+
+    <div style="margin-top:48px;">
+      <h3 class="fade-up" style="margin-bottom:20px;">Tech Stack</h3>
+      <div class="tech-grid fade-up">
+        <div class="tech-pill"><span class="tech-emoji">&#9729;&#65039;</span>Azure Servers &times;4</div>
+        <div class="tech-pill"><span class="tech-emoji">&#128230;</span>AWS S3 Storage</div>
+        <div class="tech-pill"><span class="tech-emoji">&#129302;</span>AI/ML OCR Engine</div>
+        <div class="tech-pill"><span class="tech-emoji">&#128248;</span>Image Recognition</div>
+        <div class="tech-pill"><span class="tech-emoji">&#128276;</span>Push Notifications</div>
+        <div class="tech-pill"><span class="tech-emoji">&#128274;</span>HIPAA Compliant</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MONETIZATION ============ -->
+<section class="section" id="financials">
+  <div class="container">
+    <p class="section-label fade-up">09 &mdash; Monetization Model</p>
+    <h2 class="section-title fade-up">Three Revenue Streams</h2>
+    <p class="section-desc fade-up">
+      A diversified revenue model combining subscription, advertising, and transaction fees for sustainable growth.
+    </p>
+
+    <div class="revenue-grid fade-up">
+      <div class="revenue-card">
+        <div style="font-size:2rem;">&#11088;</div>
+        <div class="revenue-price">$50<span style="font-size:0.9rem;color:#888;">/yr</span></div>
+        <h3>Freemium Subscription</h3>
+        <p>Premium access to real-time pharmacist consultations for immediate medication questions.</p>
+      </div>
+      <div class="revenue-card">
+        <div style="font-size:2rem;">&#128226;</div>
+        <div class="revenue-price">$0.6<span style="font-size:0.9rem;color:#888;">/user</span></div>
+        <h3>Advertisement Sales</h3>
+        <p>Ad space for retail pharmacy chains (CVS) and supplement brands. CPM scales with user growth.</p>
+      </div>
+      <div class="revenue-card">
+        <div style="font-size:2rem;">&#128722;</div>
+        <div class="revenue-price">CPA<span style="font-size:0.9rem;color:#888;"> based</span></div>
+        <h3>Transaction Fee</h3>
+        <p>Commission on Cost Per Acquisition for in-app purchases from supplement and retail brands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINANCIAL PROJECTION ============ -->
+<section class="section section--gray">
+  <div class="container">
+    <p class="section-label fade-up">10 &mdash; Financial Projection</p>
+    <h2 class="section-title fade-up">Cost Structure &amp; Revenue</h2>
+
+    <div class="cost-grid fade-up" style="margin-top:40px;">
+      <div class="cost-card">
+        <h4>Infrastructure</h4>
+        <div class="cost-item"><span>Azure Servers &times;4</span><span>$34k/yr</span></div>
+        <div class="cost-item"><span>AWS DB Storage (500M)</span><span>$150/yr</span></div>
+        <div class="cost-item"><span>Image Detection (3.1M)</span><span>$3k/yr</span></div>
+      </div>
+      <div class="cost-card">
+        <h4>Engineering</h4>
+        <div class="cost-item"><span>App Developer</span><span>$100k</span></div>
+        <div class="cost-item"><span>AI Engineer</span><span>$180k</span></div>
+        <div class="cost-item"><span>UI/UX Designer</span><span>$80k</span></div>
+        <div class="cost-item"><span>Project Manager</span><span>$130k</span></div>
+      </div>
+      <div class="cost-card">
+        <h4>Operations</h4>
+        <div class="cost-item"><span>Premium Consultants</span><span>$316k</span></div>
+        <div class="cost-item"><span>Marketing &amp; SG&amp;A</span><span>$405k</span></div>
+        <div class="cost-total"><span>Total Annual</span><span>$1.2M</span></div>
+      </div>
+    </div>
+
+    <!-- Revenue bar chart (pure CSS) -->
+    <div style="margin-top:48px;">
+      <h3 class="fade-up" style="margin-bottom:24px;">5-Year Revenue Projection</h3>
+      <div class="fade-up" style="display:flex; align-items:flex-end; gap:20px; height:220px; padding: 20px 0; border-bottom:2px solid #e8e8e8;">
+        <div style="flex:1; text-align:center;">
+          <div style="background:linear-gradient(to top,#0d7a5f,#14b88c); height:10px; border-radius:8px 8px 0 0; margin:0 auto; width:60%;"></div>
+          <div style="font-size:0.78rem; color:#999; margin-top:8px;">2023</div>
+        </div>
+        <div style="flex:1; text-align:center;">
+          <div style="background:linear-gradient(to top,#0d7a5f,#14b88c); height:40px; border-radius:8px 8px 0 0; margin:0 auto; width:60%;"></div>
+          <div style="font-size:0.78rem; color:#999; margin-top:8px;">2024</div>
+        </div>
+        <div style="flex:1; text-align:center;">
+          <div style="background:linear-gradient(to top,#0d7a5f,#14b88c); height:80px; border-radius:8px 8px 0 0; margin:0 auto; width:60%;"></div>
+          <div style="font-size:0.78rem; color:#999; margin-top:8px;">2025</div>
+        </div>
+        <div style="flex:1; text-align:center;">
+          <div style="background:linear-gradient(to top,#0d7a5f,#14b88c); height:140px; border-radius:8px 8px 0 0; margin:0 auto; width:60%;"></div>
+          <div style="font-size:0.78rem; color:#999; margin-top:8px;">2026</div>
+        </div>
+        <div style="flex:1; text-align:center;">
+          <div style="background:linear-gradient(to top,#0d7a5f,#14b88c); height:200px; border-radius:8px 8px 0 0; margin:0 auto; width:60%;"></div>
+          <div style="font-size:0.78rem; color:#999; margin-top:8px;">2027</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:20px; margin-top:16px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:6px; font-size:0.8rem; color:#666;">
+          <div style="width:12px; height:12px; border-radius:3px; background:#14b88c;"></div>
+          Advertisement
+        </div>
+        <div style="display:flex; align-items:center; gap:6px; font-size:0.8rem; color:#666;">
+          <div style="width:12px; height:12px; border-radius:3px; background:#0d7a5f;"></div>
+          Premium Subscription
+        </div>
+        <div style="display:flex; align-items:center; gap:6px; font-size:0.8rem; color:#666;">
+          <div style="width:12px; height:12px; border-radius:3px; background:#065f46;"></div>
+          Transaction Fee
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MY ROLE ============ -->
+<section class="section">
+  <div class="container">
+    <p class="section-label fade-up">11 &mdash; My Contribution</p>
+    <h2 class="section-title fade-up">What I Did as Product Manager</h2>
+
+    <div class="feature-grid fade-up">
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--teal">&#127919;</div>
+        <h3>Product Strategy</h3>
+        <p>Defined product vision, roadmap, and phased go-to-market strategy. Led competitive analysis to identify the unique feature combination that differentiates PillEd.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--blue">&#128202;</div>
+        <h3>Market Analysis</h3>
+        <p>Conducted TAM/SAM/SOM sizing across the "Mother" and "Caregiver" segments. Validated market opportunity through demographic and telemedicine growth data.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--purple">&#128101;</div>
+        <h3>User Research &amp; Segmentation</h3>
+        <p>Developed three core personas through pain-point analysis. Mapped end-to-end user journeys from onboarding through daily medication management.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--amber">&#128176;</div>
+        <h3>Financial Modeling</h3>
+        <p>Built 5-year revenue projection across three monetization streams. Structured cost analysis for infrastructure, engineering, and operations at $1.2M/year.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>&larr; Back to Portfolio</p>
+    <p class="team" style="margin-top:16px;">
+      Anderson Product Innovation Challenge &middot; November 2022<br>
+      Tommy Jiang &middot; Michelle Li &middot; <strong>Sage Seo</strong> &middot; Tae Jun Jeon &middot; Yonghwan Choi
+    </p>
+  </div>
+</footer>
+
+<!-- ============ SCROLL ANIMATION ============ -->
+<script>
+  // Navbar shadow on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+<!-- ============ GOOGLE FONT ============ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+</body>
+</html>
