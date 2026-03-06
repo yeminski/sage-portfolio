@@ -75,7 +75,7 @@ function PageHero() {
           Americans achieve economic mobility through personalized, real-time financial guidance.
         </p>
 
-        <div className="flex flex-wrap gap-10">
+        <div className="flex flex-wrap gap-10 mb-12">
           {meta.map(({ label, value }) => (
             <div key={label}>
               <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-1">{label}</p>
@@ -83,6 +83,15 @@ function PageHero() {
             </div>
           ))}
         </div>
+
+        {/* Main product image */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/yaya_main_image.png"
+          alt="Yaya app — personalized financial guidance dashboard showing spending insights and financial product recommendations"
+          className="w-full rounded-2xl object-contain"
+        />
+
       </div>
     </div>
   );

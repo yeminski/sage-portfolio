@@ -75,7 +75,7 @@ function PageHero() {
           and poor health literacy — making medication management safer, smarter, and simpler.
         </p>
 
-        <div className="flex flex-wrap gap-10">
+        <div className="flex flex-wrap gap-10 mb-12">
           {meta.map(({ label, value }) => (
             <div key={label}>
               <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-1">{label}</p>
@@ -83,6 +83,14 @@ function PageHero() {
             </div>
           ))}
         </div>
+
+        {/* Main product image */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/pilled_main_image.png"
+          alt="PillEd app — medication management dashboard showing drug interaction alerts and personalized health information"
+          className="w-full rounded-2xl object-contain"
+        />
 
       </div>
     </div>
