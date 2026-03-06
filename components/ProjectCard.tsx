@@ -86,7 +86,7 @@ function ProjectInfo({ project }: { project: Project }) {
 
 function ImageBlock({ image, title }: { image?: string; title: string }) {
   return (
-    <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-teal-700 flex items-center justify-center">
+    <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-teal-700 shadow-xl flex items-center justify-center">
       {image ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
