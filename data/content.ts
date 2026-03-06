@@ -89,9 +89,9 @@ export const aboutItems: AboutItem[] = [
   },
   {
     id: "design-thinker",
-    title: "Design Thinker",
+    title: "Experience Designer",
     description:
-      "I think in user flows before I think in features. Comfortable in Figma and hands-on with UI/UX design — obsessed over reducing friction at every step, from onboarding to the core use case.",
+      "Combining design thinking with product instinct, I map user flows, prototype solutions, and iterate until every interaction earns its place. Comfortable in Figma and AI-assisted prototyping, with hands-on experience across end-to-end UI/UX design.",
   },
   {
     id: "data-driven",

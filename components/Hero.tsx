@@ -4,8 +4,8 @@ import EmailButton from "@/components/EmailButton";
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-screen bg-paper flex items-center">
-      <div className="max-w-[1200px] mx-auto px-6 w-full py-32">
+    <section id="hero" className="bg-paper">
+      <div className="max-w-[1200px] mx-auto px-6 w-full py-20">
         <div className="flex flex-col md:flex-row items-center gap-16">
 
           {/* ── Left: text ── */}
