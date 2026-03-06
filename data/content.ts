@@ -14,6 +14,7 @@ export interface Project {
   outcome: string;
   tags: string[];
   detailHref?: string;
+  image?: string;
 }
 
 export interface Capability {
@@ -237,7 +238,7 @@ export const projects: Project[] = [
     id: "pilled",
     slug: "pilled",
     title: "PillEd — Smart Medication Management",
-    category: "Product Case Study",
+    category: "Case Competition",
     competition: "Anderson Product Innovation Challenge",
     year: "2022",
     problem:
@@ -264,6 +265,7 @@ export const projects: Project[] = [
       "HIPAA",
     ],
     detailHref: "/projects/pilled",
+    image: "/pilled_main_image.png",
   },
   {
     id: "yaya",
@@ -288,6 +290,7 @@ export const projects: Project[] = [
       "Finalist at CMU Tepper Tech Innovation Challenge 2022. Judges cited the model outcome flywheel as the most defensible moat in the cohort. Projected $173M incremental revenue for PNC over 5 years.",
     tags: ["FinTech", "Financial Inclusion", "AI/ML", "B2C", "Mobile App", "User Research"],
     detailHref: "/projects/yaya",
+    image: "/yaya_main_image.png",
   },
 ];
 
