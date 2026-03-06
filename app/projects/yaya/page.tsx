@@ -71,9 +71,8 @@ function PageHero() {
 
         <h1 className="text-4xl md:text-5xl font-bold text-ink mb-2">Yaya</h1>
         <p className="text-xl text-ink/60 mb-10 max-w-2xl">
-          An AI-powered personal finance platform designed to help working mothers of
-          disadvantaged backgrounds achieve economic mobility through personalized,
-          real-time financial guidance.
+          An AI-powered personal finance platform designed to help underbanked, low-income
+          Americans achieve economic mobility through personalized, real-time financial guidance.
         </p>
 
         <div className="flex flex-wrap gap-10">
@@ -169,10 +168,11 @@ function ProblemSection() {
     <section className="py-20 bg-gray-50">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="02">Problem</SectionLabel>
-        <h2 className="text-3xl font-bold text-ink mb-4">Financial Inequality Hits Working Mothers Hardest</h2>
+        <h2 className="text-3xl font-bold text-ink mb-4">Millions Are Left Behind by the Financial System</h2>
         <p className="text-ink/60 max-w-2xl mb-12">
-          New mothers, particularly from disadvantaged backgrounds, face sudden expense shocks without the
-          financial literacy or tools to navigate them — trapping families in cycles of debt and missed opportunity.
+          Underbanked, low-income Americans lack the financial tools and literacy to manage everyday expenses,
+          avoid predatory products, and build toward long-term goals — trapping families in cycles of debt
+          across generations.
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
@@ -199,22 +199,22 @@ const personas = [
   {
     emoji: "🤱",
     name: '"Monica"',
-    role: "New mother · Assistant Store Manager · $70K household income · Philadelphia suburb",
-    quote: "I make the same amount of money but have pretty much doubled my expenses overnight. This just isn't sustainable.",
+    role: "Assistant Store Manager · $70K household income · Two bank accounts, low financial literacy",
+    quote: "I make the same amount of money but my expenses keep climbing. I don't know where to start.",
     avatarBg: "bg-rose-50",
   },
   {
-    emoji: "📋",
+    emoji: "🎯",
     name: '"The Planner"',
-    role: "Existing mother · Children ages 5–12 · Focused on college savings and credit improvement",
-    quote: "I want to put money away for my daughter's college, but I just seem to be spending faster than I earn.",
+    role: "Hourly worker · Focused on building credit and saving for long-term goals",
+    quote: "I want to save for a car and my kids' future, but I just seem to be spending faster than I earn.",
     avatarBg: "bg-teal-50",
   },
   {
-    emoji: "🚗",
+    emoji: "📈",
     name: '"The Climber"',
-    role: "Single mother · Rebuilding credit · Seeking better loan options",
-    quote: "I want to buy a safer car with more space for a car seat, but my credit score is too low.",
+    role: "Gig worker · Rebuilding credit · Seeking vetted loan options to avoid predatory lenders",
+    quote: "I need a loan but I don't know which offers are safe. My credit score isn't where it needs to be.",
     avatarBg: "bg-blue-50",
   },
 ];
@@ -226,7 +226,7 @@ function PersonasSection() {
         <SectionLabel index="03">Target Users</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Who We&apos;re Building For</h2>
         <p className="text-ink/60 max-w-2xl mb-12">
-          Yaya is designed for working mothers navigating the financial reality of raising a family on a limited income.
+          Yaya is designed for underbanked, low-income Americans who lack the tools and literacy to navigate financial decisions on their own.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
