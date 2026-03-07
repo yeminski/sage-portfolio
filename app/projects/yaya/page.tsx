@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FeatureCarousel from "@/components/FeatureCarousel";
+import YayaPrototypeCTA from "./YayaPrototypeCTA";
 
 export const metadata: Metadata = {
   title: "AI Financial Coach — AI-Powered Financial Inclusion Platform | Sage",
@@ -15,6 +17,12 @@ export default function AIFinancialCoachPage() {
       <Navbar />
       <main className="pt-16 bg-paper">
         <PageHero />
+        {/* Try Prototype CTA — below hero */}
+        <div className="bg-gray-50 border-b border-gray-100 py-3">
+          <div className="max-w-[1200px] mx-auto px-6 flex justify-center">
+            <YayaPrototypeCTA />
+          </div>
+        </div>
         <MyRoleSection />
         <ProblemSection />
         <PersonasSection />
@@ -309,21 +317,10 @@ function SolutionSection() {
           long-term goal planning in one platform — powered by a self-improving data engine.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {features.map((f) => (
-            <div
-              key={f.title}
-              className="group bg-paper border border-gray-200 rounded-xl p-6 hover:border-accent transition-colors relative overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-              <div className={`w-10 h-10 ${f.bg} rounded-xl flex items-center justify-center text-xl mb-4`}>
-                {f.emoji}
-              </div>
-              <h3 className="font-semibold text-ink mb-2">{f.title}</h3>
-              <p className="text-sm text-ink/60 leading-relaxed">{f.description}</p>
-            </div>
-          ))}
-        </div>
+        <FeatureCarousel
+          features={features}
+          ctaSlot={<YayaPrototypeCTA variant="button" />}
+        />
       </div>
     </section>
   );
