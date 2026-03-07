@@ -44,13 +44,14 @@ export default function PillEdPrototypeCTA({
 
       {open && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 overflow-y-auto"
           style={{ background: "rgba(0,0,0,0.6)" }}
           onClick={(e) => {
             if (e.target === e.currentTarget) setOpen(false);
           }}
         >
-          <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative shadow-2xl">
+          <div className="flex min-h-full items-center justify-center p-6">
+          <div className="bg-white rounded-2xl w-full max-w-2xl relative shadow-2xl">
             <button
               onClick={() => setOpen(false)}
               aria-label="Close prototype"
@@ -59,6 +60,7 @@ export default function PillEdPrototypeCTA({
               ×
             </button>
             <PillEdPrototype />
+          </div>
           </div>
         </div>
       )}
