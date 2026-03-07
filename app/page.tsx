@@ -13,8 +13,8 @@ export default function LandingPage() {
       <main>
         <Hero />
         <CoreCapabilities />
-        <CredentialsTools />
         <CareerTimeline />
+        <CredentialsTools />
         <ProjectsPreview />
       </main>
       <Footer />
