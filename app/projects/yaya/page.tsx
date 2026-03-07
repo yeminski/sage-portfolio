@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FeatureCarousel from "@/components/FeatureCarousel";
 import YayaPrototypeCTA from "./YayaPrototypeCTA";
+import YayaSolutionSection from "./YayaSolutionSection";
 
 export const metadata: Metadata = {
   title: "AI Financial Coach — AI-Powered Financial Inclusion Platform | Sage",
@@ -26,7 +26,7 @@ export default function AIFinancialCoachPage() {
         <MyRoleSection />
         <ProblemSection />
         <PersonasSection />
-        <SolutionSection />
+        <YayaSolutionSection />
         <UserJourneySection />
         <ArchSection />
         <CompetitorSection />
@@ -254,73 +254,6 @@ function PersonasSection() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── 04. Solution ───────────────────────────────────────────────────────── */
-
-const features = [
-  {
-    emoji: "💡",
-    title: "Personalized Savings Recommendations",
-    bg: "bg-teal-50",
-    description:
-      "Analyzes spending patterns against similar user profiles in the same geography to surface specific, actionable savings opportunities at the merchant level.",
-  },
-  {
-    emoji: "🔔",
-    title: "Spending Alerts",
-    bg: "bg-blue-50",
-    description:
-      "Real-time alerts when users exceed predicted budgets, paired with contextual guidance to help course-correct immediately.",
-  },
-  {
-    emoji: "🏦",
-    title: "Access to Approved Financial Products",
-    bg: "bg-purple-50",
-    description:
-      "Curated, vetted financial products (credit cards, loans, insurance) ranked by personalized fit score — protecting users from predatory offerings.",
-  },
-  {
-    emoji: "📈",
-    title: "Auto-Investment",
-    bg: "bg-amber-50",
-    description:
-      "Identifies low-risk investment opportunities to put idle savings to work with minimal user intervention.",
-  },
-  {
-    emoji: "🎯",
-    title: "Long-Term Goal Planning",
-    bg: "bg-rose-50",
-    description:
-      "Ingests financial goals, timelines, and projected costs to build manageable, step-by-step plans for major milestones like buying a car or saving for college.",
-  },
-  {
-    emoji: "📚",
-    title: "Financial Education",
-    bg: "bg-gray-100",
-    description:
-      "Promotes financial literacy through curated content partnerships, helping users build knowledge alongside their financial health.",
-  },
-];
-
-function SolutionSection() {
-  return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="04">Solution</SectionLabel>
-        <h2 className="text-3xl font-bold text-ink mb-4">Core Features</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
-          AI Financial Coach combines real-time spending intelligence, personalized financial product access, and
-          long-term goal planning in one platform — powered by a self-improving data engine.
-        </p>
-
-        <FeatureCarousel
-          features={features}
-          ctaSlot={<YayaPrototypeCTA variant="button" />}
-        />
       </div>
     </section>
   );
