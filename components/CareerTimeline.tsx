@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type TimelineItem = {
   yearLabel: string;
   period: string;
@@ -170,6 +172,16 @@ export default function CareerTimeline() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA */}
+        <div className="flex justify-center mt-12">
+          <Link
+            href="/experience"
+            className="inline-block px-8 py-3 border border-ink/25 rounded text-sm font-medium text-ink hover:bg-gray-50 transition-colors"
+          >
+            Learn More about Experience
+          </Link>
         </div>
 
       </div>
