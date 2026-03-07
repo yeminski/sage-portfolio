@@ -932,8 +932,8 @@ function LearnScreen() {
 }
 
 // ─── MAIN ─────────────────────────────────────────────────────────────────────
-export default function YayaPrototype() {
-  const [screen, setScreen] = useState(0);
+export default function YayaPrototype({ initialScreen = 0, screenOnly = false }) {
+  const [screen, setScreen] = useState(initialScreen);
   const [profile, setProfile] = useState(null);
 
   const screens = [
@@ -944,6 +944,18 @@ export default function YayaPrototype() {
     <GoalsScreen />,
     <LearnScreen />,
   ];
+
+  if (screenOnly) {
+    return (
+      <div style={{ width: 320, background: "white", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+        <div style={{ height: 44, background: teal, display: "flex", alignItems: "flex-end", justifyContent: "space-between", padding: "0 20px 6px" }}>
+          <span style={{ color: "white", fontSize: 11, fontWeight: 700 }}>9:41</span>
+          <span style={{ color: "white", fontSize: 11 }}>●●●</span>
+        </div>
+        {screens[screen]}
+      </div>
+    );
+  }
 
   return (
     <div style={{

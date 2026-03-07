@@ -1,111 +1,156 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import FeatureCarousel, { FeatureItem } from "@/components/FeatureCarousel";
 
-const YayaPrototype = dynamic(
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  () => import("@/projects/Yaya/Prototype/YayaPrototype"),
-  {
-    ssr: false,
-    loading: () => (
-      <div
-        style={{
-          height: 640,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#999",
-          fontSize: 14,
-        }}
-      >
-        Loading…
-      </div>
-    ),
-  }
-);
+// Screen index map: home=0, onboarding=1, spending=2, recommendations=3, goals=4, learn=5
+function makeScreen(index: number) {
+  return dynamic(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    () => import("@/projects/Yaya/Prototype/YayaPrototype"),
+    {
+      ssr: false,
+      loading: () => (
+        <div style={{ width: 260, height: 420, background: "#f3f4f6", borderRadius: 20, display: "flex", alignItems: "center", justifyContent: "center", color: "#9ca3af", fontSize: 13 }}>
+          Loading…
+        </div>
+      ),
+    }
+  );
+}
 
-const features: FeatureItem[] = [
+const Screen0 = makeScreen(0);
+const Screen1 = makeScreen(1);
+const Screen2 = makeScreen(2);
+const Screen3 = makeScreen(3);
+const Screen4 = makeScreen(4);
+const Screen5 = makeScreen(5);
+
+const SCREEN_COMPONENTS = [Screen0, Screen1, Screen2, Screen3, Screen4, Screen5];
+
+interface FeatureRow {
+  label: string;
+  description: string;
+  screenLabel: string;
+  screenIndex: number;
+  accent: string;
+}
+
+const rows: FeatureRow[] = [
   {
-    emoji: "💡",
-    title: "Personalized Savings Recommendations",
-    bg: "bg-teal-50",
-    description:
-      "Analyzes spending patterns against similar user profiles in the same geography to surface specific, actionable savings opportunities at the merchant level.",
+    label: "Personalized Savings Recommendations",
+    description: "Analyzes your spending against similar households in your geography to surface specific, actionable savings opportunities — down to the merchant level.",
+    screenLabel: "Home screen",
+    screenIndex: 0,
+    accent: "#0D9488",
   },
   {
-    emoji: "🔔",
-    title: "Spending Alerts",
-    bg: "bg-blue-50",
-    description:
-      "Real-time alerts when users exceed predicted budgets, paired with contextual guidance to help course-correct immediately.",
+    label: "Spending Alerts",
+    description: "Real-time push alerts when predicted budgets are exceeded, paired with contextual guidance to help users course-correct immediately — not at month-end.",
+    screenLabel: "Spending screen",
+    screenIndex: 2,
+    accent: "#ef4444",
   },
   {
-    emoji: "🏦",
-    title: "Access to Approved Financial Products",
-    bg: "bg-purple-50",
-    description:
-      "Curated, vetted financial products (credit cards, loans, insurance) ranked by personalized fit score — protecting users from predatory offerings.",
+    label: "Vetted Financial Products",
+    description: "Curated credit cards, loans, and insurance ranked by a personalized fit score — protecting users from predatory offerings while expanding their financial options.",
+    screenLabel: "Recommendations screen",
+    screenIndex: 3,
+    accent: "#6366f1",
   },
   {
-    emoji: "📈",
-    title: "Auto-Investment",
-    bg: "bg-amber-50",
-    description:
-      "Identifies low-risk investment opportunities to put idle savings to work with minimal user intervention.",
+    label: "Goal Planning",
+    description: "Input a goal, timeline, and cost — the app breaks it into manageable monthly milestones and tracks progress automatically against real spending data.",
+    screenLabel: "Goals screen",
+    screenIndex: 4,
+    accent: "#f59e0b",
   },
   {
-    emoji: "🎯",
-    title: "Long-Term Goal Planning",
-    bg: "bg-rose-50",
-    description:
-      "Ingests financial goals, timelines, and projected costs to build manageable, step-by-step plans for major milestones like buying a car or saving for college.",
+    label: "AI-Powered Onboarding",
+    description: "Income level, savings targets, and household context — collected in under two minutes and used to cold-start the recommendation engine with zero prior data.",
+    screenLabel: "Onboarding screen",
+    screenIndex: 1,
+    accent: "#8b5cf6",
   },
   {
-    emoji: "📚",
-    title: "Financial Education",
-    bg: "bg-gray-100",
-    description:
-      "Promotes financial literacy through curated content partnerships, helping users build knowledge alongside their financial health.",
+    label: "Financial Education",
+    description: "Curated content partnerships promote financial literacy alongside portfolio growth — so users build knowledge and confidence as their financial health improves.",
+    screenLabel: "Learn screen",
+    screenIndex: 5,
+    accent: "#3b82f6",
   },
 ];
 
+function ScreenCard({ screenIndex }: { screenIndex: number }) {
+  const ScreenComponent = SCREEN_COMPONENTS[screenIndex] as React.ComponentType<{ initialScreen: number; screenOnly: boolean }>;
+  return (
+    <div
+      style={{
+        width: 260,
+        height: 420,
+        borderRadius: 20,
+        overflow: "hidden",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)",
+        flexShrink: 0,
+        position: "relative",
+        background: "white",
+      }}
+    >
+      <div style={{ width: 320, transform: "scale(0.8125)", transformOrigin: "top left" }}>
+        <ScreenComponent initialScreen={screenIndex} screenOnly={true} />
+      </div>
+    </div>
+  );
+}
+
 export default function YayaSolutionSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-paper">
       <div className="max-w-[1200px] mx-auto px-6">
-        <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">
-          04 — Solution
-        </p>
+        <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">04 — Solution</p>
         <h2 className="text-3xl font-bold text-ink mb-4">Core Features</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
-          AI Financial Coach combines real-time spending intelligence, personalized financial product access, and
-          long-term goal planning in one platform — powered by a self-improving data engine.
+        <p className="text-ink/60 max-w-2xl mb-16">
+          AI Financial Coach combines real-time spending intelligence, personalized product access, and long-term goal planning — powered by a self-improving data engine.
         </p>
 
-        <div className="flex gap-12 items-start">
-          {/* Left: feature carousel — 60% */}
-          <div className="flex-[3] min-w-0">
-            <FeatureCarousel features={features} />
-          </div>
-
-          {/* Right: embedded phone mockup — 40% */}
-          <div className="flex-[2] justify-center hidden md:flex">
-            <div style={{ position: "sticky", top: 120 }}>
+        <div className="flex flex-col">
+          {rows.map((row, i) => {
+            const isEven = i % 2 === 1;
+            const bg = isEven ? "bg-gray-50" : "bg-white";
+            return (
               <div
-                style={{
-                  width: 320,
-                  borderRadius: 44,
-                  background: "#111",
-                  overflow: "hidden",
-                  boxShadow: "0 25px 60px rgba(0,0,0,0.35)",
-                }}
+                key={row.label}
+                className={`${bg} rounded-2xl`}
+                style={{ marginBottom: 2 }}
               >
-                <YayaPrototype />
+                <div
+                  className={`flex flex-col md:flex-row items-center gap-10 px-8 py-10 ${isEven ? "md:flex-row-reverse" : ""}`}
+                >
+                  {/* Text side */}
+                  <div className="flex-1 min-w-0">
+                    <div
+                      className="pl-4 mb-5"
+                      style={{ borderLeft: `3px solid ${row.accent}` }}
+                    >
+                      <p
+                        className="text-xs font-semibold uppercase tracking-widest mb-1"
+                        style={{ color: row.accent }}
+                      >
+                        {row.screenLabel}
+                      </p>
+                      <h3 className="text-xl font-bold text-ink mb-3">{row.label}</h3>
+                      <p className="text-sm text-ink/60 leading-relaxed">{row.description}</p>
+                    </div>
+                  </div>
+
+                  {/* Screen card */}
+                  <div className="flex-shrink-0">
+                    <ScreenCard screenIndex={row.screenIndex} />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>
