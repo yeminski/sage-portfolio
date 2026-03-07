@@ -19,7 +19,7 @@ export default function PillEdPage() {
         <PageHero />
         {/* Try Prototype CTA — below hero */}
         <div className="bg-gray-50 border-b border-gray-100 py-3">
-          <div className="max-w-[1200px] mx-auto px-6 flex justify-center">
+          <div className="max-w-[1200px] mx-auto px-6">
             <PillEdPrototypeCTA />
           </div>
         </div>
@@ -320,7 +320,7 @@ const matrix = [
 
 function CompetitorSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-paper">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="07">Competitive Landscape</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Feature Comparison Matrix</h2>
@@ -382,7 +382,7 @@ function MarketSection() {
   ];
 
   return (
-    <section className="py-20 bg-paper">
+    <section className="py-20 bg-gray-50">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="08">Market Opportunity</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Market Sizing</h2>
@@ -404,7 +404,7 @@ function MarketSection() {
         <h3 className="font-bold text-ink mb-6">Growth Drivers</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {drivers.map((d) => (
-            <div key={d.label} className="border border-gray-200 rounded-xl p-6">
+            <div key={d.label} className="bg-white border border-gray-200 rounded-xl p-6">
               <p className="text-4xl font-bold text-accent mb-2">{d.number}</p>
               <p className="text-sm text-ink/60 leading-relaxed">{d.label}</p>
             </div>
@@ -442,7 +442,7 @@ const phases = [
 
 function GTMSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-paper">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="09">Go-to-Market Strategy</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Phased Market Entry</h2>
@@ -518,7 +518,7 @@ const techStack = [
 
 function ArchSection() {
   return (
-    <section className="py-20 bg-paper">
+    <section className="py-20 bg-gray-50">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="06">Technical Architecture</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">System Overview</h2>
@@ -528,7 +528,7 @@ function ArchSection() {
         </p>
 
         {/* Architecture diagram */}
-        <div className="border border-gray-200 rounded-xl p-8 bg-gray-50 overflow-x-auto mb-14">
+        <div className="border border-gray-200 rounded-xl p-8 bg-white overflow-x-auto mb-14">
           <div className="flex flex-col gap-5 min-w-[560px]">
             {archLayers.map((layer, i) => (
               <div key={layer.label}>
@@ -554,7 +554,7 @@ function ArchSection() {
           {techStack.map((t) => (
             <div
               key={t.label}
-              className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center hover:border-accent transition-colors"
+              className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:border-accent transition-colors"
             >
               <span className="text-2xl block mb-2">{t.emoji}</span>
               <span className="text-xs font-medium text-ink/60">{t.label}</span>
@@ -562,27 +562,6 @@ function ArchSection() {
           ))}
         </div>
 
-        {/* Team credit + nav */}
-        <div className="border-t border-gray-100 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
-            <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-1">Team</p>
-            <p className="text-sm text-ink/60">
-              Tommy Jiang · Michelle Li · <strong className="text-ink">Sage Seo</strong> · Tae Jun Jeon · Yonghwan Choi
-            </p>
-          </div>
-          <div className="flex items-center gap-6">
-            <a
-              href="/pilled-deck.pdf"
-              download
-              className="text-sm font-medium text-accent hover:underline"
-            >
-              Download Deck →
-            </a>
-            <Link href="/projects" className="text-sm font-medium text-ink/50 hover:text-ink transition-colors">
-              ← All Projects
-            </Link>
-          </div>
-        </div>
       </div>
     </section>
   );

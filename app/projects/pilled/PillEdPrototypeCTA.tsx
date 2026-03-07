@@ -29,16 +29,16 @@ export default function PillEdPrototypeCTA({
       {variant === "link" ? (
         <button
           onClick={() => setOpen(true)}
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold shadow-md hover:bg-teal-600 transition-colors"
         >
-          Try Interactive Prototype →
+          ✏️ Try Interactive Prototype →
         </button>
       ) : (
         <button
           onClick={() => setOpen(true)}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-accent text-accent text-sm font-semibold hover:bg-accent hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold shadow-md hover:bg-teal-600 transition-colors"
         >
-          Try Interactive Prototype →
+          ✏️ Try Interactive Prototype →
         </button>
       )}
 

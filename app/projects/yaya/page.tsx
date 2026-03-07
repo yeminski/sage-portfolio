@@ -19,7 +19,7 @@ export default function AIFinancialCoachPage() {
         <PageHero />
         {/* Try Prototype CTA — below hero */}
         <div className="bg-gray-50 border-b border-gray-100 py-3">
-          <div className="max-w-[1200px] mx-auto px-6 flex justify-center">
+          <div className="max-w-[1200px] mx-auto px-6">
             <YayaPrototypeCTA />
           </div>
         </div>
@@ -384,7 +384,7 @@ function ArchSection() {
           {techStack.map((t) => (
             <div
               key={t.label}
-              className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center hover:border-accent transition-colors"
+              className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:border-accent transition-colors"
             >
               <span className="text-2xl block mb-2">{t.emoji}</span>
               <span className="text-xs font-medium text-ink/60">{t.label}</span>
@@ -578,20 +578,6 @@ function GTMSection() {
           </div>
         </div>
 
-        {/* Team credit + nav */}
-        <div className="border-t border-gray-100 mt-16 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
-            <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-1">Team</p>
-            <p className="text-sm text-ink/60">
-              Team Yaya · UCLA Anderson School of Management ·{" "}
-              <strong className="text-ink">Sage Seo</strong>
-            </p>
-            <p className="text-xs text-ink/40 mt-1">CMU Tepper Tech Innovation Challenge 2022 · Finalist</p>
-          </div>
-          <Link href="/projects" className="text-sm font-medium text-ink/50 hover:text-ink transition-colors">
-            ← All Projects
-          </Link>
-        </div>
       </div>
     </section>
   );

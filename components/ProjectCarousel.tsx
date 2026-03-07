@@ -125,27 +125,29 @@ export default function ProjectCarousel() {
                       </>
                     )}
 
+                    {/* CTA */}
+                    <div className="flex justify-center mb-4">
+                      {project.detailHref ? (
+                        <Link
+                          href={project.detailHref}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold hover:bg-teal-600 transition-colors"
+                        >
+                          View Project Details
+                          <ExternalLinkIcon />
+                        </Link>
+                      ) : (
+                        <span className="text-xs text-ink/30">Case study coming soon</span>
+                      )}
+                    </div>
+
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-x-4 gap-y-1 mb-5">
+                    <div className="flex flex-wrap gap-x-4 gap-y-1">
                       {project.tags.map((tag) => (
                         <span key={tag} className="text-xs text-ink/40 font-medium">
                           {tag}
                         </span>
                       ))}
                     </div>
-
-                    {/* CTA */}
-                    {project.detailHref ? (
-                      <Link
-                        href={project.detailHref}
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
-                      >
-                        View Case Study
-                        <ExternalLinkIcon />
-                      </Link>
-                    ) : (
-                      <span className="text-xs text-ink/30">Case study coming soon</span>
-                    )}
                   </div>
                 </div>
                 )}

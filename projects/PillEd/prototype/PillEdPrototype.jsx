@@ -1000,12 +1000,14 @@ export default function PillEdPrototype({ initialScreen = 0, screenOnly = false 
 
   if (screenOnly) {
     return (
-      <div style={{ width: 320, background: "white", fontFamily: "system-ui, -apple-system, sans-serif" }}>
-        <div style={{ height: 44, background: teal, display: "flex", alignItems: "flex-end", justifyContent: "space-between", padding: "0 20px 6px" }}>
+      <div style={{ width: 320, height: 700, overflow: "hidden", display: "flex", flexDirection: "column", background: "white", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+        <div style={{ height: 44, flexShrink: 0, background: teal, display: "flex", alignItems: "flex-end", justifyContent: "space-between", padding: "0 20px 6px" }}>
           <span style={{ color: "white", fontSize: 11, fontWeight: 700 }}>9:41</span>
           <span style={{ color: "white", fontSize: 11 }}>●●●</span>
         </div>
-        {screens[screen]}
+        <div style={{ flex: 1, overflowY: "auto" }}>
+          {screens[screen]}
+        </div>
       </div>
     );
   }

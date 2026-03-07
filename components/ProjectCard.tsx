@@ -74,7 +74,7 @@ function ProjectInfo({ project }: { project: Project }) {
       >
         {project.detailHref && (
           <span className="text-accent group-hover:underline">
-            View Case Study
+            View Project Details
           </span>
         )}
         <ExternalLinkIcon />

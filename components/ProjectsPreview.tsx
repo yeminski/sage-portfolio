@@ -7,7 +7,7 @@ export default function ProjectsPreview() {
       <div className="max-w-[1200px] mx-auto px-6">
 
         <h2 className="text-3xl font-bold text-ink mb-1">Projects</h2>
-        <p className="text-ink/50 mb-14">Outside of work for</p>
+        <p className="text-ink/50 mb-14">What I build beyond 9-5</p>
 
         <ProjectCarousel />
 
