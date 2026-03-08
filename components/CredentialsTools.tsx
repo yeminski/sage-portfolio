@@ -1,123 +1,86 @@
-import { GraduationCap, BadgeCheck } from "lucide-react";
+import { GraduationCap, BadgeCheck, type LucideIcon } from "lucide-react";
 
-const credentials = [
-  {
-    label: "MBA",
-    logo: <GraduationCap size={56} className="text-ink/60" strokeWidth={1.5} />,
-  },
-  {
-    label: "CFA Level I",
-    logo: <BadgeCheck size={48} className="text-ink/60" strokeWidth={1.5} />,
-  },
+const credentials: { label: string; sublabel: string; Icon: LucideIcon }[] = [
+  { label: "MBA", sublabel: "UCLA Anderson School of Management", Icon: GraduationCap },
+  { label: "CFA Level I", sublabel: "CFA Institute", Icon: BadgeCheck },
 ];
 
-const tools = [
+const tools: { label: string; logo: React.ReactNode }[] = [
   {
     label: "Figma",
     logo: (
       // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
-        alt="Figma"
-        className="h-12 w-auto object-contain"
-      />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma" className="h-6 w-auto object-contain" />
     ),
   },
   {
     label: "Notion",
     logo: (
       // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png"
-        alt="Notion"
-        className="h-12 w-12 object-contain"
-      />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" alt="Notion" className="h-6 w-6 object-contain" />
     ),
   },
   {
     label: "Cursor",
     logo: (
       // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src="https://cursor.com/favicon.ico"
-        alt="Cursor"
-        className="h-12 w-12 object-contain rounded-lg"
-      />
+      <img src="https://cursor.com/favicon.ico" alt="Cursor" className="h-6 w-6 object-contain rounded" />
     ),
   },
   {
     label: "Claude Code",
     logo: (
       // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src="https://anthropic.com/favicon.ico"
-        alt="Claude Code"
-        className="h-12 w-12 object-contain rounded-lg"
-      />
+      <img src="https://anthropic.com/favicon.ico" alt="Claude Code" className="h-6 w-6 object-contain rounded" />
     ),
   },
   {
     label: "SQL",
     logo: (
-      <div className="h-12 px-4 rounded-lg bg-ink flex items-center justify-center">
-        <span className="text-base font-bold text-white tracking-wide">SQL</span>
-      </div>
+      <span className="h-6 w-6 flex items-center justify-center rounded bg-ink text-paper text-[8px] font-bold tracking-wide flex-shrink-0">SQL</span>
     ),
   },
 ];
 
-function ItemCol({ label, logo }: { label: string; logo: React.ReactNode }) {
-  return (
-    <div className="flex flex-col items-center gap-2.5">
-      <div className="h-12 flex items-center justify-center">{logo}</div>
-      <span className="text-sm text-ink/50 text-center max-w-[96px] leading-snug">{label}</span>
-    </div>
-  );
-}
-
 export default function CredentialsTools() {
   return (
-    <section className="bg-paper pt-12 pb-16 border-t border-b border-gray-100">
+    <section className="bg-paper py-16 border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
 
-        {/* Section title */}
-        <h2 className="text-3xl font-bold text-ink mb-1">What I Bring</h2>
-        <p className="text-ink/50 mb-10">Credentials and tools that back up the work</p>
+        <span className="text-[10px] font-semibold text-accent uppercase tracking-widest">What I Bring</span>
+        <h2 className="text-3xl font-bold text-ink mt-2 mb-1">Credentials & Tools</h2>
+        <p className="text-ink/50 mb-10">The foundation behind every product decision</p>
 
-        <div className="flex flex-col md:flex-row md:items-start gap-10 md:gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10">
 
-          {/* Credentials */}
-          <div className="flex-1 bg-blue-50 rounded-xl p-6">
-            <p className="text-xs font-semibold text-ink uppercase tracking-widest mb-8">
-              Credentials
-            </p>
-            <div className="flex gap-14">
-              {credentials.map(({ label, logo }) => (
-                <ItemCol key={label} label={label} logo={logo} />
+          {/* Credentials — 1 col */}
+          <div className="border-t border-ink/10 pt-5 pb-6">
+            <p className="text-[10px] font-semibold text-accent uppercase tracking-widest mb-4">Credentials</p>
+            <div className="flex flex-col gap-4">
+              {credentials.map(({ label, sublabel, Icon }) => (
+                <div key={label} className="flex items-start gap-3">
+                  <Icon size={22} className="flex-shrink-0 text-navy mt-0.5" strokeWidth={1.75} />
+                  <div>
+                    <p className="text-sm font-semibold text-ink leading-snug">{label}</p>
+                    <p className="text-xs text-ink/45 mt-0.5">{sublabel}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Gap between panels */}
-          <div className="hidden md:block w-4 flex-shrink-0" />
-          <div className="block md:hidden h-4" />
-
-          {/* Tools */}
-          <div className="flex-[2] bg-accent/5 rounded-xl p-6">
-            <p className="text-xs font-semibold text-ink uppercase tracking-widest mb-8">
-              Tools
-            </p>
-            <div className="flex flex-wrap items-start gap-y-8">
-              <div className="flex gap-x-20">
-                {tools.slice(0, 3).map(({ label, logo }) => (
-                  <ItemCol key={label} label={label} logo={logo} />
-                ))}
-              </div>
-              <div className="flex gap-x-16 ml-16">
-                {tools.slice(3).map(({ label, logo }) => (
-                  <ItemCol key={label} label={label} logo={logo} />
-                ))}
-              </div>
+          {/* Tools — 2 cols */}
+          <div className="md:col-span-2 border-t border-ink/10 pt-5 pb-6">
+            <p className="text-[10px] font-semibold text-accent uppercase tracking-widest mb-4">Tools</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-8">
+              {tools.map(({ label, logo }) => (
+                <div key={label} className="flex items-center gap-2.5">
+                  <div className="h-6 w-6 flex items-center justify-center flex-shrink-0">
+                    {logo}
+                  </div>
+                  <span className="text-sm font-medium text-navy">{label}</span>
+                </div>
+              ))}
             </div>
           </div>
 

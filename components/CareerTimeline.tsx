@@ -72,17 +72,15 @@ const timelineItems: TimelineItem[] = [
 function YearBadge({ item, align }: { item: TimelineItem; align: "left" | "right" }) {
   return (
     <div className={`flex ${align === "right" ? "justify-end" : "justify-start"}`}>
-      <div
-        className={`rounded-2xl px-6 py-3 ${
-          item.isCurrent
-            ? "bg-accent text-white"
-            : "bg-gray-100 text-ink"
-        }`}
-      >
-        <p className="text-2xl font-bold leading-none tracking-tight">{item.yearLabel}</p>
-        <p className={`text-[11px] mt-1 font-medium ${item.isCurrent ? "text-white/70" : "text-ink/40"}`}>
-          {item.period}
-        </p>
+      <div className={align === "right" ? "text-right" : "text-left"}>
+        {item.isCurrent ? (
+          <span className="inline-block px-3 py-1.5 rounded-full bg-amber-500 text-white text-sm font-bold tracking-wide leading-none">
+            NOW
+          </span>
+        ) : (
+          <p className="text-xl font-bold text-ink/70 leading-none tracking-tight">{item.yearLabel}</p>
+        )}
+        <p className="text-[10px] mt-1.5 text-ink/35 leading-snug">{item.period}</p>
       </div>
     </div>
   );
@@ -91,9 +89,9 @@ function YearBadge({ item, align }: { item: TimelineItem; align: "left" | "right
 function ItemContent({ item, align }: { item: TimelineItem; align: "left" | "right" }) {
   return (
     <div className={align === "right" ? "text-right" : "text-left"}>
-      <p className="text-base font-bold text-ink leading-snug">{item.title}</p>
-      <p className="text-xs font-medium text-accent mt-1 mb-2">{item.company}</p>
-      <p className="text-sm text-ink/60 leading-relaxed">{item.description}</p>
+      <p className="text-base font-semibold text-accent leading-snug">{item.title}</p>
+      <p className={`text-xs font-medium mt-1 mb-2 ${item.isCurrent ? "text-amber-600" : "text-ink"}`}>{item.company}</p>
+      <p className="text-sm text-ink/55 leading-relaxed">{item.description}</p>
     </div>
   );
 }
@@ -103,7 +101,7 @@ export default function CareerTimeline() {
     <section className="bg-paper py-16 border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
 
-        <span className="text-xs font-semibold text-accent uppercase tracking-widest">
+        <span className="text-[10px] font-semibold text-accent uppercase tracking-widest">
           Career Journey
         </span>
         <h2 className="text-3xl font-bold text-ink mt-2 mb-1">
@@ -116,7 +114,7 @@ export default function CareerTimeline() {
         {/* ── Desktop: alternating zigzag ── */}
         <div className="hidden md:block relative">
           {/* Vertical center line */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-3 bottom-3 w-px bg-gray-200" />
+          <div className="absolute left-1/2 -translate-x-1/2 top-3 bottom-3 w-px bg-ink/10" />
 
           <div className="flex flex-col gap-10">
             {timelineItems.map((item, i) => {
@@ -133,8 +131,8 @@ export default function CareerTimeline() {
                   {/* Center dot */}
                   <div className="flex justify-center relative z-10">
                     <div
-                      className={`w-3.5 h-3.5 rounded-full ring-[3px] ring-paper ${
-                        item.isCurrent ? "bg-accent" : "bg-accent/50"
+                      className={`rounded-full ring-2 ring-paper ${
+                        item.isCurrent ? "w-2.5 h-2.5 bg-amber-500" : "w-2 h-2 bg-ink/25"
                       }`}
                     />
                   </div>
@@ -153,22 +151,26 @@ export default function CareerTimeline() {
 
         {/* ── Mobile: single column left-line ── */}
         <div className="md:hidden relative">
-          <div className="absolute left-[91px] top-2 bottom-2 w-px bg-gray-200" />
+          <div className="absolute left-[91px] top-2 bottom-2 w-px bg-ink/10" />
           {timelineItems.map((item, i) => (
             <div key={i} className="flex items-start mb-8 last:mb-0">
               <div className="w-[84px] shrink-0 text-right pr-4 pt-1">
-                <span className={`text-sm font-bold ${item.isCurrent ? "text-accent" : "text-ink"}`}>
-                  {item.yearLabel}
-                </span>
-                <p className="text-[10px] text-ink/40 mt-0.5 leading-snug">{item.period}</p>
+                {item.isCurrent ? (
+                  <span className="inline-block px-2 py-0.5 rounded-full bg-amber-500 text-white text-[10px] font-semibold tracking-wide leading-none">
+                    NOW
+                  </span>
+                ) : (
+                  <span className="text-sm font-bold text-ink/70">{item.yearLabel}</span>
+                )}
+                <p className="text-[10px] text-ink/30 mt-0.5 leading-snug">{item.period}</p>
               </div>
               <div className="w-[15px] shrink-0 flex justify-center pt-[7px] relative z-10">
-                <div className={`w-2.5 h-2.5 rounded-full ring-[3px] ring-paper ${item.isCurrent ? "bg-accent" : "bg-accent/50"}`} />
+                <div className={`rounded-full ring-2 ring-paper ${item.isCurrent ? "w-2.5 h-2.5 bg-amber-500" : "w-2 h-2 bg-ink/25"}`} />
               </div>
               <div className="flex-1 pl-5">
-                <p className="font-bold text-ink text-sm leading-snug">{item.title}</p>
-                <p className="text-xs text-accent mt-0.5 mb-1.5">{item.company}</p>
-                <p className="text-sm text-ink/60 leading-relaxed">{item.description}</p>
+                <p className="text-base font-semibold text-accent leading-snug">{item.title}</p>
+                <p className={`text-xs mt-0.5 mb-1.5 ${item.isCurrent ? "text-amber-600" : "text-ink"}`}>{item.company}</p>
+                <p className="text-sm text-ink/55 leading-relaxed">{item.description}</p>
               </div>
             </div>
           ))}

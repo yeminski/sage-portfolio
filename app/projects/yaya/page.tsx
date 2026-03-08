@@ -42,7 +42,7 @@ export default function AIFinancialCoachPage() {
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
-    <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">
+    <p className="text-[10px] font-semibold text-accent uppercase tracking-widest mb-2">
       {index} — {children}
     </p>
   );
@@ -60,7 +60,7 @@ function PageHero() {
   ];
 
   return (
-    <div className="bg-gray-50 border-b border-gray-200">
+    <div className="bg-paper border-b border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6 py-16">
         <Link
           href="/projects"
@@ -71,14 +71,14 @@ function PageHero() {
 
         <div className="flex flex-wrap gap-2 mb-5">
           {tags.map((t) => (
-            <span key={t} className="px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent">
+            <span key={t} className="px-3 py-1 rounded-full text-xs font-medium bg-accent/8 text-accent">
               {t}
             </span>
           ))}
         </div>
 
         <h1 className="text-4xl md:text-5xl font-bold text-ink mb-2">AI Financial Coach</h1>
-        <p className="text-xl text-ink/60 mb-10 max-w-2xl">
+        <p className="text-xl text-ink/50 mb-10 max-w-3xl">
           An AI-powered personal finance platform designed to help underbanked, low-income
           Americans achieve economic mobility through personalized, real-time financial guidance.
         </p>
@@ -131,11 +131,11 @@ const contributions = [
 
 function MyRoleSection() {
   return (
-    <section className="py-16 bg-paper border-b border-gray-100">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="01">My Contribution</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-2">What I Did as Product Manager</h2>
-        <p className="text-ink/60 max-w-2xl mb-10">
+        <p className="text-ink/50 max-w-3xl mb-10">
           As PM on a 4-person team, I led product strategy, user research, and prototyping —
           translating a complex financial inclusion problem into a concrete, user-centered product
           vision that took us to the CMU Tepper finals.
@@ -145,13 +145,13 @@ function MyRoleSection() {
           {contributions.map((c) => (
             <div
               key={c.title}
-              className="border border-gray-200 rounded-xl p-6 hover:border-accent transition-colors"
+              className="border-t border-ink/10 pt-5 pb-6"
             >
-              <div className={`w-10 h-10 ${c.bg} rounded-xl flex items-center justify-center text-xl mb-4`}>
+              <div className="text-xl mb-3">
                 {c.emoji}
               </div>
               <h3 className="font-semibold text-ink mb-2">{c.title}</h3>
-              <p className="text-sm text-ink/60 leading-relaxed">{c.description}</p>
+              <p className="text-sm text-ink/50 leading-relaxed">{c.description}</p>
             </div>
           ))}
         </div>
@@ -173,11 +173,11 @@ const problemStats = [
 
 function ProblemSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="02">Problem</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Millions Are Left Behind by the Financial System</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           Underbanked, low-income Americans lack the financial tools and literacy to manage everyday expenses,
           avoid predatory products, and build toward long-term goals — trapping families in cycles of debt
           across generations.
@@ -187,12 +187,12 @@ function ProblemSection() {
           {problemStats.map((s) => (
             <div
               key={s.label}
-              className="border border-gray-200 rounded-xl p-6 bg-paper hover:border-accent transition-colors"
+              className="border-t border-ink/10 pt-4 pb-4"
             >
               <p className={`text-4xl font-bold mb-2 ${s.warning ? "text-red-500" : "text-accent"}`}>
                 {s.number}
               </p>
-              <p className="text-sm text-ink/60 leading-relaxed">{s.label}</p>
+              <p className="text-sm text-ink/50 leading-relaxed">{s.label}</p>
             </div>
           ))}
         </div>
@@ -229,11 +229,11 @@ const personas = [
 
 function PersonasSection() {
   return (
-    <section className="py-20 bg-paper">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="03">Target Users</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Who We&apos;re Building For</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           AI Financial Coach is designed for underbanked, low-income Americans who lack the tools and literacy to navigate financial decisions on their own.
         </p>
 
@@ -241,14 +241,14 @@ function PersonasSection() {
           {personas.map((p) => (
             <div
               key={p.name}
-              className="bg-paper border border-gray-200 rounded-xl p-6 text-center hover:border-accent transition-colors"
+              className="border-t border-ink/10 pt-5 pb-6 text-center"
             >
               <div className={`w-16 h-16 ${p.avatarBg} rounded-full flex items-center justify-center text-3xl mx-auto mb-4`}>
                 {p.emoji}
               </div>
               <h3 className="font-bold text-ink mb-1">{p.name}</h3>
               <p className="text-xs text-ink/50 mb-5">{p.role}</p>
-              <div className="bg-gray-50 rounded-lg p-4 text-left border-l-4 border-accent">
+              <div className="border-l-[3px] border-accent pl-4 mt-4 text-left">
                 <p className="text-sm italic text-ink/70">&ldquo;{p.quote}&rdquo;</p>
               </div>
             </div>
@@ -273,11 +273,11 @@ const journeySteps = [
 
 function UserJourneySection() {
   return (
-    <section className="py-20 bg-paper">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="05">User Journey</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">End-to-End Experience Flow</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           From first download to first personalized recommendation — AI Financial Coach is designed to deliver
           immediate, tangible value.
         </p>
@@ -350,16 +350,16 @@ const techStack = [
 
 function ArchSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="06">Technical Architecture</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">AI Financial Coach&apos;s Model Outcome Flywheel</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           AI Financial Coach&apos;s strategic moat is its data engine — a self-improving flywheel that gets smarter with
           every user outcome, creating recommendations competitors cannot replicate.
         </p>
 
-        <div className="border border-gray-200 rounded-xl p-8 bg-paper overflow-x-auto mb-14">
+        <div className="border border-ink/10 rounded-lg p-6 bg-paper overflow-x-auto mb-14">
           <div className="flex flex-col gap-5 min-w-[560px]">
             {archLayers.map((layer, i) => (
               <div key={layer.label}>
@@ -384,7 +384,7 @@ function ArchSection() {
           {techStack.map((t) => (
             <div
               key={t.label}
-              className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:border-accent transition-colors"
+              className="border-t border-ink/10 pt-4 pb-4 text-center"
             >
               <span className="text-2xl block mb-2">{t.emoji}</span>
               <span className="text-xs font-medium text-ink/60">{t.label}</span>
@@ -418,11 +418,11 @@ const matrix = [
 
 function CompetitorSection() {
   return (
-    <section className="py-20 bg-paper">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="07">Competitive Landscape</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Feature Comparison Matrix</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           AI Financial Coach is the only platform combining bank-level data access, cross-institution spending
           visibility, and a self-improving recommendation engine — all tailored to an underserved segment.
         </p>
@@ -490,11 +490,11 @@ function MarketSection() {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="08">Market Opportunity</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Market Sizing</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           Targeting working mothers with household incomes under $70K — a 25M-person segment
           underserved by existing financial tools and highly motivated to adopt better solutions.
         </p>
@@ -513,9 +513,9 @@ function MarketSection() {
         <h3 className="font-bold text-ink mb-6">Revenue Projections</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {revenueStats.map((d) => (
-            <div key={d.label} className="border border-gray-200 rounded-xl p-6 bg-paper">
+            <div key={d.label} className="border-t border-ink/10 pt-4 pb-4">
               <p className="text-4xl font-bold text-accent mb-2">{d.number}</p>
-              <p className="text-sm text-ink/60 leading-relaxed">{d.label}</p>
+              <p className="text-sm text-ink/50 leading-relaxed">{d.label}</p>
             </div>
           ))}
         </div>
@@ -555,24 +555,24 @@ const phases = [
 
 function GTMSection() {
   return (
-    <section className="py-20 bg-paper">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="09">Go-to-Market Strategy</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Phased Market Entry</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           B2C-first through referral and digital channels, with B2B partnerships layered in
           to accelerate adoption and build institutional trust.
         </p>
 
         <div className="relative pl-8">
-          <div className="absolute left-0 top-2 bottom-2 w-px bg-gray-200" />
+          <div className="absolute left-0 top-2 bottom-2 w-px bg-ink/10" />
           <div className="flex flex-col gap-10">
             {phases.map((phase) => (
               <div key={phase.phase} className="relative">
                 <div className="absolute left-[-1.625rem] top-1 w-3 h-3 rounded-full bg-accent ring-4 ring-paper" />
                 <p className="text-xs font-bold text-accent uppercase tracking-widest mb-1">{phase.phase}</p>
                 <h3 className="font-semibold text-ink mb-1">{phase.title}</h3>
-                <p className="text-sm text-ink/60 leading-relaxed max-w-2xl">{phase.description}</p>
+                <p className="text-sm text-ink/50 leading-relaxed max-w-3xl">{phase.description}</p>
               </div>
             ))}
           </div>

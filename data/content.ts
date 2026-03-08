@@ -270,14 +270,14 @@ export const projects: Project[] = [
   {
     id: "yaya",
     slug: "yaya",
-    title: "AI Financial Coach — AI-Powered Financial Inclusion Platform",
+    title: "AI-Powered Personal Finance Assistant",
     category: "Case Competition",
     competition: "CMU Tepper Tech Innovation Challenge 2022",
     year: "2022",
     problem:
       "Millions of underbanked Americans lack the financial tools and literacy to manage everyday expenses, avoid predatory products, and build toward long-term goals.",
     solution:
-      "Yaya is an AI-powered mobile platform that delivers personalized spending insights, vetted financial product recommendations, and goal-based planning — helping low-income families achieve economic mobility.",
+      "Built an AI-powered mobile platform that delivers personalized spending insights, vetted financial product recommendations, and goal-based planning — helping low-income families achieve economic mobility.",
     myRole:
       "Product Manager — led product strategy, user research, persona development, and prototyping. Structured the competition narrative from problem framing through financials, securing finalist placement at CMU Tepper.",
     keyDecisions: [

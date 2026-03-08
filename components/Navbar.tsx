@@ -43,8 +43,8 @@ export default function Navbar() {
             href={link.href}
             className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               isActive(link.href)
-                ? "bg-gray-100 text-ink"
-                : "text-ink/50 hover:text-ink hover:bg-gray-50"
+                ? "bg-accent text-paper"
+                : "text-ink/50 hover:text-navy hover:bg-navy/8"
             }`}
           >
             <NavIcon label={link.label} />

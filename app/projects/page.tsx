@@ -16,18 +16,16 @@ export default function ProjectsPage() {
       <Navbar />
       <main className="pt-16 min-h-screen bg-paper">
         {/* Page header */}
-        <div className="bg-gray-50 border-b border-gray-200">
+        <div className="border-b border-gray-100">
           <div className="max-w-[1200px] mx-auto px-6 py-16">
-            <span className="text-xs font-semibold text-accent uppercase tracking-widest">
+            <span className="text-[10px] font-semibold text-accent uppercase tracking-widest">
               Case Competitions
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-ink mt-2 mb-4">
+            <h1 className="text-3xl font-bold text-ink mt-2 mb-1">
               Projects
             </h1>
-            <p className="text-ink/60 max-w-2xl text-lg leading-relaxed">
-              End-to-end product work from Fintech case competitions — each
-              project covers problem framing, user research, key product
-              decisions, and outcome.
+            <p className="text-ink/50">
+              0-to-1 product work built outside of work — research, roadmap, and interactive prototypes to explore.
             </p>
           </div>
         </div>

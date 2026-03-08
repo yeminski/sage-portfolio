@@ -15,17 +15,16 @@ export default function ExperiencePage() {
       <Navbar />
       <main className="pt-16 min-h-screen bg-paper">
         {/* Page header */}
-        <div className="bg-gray-50 border-b border-gray-200">
+        <div className="border-b border-gray-100">
           <div className="max-w-[1200px] mx-auto px-6 py-16">
-            <span className="text-xs font-semibold text-accent uppercase tracking-widest">
+            <span className="text-[10px] font-semibold text-accent uppercase tracking-widest">
               Work History
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-ink mt-2 mb-4">
+            <h1 className="text-3xl font-bold text-ink mt-2 mb-1">
               Experience
             </h1>
-            <p className="text-ink/60 text-lg leading-relaxed">
-              Product management across hardware, e-commerce, and service<br />
-              <span className="whitespace-nowrap">from early-stage startups to a global enterprise. Click any tag to explore what I worked on.</span>
+            <p className="text-ink/50">
+              Product management across hardware, e-commerce, and service — from early-stage startups to a global enterprise. Click any tag to explore what I worked on.
             </p>
           </div>
         </div>

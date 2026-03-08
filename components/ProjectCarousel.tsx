@@ -1,209 +1,125 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { projects } from "@/data/content";
 
 export default function ProjectCarousel() {
   const [active, setActive] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [containerW, setContainerW] = useState(1000);
+  const [visible, setVisible] = useState(true);
+  const touchStartX = useRef<number | null>(null);
 
-  useEffect(() => {
-    const update = () => {
-      if (containerRef.current) setContainerW(containerRef.current.offsetWidth);
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
+  function goTo(i: number) {
+    const next = ((i % projects.length) + projects.length) % projects.length;
+    if (next === active) return;
+    setVisible(false);
+    setTimeout(() => {
+      setActive(next);
+      setVisible(true);
+    }, 180);
+  }
 
-  // Card width: 85% of container on mobile, capped at 600px on desktop
-  const cardW = Math.min(Math.round(containerW * 0.85), 600);
-  const gap = 24;
-  const trackOffset = containerW / 2 - active * (cardW + gap) - cardW / 2;
+  function handleTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX;
+  }
 
-  const prev = () => setActive((a) => Math.max(0, a - 1));
-  const next = () => setActive((a) => Math.min(projects.length - 1, a + 1));
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (touchStartX.current === null) return;
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 50) delta > 0 ? goTo(active + 1) : goTo(active - 1);
+    touchStartX.current = null;
+  }
+
+  const project = projects[active];
 
   return (
-    <div ref={containerRef} className="relative select-none">
+    <div
+      className="relative"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      style={{ opacity: visible ? 1 : 0, transition: "opacity 0.18s ease" }}
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-start">
 
-      {/* ── Track ── */}
-      <div className="overflow-hidden">
-        <div
-          className="flex"
-          style={{
-            gap,
-            transform: `translateX(${trackOffset}px)`,
-            transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-            willChange: "transform",
-          }}
-        >
-          {projects.map((project, i) => {
-            const isActive = i === active;
-            return (
-              <div
-                key={project.id}
-                style={{
-                  width: cardW,
-                  flexShrink: 0,
-                  transform: `scale(${isActive ? 1 : 0.9})`,
-                  transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                  transformOrigin: "center top",
-                  cursor: project.id === "coming-soon" ? "default" : isActive ? "default" : "pointer",
-                  position: "relative",
-                }}
-                onClick={() => project.id !== "coming-soon" && !isActive && setActive(i)}
-              >
-                {/* Card */}
-                {project.id === "coming-soon" ? (
-                  <div className="rounded-2xl overflow-hidden bg-gray-50 border border-dashed border-gray-300">
-                    <div className="w-full aspect-[16/10] flex flex-col items-center justify-center gap-3">
-                      <span className="text-3xl">🔒</span>
-                      <p className="text-sm font-medium text-ink/40">Case Study Coming Soon</p>
-                      <p className="text-xs text-ink/25">Currently being documented</p>
-                    </div>
-                  </div>
-                ) : (
-                <div
-                  className="rounded-2xl overflow-hidden bg-paper border border-gray-200"
-                  style={{
-                    boxShadow: isActive
-                      ? "0 20px 60px rgba(0,0,0,0.12)"
-                      : "none",
-                    transition: "box-shadow 0.5s",
-                  }}
-                >
-                  {/* Product image */}
-                  <div className="w-full aspect-[16/10] bg-gray-100 border-b border-gray-200 overflow-hidden flex items-center justify-center">
-                    {project.image ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={`${project.image}?v=2`}
-                        alt={project.title}
-                        className="w-full h-full object-contain"
-                      />
-                    ) : (
-                      <>
-                        <ScreenshotIcon />
-                        <span className="text-xs text-gray-400">
-                          Prototype screenshot coming soon
-                        </span>
-                      </>
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    <p className="text-xs font-semibold text-accent tracking-widest uppercase mb-1">
-                      {project.category} · {project.year}
-                    </p>
-                    <h3 className="text-xl font-bold text-ink mb-4 leading-snug">
-                      {project.title}
-                    </h3>
-
-                    {/* Problem */}
-                    <p className="text-sm text-ink/55 leading-relaxed line-clamp-2 mb-3">
-                      {project.problem}
-                    </p>
-
-                    {/* Problem → Solution bridge */}
-                    {project.solution && (
-                      <>
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="flex-1 h-px bg-gray-100" />
-                          <span className="text-gray-300 text-xs">↓</span>
-                          <div className="flex-1 h-px bg-gray-100" />
-                        </div>
-                        {/* Solution */}
-                        <div className="border-l-2 border-accent bg-accent/5 rounded-r-lg px-3 py-2 mb-4">
-                          <p className="text-sm text-ink/70 leading-relaxed line-clamp-2">
-                            {project.solution}
-                          </p>
-                        </div>
-                      </>
-                    )}
-
-                    {/* CTA */}
-                    <div className="flex justify-center mb-4">
-                      {project.detailHref ? (
-                        <Link
-                          href={project.detailHref}
-                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold hover:bg-teal-600 transition-colors"
-                        >
-                          View Project Details
-                          <ExternalLinkIcon />
-                        </Link>
-                      ) : (
-                        <span className="text-xs text-ink/30">Case study coming soon</span>
-                      )}
-                    </div>
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-x-4 gap-y-1">
-                      {project.tags.map((tag) => (
-                        <span key={tag} className="text-xs text-ink/40 font-medium">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                )}
-
-                {/* Inactive overlay */}
-                {!isActive && (
-                  <div
-                    className="absolute inset-0 rounded-2xl"
-                    style={{
-                      background: "rgba(245,245,245,0.75)",
-                      transition: "opacity 0.4s",
-                      pointerEvents: "none",
-                    }}
-                  />
-                )}
+        {/* Image + flanking arrows anchored to image */}
+        <div className="relative">
+          <div className="rounded-2xl overflow-hidden bg-teal-50 aspect-[4/3] flex items-center justify-center">
+            {project.image ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={`${project.image}?v=2`}
+                alt={project.title}
+                className="w-full h-full object-contain p-6"
+              />
+            ) : (
+              <div className="flex flex-col items-center gap-2 text-ink/25">
+                <PlaceholderIcon />
+                <span className="text-xs">Screenshot coming soon</span>
               </div>
-            );
-          })}
+            )}
+          </div>
+
+          {/* Left arrow — anchored to image center */}
+          <button
+            onClick={() => goTo(active - 1)}
+            aria-label="Previous project"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full pl-0 pr-3 flex items-center justify-center text-ink/20 hover:text-navy transition-colors"
+          >
+            <LargeChevron direction="left" />
+          </button>
+
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-col justify-center">
+
+          <p className="text-[10px] font-semibold text-navy uppercase tracking-widest mb-3">
+            Featured Project
+          </p>
+
+          <h3 className="text-2xl md:text-3xl font-bold text-ink leading-tight mb-6">
+            {project.title}
+          </h3>
+
+          <div className="border-l-[3px] border-accent pl-4 mb-5">
+            <p className="text-[10px] font-bold text-accent uppercase tracking-widest mb-1.5">Problem</p>
+            <p className="text-sm text-ink/60 leading-relaxed">{project.problem}</p>
+          </div>
+
+          {project.solution && (
+            <div className="border-l-[3px] border-amber-500 pl-4 mb-6">
+              <p className="text-[10px] font-bold text-amber-500 uppercase tracking-widest mb-1.5">Solution</p>
+              <p className="text-sm text-ink/60 leading-relaxed">{project.solution}</p>
+            </div>
+          )}
+
+          <div className="flex flex-wrap gap-x-4 gap-y-1 mb-6">
+            {project.tags.map((tag) => (
+              <span key={tag} className="text-xs text-ink/40 font-medium">{tag}</span>
+            ))}
+          </div>
+
+          {project.detailHref && (
+            <Link
+              href={project.detailHref}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-teal-600 transition-colors"
+            >
+              View Project Details
+              <ExternalLinkIcon />
+            </Link>
+          )}
+
         </div>
       </div>
 
-      {/* ── Arrows ── */}
+      {/* Right arrow — anchored to right edge of full card */}
       <button
-        onClick={prev}
-        disabled={active === 0}
-        aria-label="Previous project"
-        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-paper border border-gray-200 shadow-sm text-ink/40 hover:text-ink disabled:opacity-20 transition-all"
-      >
-        <ChevronLeft />
-      </button>
-      <button
-        onClick={next}
-        disabled={active === projects.length - 1}
+        onClick={() => goTo(active + 1)}
         aria-label="Next project"
-        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-paper border border-gray-200 shadow-sm text-ink/40 hover:text-ink disabled:opacity-20 transition-all"
+        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full pl-3 flex items-center justify-center text-ink/20 hover:text-navy transition-colors"
       >
-        <ChevronRight />
+        <LargeChevron direction="right" />
       </button>
-
-      {/* ── Dot indicators ── */}
-      <div className="flex justify-center items-center gap-2 mt-6">
-        {projects.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setActive(i)}
-            aria-label={`Go to project ${i + 1}`}
-            style={{
-              height: 7,
-              width: i === active ? 24 : 7,
-              borderRadius: 99,
-              background: i === active ? "#0D9488" : "rgba(15,15,15,0.18)",
-              transition: "width 0.3s cubic-bezier(0.4,0,0.2,1), background 0.3s",
-            }}
-          />
-        ))}
-      </div>
 
     </div>
   );
@@ -211,12 +127,22 @@ export default function ProjectCarousel() {
 
 /* ── Icons ──────────────────────────────────────────────────────────────── */
 
-function ScreenshotIcon() {
+function LargeChevron({ direction }: { direction: "left" | "right" }) {
   return (
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="3" y="3" width="18" height="18" rx="2" />
-      <circle cx="8.5" cy="8.5" r="1.5" />
-      <polyline points="21 15 16 10 5 21" />
+    <svg
+      width="20"
+      height="40"
+      viewBox="0 0 20 40"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {direction === "left"
+        ? <polyline points="14 4 4 20 14 36" />
+        : <polyline points="6 4 16 20 6 36" />}
     </svg>
   );
 }
@@ -231,18 +157,12 @@ function ExternalLinkIcon() {
   );
 }
 
-function ChevronLeft() {
+function PlaceholderIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polyline points="15 18 9 12 15 6" />
-    </svg>
-  );
-}
-
-function ChevronRight() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polyline points="9 18 15 12 9 6" />
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <circle cx="8.5" cy="8.5" r="1.5" />
+      <polyline points="21 15 16 10 5 21" />
     </svg>
   );
 }

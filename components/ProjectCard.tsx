@@ -35,7 +35,7 @@ function ProjectInfo({ project }: { project: Project }) {
     <>
       {/* Label + Title */}
       <div>
-        <p className="text-xs font-semibold text-accent tracking-widest uppercase mb-2">
+        <p className="text-[10px] font-semibold text-accent tracking-widest uppercase mb-2">
           Featured Project
         </p>
         <h2 className="text-2xl md:text-3xl font-bold text-ink leading-snug">
@@ -85,7 +85,7 @@ function ProjectInfo({ project }: { project: Project }) {
 
 function ImageBlock({ image, title }: { image?: string; title: string }) {
   return (
-    <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-teal-700 shadow-xl flex items-center justify-center">
+    <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-teal-50 flex items-center justify-center">
       {image ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img

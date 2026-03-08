@@ -42,7 +42,7 @@ export default function PillEdPage() {
 
 function SectionLabel({ index, children }: { index: string; children: React.ReactNode }) {
   return (
-    <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">
+    <p className="text-[10px] font-semibold text-accent uppercase tracking-widest mb-2">
       {index} — {children}
     </p>
   );
@@ -60,7 +60,7 @@ function PageHero() {
   ];
 
   return (
-    <div className="bg-gray-50 border-b border-gray-200">
+    <div className="bg-paper border-b border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6 py-16">
         <Link
           href="/projects"
@@ -71,14 +71,14 @@ function PageHero() {
 
         <div className="flex flex-wrap gap-2 mb-5">
           {tags.map((t) => (
-            <span key={t} className="px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent">
+            <span key={t} className="px-3 py-1 rounded-full text-xs font-medium bg-accent/8 text-accent">
               {t}
             </span>
           ))}
         </div>
 
         <h1 className="text-4xl md:text-5xl font-bold text-ink mb-2">PillEd</h1>
-        <p className="text-xl text-ink/60 mb-10 max-w-2xl">
+        <p className="text-xl text-ink/50 mb-10 max-w-3xl">
           A user-friendly mobile platform tackling polypharmacy, medication nonadherence,
           and poor health literacy — making medication management safer, smarter, and simpler.
         </p>
@@ -132,7 +132,7 @@ function MyRoleSection() {
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="01">My Contribution</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-2">What I Did as Product Manager</h2>
-        <p className="text-ink/60 max-w-2xl mb-10">
+        <p className="text-ink/50 max-w-3xl mb-10">
           As Product Manager and Strategist, I owned problem framing, product vision, and cross-functional coordination across a 5-person team of MD/MBA and MBA candidates.
         </p>
 
@@ -140,13 +140,13 @@ function MyRoleSection() {
           {contributions.map((c) => (
             <div
               key={c.title}
-              className="border border-gray-200 rounded-xl p-6 hover:border-accent transition-colors"
+              className="border-t border-ink/10 pt-5 pb-6"
             >
-              <div className={`w-10 h-10 ${c.bg} rounded-xl flex items-center justify-center text-xl mb-4`}>
+              <div className="text-xl mb-3">
                 {c.emoji}
               </div>
               <h3 className="font-semibold text-ink mb-2">{c.title}</h3>
-              <p className="text-sm text-ink/60 leading-relaxed">{c.description}</p>
+              <p className="text-sm text-ink/50 leading-relaxed">{c.description}</p>
             </div>
           ))}
         </div>
@@ -168,11 +168,11 @@ const problemStats = [
 
 function ProblemSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="02">Problem</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Pharmaceuticals &amp; the American Consumer</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           Millions of Americans face serious health risks from medication mismanagement. The data reveals
           a systemic crisis at the intersection of polypharmacy, nonadherence, and low health literacy.
         </p>
@@ -181,12 +181,12 @@ function ProblemSection() {
           {problemStats.map((s) => (
             <div
               key={s.label}
-              className="border border-gray-200 rounded-xl p-6 bg-paper hover:border-accent transition-colors"
+              className="border-t border-ink/10 pt-4 pb-4"
             >
               <p className={`text-4xl font-bold mb-2 ${s.warning ? "text-red-500" : "text-accent"}`}>
                 {s.number}
               </p>
-              <p className="text-sm text-ink/60 leading-relaxed">{s.label}</p>
+              <p className="text-sm text-ink/50 leading-relaxed">{s.label}</p>
             </div>
           ))}
         </div>
@@ -223,11 +223,11 @@ const personas = [
 
 function PersonasSection() {
   return (
-    <section className="py-20 bg-paper">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="03">Target Users</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Who We&apos;re Building For</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           Three distinct user segments with a shared need: reliable, understandable medication guidance.
         </p>
 
@@ -235,14 +235,14 @@ function PersonasSection() {
           {personas.map((p) => (
             <div
               key={p.name}
-              className="bg-paper border border-gray-200 rounded-xl p-6 text-center hover:border-accent transition-colors"
+              className="border-t border-ink/10 pt-5 pb-6 text-center"
             >
               <div className={`w-16 h-16 ${p.avatarBg} rounded-full flex items-center justify-center text-3xl mx-auto mb-4`}>
                 {p.emoji}
               </div>
               <h3 className="font-bold text-ink mb-1">{p.name}</h3>
               <p className="text-xs text-ink/50 mb-5">{p.role}</p>
-              <div className="bg-gray-50 rounded-lg p-4 text-left border-l-4 border-accent">
+              <div className="border-l-[3px] border-accent pl-4 mt-4 text-left">
                 <p className="text-sm italic text-ink/70">&ldquo;{p.quote}&rdquo;</p>
               </div>
             </div>
@@ -267,11 +267,11 @@ const journeySteps = [
 
 function UserJourneySection() {
   return (
-    <section className="py-20 bg-paper">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="05">User Journey</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">End-to-End Experience Flow</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           From onboarding to daily medication management — a seamless, guided experience designed for users with low health literacy.
         </p>
 
@@ -320,15 +320,15 @@ const matrix = [
 
 function CompetitorSection() {
   return (
-    <section className="py-20 bg-paper">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="07">Competitive Landscape</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Feature Comparison Matrix</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           Existing solutions address fragments of the problem. PillEd is the only platform covering all critical capabilities.
         </p>
 
-        <div className="overflow-x-auto rounded-xl border border-gray-200 bg-paper">
+        <div className="overflow-x-auto rounded-lg border border-ink/10 bg-paper">
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-200">
@@ -382,11 +382,11 @@ function MarketSection() {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="08">Market Opportunity</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Market Sizing</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           Targeting the &ldquo;Mother&rdquo; (4.0M) and &ldquo;Caregiver&rdquo; (7.3M) segments with a $50/year freemium subscription model.
         </p>
 
@@ -404,9 +404,9 @@ function MarketSection() {
         <h3 className="font-bold text-ink mb-6">Growth Drivers</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {drivers.map((d) => (
-            <div key={d.label} className="bg-white border border-gray-200 rounded-xl p-6">
+            <div key={d.label} className="border-t border-ink/10 pt-4 pb-4">
               <p className="text-4xl font-bold text-accent mb-2">{d.number}</p>
-              <p className="text-sm text-ink/60 leading-relaxed">{d.label}</p>
+              <p className="text-sm text-ink/50 leading-relaxed">{d.label}</p>
             </div>
           ))}
         </div>
@@ -442,24 +442,24 @@ const phases = [
 
 function GTMSection() {
   return (
-    <section className="py-20 bg-paper">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="09">Go-to-Market Strategy</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">Phased Market Entry</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           A B2B-first approach to build medical credibility before scaling to consumers — reducing CAC by leveraging
           distribution channels that already have patient trust.
         </p>
 
         <div className="relative pl-8">
-          <div className="absolute left-0 top-2 bottom-2 w-px bg-gray-200" />
+          <div className="absolute left-0 top-2 bottom-2 w-px bg-ink/10" />
           <div className="flex flex-col gap-10">
             {phases.map((phase) => (
               <div key={phase.date} className="relative">
-                <div className="absolute left-[-1.625rem] top-1 w-3 h-3 rounded-full bg-accent ring-4 ring-gray-50" />
+                <div className="absolute left-[-1.625rem] top-1 w-3 h-3 rounded-full bg-accent ring-4 ring-paper" />
                 <p className="text-xs font-bold text-accent uppercase tracking-widest mb-1">{phase.date}</p>
                 <h3 className="font-semibold text-ink mb-1">{phase.title}</h3>
-                <p className="text-sm text-ink/60 leading-relaxed max-w-2xl">{phase.description}</p>
+                <p className="text-sm text-ink/50 leading-relaxed max-w-3xl">{phase.description}</p>
               </div>
             ))}
           </div>
@@ -518,17 +518,17 @@ const techStack = [
 
 function ArchSection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-16 bg-paper border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionLabel index="06">Technical Architecture</SectionLabel>
         <h2 className="text-3xl font-bold text-ink mb-4">System Overview</h2>
-        <p className="text-ink/60 max-w-2xl mb-12">
+        <p className="text-ink/50 max-w-3xl mb-10">
           Modular architecture designed for scalability — dedicated processing modules for OCR, drug interaction analysis,
           and notification delivery, fed by a multi-source external data layer.
         </p>
 
         {/* Architecture diagram */}
-        <div className="border border-gray-200 rounded-xl p-8 bg-white overflow-x-auto mb-14">
+        <div className="border border-ink/10 rounded-lg p-6 bg-paper overflow-x-auto mb-14">
           <div className="flex flex-col gap-5 min-w-[560px]">
             {archLayers.map((layer, i) => (
               <div key={layer.label}>
@@ -554,7 +554,7 @@ function ArchSection() {
           {techStack.map((t) => (
             <div
               key={t.label}
-              className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:border-accent transition-colors"
+              className="border-t border-ink/10 pt-4 pb-4 text-center"
             >
               <span className="text-2xl block mb-2">{t.emoji}</span>
               <span className="text-xs font-medium text-ink/60">{t.label}</span>

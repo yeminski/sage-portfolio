@@ -10,7 +10,7 @@ export default function Hero() {
 
           {/* ── Left: text ── */}
           <div className="flex-1">
-            <p className="text-sm text-ink/40 mb-3">Hi There</p>
+            <p className="text-sm text-ink/40 font-medium mb-3">Hi There</p>
 
             <h1 className="text-7xl md:text-8xl font-bold text-ink leading-none tracking-tight mb-3">
               I&apos;m Sage
@@ -20,8 +20,8 @@ export default function Hero() {
               <RotatingTitle />
             </div>
 
-            <p className="text-base text-ink/40 mb-10">
-              Product Manager. CFA Level I. MBA
+            <p className="text-base text-ink mb-10">
+              Product Manager &nbsp;|&nbsp; MBA &nbsp;|&nbsp; CFA Level I
             </p>
 
             {/* Social links */}
@@ -74,7 +74,6 @@ function LinkedInIcon() {
     </svg>
   );
 }
-
 
 function ResumeIcon() {
   return (

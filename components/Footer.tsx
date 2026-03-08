@@ -1,7 +1,10 @@
 import { hero } from "@/data/content";
+import LetsTalk from "@/components/LetsTalk";
 
 export default function Footer() {
   return (
+    <>
+    <LetsTalk />
     <footer className="py-12 bg-ink text-paper/70">
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col items-center gap-4 text-center">
         <p className="text-paper font-semibold">{hero.name}</p>
@@ -23,8 +26,8 @@ export default function Footer() {
             LinkedIn
           </a>
           <a
-            href="/resume.pdf"
-            download
+            href="/sage-resume.pdf"
+            download="Yeji (Sage) Seo - Resume.pdf"
             className="text-sm text-accent hover:text-accent/80 transition-colors"
           >
             Resume Download
@@ -36,5 +39,6 @@ export default function Footer() {
         </p>
       </div>
     </footer>
+    </>
   );
 }

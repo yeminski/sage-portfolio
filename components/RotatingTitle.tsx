@@ -11,6 +11,8 @@ const TITLES = [
   "AI Native",
 ];
 
+const COLORS = TITLES.map(() => ({ bg: "#EDE9FE", text: "#1E1B4B" }));
+
 const HOLD_MS = 3000;
 const SLIDE_MS = 550;
 const EASING = "cubic-bezier(0.4, 0, 0.2, 1)";
@@ -71,7 +73,7 @@ export default function RotatingTitle() {
           willChange: "transform",
         }}
       >
-        <Highlight>{TITLES[current]}</Highlight>
+        <Highlight color={COLORS[current]}>{TITLES[current]}</Highlight>
       </span>
 
       {/* Next title — slides in from below */}
@@ -86,20 +88,21 @@ export default function RotatingTitle() {
             willChange: "transform",
           }}
         >
-          <Highlight>{TITLES[next]}</Highlight>
+          <Highlight color={COLORS[next]}>{TITLES[next]}</Highlight>
         </span>
       )}
     </div>
   );
 }
 
-function Highlight({ children }: { children: React.ReactNode }) {
+function Highlight({ children, color }: { children: React.ReactNode; color: { bg: string; text: string } }) {
   return (
     <span
-      className="inline-block px-2 rounded-sm"
+      className="inline-block rounded-sm"
       style={{
-        backgroundColor: "rgba(180, 160, 210, 0.18)",
-        padding: "3px 5px",
+        backgroundColor: color.bg,
+        color: color.text,
+        padding: "3px 8px",
         marginTop: "5px",
         marginBottom: "5px",
       }}
