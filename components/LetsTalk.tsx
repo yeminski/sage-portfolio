@@ -1,6 +1,6 @@
-export default function LetsTalk() {
+export default function LetsTalk({ className = "bg-paper" }: { className?: string }) {
   return (
-    <section className="bg-paper border-t border-gray-100 py-16">
+    <section className={`${className} border-t border-gray-200 py-16`}>
       <div className="max-w-[1200px] mx-auto px-6">
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
@@ -10,7 +10,7 @@ export default function LetsTalk() {
             <span className="text-[10px] font-semibold text-accent uppercase tracking-widest">
               Let&apos;s Connect
             </span>
-            <h2 className="text-3xl font-bold text-ink mt-2 mb-3">
+            <h2 className="font-serif text-3xl font-bold text-ink mt-2 mb-3">
               Open to new opportunities
             </h2>
             <p className="text-ink/50 leading-relaxed">

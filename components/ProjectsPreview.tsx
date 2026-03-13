@@ -3,11 +3,11 @@ import ProjectCarousel from "@/components/ProjectCarousel";
 
 export default function ProjectsPreview() {
   return (
-    <section id="projects" className="bg-paper py-16 border-t border-gray-100">
+    <section id="projects" className="bg-white py-16 border-t border-gray-200">
       <div className="max-w-[1200px] mx-auto px-6">
 
         <span className="text-[10px] font-semibold text-accent uppercase tracking-widest">Selected Work</span>
-        <h2 className="text-3xl font-bold text-ink mt-2 mb-1">Projects</h2>
+        <h2 className="font-serif text-3xl font-bold text-ink mt-2 mb-1">Projects</h2>
         <p className="text-ink/50 mb-14">What I build beyond 9-5</p>
 
         <ProjectCarousel />

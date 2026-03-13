@@ -75,37 +75,37 @@ export const aboutItems: AboutItem[] = [
     id: "zero-to-one",
     title: "0-to-1 PM",
     description:
-      "I've taken products from blank page to shipped, defining MVP scope, aligning cross-functional teams, and making high-conviction calls with incomplete information. I'm most energized when there's no playbook yet.",
+      "I've taken several products from blank page to shipped as an early team member at startups, from problem definition and MVP scoping to delivery under real resource constraints. I thrive in ambiguity, where the playbook doesn't exist.",
   },
   {
     id: "fintech-enthusiast",
     title: "Fintech Enthusiast",
     description:
-      "I'm drawn to the infrastructure that makes money move — payments rails, cross-border flows, pricing systems, and the unit economics underneath. I hold CFA Level I and bring financial fluency into every product decision.",
+      "I'm drawn to the infrastructure that makes money move: cross-border payments, pricing systems, and the unit economics underneath. I hold CFA Level I and bring financial fluency into every product decision.",
   },
   {
     id: "strategist",
     title: "Strategist",
     description:
-      "I connect market signals, customer needs, and business constraints into product strategies that hold up under scrutiny. My MBA sharpened how I frame problems, prioritize ruthlessly, and build narratives that get buy-in.",
+      "I connect market signals, customer needs, and business constraints into strategies that hold up under scrutiny. I think in trade-offs first: what we're optimizing for, what we're giving up, and why that bet is right.",
   },
   {
     id: "design-thinker",
     title: "Experience Designer",
     description:
-      "Combining design thinking with product instinct, I map user flows, prototype solutions, and iterate until every interaction earns its place. Comfortable in Figma and AI-assisted prototyping, with hands-on experience across end-to-end UI/UX design.",
+      "I optimize activation funnels, registration flows, and checkout experiences across web and mobile, combining behavioral data with design thinking to reduce friction and drive conversion.",
   },
   {
     id: "data-driven",
     title: "Data-Driven",
     description:
-      "I anchor decisions in data — defining metrics before building, running A/B tests, and knowing when the data is telling you something versus when it's just noise. Fluent in SQL and experimentation frameworks.",
+      "I define metrics before building, run A/B tests, and know when data is telling you something versus when it's noise. I've owned experimentation end-to-end across pricing, onboarding, and growth.",
   },
   {
     id: "ai-native",
     title: "AI Native",
     description:
-      "I build with AI, not just alongside it. I prototype using Cursor, Claude Code, and no-code tools to move fast, validate early, and reduce dependency on engineering cycles.",
+      "I use Cursor, Claude Code, and no-code sub-agent workflows daily across discovery, PRD drafting, prototyping, and automation. This hands-on practice shapes how I think about embedding AI into product and workflow to actually make a difference.",
   },
 ];
 

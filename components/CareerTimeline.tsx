@@ -17,7 +17,7 @@ const timelineItems: TimelineItem[] = [
     company: "Epson America",
     isCurrent: true,
     description:
-      "Owning service product strategy and monetization at enterprise scale — pricing architecture, go-to-market for new hardware launches, and driving service attach rate growth across the customer lifecycle.",
+      "Owning end-to-end product across web, app, and service touchpoints: launching features, optimizing activation and conversion funnels, and improving user workflows across the full customer lifecycle to grow conversion, retention, and service attach rate.",
   },
   {
     yearLabel: "2025",
@@ -25,23 +25,23 @@ const timelineItems: TimelineItem[] = [
     title: "CFA Level I",
     company: "CFA Institute",
     description:
-      "Passed CFA Level I while working full-time. Built rigorous fluency in financial analysis and valuation — the domain foundation to work credibly in fintech and speak the language of the finance professionals I build for.",
+      "Passed CFA Level I while working full-time. Built rigorous fluency in financial analysis and valuation, the domain foundation to work credibly in fintech and speak the language of the finance professionals I build for.",
   },
   {
     yearLabel: "2023",
     period: "Sep 2023 – Aug 2024",
     title: "Product Manager",
-    company: "ERA — AR Smart Glasses Startup",
+    company: "ERA (AR Smart Glasses Startup)",
     description:
-      "Owned the 0-to-1 roadmap for a companion mobile app. Led 100+ user interviews to validate product-market fit, defined MVP scope, and shipped ahead of schedule — saving ~$100K in runway.",
+      "Owned the 0-to-1 roadmap for a companion mobile app. Led user research to validate product-market fit, defined MVP scope, and shipped ahead of schedule under real resource constraints.",
   },
   {
-    yearLabel: "Jun '23",
+    yearLabel: "Summer '23",
     period: "Jun – Aug 2023",
     title: "Product Management MBA Intern",
     company: "Epson America",
     description:
-      "Defined product vision for a net-new SaaS solution, validated AI-driven features via proof of concept, and built financial models to guide MVP prioritization. Secured executive buy-in through strategic storytelling.",
+      "Led end-to-end product work on a net-new SaaS concept: from problem definition and user interviews through ideation, mockup design, and securing executive approval. Built financial models to support prioritization and MVP scoping.",
   },
   {
     yearLabel: "2022",
@@ -49,7 +49,7 @@ const timelineItems: TimelineItem[] = [
     title: "Full-Time MBA",
     company: "UCLA Anderson School of Management",
     description:
-      "Pivoted from B2B sales into product management. Focused on product strategy, fintech, and technology management — translating frameworks into real PM practice through internships and case competitions.",
+      "Built rigorous foundations in product strategy, finance, and technology management. Applied frameworks through fintech case competitions and a PM internship, with a focus on the intersection of business model design and technical execution.",
   },
   {
     yearLabel: "2021",
@@ -57,7 +57,7 @@ const timelineItems: TimelineItem[] = [
     title: "Product Manager, Vanity Table",
     company: "Echo Marketing",
     description:
-      "My first formal PM title. Led cross-border payment expansion into Japan, platform localization, and a 0-to-1 mobile app launch at a D2C e-commerce company — exceeding both revenue and adoption targets.",
+      "Joined as an early team member at a D2C e-commerce platform with broad ownership across the full product surface: cross-border payment expansion, platform localization, 0-to-1 mobile app launch, feature development, and workflow automation, exceeding revenue and adoption targets across markets.",
   },
   {
     yearLabel: "2019",
@@ -65,7 +65,7 @@ const timelineItems: TimelineItem[] = [
     title: "Overseas Sales Associate",
     company: "Intercos Korea",
     description:
-      "Managed end-to-end B2B project execution across 20+ product launches for European and Asian clients at a global cosmetics ODM — my foundation in cross-functional coordination and international business.",
+      "Managed end-to-end B2B project execution across 20+ product launches for European and Asian clients at a global cosmetics ODM, my foundation in cross-functional coordination and international business.",
   },
 ];
 
@@ -73,13 +73,9 @@ function YearBadge({ item, align }: { item: TimelineItem; align: "left" | "right
   return (
     <div className={`flex ${align === "right" ? "justify-end" : "justify-start"}`}>
       <div className={align === "right" ? "text-right" : "text-left"}>
-        {item.isCurrent ? (
-          <span className="inline-block px-3 py-1.5 rounded-full bg-amber-500 text-white text-sm font-bold tracking-wide leading-none">
-            NOW
-          </span>
-        ) : (
-          <p className="text-xl font-bold text-ink/70 leading-none tracking-tight">{item.yearLabel}</p>
-        )}
+        <p className="text-3xl font-bold text-amber-500 leading-none tracking-tight">
+          {item.isCurrent ? "NOW" : item.yearLabel}
+        </p>
         <p className="text-[10px] mt-1.5 text-ink/35 leading-snug">{item.period}</p>
       </div>
     </div>
@@ -89,7 +85,7 @@ function YearBadge({ item, align }: { item: TimelineItem; align: "left" | "right
 function ItemContent({ item, align }: { item: TimelineItem; align: "left" | "right" }) {
   return (
     <div className={align === "right" ? "text-right" : "text-left"}>
-      <p className="text-base font-semibold text-accent leading-snug">{item.title}</p>
+      <p className="text-xl font-semibold text-accent leading-snug">{item.title}</p>
       <p className={`text-xs font-medium mt-1 mb-2 ${item.isCurrent ? "text-amber-600" : "text-ink"}`}>{item.company}</p>
       <p className="text-sm text-ink/55 leading-relaxed">{item.description}</p>
     </div>
@@ -98,13 +94,13 @@ function ItemContent({ item, align }: { item: TimelineItem; align: "left" | "rig
 
 export default function CareerTimeline() {
   return (
-    <section className="bg-paper py-16 border-t border-gray-100">
+    <section className="bg-white py-16 border-t border-gray-200">
       <div className="max-w-[1200px] mx-auto px-6">
 
         <span className="text-[10px] font-semibold text-accent uppercase tracking-widest">
           Career Journey
         </span>
-        <h2 className="text-3xl font-bold text-ink mt-2 mb-1">
+        <h2 className="font-serif text-3xl font-bold text-ink mt-2 mb-1">
           Professional Timeline
         </h2>
         <p className="text-ink/50 mb-14">
@@ -131,7 +127,7 @@ export default function CareerTimeline() {
                   {/* Center dot */}
                   <div className="flex justify-center relative z-10">
                     <div
-                      className={`rounded-full ring-2 ring-paper ${
+                      className={`rounded-full ring-2 ring-white ${
                         item.isCurrent ? "w-2.5 h-2.5 bg-amber-500" : "w-2 h-2 bg-ink/25"
                       }`}
                     />
@@ -165,10 +161,10 @@ export default function CareerTimeline() {
                 <p className="text-[10px] text-ink/30 mt-0.5 leading-snug">{item.period}</p>
               </div>
               <div className="w-[15px] shrink-0 flex justify-center pt-[7px] relative z-10">
-                <div className={`rounded-full ring-2 ring-paper ${item.isCurrent ? "w-2.5 h-2.5 bg-amber-500" : "w-2 h-2 bg-ink/25"}`} />
+                <div className={`rounded-full ring-2 ring-white ${item.isCurrent ? "w-2.5 h-2.5 bg-amber-500" : "w-2 h-2 bg-ink/25"}`} />
               </div>
               <div className="flex-1 pl-5">
-                <p className="text-base font-semibold text-accent leading-snug">{item.title}</p>
+                <p className="text-xl font-semibold text-accent leading-snug">{item.title}</p>
                 <p className={`text-xs mt-0.5 mb-1.5 ${item.isCurrent ? "text-amber-600" : "text-ink"}`}>{item.company}</p>
                 <p className="text-sm text-ink/55 leading-relaxed">{item.description}</p>
               </div>

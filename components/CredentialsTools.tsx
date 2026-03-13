@@ -48,7 +48,7 @@ export default function CredentialsTools() {
       <div className="max-w-[1200px] mx-auto px-6">
 
         <span className="text-[10px] font-semibold text-accent uppercase tracking-widest">What I Bring</span>
-        <h2 className="text-3xl font-bold text-ink mt-2 mb-1">Credentials & Tools</h2>
+        <h2 className="font-serif text-3xl font-bold text-ink mt-2 mb-1">Credentials & Tools</h2>
         <p className="text-ink/50 mb-10">The foundation behind every product decision</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10">

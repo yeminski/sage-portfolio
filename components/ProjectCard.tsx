@@ -10,7 +10,7 @@ export default function ProjectCard({ project, index }: Props) {
   const imageLeft = index % 2 === 0;
 
   return (
-    <article id={project.slug} className="py-14 border-b border-gray-100 last:border-b-0">
+    <article id={project.slug} className="bg-white rounded-xl border border-gray-200 px-8 py-10 mb-6 last:mb-0">
       <div className={`flex flex-col md:flex-row items-center gap-10 ${imageLeft ? "" : "md:flex-row-reverse"}`}>
 
         {/* Image — 40% width */}

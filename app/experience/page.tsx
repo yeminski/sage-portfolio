@@ -13,14 +13,14 @@ export default function ExperiencePage() {
   return (
     <>
       <Navbar />
-      <main className="pt-16 min-h-screen bg-paper">
+      <main className="pt-16 min-h-screen bg-white">
         {/* Page header */}
-        <div className="border-b border-gray-100">
+        <div className="bg-white border-b border-gray-200">
           <div className="max-w-[1200px] mx-auto px-6 py-16">
             <span className="text-[10px] font-semibold text-accent uppercase tracking-widest">
               Work History
             </span>
-            <h1 className="text-3xl font-bold text-ink mt-2 mb-1">
+            <h1 className="font-serif text-4xl md:text-5xl font-bold text-ink mt-2 mb-3">
               Experience
             </h1>
             <p className="text-ink/50">
@@ -30,11 +30,13 @@ export default function ExperiencePage() {
         </div>
 
         {/* Experience cards */}
-        <div className="max-w-[1200px] mx-auto px-6 py-16">
-          <ExperienceViewToggle />
+        <div className="bg-paper">
+          <div className="max-w-[1200px] mx-auto px-6 py-16">
+            <ExperienceViewToggle />
+          </div>
         </div>
       </main>
-      <Footer />
+      <Footer letsTalkBg="bg-white" />
     </>
   );
 }

@@ -4,19 +4,22 @@ import EmailButton from "@/components/EmailButton";
 
 export default function Hero() {
   return (
-    <section id="hero" className="bg-paper">
+    <section id="hero" className="bg-white">
       <div className="max-w-[1200px] mx-auto px-6 w-full py-20">
-        <div className="flex flex-col md:flex-row items-center gap-16">
+        <div className="flex flex-col md:flex-row items-center gap-10">
 
           {/* ── Left: text ── */}
           <div className="flex-1">
             <p className="text-sm text-ink/40 font-medium mb-3">Hi There</p>
 
-            <h1 className="text-7xl md:text-8xl font-bold text-ink leading-none tracking-tight mb-3">
-              I&apos;m Sage
+            <h1 className="font-serif text-7xl md:text-8xl font-bold text-ink leading-none tracking-tight mb-4">
+              I&apos;m <span style={{ color: "#1C4A2E" }}>Sage</span>
             </h1>
 
-            <div className="text-3xl md:text-4xl font-semibold text-ink leading-none tracking-tight mb-3">
+            <p className="font-serif text-2xl md:text-3xl font-semibold text-ink leading-none tracking-tight mb-2 whitespace-nowrap">
+              Product Manager who&apos;s also a
+            </p>
+            <div className="font-serif text-2xl md:text-3xl font-semibold text-ink leading-none tracking-tight mb-4">
               <RotatingTitle />
             </div>
 
@@ -48,13 +51,13 @@ export default function Hero() {
           </div>
 
           {/* ── Right: photo ── */}
-          <div className="flex-shrink-0 w-full max-w-sm md:max-w-md">
+          <div className="flex-1 flex justify-center">
             <Image
-              src="/sage-pm-character.png"
+              src="/hero-image.png"
               alt="Sage — Product Manager"
-              width={600}
-              height={600}
-              className="w-full h-auto"
+              width={1024}
+              height={1024}
+              className="w-full max-w-md h-auto"
               priority
             />
           </div>

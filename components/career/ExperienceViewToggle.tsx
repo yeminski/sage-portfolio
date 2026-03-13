@@ -93,7 +93,7 @@ function ExpertiseView() {
   return (
     <div className="flex flex-col gap-8">
       {sorted.map(([label, entries]) => (
-        <div key={label} className="border border-gray-200 rounded-xl bg-paper overflow-hidden">
+        <div key={label} className="border border-gray-200 rounded-xl bg-white overflow-hidden">
           {/* Expertise header */}
           <div className="px-6 py-5 bg-gray-50 border-b border-gray-200">
             <h2 className="text-lg font-bold text-ink">{label}</h2>

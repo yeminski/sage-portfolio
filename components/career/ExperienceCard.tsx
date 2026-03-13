@@ -21,7 +21,7 @@ export default function ExperienceCard({ experience }: { experience: ExperienceI
   );
 
   return (
-    <div className="border border-gray-200 rounded-xl bg-paper overflow-hidden">
+    <div className="border border-gray-200 rounded-xl bg-white overflow-hidden">
       {/* Company header */}
       <div className="px-6 py-5 bg-gray-50 border-b border-gray-200">
         <h2 className="text-lg font-bold text-ink">{experience.company}</h2>
@@ -62,9 +62,9 @@ export default function ExperienceCard({ experience }: { experience: ExperienceI
 
               {/* Awards callout */}
               {role.awards && (
-                <div className="flex items-start gap-2.5 mb-5 px-3.5 py-2.5 rounded-lg bg-teal-50 border border-teal-100">
+                <div className="flex items-start gap-2.5 mb-5 px-3.5 py-2.5 rounded-lg bg-accent/5 border border-accent/15">
                   <Trophy size={14} className="flex-shrink-0 text-accent mt-0.5" strokeWidth={1.75} />
-                  <p className="text-xs text-teal-700 leading-relaxed">{role.awards}</p>
+                  <p className="text-xs text-accent leading-relaxed">{role.awards}</p>
                 </div>
               )}
 

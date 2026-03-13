@@ -11,7 +11,7 @@ const TITLES = [
   "AI Native",
 ];
 
-const COLORS = TITLES.map(() => ({ bg: "#EDE9FE", text: "#1E1B4B" }));
+const COLORS = TITLES.map(() => ({ bg: "#D4E8DB", text: "#1C4A2E" }));
 
 const HOLD_MS = 3000;
 const SLIDE_MS = 550;
@@ -55,6 +55,9 @@ export default function RotatingTitle() {
     return () => clearInterval(timer);
   }, [current]);
 
+  // "Fintech Enthusiast" is the longest title — keeps the container wide enough
+  const longest = TITLES.reduce((a, b) => (a.length >= b.length ? a : b));
+
   return (
     <div
       className="relative overflow-hidden"
@@ -62,6 +65,11 @@ export default function RotatingTitle() {
       aria-live="polite"
       aria-atomic="true"
     >
+      {/* Invisible spacer — sets the container width to the longest title */}
+      <span className="invisible pointer-events-none" aria-hidden="true">
+        <Highlight color={COLORS[0]}>{longest}</Highlight>
+      </span>
+
       {/* Current title — slides out upward when sliding */}
       <span
         className="absolute inset-0 flex items-start"

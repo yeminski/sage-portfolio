@@ -1,10 +1,10 @@
 import { hero } from "@/data/content";
 import LetsTalk from "@/components/LetsTalk";
 
-export default function Footer() {
+export default function Footer({ letsTalkBg }: { letsTalkBg?: string }) {
   return (
     <>
-    <LetsTalk />
+    <LetsTalk className={letsTalkBg} />
     <footer className="py-12 bg-ink text-paper/70">
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col items-center gap-4 text-center">
         <p className="text-paper font-semibold">{hero.name}</p>
