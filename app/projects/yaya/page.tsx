@@ -274,8 +274,8 @@ const journeySteps = [
   { step: "3", title: "Connect", description: "Link bank accounts via Plaid integration" },
   { step: "4", title: "Analyze", description: "AI Financial Coach ingests spending and builds baseline" },
   { step: "5", title: "Recommend", description: "First personalized savings recommendation" },
-  { step: "6", title: "Plan", description: "Set long-term financial goals with guided plans" },
-  { step: "7", title: "Improve", description: "Model flywheel learns from outcomes over time" },
+  { step: "6", title: "Set Goals", description: "Define short and long-term financial targets with guided milestones" },
+  { step: "7", title: "Optimize", description: "Model flywheel refines recommendations as outcomes accumulate" },
 ];
 
 function UserJourneySection() {
@@ -481,14 +481,20 @@ function CompetitorSection() {
 function MarketSection() {
   const funnel = [
     {
-      label: "SAM — 25M",
-      sub: "Working mothers with children under 18 needing financial planning support",
+      label: "TAM — $8.3B",
+      sub: "US personal finance app and consumer financial product platform market (2022)",
       widthClass: "w-full",
       color: "bg-accent",
     },
     {
-      label: "SOM (Y5) — 1.5M",
-      sub: "Projected serviceable obtainable market by Year 5 at 3% penetration",
+      label: "SAM — $2.75B",
+      sub: "25M working mothers under $70K household income × $110 avg annual platform value",
+      widthClass: "w-[70%]",
+      color: "bg-blue-500",
+    },
+    {
+      label: "SOM (Y5) — $165M",
+      sub: "1.5M users at 3% penetration by Year 5 × $110 avg annual platform value",
       widthClass: "w-[35%]",
       color: "bg-purple-500",
     },

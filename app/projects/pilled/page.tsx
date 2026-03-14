@@ -263,12 +263,12 @@ function PersonasSection() {
 /* ─── 5. User Journey ────────────────────────────────────────────────────── */
 
 const journeySteps = [
-  { step: "1", title: "Sign Up", description: "Create profile with health details" },
+  { step: "1", title: "Onboard", description: "Create health profile with medications, conditions, and allergies" },
   { step: "2", title: "Scan Meds", description: "Camera OCR to add medications" },
-  { step: "3", title: "DI Check", description: "Auto drug interaction screening" },
-  { step: "4", title: "Review Info", description: "Digestible drug details" },
-  { step: "5", title: "Schedule", description: "Set dosing times & alarms" },
-  { step: "6", title: "Get Reminded", description: "Push notifications at dose time" },
+  { step: "3", title: "Interaction Check", description: "Auto-screen full medication list for drug-drug conflicts" },
+  { step: "4", title: "Review Drug Info", description: "Digestible drug details, dosage, and side effects" },
+  { step: "5", title: "Set Schedule", description: "Set dosing times & alarms" },
+  { step: "6", title: "Receive Reminders", description: "Push notifications at dose time" },
   { step: "7", title: "Track & Shop", description: "History, compare prices, buy" },
 ];
 
