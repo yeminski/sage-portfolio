@@ -488,47 +488,41 @@ function GTMSection() {
 
 const archLayers = [
   {
+    label: "Data Sources",
+    boxStyle: { background: "#E6F7F5", border: "1px solid #0D9488", color: "#0A7268" },
+    boxes: ["FDA Drug Database", "NIH / PubMed Research", "Retail Pharmacy APIs", "Corporate Partner Data"],
+  },
+  {
+    label: "Data Ingestion",
+    boxStyle: { background: "#E6F0FB", border: "1px solid #3B82C4", color: "#1E5A9C" },
+    boxes: ["REST API Gateway", "FHIR / HL7 Adapter", "OCR Scan Pipeline", "Image Recognition Module"],
+  },
+  {
+    label: "Processing Engine",
+    boxStyle: { background: "#EDE6FB", border: "1px solid #7C3AED", color: "#5B21B6" },
+    boxes: ["Drug Interaction (DI) Engine", "Contraindication Analyzer", "Drug Info Translator", "Notification Scheduler", "Auth & HIPAA Layer"],
+  },
+  {
+    label: "Data Storage",
+    boxStyle: { background: "#E6F4EA", border: "1px solid #16A34A", color: "#166534" },
+    boxes: ["User DB", "Medication DB", "Drug Interaction DB", "Schedule DB", "Bio Profile DB", "AWS S3 Media"],
+  },
+  {
     label: "Presentation Layer",
-    boxes: [{ text: "Mobile App (iOS / Android)", style: "bg-teal-100 text-teal-700 border border-teal-200" }],
-  },
-  {
-    label: "Processing Layer",
-    boxes: [
-      { text: "OCR Module", style: "bg-blue-100 text-blue-700 border border-blue-200" },
-      { text: "DI Module", style: "bg-blue-100 text-blue-700 border border-blue-200" },
-      { text: "Notification Engine", style: "bg-blue-100 text-blue-700 border border-blue-200" },
-      { text: "Image Recognition", style: "bg-blue-100 text-blue-700 border border-blue-200" },
-    ],
-  },
-  {
-    label: "Data Layer",
-    boxes: [
-      { text: "User DB", style: "bg-purple-100 text-purple-700 border border-purple-200" },
-      { text: "Meds DB", style: "bg-purple-100 text-purple-700 border border-purple-200" },
-      { text: "Medicine DB", style: "bg-purple-100 text-purple-700 border border-purple-200" },
-      { text: "DI DB", style: "bg-purple-100 text-purple-700 border border-purple-200" },
-      { text: "Schedule DB", style: "bg-purple-100 text-purple-700 border border-purple-200" },
-      { text: "Bio DB", style: "bg-purple-100 text-purple-700 border border-purple-200" },
-    ],
-  },
-  {
-    label: "External Sources",
-    boxes: [
-      { text: "FDA Drug Data", style: "bg-amber-100 text-amber-700 border border-amber-200" },
-      { text: "Research Web", style: "bg-amber-100 text-amber-700 border border-amber-200" },
-      { text: "Corporate Partners", style: "bg-amber-100 text-amber-700 border border-amber-200" },
-      { text: "Retail APIs", style: "bg-amber-100 text-amber-700 border border-amber-200" },
-    ],
+    boxStyle: { background: "#E6F7F5", border: "1px solid #0D9488", color: "#0A7268" },
+    boxes: ["Mobile App (iOS / Android)", "Push Notifications (APNs / FCM)", "Medication Dashboard", "Price Comparison UI"],
   },
 ];
 
 const techStack = [
-  { emoji: "☁️", label: "Azure Servers ×4" },
+  { emoji: "☁️", label: "Azure App Services" },
   { emoji: "📦", label: "AWS S3 Storage" },
-  { emoji: "🤖", label: "AI/ML OCR Engine" },
-  { emoji: "📸", label: "Image Recognition" },
-  { emoji: "🔔", label: "Push Notifications" },
-  { emoji: "🔒", label: "HIPAA Compliant" },
+  { emoji: "🤖", label: "TensorFlow OCR Engine" },
+  { emoji: "🔔", label: "APNs / FCM Push" },
+  { emoji: "🔒", label: "HIPAA + FHIR / HL7" },
+  { emoji: "🔐", label: "Auth0 / JWT Auth" },
+  { emoji: "🗄️", label: "PostgreSQL + Redis" },
+  { emoji: "💊", label: "FDA Drug API" },
 ];
 
 function ArchSection() {
@@ -550,9 +544,9 @@ function ArchSection() {
                 <div key={layer.label}>
                   <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#1a1a1a" }}>{layer.label}</p>
                   <div className="flex flex-wrap gap-3">
-                    {layer.boxes.map((box) => (
-                      <div key={box.text} className={`px-4 py-2 rounded-lg text-sm font-medium ${box.style}`}>
-                        {box.text}
+                    {layer.boxes.map((text) => (
+                      <div key={text} className="px-4 py-2 rounded-lg text-sm font-medium" style={layer.boxStyle}>
+                        {text}
                       </div>
                     ))}
                   </div>
@@ -566,7 +560,7 @@ function ArchSection() {
 
           {/* Tech stack */}
           <h3 className="font-bold text-ink mb-6">Tech Stack</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
             {techStack.map((t) => (
               <div
                 key={t.label}

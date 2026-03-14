@@ -319,42 +319,40 @@ function UserJourneySection() {
 const archLayers = [
   {
     label: "Data Sources",
-    boxes: [
-      { text: "Empirical Research", style: "bg-amber-100 text-amber-700 border border-amber-200" },
-      { text: "Professional Financial Planners", style: "bg-amber-100 text-amber-700 border border-amber-200" },
-      { text: "Existing PNC Customer Data", style: "bg-amber-100 text-amber-700 border border-amber-200" },
-    ],
+    boxStyle: { background: "#FEF3E2", border: "1px solid #D97706", color: "#B45309" },
+    boxes: ["Empirical Research", "Professional Financial Planners", "PNC Customer Baseline", "Market & Macro Data"],
   },
   {
     label: "Data Ingestion",
-    boxes: [
-      { text: "Customer External Bank Data", style: "bg-blue-100 text-blue-700 border border-blue-200" },
-      { text: "Plaid Integration", style: "bg-blue-100 text-blue-700 border border-blue-200" },
-    ],
+    boxStyle: { background: "#FEE2E2", border: "1px solid #DC2626", color: "#991B1B" },
+    boxes: ["Plaid API (Bank Linking)", "User Onboarding Input", "Real-time Transaction Stream", "Event Streaming (Kafka)"],
   },
   {
-    label: "AI Financial Coach Backend Engine",
-    boxes: [
-      { text: "Model Outcome Flywheel", style: "bg-teal-100 text-teal-700 border border-teal-200" },
-      { text: "Recommendation Engine", style: "bg-teal-100 text-teal-700 border border-teal-200" },
-    ],
+    label: "Processing Engine",
+    boxStyle: { background: "#FDF2F8", border: "1px solid #C026D3", color: "#86198F" },
+    boxes: ["AI Recommendation Engine", "Behavioral Analytics Engine", "Model Training Pipeline", "Feature Store", "Model Outcome Flywheel"],
   },
   {
-    label: "Customer-Facing Output",
-    boxes: [
-      { text: "Personalized Recommendations", style: "bg-purple-100 text-purple-700 border border-purple-200" },
-      { text: "Source New Model Outcomes", style: "bg-purple-100 text-purple-700 border border-purple-200" },
-    ],
+    label: "Data Storage",
+    boxStyle: { background: "#ECFDF5", border: "1px solid #059669", color: "#065F46" },
+    boxes: ["User Profile DB", "Transaction History DB", "Financial Product Catalog", "Model Registry", "Anonymized Insights Store"],
+  },
+  {
+    label: "Presentation Layer",
+    boxStyle: { background: "#FEF3E2", border: "1px solid #D97706", color: "#B45309" },
+    boxes: ["Mobile App (iOS / Android)", "Spending Alerts & Notifications", "Goal Progress Dashboard", "Personalized Product Recommendations"],
   },
 ];
 
 const techStack = [
   { emoji: "🔗", label: "Plaid API Integration" },
-  { emoji: "🤖", label: "AI/ML Recommendation Engine" },
-  { emoji: "📊", label: "Behavioral Data Analytics" },
+  { emoji: "🤖", label: "TensorFlow / PyTorch ML" },
+  { emoji: "📊", label: "Behavioral Analytics Engine" },
   { emoji: "🔄", label: "Model Outcome Flywheel" },
-  { emoji: "🔒", label: "Bank-grade Data Security" },
-  { emoji: "☁️", label: "Cloud Infrastructure" },
+  { emoji: "📡", label: "Apache Kafka Streaming" },
+  { emoji: "🏪", label: "Feature Store (Feast)" },
+  { emoji: "🔒", label: "SOC 2 / Bank-grade Security" },
+  { emoji: "☁️", label: "AWS / GCP Infrastructure" },
 ];
 
 function ArchSection() {
@@ -375,14 +373,14 @@ function ArchSection() {
                 <div key={layer.label}>
                   <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#1a1a1a" }}>{layer.label}</p>
                   <div className="flex flex-wrap gap-3">
-                    {layer.boxes.map((box) => (
-                      <div key={box.text} className={`px-4 py-2 rounded-lg text-sm font-medium ${box.style}`}>
-                        {box.text}
+                    {layer.boxes.map((text) => (
+                      <div key={text} className="px-4 py-2 rounded-lg text-sm font-medium" style={layer.boxStyle}>
+                        {text}
                       </div>
                     ))}
                   </div>
                   {i < archLayers.length - 1 && (
-                    <div className="mt-4 text-base pl-2 font-semibold" style={{ color: "#1a1a1a" }}>↓</div>
+                    <div className="mt-4 pl-2 font-semibold" style={{ color: "#1a1a1a", fontSize: "18px" }}>↓</div>
                   )}
                 </div>
               ))}
@@ -390,7 +388,7 @@ function ArchSection() {
           </div>
 
           <h3 className="font-bold text-ink mb-6">Tech Stack</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {techStack.map((t) => (
               <div
                 key={t.label}
