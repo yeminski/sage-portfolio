@@ -5,8 +5,8 @@ import EmailButton from "@/components/EmailButton";
 
 export default function Hero() {
   return (
-    <section id="hero" className="bg-white">
-      <div className="max-w-[1200px] mx-auto px-6 w-full py-20">
+    <section id="hero" className="bg-white" style={{ position: "relative", overflow: "hidden", isolation: "isolate" }}>
+<div className="max-w-[1200px] mx-auto px-6 w-full py-20" style={{ position: "relative", zIndex: 1 }}>
         <div className="flex flex-col md:flex-row items-center gap-10">
 
           {/* ── Left: text ── */}

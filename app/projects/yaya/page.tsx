@@ -320,30 +320,30 @@ const archLayers = [
   {
     label: "Data Sources",
     boxes: [
-      { text: "Empirical Research", style: "bg-amber-50 text-amber-700 border border-amber-200" },
-      { text: "Professional Financial Planners", style: "bg-amber-50 text-amber-700 border border-amber-200" },
-      { text: "Existing PNC Customer Data", style: "bg-amber-50 text-amber-700 border border-amber-200" },
+      { text: "Empirical Research", style: "bg-amber-100 text-amber-700 border border-amber-200" },
+      { text: "Professional Financial Planners", style: "bg-amber-100 text-amber-700 border border-amber-200" },
+      { text: "Existing PNC Customer Data", style: "bg-amber-100 text-amber-700 border border-amber-200" },
     ],
   },
   {
     label: "Data Ingestion",
     boxes: [
-      { text: "Customer External Bank Data", style: "bg-blue-50 text-blue-700 border border-blue-200" },
-      { text: "Plaid Integration", style: "bg-blue-50 text-blue-700 border border-blue-200" },
+      { text: "Customer External Bank Data", style: "bg-blue-100 text-blue-700 border border-blue-200" },
+      { text: "Plaid Integration", style: "bg-blue-100 text-blue-700 border border-blue-200" },
     ],
   },
   {
     label: "AI Financial Coach Backend Engine",
     boxes: [
-      { text: "Model Outcome Flywheel", style: "bg-teal-50 text-teal-700 border border-teal-200" },
-      { text: "Recommendation Engine", style: "bg-teal-50 text-teal-700 border border-teal-200" },
+      { text: "Model Outcome Flywheel", style: "bg-teal-100 text-teal-700 border border-teal-200" },
+      { text: "Recommendation Engine", style: "bg-teal-100 text-teal-700 border border-teal-200" },
     ],
   },
   {
     label: "Customer-Facing Output",
     boxes: [
-      { text: "Personalized Recommendations", style: "bg-purple-50 text-purple-700 border border-purple-200" },
-      { text: "Source New Model Outcomes", style: "bg-purple-50 text-purple-700 border border-purple-200" },
+      { text: "Personalized Recommendations", style: "bg-purple-100 text-purple-700 border border-purple-200" },
+      { text: "Source New Model Outcomes", style: "bg-purple-100 text-purple-700 border border-purple-200" },
     ],
   },
 ];
@@ -373,7 +373,7 @@ function ArchSection() {
             <div className="flex flex-col gap-5 min-w-[560px]">
               {archLayers.map((layer, i) => (
                 <div key={layer.label}>
-                  <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-3">{layer.label}</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#1a1a1a" }}>{layer.label}</p>
                   <div className="flex flex-wrap gap-3">
                     {layer.boxes.map((box) => (
                       <div key={box.text} className={`px-4 py-2 rounded-lg text-sm font-medium ${box.style}`}>
@@ -382,7 +382,7 @@ function ArchSection() {
                     ))}
                   </div>
                   {i < archLayers.length - 1 && (
-                    <div className="mt-4 text-gray-300 text-sm pl-2">↓</div>
+                    <div className="mt-4 text-base pl-2 font-semibold" style={{ color: "#1a1a1a" }}>↓</div>
                   )}
                 </div>
               ))}

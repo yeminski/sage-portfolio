@@ -286,6 +286,16 @@ body {
   text-underline-offset: 3px;
 }
 
+/* ── Hero glow blobs — hidden by default, shown only when motion is OK ─────── */
+.hero-blob {
+  display: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-blob {
+    display: block;
+  }
+}
+
 /* Mobile: reduce motion distances */
 @media (max-width: 767px) {
   .reveal { transform: translateY(14px); }

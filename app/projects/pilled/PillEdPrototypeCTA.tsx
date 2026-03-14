@@ -20,25 +20,31 @@ const PillEdPrototype = dynamic(
 export default function PillEdPrototypeCTA({
   variant = "link",
 }: {
-  variant?: "link" | "button";
+  variant?: "link" | "button" | "text";
 }) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      {variant === "link" ? (
+      {variant === "text" ? (
         <button
           onClick={() => setOpen(true)}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold shadow-md hover:bg-teal-600 transition-colors"
+          className="arrow-hover inline-flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 transition-colors"
         >
-          ✏️ Try Interactive Prototype →
+          Try Prototype
+          <span className="arrow">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </span>
         </button>
       ) : (
         <button
           onClick={() => setOpen(true)}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold shadow-md hover:bg-teal-600 transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-colors duration-200 ease-in-out"
+          style={{ border: "1.5px solid #0D9488", color: "#0D9488", background: "transparent" }}
+          onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "#0D9488"; (e.currentTarget as HTMLButtonElement).style.color = "white"; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "transparent"; (e.currentTarget as HTMLButtonElement).style.color = "#0D9488"; }}
         >
-          ✏️ Try Interactive Prototype →
+          Try Interactive Prototype →
         </button>
       )}
 
@@ -50,8 +56,8 @@ export default function PillEdPrototypeCTA({
             if (e.target === e.currentTarget) setOpen(false);
           }}
         >
-          <div className="flex min-h-full items-center justify-center p-6">
-          <div className="bg-white rounded-2xl w-full max-w-2xl relative shadow-2xl">
+          <div className="flex min-h-full items-center justify-center p-6" onClick={() => setOpen(false)}>
+          <div className="bg-white rounded-2xl w-full max-w-2xl relative shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setOpen(false)}
               aria-label="Close prototype"

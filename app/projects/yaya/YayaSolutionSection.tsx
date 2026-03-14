@@ -80,7 +80,7 @@ export default function YayaSolutionSection() {
                 AI Financial Coach combines real-time spending intelligence, personalized product access, and long-term goal planning — powered by a self-improving data engine.
               </p>
               <p className="cta-bounce text-sm text-accent">
-                Click a button below to see each feature in action &amp; tap inside the app to explore interactively.{" "}
+                Click a button below to see each feature in action<br />&amp; tap inside the app to explore interactively.{" "}
                 <span className="cta-arrow font-medium" style={{ color: "#0D9488" }}>--&gt;</span>
               </p>
             </div>

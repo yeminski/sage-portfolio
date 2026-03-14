@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { type Project } from "@/data/content";
+import ProjectThumbnail from "@/components/ProjectThumbnail";
 
 interface Props {
   project: Project;
@@ -46,7 +47,11 @@ export default function ProjectCard({ project, index }: Props) {
 
         {/* Image — 40% width */}
         <div className="w-full md:w-[40%] flex-shrink-0">
-          <ImageBlock image={project.image} title={project.title} />
+          <ProjectThumbnail
+            projectId={project.id}
+            alt={project.title}
+            href={project.detailHref}
+          />
         </div>
 
         {/* Text — 60% width */}
