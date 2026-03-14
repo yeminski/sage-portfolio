@@ -7,10 +7,13 @@ export type ExperienceItem = {
 export type Role = {
   title: string;
   period: string;
+  summary: string;
+  bullets: string[];
+  isCurrentRole?: boolean;
   description: string[];
   tags?: string[];
-  categories: Category[];
   awards?: string;
+  categories: Category[];
 };
 
 export type Category = {
@@ -26,6 +29,14 @@ export const experiences: ExperienceItem[] = [
       {
         title: "Associate Product Manager II",
         period: "Aug 2024 – Present",
+        isCurrentRole: true,
+        summary:
+          "Own product strategy and pricing architecture for Epson's service business, driving service attach rate growth and platform-level monetization initiatives across the customer lifecycle.",
+        bullets: [
+          "Launched a 3-tier pricing model informed by price elasticity analysis, driving 9% revenue growth and optimizing unit economics across the service line.",
+          "Built API-driven dashboards and automated reporting pipelines, reducing manual workload by ~60% and enabling an 8% retention lift through targeted lifecycle outreach.",
+          "Redesigned the service registration experience via cross-system API integration, driving an 11% registration lift and unlocking downstream service monetization.",
+        ],
         tags: [
           "Product Strategy",
           "Monetization",
@@ -68,6 +79,13 @@ export const experiences: ExperienceItem[] = [
       {
         title: "Product Management MBA Intern",
         period: "Jun 2023 – Aug 2023",
+        summary:
+          "Defined product vision and 0-to-1 roadmap for a new SaaS solution, validating AI-driven features through a proof of concept and securing executive buy-in through strategic storytelling.",
+        bullets: [
+          "Translated user needs into AI-driven feature concepts, validated technical feasibility via POC, and outlined a prioritized roadmap for executive review.",
+          "Built a financial model with scenario analyses to quantify revenue impact and operational efficiency gains, aligning inputs with Product and Finance for MVP prioritization.",
+          "Synthesized research and modeling into executive narratives that secured cross-functional alignment on product direction and MVP scope.",
+        ],
         tags: [
           "0-to-1 Product",
           "SaaS",
@@ -103,6 +121,13 @@ export const experiences: ExperienceItem[] = [
       {
         title: "Product Manager",
         period: "Sep 2023 – Aug 2024",
+        summary:
+          "Led 0-to-1 product development for the companion mobile app at an AR smart glasses startup, delivering MVP ahead of schedule and saving ~$100K in runway.",
+        bullets: [
+          "Conducted 100+ user interviews to validate product-market fit, synthesizing findings into PRDs that aligned engineering and design throughout MVP development.",
+          "Owned the 0-to-1 roadmap — defining MVP scope, feature prioritization, and release sequencing — and shipped ahead of schedule, saving ~$100K in runway.",
+          "Made high-conviction prioritization decisions in a resource-constrained startup environment, coordinating cross-functionally to maintain quality under tight execution timelines.",
+        ],
         tags: [
           "0-to-1 Product",
           "Mobile App",
@@ -134,6 +159,13 @@ export const experiences: ExperienceItem[] = [
       {
         title: "Product Manager, Vanity Table Team",
         period: "Nov 2021 – Jun 2022",
+        summary:
+          "Led cross-border payment expansion, US-to-Japan platform localization, and a 0-to-1 mobile app launch for a multi-market D2C e-commerce platform.",
+        bullets: [
+          "Expanded the platform into Japan by localizing checkout flows, payment methods, and FX display in compliance with local regulations, exceeding revenue targets by ~25%.",
+          "Led full US-to-Japan market expansion — market research, GTM strategy, and customer experience localization — surpassing the market penetration target by 30%.",
+          "Spearheaded a 0-to-1 mobile app launch, owning MVP scope and onboarding flows, driving a 12% increase in DAU.",
+        ],
         tags: [
           "Cross-border Payments",
           "Platform Expansion",
@@ -178,6 +210,13 @@ export const experiences: ExperienceItem[] = [
       {
         title: "Overseas Sales Associate (Global B2B Project Management)",
         period: "Aug 2019 – Aug 2021",
+        summary:
+          "Managed end-to-end project execution for 20+ global B2B cosmetics launches across European and Asian accounts; cross-border financial operations exposure that laid the foundation for a fintech product focus.",
+        bullets: [
+          "Owned the full project lifecycle across 20+ B2B cosmetics launches — from client pitch through R&D, QA, and fulfillment — driving 10%+ YoY growth on key European and Asian accounts.",
+          "Developed segment-specific pricing and product offerings for European and Asian markets in compliance with regional regulations, securing multi-million dollar B2B deals.",
+          "Partnered with Finance and Procurement on B2B invoicing, AP/AR tracking, and cross-border payment workflows — hands-on exposure to international financial operations that informed a fintech product focus.",
+        ],
         tags: [
           "B2B Project Management",
           "Global Accounts",

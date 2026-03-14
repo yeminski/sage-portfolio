@@ -27,7 +27,7 @@ export default function ExperienceViewToggle() {
       </div>
 
       {view === "resume" ? (
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-12">
           {experiences.map((exp) => (
             <ExperienceCard key={exp.company} experience={exp} />
           ))}
