@@ -489,35 +489,35 @@ function GTMSection() {
 const archLayers = [
   {
     label: "Presentation Layer",
-    boxes: [{ text: "Mobile App (iOS / Android)", style: "bg-teal-50 text-teal-700 border border-teal-200" }],
+    boxes: [{ text: "Mobile App (iOS / Android)", style: "bg-teal-100 text-teal-700 border border-teal-200" }],
   },
   {
     label: "Processing Layer",
     boxes: [
-      { text: "OCR Module", style: "bg-blue-50 text-blue-700 border border-blue-200" },
-      { text: "DI Module", style: "bg-blue-50 text-blue-700 border border-blue-200" },
-      { text: "Notification Engine", style: "bg-blue-50 text-blue-700 border border-blue-200" },
-      { text: "Image Recognition", style: "bg-blue-50 text-blue-700 border border-blue-200" },
+      { text: "OCR Module", style: "bg-blue-100 text-blue-700 border border-blue-200" },
+      { text: "DI Module", style: "bg-blue-100 text-blue-700 border border-blue-200" },
+      { text: "Notification Engine", style: "bg-blue-100 text-blue-700 border border-blue-200" },
+      { text: "Image Recognition", style: "bg-blue-100 text-blue-700 border border-blue-200" },
     ],
   },
   {
     label: "Data Layer",
     boxes: [
-      { text: "User DB", style: "bg-purple-50 text-purple-700 border border-purple-200" },
-      { text: "Meds DB", style: "bg-purple-50 text-purple-700 border border-purple-200" },
-      { text: "Medicine DB", style: "bg-purple-50 text-purple-700 border border-purple-200" },
-      { text: "DI DB", style: "bg-purple-50 text-purple-700 border border-purple-200" },
-      { text: "Schedule DB", style: "bg-purple-50 text-purple-700 border border-purple-200" },
-      { text: "Bio DB", style: "bg-purple-50 text-purple-700 border border-purple-200" },
+      { text: "User DB", style: "bg-purple-100 text-purple-700 border border-purple-200" },
+      { text: "Meds DB", style: "bg-purple-100 text-purple-700 border border-purple-200" },
+      { text: "Medicine DB", style: "bg-purple-100 text-purple-700 border border-purple-200" },
+      { text: "DI DB", style: "bg-purple-100 text-purple-700 border border-purple-200" },
+      { text: "Schedule DB", style: "bg-purple-100 text-purple-700 border border-purple-200" },
+      { text: "Bio DB", style: "bg-purple-100 text-purple-700 border border-purple-200" },
     ],
   },
   {
     label: "External Sources",
     boxes: [
-      { text: "FDA Drug Data", style: "bg-amber-50 text-amber-700 border border-amber-200" },
-      { text: "Research Web", style: "bg-amber-50 text-amber-700 border border-amber-200" },
-      { text: "Corporate Partners", style: "bg-amber-50 text-amber-700 border border-amber-200" },
-      { text: "Retail APIs", style: "bg-amber-50 text-amber-700 border border-amber-200" },
+      { text: "FDA Drug Data", style: "bg-amber-100 text-amber-700 border border-amber-200" },
+      { text: "Research Web", style: "bg-amber-100 text-amber-700 border border-amber-200" },
+      { text: "Corporate Partners", style: "bg-amber-100 text-amber-700 border border-amber-200" },
+      { text: "Retail APIs", style: "bg-amber-100 text-amber-700 border border-amber-200" },
     ],
   },
 ];
@@ -548,7 +548,7 @@ function ArchSection() {
             <div className="flex flex-col gap-5 min-w-[560px]">
               {archLayers.map((layer, i) => (
                 <div key={layer.label}>
-                  <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-3">{layer.label}</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#1a1a1a" }}>{layer.label}</p>
                   <div className="flex flex-wrap gap-3">
                     {layer.boxes.map((box) => (
                       <div key={box.text} className={`px-4 py-2 rounded-lg text-sm font-medium ${box.style}`}>
@@ -557,7 +557,7 @@ function ArchSection() {
                     ))}
                   </div>
                   {i < archLayers.length - 1 && (
-                    <div className="mt-4 text-gray-300 text-sm pl-2">↓</div>
+                    <div className="mt-4 pl-2 font-semibold" style={{ color: "#1a1a1a", fontSize: "18px" }}>↓</div>
                   )}
                 </div>
               ))}
