@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/data/content";
+import AnimatedH1 from "@/components/career/AnimatedH1";
 
 export const metadata: Metadata = {
   title: "Projects | Sage",
@@ -21,9 +22,12 @@ export default function ProjectsPage() {
             <span className="text-[10px] font-semibold text-accent uppercase tracking-widest">
               Case Competitions
             </span>
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-ink mt-2 mb-3">
+            <AnimatedH1
+              className="font-serif text-4xl md:text-5xl font-bold text-ink mt-2 mb-3"
+              animationDelay="80ms"
+            >
               Projects
-            </h1>
+            </AnimatedH1>
             <p className="text-ink/50">
               0-to-1 product work built outside of work — research, roadmap, and interactive prototypes to explore.
             </p>

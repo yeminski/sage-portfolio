@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { type Project } from "@/data/content";
 
@@ -8,9 +10,38 @@ interface Props {
 
 export default function ProjectCard({ project, index }: Props) {
   const imageLeft = index % 2 === 0;
+  const cardRef = useRef<HTMLElement>(null);
+  const revealClass = index === 0 ? "reveal-x-left" : "reveal-x-right";
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("is-visible");
+
+          // Trigger tag-pop items after card is visible
+          const tags = Array.from(el.querySelectorAll<HTMLElement>(".tag-pop-item"));
+          tags.forEach((tag, i) => {
+            setTimeout(() => {
+              tag.classList.add("is-visible");
+            }, 200 + i * 60);
+          });
+
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <article id={project.slug} className="bg-white rounded-xl border border-gray-200 px-8 py-10 mb-6 last:mb-0">
+    <article ref={cardRef} id={project.slug} className={`${revealClass} bg-white rounded-xl border border-gray-200 px-8 py-10 mb-6 last:mb-0`}>
       <div className={`flex flex-col md:flex-row items-center gap-10 ${imageLeft ? "" : "md:flex-row-reverse"}`}>
 
         {/* Image — 40% width */}
@@ -59,8 +90,12 @@ function ProjectInfo({ project }: { project: Project }) {
 
       {/* Tags — plain text, spaced */}
       <div className="flex flex-wrap gap-x-5 gap-y-1">
-        {project.tags.map((tag) => (
-          <span key={tag} className="text-sm text-ink/50 font-medium">
+        {project.tags.map((tag, i) => (
+          <span
+            key={tag}
+            className="tag-pop-item tag-pop text-sm text-ink/50 font-medium"
+            style={{ transitionDelay: `${i * 60}ms` }}
+          >
             {tag}
           </span>
         ))}
@@ -69,7 +104,7 @@ function ProjectInfo({ project }: { project: Project }) {
       {/* CTA */}
       <Link
         href={href}
-        className="inline-flex items-center gap-2 text-sm font-medium text-ink/40 hover:text-accent transition-colors group"
+        className="arrow-hover inline-flex items-center gap-2 text-sm font-medium text-ink/40 hover:text-accent transition-colors group"
         aria-label={`View ${project.title}`}
       >
         {project.detailHref && (
@@ -77,7 +112,7 @@ function ProjectInfo({ project }: { project: Project }) {
             View Project Details
           </span>
         )}
-        <ExternalLinkIcon />
+        <span className="arrow"><ExternalLinkIcon /></span>
       </Link>
     </>
   );
@@ -85,7 +120,7 @@ function ProjectInfo({ project }: { project: Project }) {
 
 function ImageBlock({ image, title }: { image?: string; title: string }) {
   return (
-    <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-teal-50 flex items-center justify-center">
+    <div className="img-zoom w-full aspect-[4/3] rounded-2xl overflow-hidden bg-teal-50 flex items-center justify-center">
       {image ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img

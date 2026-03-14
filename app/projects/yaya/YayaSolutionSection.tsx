@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -63,9 +64,10 @@ const screens = [
 export default function YayaSolutionSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = screens[activeIndex];
+  const sectionRef = useScrollReveal<HTMLElement>({ threshold: 0.07 });
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section ref={sectionRef} className="reveal-x-left py-20 bg-gray-50">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid gap-12" style={{ gridTemplateColumns: "55fr 45fr", alignItems: "flex-start" }}>
           {/* Left column: section header + buttons + feature description */}
@@ -77,8 +79,9 @@ export default function YayaSolutionSection() {
               <p className="text-ink/60 mb-6">
                 AI Financial Coach combines real-time spending intelligence, personalized product access, and long-term goal planning — powered by a self-improving data engine.
               </p>
-              <p className="text-sm text-accent whitespace-nowrap">
-                Click a button below to see each feature in action &amp; tap inside the app to explore interactively.
+              <p className="cta-bounce text-sm text-accent">
+                Click a button below to see each feature in action &amp; tap inside the app to explore interactively.{" "}
+                <span className="cta-arrow font-medium" style={{ color: "#0D9488" }}>--&gt;</span>
               </p>
             </div>
 

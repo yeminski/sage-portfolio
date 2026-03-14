@@ -7,6 +7,7 @@ import { navLinks } from "@/data/content";
 
 export default function Navbar() {
   const [visible, setVisible] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
 
@@ -20,6 +21,7 @@ export default function Navbar() {
       } else {
         setVisible(true);
       }
+      setScrolled(currentY > 60);
       lastScrollY.current = currentY;
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -34,7 +36,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 flex justify-center pt-5 px-4 transition-transform duration-300 pointer-events-none ${
         visible ? "translate-y-0" : "-translate-y-full"
-      }`}
+      }${scrolled ? " nav-scrolled" : ""}`}
     >
       <nav className="pointer-events-auto flex items-center gap-1 bg-white/95 backdrop-blur-sm rounded-full px-2 py-2 shadow-sm border border-gray-100">
         {navLinks.map((link) => (

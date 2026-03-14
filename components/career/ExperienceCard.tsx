@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { Trophy } from "lucide-react";
 import { type ExperienceItem } from "@/data/experience";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export default function ExperienceCard({ experience }: { experience: ExperienceItem }) {
   const [openCategories, setOpenCategories] = useState<Set<string>>(new Set());
+  const cardRef = useScrollReveal<HTMLDivElement>({ threshold: 0.1 });
 
   function toggleCategory(key: string) {
     setOpenCategories((prev) => {
@@ -21,7 +23,7 @@ export default function ExperienceCard({ experience }: { experience: ExperienceI
   );
 
   return (
-    <div className="border border-gray-200 rounded-xl bg-white overflow-hidden">
+    <div ref={cardRef} className="reveal-x-left border border-gray-200 rounded-xl bg-white overflow-hidden">
       {/* Company header */}
       <div className="px-6 py-5 bg-gray-50 border-b border-gray-200">
         <h2 className="text-lg font-bold text-ink">{experience.company}</h2>
@@ -31,7 +33,7 @@ export default function ExperienceCard({ experience }: { experience: ExperienceI
             {allTags.map((tag) => (
               <span
                 key={tag}
-                className="px-2.5 py-0.5 rounded-full text-xs text-accent/80 bg-accent/8 border border-accent/15"
+                className="tag-pill px-2.5 py-0.5 rounded-full text-xs text-accent/80 bg-accent/8 border border-accent/15"
               >
                 {tag}
               </span>
@@ -77,7 +79,7 @@ export default function ExperienceCard({ experience }: { experience: ExperienceI
                     <button
                       key={cat.label}
                       onClick={() => toggleCategory(key)}
-                      className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium border transition-all duration-150 cursor-pointer ${
+                      className={`tag-underline inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium border transition-all duration-150 cursor-pointer ${
                         isOpen
                           ? "bg-accent text-white border-accent shadow-sm shadow-accent/30"
                           : "bg-accent/10 text-accent border-accent/20 hover:bg-accent/20 hover:border-accent/40 hover:shadow-sm hover:shadow-accent/20"

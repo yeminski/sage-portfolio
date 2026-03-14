@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import ProjectCarousel from "@/components/ProjectCarousel";
 
@@ -15,9 +16,9 @@ export default function ProjectsPreview() {
         <div className="flex justify-center mt-10">
           <Link
             href="/projects"
-            className="inline-block px-8 py-3 border border-ink/25 rounded text-sm font-medium text-ink hover:bg-gray-50 transition-colors"
+            className="arrow-hover inline-flex items-center gap-2 px-8 py-3 border border-ink/25 rounded text-sm font-medium text-ink hover:bg-gray-50 transition-colors"
           >
-            View all projects
+            View all projects <span className="arrow">→</span>
           </Link>
         </div>
 

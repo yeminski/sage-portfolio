@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { projects } from "@/data/content";
 
@@ -8,6 +8,23 @@ export default function ProjectCarousel() {
   const [active, setActive] = useState(0);
   const [visible, setVisible] = useState(true);
   const touchStartX = useRef<number | null>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("is-visible");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   function goTo(i: number) {
     const next = ((i % projects.length) + projects.length) % projects.length;
@@ -34,7 +51,8 @@ export default function ProjectCarousel() {
 
   return (
     <div
-      className="relative"
+      ref={cardRef}
+      className="reveal relative"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       style={{ opacity: visible ? 1 : 0, transition: "opacity 0.18s ease" }}
@@ -43,7 +61,7 @@ export default function ProjectCarousel() {
 
         {/* Image + flanking arrows anchored to image */}
         <div className="relative">
-          <div className="rounded-2xl overflow-hidden bg-teal-50 aspect-[4/3] flex items-center justify-center">
+          <div className="img-zoom rounded-2xl overflow-hidden bg-teal-50 aspect-[4/3] flex items-center justify-center">
             {project.image ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -102,10 +120,10 @@ export default function ProjectCarousel() {
           {project.detailHref && (
             <Link
               href={project.detailHref}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-teal-600 transition-colors"
+              className="arrow-hover inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-teal-600 transition-colors"
             >
               View Project Details
-              <ExternalLinkIcon />
+              <span className="arrow"><ExternalLinkIcon /></span>
             </Link>
           )}
 

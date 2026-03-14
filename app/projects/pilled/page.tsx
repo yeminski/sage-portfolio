@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PillEdPrototypeCTA from "./PillEdPrototypeCTA";
 import PillEdSolutionSection from "./PillEdSolutionSection";
+import RevealSection from "@/components/RevealSection";
 
 export const metadata: Metadata = {
   title: "PillEd — Smart Medication Management | Sage",
@@ -15,10 +16,10 @@ export default function PillEdPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-16 bg-paper">
+      <main className="pt-16 bg-white">
         <PageHero />
         {/* Try Prototype CTA — below hero */}
-        <div className="bg-gray-50 border-b border-gray-100 py-3">
+        <div className="bg-white border-b border-gray-200 py-12">
           <div className="max-w-[1200px] mx-auto px-6">
             <PillEdPrototypeCTA />
           </div>
@@ -33,7 +34,7 @@ export default function PillEdPage() {
         <MarketSection />
         <GTMSection />
       </main>
-      <Footer />
+      <Footer letsTalkBg="bg-white" />
     </>
   );
 }
@@ -60,8 +61,8 @@ function PageHero() {
   ];
 
   return (
-    <div className="bg-paper border-b border-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6 py-16">
+    <div className="bg-white">
+      <div className="max-w-[1200px] mx-auto px-6 pt-16 pb-12">
         <Link
           href="/projects"
           className="inline-flex items-center gap-2 text-sm text-ink/40 hover:text-ink transition-colors mb-8"
@@ -69,7 +70,7 @@ function PageHero() {
           ← Back to Projects
         </Link>
 
-        <div className="flex flex-wrap gap-2 mb-5">
+        <div className="flex flex-wrap gap-2 mb-5 hero-enter" style={{ animationDelay: "0ms" }}>
           {tags.map((t) => (
             <span key={t} className="px-3 py-1 rounded-full text-xs font-medium bg-accent/8 text-accent">
               {t}
@@ -77,13 +78,13 @@ function PageHero() {
           ))}
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-ink mb-2">PillEd</h1>
-        <p className="text-xl text-ink/50 mb-10 max-w-3xl">
+        <h1 className="font-serif text-4xl md:text-5xl font-bold text-ink mb-2 hero-enter" style={{ animationDelay: "100ms" }}>PillEd</h1>
+        <p className="text-xl text-ink/50 mb-10 max-w-3xl hero-enter" style={{ animationDelay: "220ms" }}>
           A user-friendly mobile platform tackling polypharmacy, medication nonadherence,
           and poor health literacy — making medication management safer, smarter, and simpler.
         </p>
 
-        <div className="flex flex-wrap gap-10">
+        <div className="flex flex-wrap gap-10 hero-enter" style={{ animationDelay: "360ms" }}>
           {meta.map(({ label, value }) => (
             <div key={label}>
               <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-1">{label}</p>
@@ -128,30 +129,32 @@ const contributions = [
 
 function MyRoleSection() {
   return (
-    <section className="py-16 bg-paper border-b border-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="01">My Contribution</SectionLabel>
-        <h2 className="text-3xl font-bold text-ink mb-2">What I Did as Product Manager</h2>
-        <p className="text-ink/50 max-w-3xl mb-10">
-          As Product Manager and Strategist, I owned problem framing, product vision, and cross-functional coordination across a 5-person team of MD/MBA and MBA candidates.
-        </p>
+    <RevealSection direction="left" stagger>
+      <section className="py-16 bg-paper border-b border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionLabel index="01">My Contribution</SectionLabel>
+          <h2 className="font-serif text-3xl font-bold text-ink mb-2">What I Did as Product Manager</h2>
+          <p className="text-ink/50 max-w-3xl mb-10">
+            As Product Manager and Strategist, I owned problem framing, product vision, and cross-functional coordination across a 5-person team of MD/MBA and MBA candidates.
+          </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {contributions.map((c) => (
-            <div
-              key={c.title}
-              className="border-t border-ink/10 pt-5 pb-6"
-            >
-              <div className="text-xl mb-3">
-                {c.emoji}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {contributions.map((c) => (
+              <div
+                key={c.title}
+                className="stagger-item reveal border-t border-ink/10 pt-5 pb-6"
+              >
+                <div className="text-xl mb-3">
+                  {c.emoji}
+                </div>
+                <h3 className="font-semibold text-ink mb-2">{c.title}</h3>
+                <p className="text-sm text-ink/50 leading-relaxed">{c.description}</p>
               </div>
-              <h3 className="font-semibold text-ink mb-2">{c.title}</h3>
-              <p className="text-sm text-ink/50 leading-relaxed">{c.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
   );
 }
 
@@ -168,30 +171,32 @@ const problemStats = [
 
 function ProblemSection() {
   return (
-    <section className="py-16 bg-paper border-t border-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="02">Problem</SectionLabel>
-        <h2 className="text-3xl font-bold text-ink mb-4">Pharmaceuticals &amp; the American Consumer</h2>
-        <p className="text-ink/50 max-w-3xl mb-10">
-          Millions of Americans face serious health risks from medication mismanagement. The data reveals
-          a systemic crisis at the intersection of polypharmacy, nonadherence, and low health literacy.
-        </p>
+    <RevealSection direction="up" stagger>
+      <section className="py-16 bg-white border-t border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionLabel index="02">Problem</SectionLabel>
+          <h2 className="font-serif text-3xl font-bold text-ink mb-4">Pharmaceuticals &amp; the American Consumer</h2>
+          <p className="text-ink/50 max-w-3xl mb-10">
+            Millions of Americans face serious health risks from medication mismanagement. The data reveals
+            a systemic crisis at the intersection of polypharmacy, nonadherence, and low health literacy.
+          </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
-          {problemStats.map((s) => (
-            <div
-              key={s.label}
-              className="border-t border-ink/10 pt-4 pb-4"
-            >
-              <p className={`text-4xl font-bold mb-2 ${s.warning ? "text-red-500" : "text-accent"}`}>
-                {s.number}
-              </p>
-              <p className="text-sm text-ink/50 leading-relaxed">{s.label}</p>
-            </div>
-          ))}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+            {problemStats.map((s) => (
+              <div
+                key={s.label}
+                className="stagger-item reveal border-t border-ink/10 pt-4 pb-4"
+              >
+                <p className={`text-4xl font-bold mb-2 ${s.warning ? "text-orange-700" : "text-accent"}`}>
+                  {s.number}
+                </p>
+                <p className="text-sm text-ink/50 leading-relaxed">{s.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
   );
 }
 
@@ -223,33 +228,35 @@ const personas = [
 
 function PersonasSection() {
   return (
-    <section className="py-16 bg-paper border-t border-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="03">Target Users</SectionLabel>
-        <h2 className="text-3xl font-bold text-ink mb-4">Who We&apos;re Building For</h2>
-        <p className="text-ink/50 max-w-3xl mb-10">
-          Three distinct user segments with a shared need: reliable, understandable medication guidance.
-        </p>
+    <RevealSection direction="right" stagger>
+      <section className="py-16 bg-paper border-t border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionLabel index="03">Target Users</SectionLabel>
+          <h2 className="font-serif text-3xl font-bold text-ink mb-4">Who We&apos;re Building For</h2>
+          <p className="text-ink/50 max-w-3xl mb-10">
+            Three distinct user segments with a shared need: reliable, understandable medication guidance.
+          </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {personas.map((p) => (
-            <div
-              key={p.name}
-              className="border-t border-ink/10 pt-5 pb-6 text-center"
-            >
-              <div className={`w-16 h-16 ${p.avatarBg} rounded-full flex items-center justify-center text-3xl mx-auto mb-4`}>
-                {p.emoji}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {personas.map((p) => (
+              <div
+                key={p.name}
+                className="stagger-item reveal border-t border-ink/10 pt-5 pb-6 text-center"
+              >
+                <div className={`w-16 h-16 ${p.avatarBg} rounded-full flex items-center justify-center text-3xl mx-auto mb-4`}>
+                  {p.emoji}
+                </div>
+                <h3 className="font-bold text-ink mb-1">{p.name}</h3>
+                <p className="text-xs text-ink/50 mb-5">{p.role}</p>
+                <div className="border-l-[3px] border-accent pl-4 mt-4 text-left">
+                  <p className="text-sm italic text-ink/70">&ldquo;{p.quote}&rdquo;</p>
+                </div>
               </div>
-              <h3 className="font-bold text-ink mb-1">{p.name}</h3>
-              <p className="text-xs text-ink/50 mb-5">{p.role}</p>
-              <div className="border-l-[3px] border-accent pl-4 mt-4 text-left">
-                <p className="text-sm italic text-ink/70">&ldquo;{p.quote}&rdquo;</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
   );
 }
 
@@ -267,34 +274,36 @@ const journeySteps = [
 
 function UserJourneySection() {
   return (
-    <section className="py-16 bg-paper border-t border-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="05">User Journey</SectionLabel>
-        <h2 className="text-3xl font-bold text-ink mb-4">End-to-End Experience Flow</h2>
-        <p className="text-ink/50 max-w-3xl mb-10">
-          From onboarding to daily medication management — a seamless, guided experience designed for users with low health literacy.
-        </p>
+    <RevealSection direction="left">
+      <section className="py-16 bg-paper border-t border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionLabel index="05">User Journey</SectionLabel>
+          <h2 className="font-serif text-3xl font-bold text-ink mb-4">End-to-End Experience Flow</h2>
+          <p className="text-ink/50 max-w-3xl mb-10">
+            From onboarding to daily medication management — a seamless, guided experience designed for users with low health literacy.
+          </p>
 
-        <div className="overflow-x-auto pb-4">
-          <div className="flex items-start gap-0 min-w-max">
-            {journeySteps.map((s, i) => (
-              <div key={s.step} className="flex items-start">
-                <div className="flex flex-col items-center w-36 text-center">
-                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold text-sm mb-3">
-                    {s.step}
+          <div className="overflow-x-auto pb-4">
+            <div className="flex items-start gap-0 min-w-max">
+              {journeySteps.map((s, i) => (
+                <div key={s.step} className="flex items-start">
+                  <div className="flex flex-col items-center w-36 text-center">
+                    <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold text-sm mb-3">
+                      {s.step}
+                    </div>
+                    <p className="text-sm font-semibold text-ink mb-1">{s.title}</p>
+                    <p className="text-xs text-ink/50 leading-snug px-2">{s.description}</p>
                   </div>
-                  <p className="text-sm font-semibold text-ink mb-1">{s.title}</p>
-                  <p className="text-xs text-ink/50 leading-snug px-2">{s.description}</p>
+                  {i < journeySteps.length - 1 && (
+                    <div className="mt-5 text-gray-300 text-lg px-1">→</div>
+                  )}
                 </div>
-                {i < journeySteps.length - 1 && (
-                  <div className="mt-5 text-gray-300 text-lg px-1">→</div>
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
   );
 }
 
@@ -320,49 +329,51 @@ const matrix = [
 
 function CompetitorSection() {
   return (
-    <section className="py-16 bg-paper border-t border-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="07">Competitive Landscape</SectionLabel>
-        <h2 className="text-3xl font-bold text-ink mb-4">Feature Comparison Matrix</h2>
-        <p className="text-ink/50 max-w-3xl mb-10">
-          Existing solutions address fragments of the problem. PillEd is the only platform covering all critical capabilities.
-        </p>
+    <RevealSection direction="right">
+      <section className="py-16 bg-paper border-t border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionLabel index="07">Competitive Landscape</SectionLabel>
+          <h2 className="font-serif text-3xl font-bold text-ink mb-4">Feature Comparison Matrix</h2>
+          <p className="text-ink/50 max-w-3xl mb-10">
+            Existing solutions address fragments of the problem. PillEd is the only platform covering all critical capabilities.
+          </p>
 
-        <div className="overflow-x-auto rounded-lg border border-ink/10 bg-paper">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="bg-gray-50 border-b border-gray-200">
-                <th className="text-left p-4 font-semibold text-ink">Feature</th>
-                {competitors.map((c, i) => (
-                  <th
-                    key={c}
-                    className={`text-left p-4 font-semibold whitespace-nowrap ${i === 0 ? "text-accent bg-accent/5" : "text-ink/60"}`}
-                  >
-                    {c}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {competitorFeatures.map((feat, fi) => (
-                <tr key={feat} className="border-b border-gray-100 last:border-0">
-                  <td className="p-4 font-medium text-ink">{feat}</td>
-                  {matrix[fi].map((has, ci) => (
-                    <td key={ci} className={`p-4 ${ci === 0 ? "bg-accent/5" : ""}`}>
-                      {has ? (
-                        <span className="text-accent font-bold text-base">✓</span>
-                      ) : (
-                        <span className="text-gray-300 text-base">✗</span>
-                      )}
-                    </td>
+          <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-gray-50 border-b border-gray-200">
+                  <th className="text-left p-4 font-semibold text-ink">Feature</th>
+                  {competitors.map((c, i) => (
+                    <th
+                      key={c}
+                      className={`text-left p-4 font-semibold whitespace-nowrap ${i === 0 ? "text-accent bg-accent/5" : "text-ink/60"}`}
+                    >
+                      {c}
+                    </th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {competitorFeatures.map((feat, fi) => (
+                  <tr key={feat} className="border-b border-gray-100 last:border-0">
+                    <td className="p-4 font-medium text-ink">{feat}</td>
+                    {matrix[fi].map((has, ci) => (
+                      <td key={ci} className={`p-4 ${ci === 0 ? "bg-accent/5" : ""}`}>
+                        {has ? (
+                          <span className="text-accent font-bold text-base">✓</span>
+                        ) : (
+                          <span className="text-gray-300 text-base">✗</span>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
   );
 }
 
@@ -382,36 +393,38 @@ function MarketSection() {
   ];
 
   return (
-    <section className="py-16 bg-paper border-t border-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="08">Market Opportunity</SectionLabel>
-        <h2 className="text-3xl font-bold text-ink mb-4">Market Sizing</h2>
-        <p className="text-ink/50 max-w-3xl mb-10">
-          Targeting the &ldquo;Mother&rdquo; (4.0M) and &ldquo;Caregiver&rdquo; (7.3M) segments with a $50/year freemium subscription model.
-        </p>
+    <RevealSection direction="up" stagger>
+      <section className="py-16 bg-white border-t border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionLabel index="08">Market Opportunity</SectionLabel>
+          <h2 className="font-serif text-3xl font-bold text-ink mb-4">Market Sizing</h2>
+          <p className="text-ink/50 max-w-3xl mb-10">
+            Targeting the &ldquo;Mother&rdquo; (4.0M) and &ldquo;Caregiver&rdquo; (7.3M) segments with a $50/year freemium subscription model.
+          </p>
 
-        <div className="max-w-2xl space-y-4 mb-16">
-          {funnel.map(({ label, sub, widthClass, color }) => (
-            <div key={label} className="flex items-center gap-5">
-              <div className={`h-12 ${widthClass} ${color} rounded-lg flex items-center px-5 flex-shrink-0 min-w-0`}>
-                <span className="text-white font-bold text-sm truncate">{label}</span>
+          <div className="max-w-2xl space-y-4 mb-16">
+            {funnel.map(({ label, sub, widthClass, color }) => (
+              <div key={label} className="flex items-center gap-5">
+                <div className={`h-12 ${widthClass} ${color} rounded-lg flex items-center px-5 flex-shrink-0 min-w-0`}>
+                  <span className="text-white font-bold text-sm truncate">{label}</span>
+                </div>
+                <span className="text-sm text-ink/50 flex-shrink-0">{sub}</span>
               </div>
-              <span className="text-sm text-ink/50 flex-shrink-0">{sub}</span>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <h3 className="font-bold text-ink mb-6">Growth Drivers</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {drivers.map((d) => (
-            <div key={d.label} className="border-t border-ink/10 pt-4 pb-4">
-              <p className="text-4xl font-bold text-accent mb-2">{d.number}</p>
-              <p className="text-sm text-ink/50 leading-relaxed">{d.label}</p>
-            </div>
-          ))}
+          <h3 className="font-bold text-ink mb-6">Growth Drivers</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {drivers.map((d) => (
+              <div key={d.label} className="stagger-item reveal border-t border-ink/10 pt-4 pb-4">
+                <p className="text-4xl font-bold text-accent mb-2">{d.number}</p>
+                <p className="text-sm text-ink/50 leading-relaxed">{d.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
   );
 }
 
@@ -442,30 +455,32 @@ const phases = [
 
 function GTMSection() {
   return (
-    <section className="py-16 bg-paper border-t border-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="09">Go-to-Market Strategy</SectionLabel>
-        <h2 className="text-3xl font-bold text-ink mb-4">Phased Market Entry</h2>
-        <p className="text-ink/50 max-w-3xl mb-10">
-          A B2B-first approach to build medical credibility before scaling to consumers — reducing CAC by leveraging
-          distribution channels that already have patient trust.
-        </p>
+    <RevealSection direction="left" stagger>
+      <section className="py-16 bg-paper border-t border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionLabel index="09">Go-to-Market Strategy</SectionLabel>
+          <h2 className="font-serif text-3xl font-bold text-ink mb-4">Phased Market Entry</h2>
+          <p className="text-ink/50 max-w-3xl mb-10">
+            A B2B-first approach to build medical credibility before scaling to consumers — reducing CAC by leveraging
+            distribution channels that already have patient trust.
+          </p>
 
-        <div className="relative pl-8">
-          <div className="absolute left-0 top-2 bottom-2 w-px bg-ink/10" />
-          <div className="flex flex-col gap-10">
-            {phases.map((phase) => (
-              <div key={phase.date} className="relative">
-                <div className="absolute left-[-1.625rem] top-1 w-3 h-3 rounded-full bg-accent ring-4 ring-paper" />
-                <p className="text-xs font-bold text-accent uppercase tracking-widest mb-1">{phase.date}</p>
-                <h3 className="font-semibold text-ink mb-1">{phase.title}</h3>
-                <p className="text-sm text-ink/50 leading-relaxed max-w-3xl">{phase.description}</p>
-              </div>
-            ))}
+          <div className="relative pl-8">
+            <div className="absolute left-0 top-2 bottom-2 w-px bg-ink/10" />
+            <div className="flex flex-col gap-10">
+              {phases.map((phase) => (
+                <div key={phase.date} className="stagger-item reveal relative">
+                  <div className="absolute left-[-1.625rem] top-1 w-3 h-3 rounded-full bg-accent ring-4 ring-paper" />
+                  <p className="text-xs font-bold text-accent uppercase tracking-widest mb-1">{phase.date}</p>
+                  <h3 className="font-semibold text-ink mb-1">{phase.title}</h3>
+                  <p className="text-sm text-ink/50 leading-relaxed max-w-3xl">{phase.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </RevealSection>
   );
 }
 
@@ -518,52 +533,53 @@ const techStack = [
 
 function ArchSection() {
   return (
-    <section className="py-16 bg-paper border-t border-gray-100">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel index="06">Technical Architecture</SectionLabel>
-        <h2 className="text-3xl font-bold text-ink mb-4">System Overview</h2>
-        <p className="text-ink/50 max-w-3xl mb-10">
-          Modular architecture designed for scalability — dedicated processing modules for OCR, drug interaction analysis,
-          and notification delivery, fed by a multi-source external data layer.
-        </p>
+    <RevealSection direction="right">
+      <section className="py-16 bg-white border-t border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionLabel index="06">Technical Architecture</SectionLabel>
+          <h2 className="font-serif text-3xl font-bold text-ink mb-4">System Overview</h2>
+          <p className="text-ink/50 max-w-3xl mb-10">
+            Modular architecture designed for scalability — dedicated processing modules for OCR, drug interaction analysis,
+            and notification delivery, fed by a multi-source external data layer.
+          </p>
 
-        {/* Architecture diagram */}
-        <div className="border border-ink/10 rounded-lg p-6 bg-paper overflow-x-auto mb-14">
-          <div className="flex flex-col gap-5 min-w-[560px]">
-            {archLayers.map((layer, i) => (
-              <div key={layer.label}>
-                <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-3">{layer.label}</p>
-                <div className="flex flex-wrap gap-3">
-                  {layer.boxes.map((box) => (
-                    <div key={box.text} className={`px-4 py-2 rounded-lg text-sm font-medium ${box.style}`}>
-                      {box.text}
-                    </div>
-                  ))}
+          {/* Architecture diagram */}
+          <div className="border border-gray-200 rounded-lg p-6 bg-white overflow-x-auto mb-14">
+            <div className="flex flex-col gap-5 min-w-[560px]">
+              {archLayers.map((layer, i) => (
+                <div key={layer.label}>
+                  <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-3">{layer.label}</p>
+                  <div className="flex flex-wrap gap-3">
+                    {layer.boxes.map((box) => (
+                      <div key={box.text} className={`px-4 py-2 rounded-lg text-sm font-medium ${box.style}`}>
+                        {box.text}
+                      </div>
+                    ))}
+                  </div>
+                  {i < archLayers.length - 1 && (
+                    <div className="mt-4 text-gray-300 text-sm pl-2">↓</div>
+                  )}
                 </div>
-                {i < archLayers.length - 1 && (
-                  <div className="mt-4 text-gray-300 text-sm pl-2">↓</div>
-                )}
+              ))}
+            </div>
+          </div>
+
+          {/* Tech stack */}
+          <h3 className="font-bold text-ink mb-6">Tech Stack</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+            {techStack.map((t) => (
+              <div
+                key={t.label}
+                className="border-t border-ink/10 pt-4 pb-4 text-center"
+              >
+                <span className="text-2xl block mb-2">{t.emoji}</span>
+                <span className="text-xs font-medium text-ink/60">{t.label}</span>
               </div>
             ))}
           </div>
         </div>
-
-        {/* Tech stack */}
-        <h3 className="font-bold text-ink mb-6">Tech Stack</h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
-          {techStack.map((t) => (
-            <div
-              key={t.label}
-              className="border-t border-ink/10 pt-4 pb-4 text-center"
-            >
-              <span className="text-2xl block mb-2">{t.emoji}</span>
-              <span className="text-xs font-medium text-ink/60">{t.label}</span>
-            </div>
-          ))}
-        </div>
-
-      </div>
-    </section>
+      </section>
+    </RevealSection>
   );
 }
 

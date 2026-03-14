@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useRef } from "react";
 import { GraduationCap, BadgeCheck, type LucideIcon } from "lucide-react";
 
 const credentials: { label: string; sublabel: string; Icon: LucideIcon }[] = [
@@ -43,6 +45,26 @@ const tools: { label: string; logo: React.ReactNode }[] = [
 ];
 
 export default function CredentialsTools() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("is-visible");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="bg-paper py-16 border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -51,7 +73,7 @@ export default function CredentialsTools() {
         <h2 className="font-serif text-3xl font-bold text-ink mt-2 mb-1">Credentials & Tools</h2>
         <p className="text-ink/50 mb-10">The foundation behind every product decision</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10">
+        <div ref={sectionRef} className="reveal grid grid-cols-1 md:grid-cols-3 gap-x-10">
 
           {/* Credentials — 1 col */}
           <div className="border-t border-ink/10 pt-5 pb-6">

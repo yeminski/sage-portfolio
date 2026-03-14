@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ExperienceViewToggle from "@/components/career/ExperienceViewToggle";
+import AnimatedH1 from "@/components/career/AnimatedH1";
 
 export const metadata: Metadata = {
   title: "Experience | Sage",
@@ -20,9 +21,12 @@ export default function ExperiencePage() {
             <span className="text-[10px] font-semibold text-accent uppercase tracking-widest">
               Work History
             </span>
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-ink mt-2 mb-3">
+            <AnimatedH1
+              className="font-serif text-4xl md:text-5xl font-bold text-ink mt-2 mb-3"
+              animationDelay="100ms"
+            >
               Experience
-            </h1>
+            </AnimatedH1>
             <p className="text-ink/50">
               Product management across hardware, e-commerce, and service — from early-stage startups to a global enterprise. Click any tag to explore what I worked on.
             </p>

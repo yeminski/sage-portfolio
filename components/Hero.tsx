@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import RotatingTitle from "@/components/RotatingTitle";
 import EmailButton from "@/components/EmailButton";
@@ -10,16 +11,16 @@ export default function Hero() {
 
           {/* ── Left: text ── */}
           <div className="flex-1">
-            <p className="text-sm text-ink/40 font-medium mb-3">Hi There</p>
+            <p className="hero-enter text-sm text-ink/40 font-medium mb-3" style={{ animationDelay: "0ms" }}>Hi There</p>
 
-            <h1 className="font-serif text-7xl md:text-8xl font-bold text-ink leading-none tracking-tight mb-4">
+            <h1 className="hero-enter font-serif text-7xl md:text-8xl font-bold text-ink leading-none tracking-tight mb-4" style={{ animationDelay: "120ms" }}>
               I&apos;m <span style={{ color: "#1C4A2E" }}>Sage</span>
             </h1>
 
-            <p className="font-serif text-2xl md:text-3xl font-semibold text-ink leading-none tracking-tight mb-2 whitespace-nowrap">
+            <p className="hero-enter font-serif text-2xl md:text-3xl font-semibold text-ink leading-none tracking-tight mb-2 whitespace-nowrap" style={{ animationDelay: "240ms" }}>
               Product Manager who&apos;s also a
             </p>
-            <div className="font-serif text-2xl md:text-3xl font-semibold text-ink leading-none tracking-tight mb-4">
+            <div className="hero-enter font-serif text-2xl md:text-3xl font-semibold text-ink leading-none tracking-tight mb-4" style={{ animationDelay: "360ms" }}>
               <RotatingTitle />
             </div>
 
@@ -28,7 +29,7 @@ export default function Hero() {
             </p>
 
             {/* Social links */}
-            <div className="flex flex-wrap items-center gap-6">
+            <div className="hero-enter flex flex-wrap items-center gap-6" style={{ animationDelay: "500ms" }}>
               <a
                 href="https://www.linkedin.com/in/sage-seo/"
                 target="_blank"
@@ -51,7 +52,7 @@ export default function Hero() {
           </div>
 
           {/* ── Right: photo ── */}
-          <div className="flex-1 flex justify-center">
+          <div className="hero-image-enter flex-1 flex justify-center" style={{ animationDelay: "500ms" }}>
             <Image
               src="/hero-image.png"
               alt="Sage — Product Manager"

@@ -2,18 +2,18 @@ import { useState } from "react";
 
 const SCREENS = ["home", "onboarding", "scan", "alert", "info", "schedule"];
 
-const teal = "#0d9488";
-const tealLight = "#f0fdf9";
-const tealMid = "#ccfbf1";
-const red = "#ef4444";
-const redLight = "#fef2f2";
+const teal = "#0D9488";
+const tealLight = "#F4FAFA";
+const tealMid = "#B2DEDD";
+const red = "#C0392B";
+const redLight = "#FEF5F4";
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 function PhoneShell({ children }) {
   return (
     <div style={{
       width: 320, height: 620,
-      background: "#111827",
+      background: "#0F2E2C",
       borderRadius: 44,
       padding: "10px 8px",
       boxShadow: "0 30px 80px rgba(0,0,0,0.45), inset 0 0 0 1px #374151",
@@ -26,7 +26,7 @@ function PhoneShell({ children }) {
         position: "absolute", top: 14, left: "50%",
         transform: "translateX(-50%)",
         width: 90, height: 24,
-        background: "#111827",
+        background: "#0F2E2C",
         borderRadius: 12,
         zIndex: 10,
       }} />
@@ -39,13 +39,13 @@ function PhoneShell({ children }) {
       }}>
         {/* status bar */}
         <div style={{
-          height: 44, background: teal,
+          height: 44, background: "#FFFFFF", borderBottom: "1px solid #E0EEEE",
           display: "flex", alignItems: "flex-end",
           justifyContent: "space-between",
           padding: "0 20px 6px",
         }}>
-          <span style={{ color: "white", fontSize: 11, fontWeight: 700 }}>9:41</span>
-          <span style={{ color: "white", fontSize: 11 }}>●●●</span>
+          <span style={{ color: "#0F2E2C", fontSize: 11, fontWeight: 700 }}>9:41</span>
+          <span style={{ color: "#9BBFBD", fontSize: 11 }}>●●●</span>
         </div>
         <div style={{ height: "calc(100% - 44px)", overflowY: "auto" }}>
           {children}
@@ -63,7 +63,7 @@ function ProgressDots({ current }) {
           width: i === current ? 20 : 6,
           height: 6,
           borderRadius: 3,
-          background: i === current ? teal : "#e5e7eb",
+          background: i === current ? teal : "#E0EEEE",
           transition: "all 0.3s",
         }} />
       ))}
@@ -154,32 +154,32 @@ function OnboardingScreen({ next }) {
       {/* ── STEP 0: Basic info ── */}
       {step === 0 && (
         <>
-          <div style={{ fontSize: 22, fontWeight: 800, color: "#111827", marginBottom: 4 }}>
+          <div style={{ fontSize: 22, fontWeight: 800, color: "#0F2E2C", marginBottom: 4 }}>
             Welcome to PillEd 💊
           </div>
-          <div style={{ fontSize: 13, color: "#6b7280", marginBottom: 24, lineHeight: 1.5 }}>
+          <div style={{ fontSize: 13, color: "#4A7A77", marginBottom: 24, lineHeight: 1.5 }}>
             Your smart medication companion. Let's set up your health profile.
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24 }}>
             {[{ label: "Full Name", placeholder: "Jane Doe" }, { label: "Age", placeholder: "34" }].map(f => (
               <div key={f.label}>
-                <div style={{ fontSize: 11, fontWeight: 600, color: "#374151", marginBottom: 4 }}>{f.label}</div>
+                <div style={{ fontSize: 11, fontWeight: 600, color: "#0F2E2C", marginBottom: 4 }}>{f.label}</div>
                 <input readOnly placeholder={f.placeholder} style={{
                   width: "100%", padding: "10px 12px",
                   border: "1.5px solid #e5e7eb", borderRadius: 10,
-                  fontSize: 14, color: "#111827", boxSizing: "border-box", background: "#f9fafb",
+                  fontSize: 14, color: "#0F2E2C", boxSizing: "border-box", background: "#F4FAFA",
                 }} />
               </div>
             ))}
             <div>
-              <div style={{ fontSize: 11, fontWeight: 600, color: "#374151", marginBottom: 4 }}>Sex at Birth</div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: "#0F2E2C", marginBottom: 4 }}>Sex at Birth</div>
               <div style={{ display: "flex", gap: 8 }}>
                 {["Female", "Male", "Other"].map(s => (
                   <div key={s} style={{
                     flex: 1, padding: "9px 0", textAlign: "center",
                     border: s === "Female" ? `2px solid ${teal}` : "1.5px solid #e5e7eb",
                     borderRadius: 10, fontSize: 12, fontWeight: 600,
-                    color: s === "Female" ? teal : "#6b7280",
+                    color: s === "Female" ? teal : "#4A7A77",
                     background: s === "Female" ? tealLight : "white", cursor: "pointer",
                   }}>{s}</div>
                 ))}
@@ -193,10 +193,10 @@ function OnboardingScreen({ next }) {
       {/* ── STEP 1: Health conditions ── */}
       {step === 1 && (
         <>
-          <div style={{ fontSize: 20, fontWeight: 800, color: "#111827", marginBottom: 2 }}>
+          <div style={{ fontSize: 20, fontWeight: 800, color: "#0F2E2C", marginBottom: 2 }}>
             Any health conditions?
           </div>
-          <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 16, lineHeight: 1.5 }}>
+          <div style={{ fontSize: 12, color: "#4A7A77", marginBottom: 16, lineHeight: 1.5 }}>
             Select all that apply — helps us flag contraindications.
           </div>
 
@@ -206,9 +206,9 @@ function OnboardingScreen({ next }) {
               return (
                 <div key={c} onClick={() => toggle(selected, setSelected, c)} style={{
                   padding: "7px 13px", borderRadius: 20,
-                  border: `1.5px solid ${on ? teal : "#e5e7eb"}`,
+                  border: `1.5px solid ${on ? teal : "#E0EEEE"}`,
                   background: on ? tealLight : "white",
-                  color: on ? teal : "#374151",
+                  color: on ? teal : "#0F2E2C",
                   fontWeight: on ? 700 : 500, fontSize: 12, cursor: "pointer",
                   transition: "all 0.15s",
                 }}>{on && "✓ "}{c}</div>
@@ -257,7 +257,7 @@ function OnboardingScreen({ next }) {
                 borderRadius: 10, padding: "8px 14px", fontWeight: 700, fontSize: 13, cursor: "pointer",
               }}>Add</button>
               <button onClick={() => { setShowCustomInput(false); setCustomCondition(""); }} style={{
-                background: "white", color: "#9ca3af", border: "1.5px solid #e5e7eb",
+                background: "white", color: "#9BBFBD", border: "1.5px solid #e5e7eb",
                 borderRadius: 10, padding: "8px 10px", fontSize: 13, cursor: "pointer",
               }}>✕</button>
             </div>
@@ -273,10 +273,10 @@ function OnboardingScreen({ next }) {
       {/* ── STEP 2: Current medications ── */}
       {step === 2 && (
         <>
-          <div style={{ fontSize: 19, fontWeight: 800, color: "#111827", marginBottom: 2 }}>
+          <div style={{ fontSize: 19, fontWeight: 800, color: "#0F2E2C", marginBottom: 2 }}>
             Current medications?
           </div>
-          <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 14, lineHeight: 1.5 }}>
+          <div style={{ fontSize: 12, color: "#4A7A77", marginBottom: 14, lineHeight: 1.5 }}>
             Add what you're already taking so we can check interactions.
           </div>
 
@@ -321,7 +321,7 @@ function OnboardingScreen({ next }) {
                   }}>Add to My List</button>
                 )}
                 <button onClick={() => { setScanMode(false); setScanDone(false); }} style={{
-                  background: "white", color: "#9ca3af", border: "1.5px solid #e5e7eb",
+                  background: "white", color: "#9BBFBD", border: "1.5px solid #e5e7eb",
                   borderRadius: 10, padding: "9px 14px", fontSize: 13, cursor: "pointer",
                 }}>✕</button>
               </div>
@@ -341,16 +341,16 @@ function OnboardingScreen({ next }) {
                     <div key={m.name} onClick={() => toggle(selMeds, setSelMeds, m.name)} style={{
                       display: "flex", alignItems: "center", justifyContent: "space-between",
                       padding: "9px 12px",
-                      border: `1.5px solid ${on ? teal : "#e5e7eb"}`,
+                      border: `1.5px solid ${on ? teal : "#E0EEEE"}`,
                       borderRadius: 10, background: on ? tealLight : "white", cursor: "pointer",
                     }}>
                       <div>
-                        <div style={{ fontSize: 13, fontWeight: on ? 700 : 500, color: on ? teal : "#374151" }}>{m.name}</div>
-                        <div style={{ fontSize: 10, color: "#9ca3af" }}>{m.note}</div>
+                        <div style={{ fontSize: 13, fontWeight: on ? 700 : 500, color: on ? teal : "#0F2E2C" }}>{m.name}</div>
+                        <div style={{ fontSize: 10, color: "#9BBFBD" }}>{m.note}</div>
                       </div>
                       <div style={{
                         width: 20, height: 20, borderRadius: 10, flexShrink: 0,
-                        background: on ? teal : "#e5e7eb",
+                        background: on ? teal : "#E0EEEE",
                         display: "flex", alignItems: "center", justifyContent: "center",
                       }}>
                         {on && <span style={{ color: "white", fontSize: 12, fontWeight: 700 }}>✓</span>}
@@ -365,7 +365,7 @@ function OnboardingScreen({ next }) {
           {/* manually added */}
           {selMeds.filter(m => !recommended.map(r => r.name).includes(m)).length > 0 && (
             <>
-              <div style={{ fontSize: 10, fontWeight: 700, color: "#9ca3af", letterSpacing: 1, marginBottom: 8 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: "#9BBFBD", letterSpacing: 1, marginBottom: 8 }}>
                 ADDED BY YOU
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 14 }}>
@@ -377,7 +377,7 @@ function OnboardingScreen({ next }) {
                   }}>
                     <div style={{ fontSize: 13, fontWeight: 700, color: teal }}>{m}</div>
                     <span onClick={() => setSelMeds(selMeds.filter(s => s !== m))}
-                      style={{ color: "#9ca3af", cursor: "pointer", fontSize: 16 }}>×</span>
+                      style={{ color: "#9BBFBD", cursor: "pointer", fontSize: 16 }}>×</span>
                   </div>
                 ))}
               </div>
@@ -387,9 +387,9 @@ function OnboardingScreen({ next }) {
           {/* no conditions selected fallback */}
           {recommended.length === 0 && (
             <div style={{
-              padding: "14px", borderRadius: 12, background: "#f9fafb",
+              padding: "14px", borderRadius: 12, background: "#F4FAFA",
               border: "1.5px dashed #e5e7eb", textAlign: "center",
-              fontSize: 12, color: "#9ca3af", marginBottom: 14,
+              fontSize: 12, color: "#9BBFBD", marginBottom: 14,
             }}>
               No conditions selected — add medications manually below
             </div>
@@ -510,7 +510,7 @@ function HomeScreen({ next, profile }) {
         {/* TODAY'S SCHEDULE */}
         <div style={{ marginBottom: 20 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: "#111827" }}>TODAY'S DOSES</div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: "#0F2E2C" }}>TODAY'S DOSES</div>
             <div style={{ fontSize: 11, color: teal, fontWeight: 600 }}>See all</div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -518,24 +518,24 @@ function HomeScreen({ next, profile }) {
               <div key={i} style={{
                 display: "flex", alignItems: "center", gap: 12,
                 padding: "10px 12px",
-                background: s.done ? "#f9fafb" : "white",
-                border: `1.5px solid ${s.done ? "#f3f4f6" : "#e5e7eb"}`,
+                background: s.done ? "#F4FAFA" : "white",
+                border: `1.5px solid ${s.done ? "#F4FAFA" : "#E0EEEE"}`,
                 borderRadius: 12,
                 opacity: s.done ? 0.65 : 1,
               }}>
                 <div style={{
                   width: 36, height: 36, borderRadius: 10,
-                  background: s.done ? "#f3f4f6" : tealLight,
+                  background: s.done ? "#F4FAFA" : tealLight,
                   display: "flex", alignItems: "center", justifyContent: "center",
                   fontSize: 16, flexShrink: 0,
                 }}>
                   {s.done ? "✓" : "💊"}
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: s.done ? "#9ca3af" : "#111827" }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: s.done ? "#9BBFBD" : "#0F2E2C" }}>
                     {s.med}
                   </div>
-                  <div style={{ fontSize: 11, color: "#9ca3af" }}>{s.time}</div>
+                  <div style={{ fontSize: 11, color: "#9BBFBD" }}>{s.time}</div>
                 </div>
                 {!s.done && (
                   <div style={{
@@ -551,13 +551,13 @@ function HomeScreen({ next, profile }) {
 
         {/* QUICK ACTIONS */}
         <div style={{ marginBottom: 20 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: "#111827", marginBottom: 10 }}>QUICK ACTIONS</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: "#0F2E2C", marginBottom: 10 }}>QUICK ACTIONS</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
             {[
               { icon: "📷", label: "Scan New Med", color: teal, bg: tealLight, action: next },
-              { icon: "⚠️", label: "Check Interactions", color: "#f59e0b", bg: "#fffbeb", action: null },
-              { icon: "📋", label: "My Med List", color: "#6366f1", bg: "#eef2ff", action: null },
-              { icon: "💰", label: "Compare Prices", color: "#10b981", bg: "#ecfdf5", action: null },
+              { icon: "⚠️", label: "Check Interactions", color: "#5BB8B0", bg: "#F4FAFA", action: null },
+              { icon: "📋", label: "My Med List", color: "#0D9488", bg: "#F4FAFA", action: null },
+              { icon: "💰", label: "Compare Prices", color: "#4A7A77", bg: "#F4FAFA", action: null },
             ].map((a, i) => (
               <div key={i} onClick={a.action || undefined} style={{
                 padding: "14px 12px",
@@ -576,10 +576,10 @@ function HomeScreen({ next, profile }) {
 
         {/* HEALTH ALERTS */}
         <div>
-          <div style={{ fontSize: 12, fontWeight: 700, color: "#111827", marginBottom: 10 }}>ALERTS</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: "#0F2E2C", marginBottom: 10 }}>ALERTS</div>
           <div style={{
             padding: "12px 14px",
-            background: "#fff7ed",
+            background: "#F4FAFA",
             border: "1.5px solid #fed7aa",
             borderRadius: 12,
             display: "flex", gap: 10, alignItems: "flex-start",
@@ -587,8 +587,8 @@ function HomeScreen({ next, profile }) {
           }}>
             <span style={{ fontSize: 18 }}>⚠️</span>
             <div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#92400e" }}>Refill reminder</div>
-              <div style={{ fontSize: 11, color: "#78350f", marginTop: 2 }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#0F2E2C" }}>Refill reminder</div>
+              <div style={{ fontSize: 11, color: "#0F2E2C", marginTop: 2 }}>
                 {meds[0] || "Lisinopril"} — 5 days supply remaining
               </div>
             </div>
@@ -603,8 +603,8 @@ function HomeScreen({ next, profile }) {
             }}>
               <span style={{ fontSize: 18 }}>💡</span>
               <div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: "#065f46" }}>Diabetes tip</div>
-                <div style={{ fontSize: 11, color: "#047857", marginTop: 2 }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#0F2E2C" }}>Diabetes tip</div>
+                <div style={{ fontSize: 11, color: "#0D9488", marginTop: 2 }}>
                   Take Metformin with meals to reduce stomach upset.
                 </div>
               </div>
@@ -632,7 +632,7 @@ function HomeScreen({ next, profile }) {
             flex: 1, textAlign: "center", cursor: "pointer",
           }}>
             <div style={{ fontSize: 18 }}>{n.icon}</div>
-            <div style={{ fontSize: 9, fontWeight: n.active ? 700 : 500, color: n.active ? teal : "#9ca3af", marginTop: 2 }}>
+            <div style={{ fontSize: 9, fontWeight: n.active ? 700 : 500, color: n.active ? teal : "#9BBFBD", marginTop: 2 }}>
               {n.label}
             </div>
           </div>
@@ -689,16 +689,16 @@ function ScanScreen({ next }) {
           <div style={{ textAlign: "center", padding: 20 }}>
             <div style={{ fontSize: 44, marginBottom: 8 }}>✅</div>
             <div style={{ fontSize: 16, fontWeight: 700, color: teal }}>Robitussin Adult Detected</div>
-            <div style={{ fontSize: 12, color: "#6b7280", marginTop: 4 }}>Non Drowsy Cough + Chest Congestion</div>
+            <div style={{ fontSize: 12, color: "#4A7A77", marginTop: 4 }}>Non Drowsy Cough + Chest Congestion</div>
           </div>
         )}
       </div>
 
       <div style={{ padding: "16px 20px" }}>
-        <div style={{ fontSize: 16, fontWeight: 800, color: "#111827", marginBottom: 4 }}>
+        <div style={{ fontSize: 16, fontWeight: 800, color: "#0F2E2C", marginBottom: 4 }}>
           Scan Your Medication
         </div>
-        <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 16, lineHeight: 1.5 }}>
+        <div style={{ fontSize: 12, color: "#4A7A77", marginBottom: 16, lineHeight: 1.5 }}>
           Our OCR engine identifies your medication and checks it against your current medications instantly.
         </div>
 
@@ -738,23 +738,23 @@ function AlertScreen({ next, back }) {
         </div>
       </div>
 
-      <div style={{ fontSize: 15, fontWeight: 800, color: "#111827", marginBottom: 12 }}>
+      <div style={{ fontSize: 15, fontWeight: 800, color: "#0F2E2C", marginBottom: 12 }}>
         Drug Interaction Details
       </div>
 
       {[
         { drug1: "Robitussin", drug2: "Lisinopril", risk: "HIGH", color: red, bg: redLight, detail: "Dextromethorphan may reduce ACE inhibitor effectiveness" },
-        { drug1: "Robitussin", drug2: "Metformin", risk: "LOW", color: "#16a34a", bg: "#f0fdf4", detail: "Minor — monitor blood sugar levels as precaution" },
+        { drug1: "Robitussin", drug2: "Metformin", risk: "LOW", color: "#4A7A77", bg: "#EEF9F8", detail: "Minor — monitor blood sugar levels as precaution" },
       ].map((r, i) => (
         <div key={i} style={{
-          border: `1.5px solid ${r.bg === redLight ? "#fca5a5" : "#bbf7d0"}`,
+          border: `1.5px solid ${r.bg === redLight ? "#fca5a5" : "#B2DEDD"}`,
           borderRadius: 12,
           padding: "12px 14px",
           marginBottom: 10,
           background: r.bg,
         }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-            <div style={{ fontSize: 13, fontWeight: 700, color: "#111827" }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#0F2E2C" }}>
               {r.drug1} × {r.drug2}
             </div>
             <div style={{
@@ -763,18 +763,18 @@ function AlertScreen({ next, back }) {
               border: `1px solid ${r.color}`,
             }}>{r.risk} RISK</div>
           </div>
-          <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.5 }}>{r.detail}</div>
+          <div style={{ fontSize: 12, color: "#0F2E2C", lineHeight: 1.5 }}>{r.detail}</div>
         </div>
       ))}
 
       <div style={{
-        background: "#fffbeb",
+        background: "#F4FAFA",
         border: "1.5px solid #fde68a",
         borderRadius: 12,
         padding: "12px 14px",
         marginBottom: 16,
         fontSize: 12,
-        color: "#92400e",
+        color: "#0F2E2C",
         lineHeight: 1.5,
       }}>
         💡 <strong>Recommendation:</strong> Consult your doctor before taking Robitussin Adult with your current medications.
@@ -810,7 +810,7 @@ function InfoScreen({ next, back }) {
             flex: 1, textAlign: "center",
             padding: "10px 0",
             fontSize: 12, fontWeight: 700,
-            color: tab === t ? teal : "#9ca3af",
+            color: tab === t ? teal : "#9BBFBD",
             borderBottom: tab === t ? `2px solid ${teal}` : "2px solid transparent",
             cursor: "pointer",
             textTransform: "capitalize",
@@ -822,7 +822,7 @@ function InfoScreen({ next, back }) {
       <div style={{ padding: "16px 20px" }}>
         {tab === "overview" && (
           <>
-            <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.65, marginBottom: 14 }}>
+            <div style={{ fontSize: 13, color: "#0F2E2C", lineHeight: 1.65, marginBottom: 14 }}>
               Robitussin Adult is a <strong>cough suppressant</strong> used to temporarily relieve cough caused by the common cold, flu, or other breathing illnesses.
             </div>
             {[
@@ -836,8 +836,8 @@ function InfoScreen({ next, back }) {
               }}>
                 <span style={{ fontSize: 16 }}>{r.icon}</span>
                 <div>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: "#9ca3af", letterSpacing: 0.8 }}>{r.label.toUpperCase()}</div>
-                  <div style={{ fontSize: 13, color: "#374151", marginTop: 1 }}>{r.text}</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: "#9BBFBD", letterSpacing: 0.8 }}>{r.label.toUpperCase()}</div>
+                  <div style={{ fontSize: 13, color: "#0F2E2C", marginTop: 1 }}>{r.text}</div>
                 </div>
               </div>
             ))}
@@ -854,11 +854,11 @@ function InfoScreen({ next, back }) {
                 display: "flex", justifyContent: "space-between",
                 padding: "11px 0", borderBottom: "1px solid #f3f4f6",
               }}>
-                <span style={{ fontSize: 13, color: "#374151" }}>{d.age}</span>
+                <span style={{ fontSize: 13, color: "#0F2E2C" }}>{d.age}</span>
                 <span style={{ fontSize: 13, fontWeight: 700, color: teal }}>{d.dose}</span>
               </div>
             ))}
-            <div style={{ marginTop: 12, fontSize: 12, color: "#6b7280", lineHeight: 1.5 }}>
+            <div style={{ marginTop: 12, fontSize: 12, color: "#4A7A77", lineHeight: 1.5 }}>
               ⚠️ Do not exceed 6 doses (60 mL) in 24 hours.
             </div>
           </>
@@ -877,8 +877,8 @@ function InfoScreen({ next, back }) {
               }}>
                 <span style={{ fontSize: 18 }}>{s.icon}</span>
                 <div>
-                  <div style={{ fontSize: 10, color: "#9ca3af", fontWeight: 700, letterSpacing: 0.8 }}>{s.label.toUpperCase()}</div>
-                  <div style={{ fontSize: 13, color: "#374151", marginTop: 1 }}>{s.val}</div>
+                  <div style={{ fontSize: 10, color: "#9BBFBD", fontWeight: 700, letterSpacing: 0.8 }}>{s.label.toUpperCase()}</div>
+                  <div style={{ fontSize: 13, color: "#0F2E2C", marginTop: 1 }}>{s.val}</div>
                 </div>
               </div>
             ))}
@@ -902,9 +902,9 @@ function ScheduleScreen({ back }) {
   const [added, setAdded] = useState(false);
   const doses = [
     { time: "8:00 AM", label: "Morning", done: true, color: teal },
-    { time: "12:00 PM", label: "Midday", done: false, color: "#f59e0b" },
-    { time: "4:00 PM", label: "Afternoon", done: false, color: "#8b5cf6" },
-    { time: "8:00 PM", label: "Evening", done: false, color: "#3b82f6" },
+    { time: "12:00 PM", label: "Midday", done: false, color: "#5BB8B0" },
+    { time: "4:00 PM", label: "Afternoon", done: false, color: "#0D9488" },
+    { time: "8:00 PM", label: "Evening", done: false, color: "#4A7A77" },
   ];
 
   return (
@@ -912,7 +912,7 @@ function ScheduleScreen({ back }) {
       <div style={{ fontSize: 11, color: teal, fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>
         TODAY'S SCHEDULE
       </div>
-      <div style={{ fontSize: 18, fontWeight: 800, color: "#111827", marginBottom: 16 }}>
+      <div style={{ fontSize: 18, fontWeight: 800, color: "#0F2E2C", marginBottom: 16 }}>
         Dosing Timeline
       </div>
 
@@ -930,11 +930,11 @@ function ScheduleScreen({ back }) {
             flexShrink: 0,
           }} />
           <div style={{ flex: 1 }}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: d.done ? "#9ca3af" : "#111827" }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: d.done ? "#9BBFBD" : "#0F2E2C" }}>
               {d.time}
-              {d.done && <span style={{ marginLeft: 8, fontSize: 11, color: "#9ca3af" }}>✓ Taken</span>}
+              {d.done && <span style={{ marginLeft: 8, fontSize: 11, color: "#9BBFBD" }}>✓ Taken</span>}
             </div>
-            <div style={{ fontSize: 11, color: "#9ca3af" }}>Robitussin · {d.label} dose · 10 mL</div>
+            <div style={{ fontSize: 11, color: "#9BBFBD" }}>Robitussin · {d.label} dose · 10 mL</div>
           </div>
           {!d.done && (
             <div style={{
@@ -962,7 +962,7 @@ function ScheduleScreen({ back }) {
         }}>
           <div style={{ fontSize: 28, marginBottom: 6 }}>🎉</div>
           <div style={{ fontSize: 15, fontWeight: 800, color: teal, marginBottom: 4 }}>All Set!</div>
-          <div style={{ fontSize: 12, color: "#6b7280" }}>
+          <div style={{ fontSize: 12, color: "#4A7A77" }}>
             Robitussin added to your schedule. You'll receive reminders at each dose time.
           </div>
         </div>
@@ -1001,9 +1001,9 @@ export default function PillEdPrototype({ initialScreen = 0, screenOnly = false 
   if (screenOnly) {
     return (
       <div style={{ width: 320, height: 700, overflow: "hidden", display: "flex", flexDirection: "column", background: "white", fontFamily: "system-ui, -apple-system, sans-serif" }}>
-        <div style={{ height: 44, flexShrink: 0, background: teal, display: "flex", alignItems: "flex-end", justifyContent: "space-between", padding: "0 20px 6px" }}>
-          <span style={{ color: "white", fontSize: 11, fontWeight: 700 }}>9:41</span>
-          <span style={{ color: "white", fontSize: 11 }}>●●●</span>
+        <div style={{ height: 44, flexShrink: 0, background: "#FFFFFF", borderBottom: "1px solid #E0EEEE", display: "flex", alignItems: "flex-end", justifyContent: "space-between", padding: "0 20px 6px" }}>
+          <span style={{ color: "#0F2E2C", fontSize: 11, fontWeight: 700 }}>9:41</span>
+          <span style={{ color: "#9BBFBD", fontSize: 11 }}>●●●</span>
         </div>
         <div style={{ flex: 1, overflowY: "auto" }}>
           {screens[screen]}
@@ -1015,7 +1015,7 @@ export default function PillEdPrototype({ initialScreen = 0, screenOnly = false 
   return (
     <div style={{
       minHeight: "100vh",
-      background: "#f8fafc",
+      background: "#F4FAFA",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -1033,7 +1033,7 @@ export default function PillEdPrototype({ initialScreen = 0, screenOnly = false 
           <span style={{ fontSize: 16 }}>💊</span>
           <span style={{ fontSize: 13, fontWeight: 700, color: teal }}>PillEd · Interactive Prototype</span>
         </div>
-        <div style={{ fontSize: 13, color: "#9ca3af" }}>Anderson Product Innovation Challenge · Nov 2022</div>
+        <div style={{ fontSize: 13, color: "#9BBFBD" }}>Anderson Product Innovation Challenge · Nov 2022</div>
       </div>
 
       {/* screen nav tabs */}
@@ -1050,7 +1050,7 @@ export default function PillEdPrototype({ initialScreen = 0, screenOnly = false 
             borderRadius: 10,
             border: "none",
             background: screen === i ? teal : "transparent",
-            color: screen === i ? "white" : "#9ca3af",
+            color: screen === i ? "white" : "#9BBFBD",
             fontWeight: 700,
             fontSize: 11,
             cursor: "pointer",

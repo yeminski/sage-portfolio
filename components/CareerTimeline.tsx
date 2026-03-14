@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 
 type TimelineItem = {
@@ -93,8 +95,40 @@ function ItemContent({ item, align }: { item: TimelineItem; align: "left" | "rig
 }
 
 export default function CareerTimeline() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
+  const mobileLineRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const timelineItemEls = Array.from(section.querySelectorAll<HTMLElement>(".tl-item"));
+    const line = lineRef.current;
+    const mobileLine = mobileLineRef.current;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (line) line.classList.add("is-visible");
+          if (mobileLine) mobileLine.classList.add("is-visible");
+          timelineItemEls.forEach((el, i) => {
+            setTimeout(() => {
+              el.classList.add("is-visible");
+            }, i * 150);
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="bg-white py-16 border-t border-gray-200">
+    <section ref={sectionRef} className="bg-white py-16 border-t border-gray-200">
       <div className="max-w-[1200px] mx-auto px-6">
 
         <span className="text-[10px] font-semibold text-accent uppercase tracking-widest">
@@ -110,13 +144,13 @@ export default function CareerTimeline() {
         {/* ── Desktop: alternating zigzag ── */}
         <div className="hidden md:block relative">
           {/* Vertical center line */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-3 bottom-3 w-px bg-ink/10" />
+          <div ref={lineRef} className="timeline-line absolute left-1/2 -translate-x-1/2 top-3 bottom-3 w-px bg-ink/10" />
 
           <div className="flex flex-col gap-10">
             {timelineItems.map((item, i) => {
               const contentOnLeft = i % 2 === 0;
               return (
-                <div key={i} className="grid grid-cols-[1fr_48px_1fr] items-center gap-0">
+                <div key={i} className="tl-item timeline-item grid grid-cols-[1fr_48px_1fr] items-center gap-0" style={{ transitionDelay: `${i * 150}ms` }}>
                   {/* Left slot */}
                   <div className="pr-5">
                     {contentOnLeft
@@ -128,7 +162,7 @@ export default function CareerTimeline() {
                   <div className="flex justify-center relative z-10">
                     <div
                       className={`rounded-full ring-2 ring-white ${
-                        item.isCurrent ? "w-2.5 h-2.5 bg-amber-500" : "w-2 h-2 bg-ink/25"
+                        item.isCurrent ? "w-2.5 h-2.5 bg-amber-500 pulse-dot" : "w-2 h-2 bg-ink/25"
                       }`}
                     />
                   </div>
@@ -147,9 +181,9 @@ export default function CareerTimeline() {
 
         {/* ── Mobile: single column left-line ── */}
         <div className="md:hidden relative">
-          <div className="absolute left-[91px] top-2 bottom-2 w-px bg-ink/10" />
+          <div ref={mobileLineRef} className="timeline-line absolute left-[91px] top-2 bottom-2 w-px bg-ink/10" />
           {timelineItems.map((item, i) => (
-            <div key={i} className="flex items-start mb-8 last:mb-0">
+            <div key={i} className="tl-item timeline-item flex items-start mb-8 last:mb-0" style={{ transitionDelay: `${i * 150}ms` }}>
               <div className="w-[84px] shrink-0 text-right pr-4 pt-1">
                 {item.isCurrent ? (
                   <span className="inline-block px-2 py-0.5 rounded-full bg-amber-500 text-white text-[10px] font-semibold tracking-wide leading-none">
@@ -161,7 +195,7 @@ export default function CareerTimeline() {
                 <p className="text-[10px] text-ink/30 mt-0.5 leading-snug">{item.period}</p>
               </div>
               <div className="w-[15px] shrink-0 flex justify-center pt-[7px] relative z-10">
-                <div className={`rounded-full ring-2 ring-white ${item.isCurrent ? "w-2.5 h-2.5 bg-amber-500" : "w-2 h-2 bg-ink/25"}`} />
+                <div className={`rounded-full ring-2 ring-white ${item.isCurrent ? "w-2.5 h-2.5 bg-amber-500 pulse-dot" : "w-2 h-2 bg-ink/25"}`} />
               </div>
               <div className="flex-1 pl-5">
                 <p className="text-xl font-semibold text-accent leading-snug">{item.title}</p>
