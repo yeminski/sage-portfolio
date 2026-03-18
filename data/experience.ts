@@ -167,32 +167,12 @@ export const experiences: ExperienceItem[] = [
         ],
         categories: [
           {
-            label: "Web Optimization",
-            initiatives: [
-              {
-                what: "Improved the core web experience through feature development, funnel analysis, and behavioral data-driven experimentation.",
-                how: "Ran A/B tests to identify drop-off points, shipped targeted feature improvements, and established a repeatable experimentation loop tied to conversion metrics.",
-                result: "Laid the growth foundation that scaled revenue and user base — enabling the app launch and Japan expansion that followed",
-              },
-            ],
-          },
-          {
             label: "0-to-1 Mobile App",
             initiatives: [
               {
                 what: "Owned the end-to-end launch of the platform's first native mobile app as the user base outgrew the web experience.",
                 how: "Defined MVP scope, migration strategy, and onboarding and retention flows to streamline the web-to-app transition and reduce early drop-off.",
                 result: "12% growth in DAU · improved early retention",
-              },
-            ],
-          },
-          {
-            label: "Personalization",
-            initiatives: [
-              {
-                what: "Built recommendation and ranking logic to personalize product discovery at scale.",
-                how: "Collaborated with engineering and data science; applied behavioral segmentation and iterative experimentation to refine targeting and surface the right products to the right users.",
-                result: "Double-digit CTR growth · increased time-on-site and user engagement across key surfaces",
               },
             ],
           },
@@ -208,6 +188,26 @@ export const experiences: ExperienceItem[] = [
                 what: "Expanded payment infrastructure to support compliant cross-border transactions in Japan.",
                 how: "Localized payment methods, FX display, and checkout flows in compliance with Japanese regulations; coordinated across product, legal, and engineering.",
                 result: "Revenue target exceeded by ~25%",
+              },
+            ],
+          },
+          {
+            label: "Web Optimization",
+            initiatives: [
+              {
+                what: "Improved the core web experience through feature development, funnel analysis, and behavioral data-driven experimentation.",
+                how: "Ran A/B tests to identify drop-off points, shipped targeted feature improvements, and established a repeatable experimentation loop tied to conversion metrics.",
+                result: "Laid the growth foundation that scaled revenue and user base — enabling the app launch and Japan expansion that followed",
+              },
+            ],
+          },
+          {
+            label: "Personalization",
+            initiatives: [
+              {
+                what: "Built recommendation and ranking logic to personalize product discovery at scale.",
+                how: "Collaborated with engineering and data science; applied behavioral segmentation and iterative experimentation to refine targeting and surface the right products to the right users.",
+                result: "Double-digit CTR growth · increased time-on-site and user engagement across key surfaces",
               },
             ],
           },
@@ -233,16 +233,21 @@ export const experiences: ExperienceItem[] = [
         ],
         categories: [
           {
-            label: "B2B Project Management",
+            label: "Project Execution",
             initiatives: [
               {
                 what: "Led end-to-end product launches for 20+ B2B projects across European and Asian accounts.",
                 how: "Translated client requirements into specs, navigated technical trade-offs and regulatory compliance, and coordinated cross-functionally across R&D, QA, production, procurement, and logistics.",
                 result: "Consistent on-time delivery across 20+ concurrent projects · 10%+ YoY account growth",
               },
+            ],
+          },
+          {
+            label: "Pricing Strategy",
+            initiatives: [
               {
                 what: "Grew key accounts by developing tailored pricing and product offerings for each regional market.",
-                how: "Led market research, trend analysis, and segment-specific proposals in compliance with regional regulations; executed strategic pitches across Europe and Asia.",
+                how: "Led market research, trend analysis, and segment-specific proposals with country-level pricing strategies and compliance with regional regulations; executed pitches across European and Asian accounts.",
                 result: "Secured multi-million dollar B2B deals · drove 10%+ YoY growth",
               },
             ],

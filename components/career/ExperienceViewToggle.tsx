@@ -25,37 +25,39 @@ type FlatInitiative = {
 };
 
 /* ─── Expertise grouping ─────────────────────────────────── */
-const expertiseGroupMap: Record<string, string> = {
-  "0-to-1 MVP": "0-to-1 Product",
-  "0-to-1 Mobile App": "0-to-1 Product",
-  "UX Optimization": "UX & Experimentation",
-  "Web Optimization": "UX & Experimentation",
-  "API & Platform": "API & Platform",
-  "Personalization": "Personalization",
-  "Monetization": "Monetization",
-  "Market Expansion": "Market Expansion",
-  "B2B Project Management": "B2B & Operations",
-  "SaaS Strategy": "SaaS & AI",
+const expertiseGroupMap: Record<string, string[]> = {
+  "0-to-1 MVP":        ["0-to-1 Product", "Mobile App"],
+  "0-to-1 Mobile App": ["0-to-1 Product", "Mobile App"],
+  "UX Optimization":   ["UX & Experimentation"],
+  "Web Optimization":  ["Growth & Experimentation"],
+  "API & Platform":    ["API & Platform", "B2B & Operations"],
+  "Personalization":   ["Growth & Experimentation"],
+  "Monetization":      ["Monetization"],
+  "Market Expansion":  ["Market Expansion"],
+  "Project Execution": ["B2B & Operations"],
+  "Pricing Strategy":  ["B2B & Operations", "Monetization"],
+  "SaaS Strategy":     ["SaaS & AI"],
 };
 
 const expertiseGroups = [
   { key: "0-to-1 Product",      shortLabel: "0-to-1",          description: "Building net-new products from problem definition through scoping, validation, and launch — across mobile, web, and companion apps." },
-  { key: "UX & Experimentation", shortLabel: "UX",              description: "Improving user flows through funnel analysis, behavioral data, and iterative A/B testing to drive activation and retention." },
-  { key: "API & Platform",       shortLabel: "API",             description: "Connecting internal and external systems through API-driven integrations to automate workflows and enable data-driven product decisions." },
-  { key: "Personalization",      shortLabel: "personalization", description: "Building recommendation and ranking systems that surface the right content to the right users at the right moment." },
-  { key: "Monetization",         shortLabel: "monetization",    description: "Designing pricing models and monetization systems that balance upfront conversion with long-term revenue growth." },
+  { key: "Mobile App",           shortLabel: "mobile",          description: "Owning end-to-end mobile product launches — from MVP scoping and onboarding flows to retention and DAU growth." },
+  { key: "UX & Experimentation",    shortLabel: "UX",     description: "Improving user flows through funnel analysis, behavioral data, and iterative A/B testing to drive activation and retention." },
+  { key: "Growth & Experimentation", shortLabel: "growth", description: "Driving user and revenue growth through A/B experimentation, personalization, behavioral segmentation, and data-driven iteration." },
+  { key: "API & Platform",           shortLabel: "API",    description: "Connecting internal and external systems through API-driven integrations to automate workflows and enable data-driven product decisions." },
+  { key: "Monetization",         shortLabel: "monetization",    description: "Designing pricing models, monetization systems, and pricing strategies that drive revenue growth across customer segments." },
   { key: "Market Expansion",     shortLabel: "expansion",       description: "Leading international expansion — from market research and GTM strategy to localization, compliance, and payments." },
-  { key: "B2B & Operations",     shortLabel: "B2B",             description: "Managing end-to-end B2B project execution across global accounts, from pitch through delivery." },
+  { key: "B2B & Operations",     shortLabel: "B2B",             description: "Managing end-to-end B2B project execution and partner integrations across global accounts, from pitch through delivery." },
   { key: "SaaS & AI",            shortLabel: "SaaS & AI",       description: "Translating user needs into AI-driven SaaS feature concepts, validated through financial modeling and executive alignment." },
 ];
 
 /* ─── Search keyword aliases ─────────────────────────────── */
 const keywordAliases: Record<string, string[]> = {
   fintech:        ["payment", "FX", "cross-border", "fintech"],
-  ai:             ["AI", "AI/ML", "OCR", "machine learning", "recommendation engine", "personalized"],
+  ai:             ["AI", "AI/ML", "OCR", "personalization"],
   payment:        ["payment", "FX", "cross-border"],
   platform:       ["API", "integration", "system", "pipeline", "dashboard"],
-  growth:         ["retention", "activation", "DAU", "CTR", "conversion", "lift"],
+  growth:         ["DAU", "market penetration", "scaled revenue", "user base"],
   "user research":["interview", "PMF", "qualitative", "user need"],
   startup:        ["early-stage", "runway", "MVP", "0-to-1"],
   data:           ["behavioral", "funnel", "segmentation", "analytics", "metrics"],
@@ -186,15 +188,16 @@ function ExpertiseView() {
   for (const exp of experiences) {
     for (const role of exp.roles) {
       for (const cat of role.categories) {
-        const group = expertiseGroupMap[cat.label];
-        if (!group) continue;
-        if (!groupMap.has(group)) groupMap.set(group, []);
-        groupMap.get(group)!.push({
-          company: exp.company,
-          roleTitle: role.title,
-          period: role.period,
-          initiatives: cat.initiatives,
-        });
+        const groups = expertiseGroupMap[cat.label] ?? [];
+        for (const group of groups) {
+          if (!groupMap.has(group)) groupMap.set(group, []);
+          groupMap.get(group)!.push({
+            company: exp.company,
+            roleTitle: role.title,
+            period: role.period,
+            initiatives: cat.initiatives,
+          });
+        }
       }
     }
   }
@@ -399,7 +402,7 @@ function SearchView() {
                       </div>
                     </div>
                     <div className="px-6 py-4">
-                      <p className="text-sm text-ink/60 leading-relaxed mb-3">{proj.problem}</p>
+                      <p className="text-sm text-ink/60 leading-relaxed mb-3">{proj.solution ?? proj.problem}</p>
                       {proj.aiNote && (
                         <div className="mb-3 pl-3 border-l-2" style={{ borderColor: "#166534" }}>
                           <p className="text-xs font-semibold uppercase tracking-widest mb-1.5" style={{ color: "#166534" }}>AI Usage</p>
