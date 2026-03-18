@@ -1,24 +1,28 @@
-export type ExperienceItem = {
-  company: string;
-  location: string;
-  roles: Role[];
+export type Initiative = {
+  what: string;
+  how: string;
+  result: string;
+};
+
+export type Category = {
+  label: string;
+  initiatives: Initiative[];
 };
 
 export type Role = {
   title: string;
   period: string;
-  summary: string;
-  bullets: string[];
   isCurrentRole?: boolean;
-  description: string[];
+  summary: string;
   tags?: string[];
-  awards?: string;
   categories: Category[];
+  awards?: string;
 };
 
-export type Category = {
-  label: string;
-  bullets: string[];
+export type ExperienceItem = {
+  company: string;
+  location: string;
+  roles: Role[];
 };
 
 export const experiences: ExperienceItem[] = [
@@ -31,47 +35,58 @@ export const experiences: ExperienceItem[] = [
         period: "Aug 2024 – Present",
         isCurrentRole: true,
         summary:
-          "Own product strategy and pricing architecture for Epson's service business, driving service attach rate growth and platform-level monetization initiatives across the customer lifecycle.",
-        bullets: [
-          "Launched a 3-tier pricing model informed by price elasticity analysis, driving 9% revenue growth and optimizing unit economics across the service line.",
-          "Built API-driven dashboards and automated reporting pipelines, reducing manual workload by ~60% and enabling an 8% retention lift through targeted lifecycle outreach.",
-          "Redesigned the service registration experience via cross-system API integration, driving an 11% registration lift and unlocking downstream service monetization.",
-        ],
+          "Own the product roadmap for Epson's service platform, leading API-driven system integrations, 0-to-1 user-facing feature development, and monetization strategy across the customer lifecycle.",
         tags: [
-          "Product Strategy",
-          "Monetization",
           "API Integration",
-          "Pricing Architecture",
+          "0-to-1 Product",
+          "Cross-Sell Features",
+          "Product Strategy",
           "A/B Testing",
           "Go-to-Market",
           "Cross-functional Leadership",
-        ],
-        description: [
-          "At Epson, I own the product strategy and roadmap for the company's service business, defining pricing architecture, shaping go-to-market plans for new hardware launches, and driving attach rate and service revenue growth across the customer lifecycle. My work focuses on building monetization systems that balance upfront conversion with long-term service revenue while improving the overall customer experience.",
-          "Beyond product strategy, I lead platform-level initiatives that connect customer experiences with the underlying systems that support them. This includes redesigning the service registration experience using distributor EDI data and developing API-driven internal dashboards to streamline reporting and operational workflows. These projects sit at the intersection of customer experience, monetization, and operational infrastructure, requiring close collaboration across engineering, sales, and operations while translating technical constraints into product decisions.",
-          "Outside my core scope, I mentor MBA interns and support recruiting initiatives, and have been recognized with two internal awards for cross-functional collaboration and product impact.",
+          "Monetization",
         ],
         awards:
           "Spotlight Award (2025) · Cheers for Peers – Exceptional Work (2025) · MBA Intern Mentor",
         categories: [
           {
-            label: "API & Systems Integration",
-            bullets: [
-              "Led API-driven data integration across external and internal systems, establishing data mapping logic and automating reporting pipelines; reduced manual workload by ~60% and drove an 8% retention lift via targeted lifecycle outreach.",
-              "Designed a seamless registration experience by integrating cross-system APIs and embedding real-time registration into pairing flows; reduced friction, driving an 11% lift in registration and enabling downstream service monetization.",
+            label: "API & Platform",
+            initiatives: [
+              {
+                what: "Built API-driven internal dashboards and automated reporting pipelines connecting external distributor data with internal systems.",
+                how: "Established data mapping logic across cross-system APIs, designed automated lifecycle outreach triggers, and replaced manual reporting processes end-to-end.",
+                result: "~60% reduction in manual workload · 8% retention lift via targeted outreach",
+              },
+              {
+                what: "Redesigned the service registration experience by connecting distributor EDI data with Epson's service platform via cross-system API integration.",
+                how: "Embedded real-time registration into hardware pairing flows, mapping data across systems to eliminate manual steps and reduce friction at the highest drop-off point.",
+                result: "11% lift in service registration · unlocked downstream service monetization",
+              },
             ],
           },
           {
-            label: "Payments & Monetization",
-            bullets: [
-              "Restructured monetization by launching a 3-tier pricing model informed by price elasticity and profitability; drove 9% revenue growth and optimized unit economics by balancing upfront conversion with higher-margin deferred purchases.",
+            label: "UX Optimization",
+            initiatives: [
+              {
+                what: "Launched cross-sell features from 0 to 1, enabling upsell at key purchase decision moments in the service flow.",
+                how: "Defined KPIs, designed A/B test frameworks, and iterated on purchase decision flows based on conversion data to optimize cross-sell placement and timing.",
+                result: "4% conversion lift · consistent attach-rate growth",
+              },
+              {
+                what: "Identified and resolved key activation friction points in the service onboarding flow.",
+                how: "Synthesized behavioral data and funnel metrics to surface drop-off causes; led cross-functional alignment to validate hypotheses and ship targeted UX fixes.",
+                result: "11% increase in activation rate",
+              },
             ],
           },
           {
-            label: "Growth & Experimentation",
-            bullets: [
-              "Championed end-to-end rollout of cross-sell features, defining KPIs and running A/B tests to optimize purchase decision flows; drove incremental revenue through a 4% conversion lift and consistent attach-rate growth.",
-              "Streamlined the onboarding flow by synthesizing behavioral data and funnel metrics to prioritize key friction points; led cross-functional alignment to validate hypotheses and implement targeted fixes, increasing activation by 11%.",
+            label: "Monetization",
+            initiatives: [
+              {
+                what: "Restructured Epson's service pricing into a 3-tier model to capture a wider range of customer segments.",
+                how: "Conducted price elasticity analysis and profitability modeling; balanced upfront conversion incentives with higher-margin deferred purchase options across the service line.",
+                result: "9% revenue growth · optimized unit economics across the service line",
+              },
             ],
           },
         ],
@@ -80,34 +95,22 @@ export const experiences: ExperienceItem[] = [
         title: "Product Management MBA Intern",
         period: "Jun 2023 – Aug 2023",
         summary:
-          "Defined product vision and 0-to-1 roadmap for a new SaaS solution, validating AI-driven features through a proof of concept and securing executive buy-in through strategic storytelling.",
-        bullets: [
-          "Translated user needs into AI-driven feature concepts, validated technical feasibility via POC, and outlined a prioritized roadmap for executive review.",
-          "Built a financial model with scenario analyses to quantify revenue impact and operational efficiency gains, aligning inputs with Product and Finance for MVP prioritization.",
-          "Synthesized research and modeling into executive narratives that secured cross-functional alignment on product direction and MVP scope.",
-        ],
-        tags: [
-          "0-to-1 Product",
-          "SaaS",
-          "AI Features",
-          "Financial Modeling",
-          "Executive Storytelling",
-        ],
-        description: [
-          "As a PM intern at Epson, I defined the product vision for a new SaaS solution, translating user needs into AI-driven feature concepts and validating technical feasibility through a proof of concept. I outlined a prioritized roadmap and synthesized findings into strategic narratives that secured executive buy-in.",
-          "To support prioritization decisions, I built a financial model with scenario analyses to quantify the revenue impact and operational efficiency gains of proposed features, aligning inputs with Product and Finance teams to guide MVP resource allocation.",
-        ],
+          "Defined the product vision and financial foundation for a new SaaS solution, translating user needs into AI-driven features and securing executive buy-in.",
+        tags: ["0-to-1 Product", "SaaS", "AI Features", "Financial Modeling", "Executive Storytelling"],
         categories: [
           {
-            label: "0-to-1 Product Building",
-            bullets: [
-              "Defined product vision for a SaaS solution, translating user needs into AI-driven features, validating feasibility via POC, and outlining a prioritized roadmap; synthesized findings into strategic narratives that secured executive buy-in.",
-            ],
-          },
-          {
-            label: "Business Case & Financial Modeling",
-            bullets: [
-              "Built a financial model with scenario analyses to quantify revenue impact and operational efficiency for proposed SaaS features; aligned inputs with Product and Finance to drive informed prioritization and guide MVP resource allocation.",
+            label: "0-to-1 SaaS",
+            initiatives: [
+              {
+                what: "Defined the product vision for a new SaaS solution with AI-driven features targeting an underserved internal user segment.",
+                how: "Translated user needs into feature concepts, validated technical feasibility via POC, outlined a prioritized roadmap, and synthesized findings into executive narratives.",
+                result: "Executive buy-in secured · prioritized roadmap delivered",
+              },
+              {
+                what: "Built a financial model to support MVP prioritization and resource allocation decisions.",
+                how: "Developed scenario analyses with Product and Finance teams to quantify revenue impact and operational efficiency gains for proposed features.",
+                result: "Guided MVP resource allocation · aligned cross-functional stakeholders on investment priorities",
+              },
             ],
           },
         ],
@@ -122,30 +125,22 @@ export const experiences: ExperienceItem[] = [
         title: "Product Manager",
         period: "Sep 2023 – Aug 2024",
         summary:
-          "Led 0-to-1 product development for the companion mobile app at an AR smart glasses startup, delivering MVP ahead of schedule and saving ~$100K in runway.",
-        bullets: [
-          "Conducted 100+ user interviews to validate product-market fit, synthesizing findings into PRDs that aligned engineering and design throughout MVP development.",
-          "Owned the 0-to-1 roadmap — defining MVP scope, feature prioritization, and release sequencing — and shipped ahead of schedule, saving ~$100K in runway.",
-          "Made high-conviction prioritization decisions in a resource-constrained startup environment, coordinating cross-functionally to maintain quality under tight execution timelines.",
-        ],
-        tags: [
-          "0-to-1 Product",
-          "Mobile App",
-          "User Research",
-          "MVP Delivery",
-          "Startup",
-        ],
-        description: [
-          "At ERA, an early-stage startup developing AR smart glasses and a companion mobile app for cyclists, I owned the 0-to-1 product roadmap for the companion app, balancing rapid MVP delivery with long-term scalability.",
-          "My work centered on grounding product decisions in real user needs — leading extensive customer discovery to validate product-market fit and translate qualitative insights into clear product requirements. This process kept the team aligned around the most critical user problems while enabling fast, focused execution.",
-          "Operating in a resource-constrained startup environment sharpened my ability to make high-conviction product decisions with incomplete information, coordinating closely with engineering and design to keep execution tight without sacrificing product quality.",
-        ],
+          "Owned the 0-to-1 product roadmap for a companion mobile app at an early-stage AR startup, grounding every decision in deep user research and tight cross-functional execution.",
+        tags: ["0-to-1 Product", "Mobile App", "User Research", "MVP Delivery", "Startup"],
         categories: [
           {
-            label: "0-to-1 Product Building",
-            bullets: [
-              "Owned the 0-to-1 roadmap for the companion app — defining MVP scope, feature prioritization, and release sequencing across engineering and design.",
-              "Conducted 100+ user interviews to validate product-market fit; synthesized findings into PRDs that guided MVP development and delivered ahead of schedule, saving ~$100K in runway.",
+            label: "0-to-1 MVP",
+            initiatives: [
+              {
+                what: "Validated product-market fit before committing to full build, using qualitative research to de-risk roadmap decisions.",
+                how: "Conducted 100+ user interviews, synthesized qualitative insights into key user needs, and shaped findings into PRDs that guided feature prioritization.",
+                result: "PMF validated · MVP delivered ahead of schedule · ~$100K in runway saved",
+              },
+              {
+                what: "Owned the full 0-to-1 roadmap for the companion app, from scope definition to launch.",
+                how: "Defined MVP scope, sequenced feature delivery for maximum learning, and led cross-functional alignment across engineering and design to drive ecosystem integration.",
+                result: "MVP shipped on time · foundation established for post-launch retention growth",
+              },
             ],
           },
         ],
@@ -160,12 +155,7 @@ export const experiences: ExperienceItem[] = [
         title: "Product Manager, Vanity Table Team",
         period: "Nov 2021 – Jun 2022",
         summary:
-          "Led cross-border payment expansion, US-to-Japan platform localization, and a 0-to-1 mobile app launch for a multi-market D2C e-commerce platform.",
-        bullets: [
-          "Expanded the platform into Japan by localizing checkout flows, payment methods, and FX display in compliance with local regulations, exceeding revenue targets by ~25%.",
-          "Led full US-to-Japan market expansion — market research, GTM strategy, and customer experience localization — surpassing the market penetration target by 30%.",
-          "Spearheaded a 0-to-1 mobile app launch, owning MVP scope and onboarding flows, driving a 12% increase in DAU.",
-        ],
+          "Led product initiatives spanning cross-border payments, market expansion, and 0-to-1 mobile app development at a multi-market D2C e-commerce platform.",
         tags: [
           "Cross-border Payments",
           "Platform Expansion",
@@ -174,29 +164,40 @@ export const experiences: ExperienceItem[] = [
           "Localization",
           "D2C E-commerce",
         ],
-        description: [
-          "At Echo Marketing, a performance marketing company operating a multi-market D2C e-commerce platform, I led product initiatives spanning cross-border payments, platform expansion, and mobile product development.",
-          "One of my core initiatives was expanding the platform into Japan by localizing checkout flows, payment methods, and FX display in compliance with local regulations. This required close coordination across product, engineering, and legal teams, and ultimately helped the business exceed revenue targets by ~25%. Alongside this, I led the broader US-to-Japan platform expansion, including market research, go-to-market strategy, and customer experience localization, surpassing the market penetration target by 30%.",
-          "I also spearheaded a 0-to-1 mobile app launch, defining MVP scope, migration strategy, and onboarding flows to streamline the web-to-app transition, driving a 12% increase in DAU and improving early user retention.",
-        ],
         categories: [
           {
-            label: "Payments & Monetization",
-            bullets: [
-              "Led cross-border payment expansion to Japan by localizing checkout flows, payment methods, and FX display in line with local regulations; streamlined payment operations across US and Japan, overachieving revenue target by ~25%.",
+            label: "Cross-Border Payments",
+            initiatives: [
+              {
+                what: "Expanded the platform's payment infrastructure to Japan, enabling compliant cross-border transactions for a new market.",
+                how: "Localized checkout flows, payment methods, and FX display in compliance with Japanese regulations; coordinated across product, legal, and engineering.",
+                result: "Revenue target exceeded by ~25%",
+              },
             ],
           },
           {
-            label: "Growth & Experimentation",
-            bullets: [
-              "Built recommendation and ranking logic in collaboration with engineering and data science; leveraged behavioral segmentation and iterative experimentation to improve targeting precision and drive double-digit CTR growth.",
-              "Scaled e-commerce platform from the US to Japan, leading market research, go-to-market strategy and localization across customer experience; accelerated adoption and surpassed the market penetration target by 30%.",
+            label: "Platform Expansion",
+            initiatives: [
+              {
+                what: "Scaled the e-commerce platform from the US to Japan.",
+                how: "Led market research, go-to-market strategy, and end-to-end localization of the customer experience across all touchpoints.",
+                result: "Market penetration target exceeded by 30%",
+              },
+              {
+                what: "Built recommendation and ranking logic to improve product discovery and personalization.",
+                how: "Collaborated with engineering and data science; applied behavioral segmentation and iterative A/B experimentation to refine targeting precision.",
+                result: "Double-digit CTR growth",
+              },
             ],
           },
           {
-            label: "0-to-1 Product Building",
-            bullets: [
-              "Spearheaded a 0-to-1 mobile app launch by owning MVP scope, migration strategy, and end-to-end onboarding; drove 12% growth in DAU and early retention by streamlining the web-to-app transition and simplifying onboarding flows.",
+            label: "0-to-1 Mobile App",
+            initiatives: [
+              {
+                what: "Launched a 0-to-1 mobile app, migrating an established web user base to a native experience.",
+                how: "Defined MVP scope, migration strategy, and end-to-end onboarding flows to streamline the web-to-app transition and reduce drop-off.",
+                result: "12% growth in DAU · improved early retention",
+              },
             ],
           },
         ],
@@ -211,12 +212,7 @@ export const experiences: ExperienceItem[] = [
         title: "Overseas Sales Associate (Global B2B Project Management)",
         period: "Aug 2019 – Aug 2021",
         summary:
-          "Managed end-to-end project execution for 20+ global B2B cosmetics launches across European and Asian accounts; cross-border financial operations exposure that laid the foundation for a fintech product focus.",
-        bullets: [
-          "Owned the full project lifecycle across 20+ B2B cosmetics launches — from client pitch through R&D, QA, and fulfillment — driving 10%+ YoY growth on key European and Asian accounts.",
-          "Developed segment-specific pricing and product offerings for European and Asian markets in compliance with regional regulations, securing multi-million dollar B2B deals.",
-          "Partnered with Finance and Procurement on B2B invoicing, AP/AR tracking, and cross-border payment workflows — hands-on exposure to international financial operations that informed a fintech product focus.",
-        ],
+          "Served as end-to-end project owner for international B2B product launches at a global cosmetics ODM manufacturer, managing the full lifecycle from pitch to fulfillment across 20+ projects.",
         tags: [
           "B2B Project Management",
           "Global Accounts",
@@ -224,24 +220,20 @@ export const experiences: ExperienceItem[] = [
           "Financial Operations",
           "Market Expansion",
         ],
-        description: [
-          "I began my career at Intercos Korea, a global B2B cosmetics ODM manufacturer. Although my title was in sales, the role functioned much closer to end-to-end project management — I served as the primary point of contact for international clients throughout the entire product lifecycle.",
-          "My involvement started at the pitch stage, crafting sales and marketing proposals for prospective clients across Europe and Asia. Once a project was secured, I owned execution from product testing and formula development through procurement and final fulfillment, coordinating closely with R&D, production, and logistics to ensure each launch met client specifications, regulatory requirements, and timeline commitments. This cross-functional ownership across 20+ product launches helped drive 10%+ YoY growth across key accounts.",
-          "Beyond client-facing work, I partnered with Finance and Procurement to support B2B invoicing, AP/AR tracking, and revenue recognition for global accounts — giving me early, hands-on exposure to the financial workflows and cross-border payment dynamics that underpin international commerce.",
-        ],
         categories: [
           {
-            label: "B2B Sales & Project Management",
-            bullets: [
-              "Led market research, trend analysis, and client needs assessment to develop strategic pitch decks and product proposals; converted prospects into projects across European and Asian accounts.",
-              "Owned end-to-end project execution from contract to delivery — coordinating across R&D, QA/QC, production, procurement, and logistics to ensure each launch met client specs, regulatory requirements, and timeline commitments across 20+ product launches.",
-              "Accelerated account growth across Europe and Asia by developing segment-specific pricing and product offerings in compliance with regional regulations; secured multi-million dollar B2B deals, driving 10%+ YoY growth.",
-            ],
-          },
-          {
-            label: "Financial Operations Exposure",
-            bullets: [
-              "Collaborated with Finance and Procurement to support B2B invoicing, AP/AR tracking, and revenue recognition for global accounts; gained hands-on exposure to financial operations and cross-border payment workflows.",
+            label: "B2B Project Management",
+            initiatives: [
+              {
+                what: "Led end-to-end product launches for 20+ B2B projects across European and Asian accounts.",
+                how: "Translated client requirements into specs, navigated technical trade-offs and regulatory compliance, and coordinated cross-functionally across R&D, QA, production, procurement, and logistics.",
+                result: "Consistent on-time delivery across 20+ concurrent projects · 10%+ YoY account growth",
+              },
+              {
+                what: "Grew key accounts by developing tailored pricing and product offerings for each regional market.",
+                how: "Led market research, trend analysis, and segment-specific proposals in compliance with regional regulations; executed strategic pitches across Europe and Asia.",
+                result: "Secured multi-million dollar B2B deals · drove 10%+ YoY growth",
+              },
             ],
           },
         ],

@@ -15,14 +15,14 @@ export default function ExperienceCard({ experience }: { experience: ExperienceI
     <div ref={cardRef} className="reveal-x-left border border-gray-200 rounded-xl bg-white overflow-hidden">
       {/* Company header */}
       <div className="px-6 py-5 bg-gray-50 border-b border-gray-200">
-        <h2 className="text-lg font-bold text-ink">{experience.company}</h2>
+        <h2 className="text-lg font-bold" style={{ color: "#166534" }}>{experience.company}</h2>
         <p className="text-sm text-ink/50 mt-0.5">{experience.location}</p>
         {allTags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mt-3">
             {allTags.map((tag) => (
               <span
                 key={tag}
-                className="tag-pill px-2.5 py-0.5 rounded-full text-xs text-accent/80 bg-accent/8 border border-accent/15"
+                className="px-2.5 py-0.5 rounded-full text-xs text-accent/80 bg-accent/8 border border-accent/15"
               >
                 {tag}
               </span>
@@ -34,17 +34,13 @@ export default function ExperienceCard({ experience }: { experience: ExperienceI
       {/* Roles */}
       <div className="divide-y divide-gray-100">
         {experience.roles.map((role, roleIdx) => (
-          <div key={roleIdx} className="role-block p-6 md:p-8">
-
-            {/* Role title + period */}
+          <div key={roleIdx} className="p-6 md:p-8">
+            {/* Role title + Current Role badge + period */}
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
               <div className="flex flex-wrap items-center gap-2.5">
                 <p className="font-bold text-ink leading-snug">{role.title}</p>
                 {role.isCurrentRole && (
-                  <span
-                    className="px-2 py-0.5 rounded-full font-medium border border-accent text-accent"
-                    style={{ fontSize: "11px" }}
-                  >
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-medium border border-accent text-accent">
                     Current Role
                   </span>
                 )}
@@ -52,27 +48,55 @@ export default function ExperienceCard({ experience }: { experience: ExperienceI
               <span className="text-sm text-ink/40 whitespace-nowrap sm:pt-0.5">{role.period}</span>
             </div>
 
-            {/* One-line summary */}
-            <p className="text-sm text-ink/60 leading-relaxed mb-4">{role.summary}</p>
+            {/* Summary */}
+            <p className="text-sm text-ink/60 leading-relaxed mb-7">{role.summary}</p>
 
-            {/* Always-visible bullets */}
-            <ul className="space-y-2 mb-5">
-              {role.bullets.map((bullet, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-sm text-ink/70 leading-relaxed">
-                  <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
-                  {bullet}
-                </li>
+            {/* Categories */}
+            <div className="flex flex-col gap-6">
+              {role.categories.map((cat) => (
+                <div key={cat.label}>
+                  {/* Category label */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-xs font-bold uppercase tracking-widest text-amber-500">
+                      {cat.label}
+                    </span>
+                    <div className="flex-1 h-px bg-gray-100" />
+                  </div>
+
+                  {/* Initiatives */}
+                  <div className="flex flex-col gap-3">
+                    {cat.initiatives.map((init, i) => (
+                      <div
+                        key={i}
+                        className="rounded-lg border border-gray-100 bg-gray-50/60 px-5 py-4"
+                      >
+                        <p className="text-sm text-ink/70 leading-relaxed flex gap-2">
+                          <span className="font-semibold shrink-0 text-gray-800">• What:</span>
+                          {init.what}
+                        </p>
+                        <p className="text-sm text-ink/70 leading-relaxed flex gap-2 mt-1.5">
+                          <span className="font-semibold shrink-0 text-gray-800">• How:</span>
+                          {init.how}
+                        </p>
+                        <div className="mt-3 pl-3 border-l-2" style={{ borderColor: "#166534" }}>
+                          <p className="text-sm font-semibold" style={{ color: "#166534" }}>
+                            {init.result}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
 
-            {/* Awards callout */}
+            {/* Awards */}
             {role.awards && (
-              <div className="flex items-start gap-2.5 px-3.5 py-2.5 rounded-lg bg-accent/5 border border-accent/15">
-                <Trophy size={14} className="flex-shrink-0 text-accent mt-0.5" strokeWidth={1.75} />
-                <p className="text-xs text-accent leading-relaxed">{role.awards}</p>
+              <div className="flex items-center gap-2.5 mt-6 px-4 py-3 rounded-lg border border-accent/15 bg-accent/8">
+                <Trophy size={15} className="flex-shrink-0 text-accent/80" strokeWidth={1.75} />
+                <p className="text-sm font-medium text-accent/80">{role.awards}</p>
               </div>
             )}
-
           </div>
         ))}
       </div>

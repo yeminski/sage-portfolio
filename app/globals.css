@@ -296,17 +296,6 @@ body {
   }
 }
 
-/* ── Experience page — role block hover left border ────────────────────── */
-.role-block {
-  border-left: 3px solid transparent;
-  transition: border-left-color 0.2s ease;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .role-block:hover {
-    border-left-color: rgba(13, 148, 136, 0.3);
-  }
-}
-
 /* Mobile: reduce motion distances */
 @media (max-width: 767px) {
   .reveal { transform: translateY(14px); }

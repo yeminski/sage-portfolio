@@ -28,9 +28,8 @@ export default function ExperiencePage() {
               Experience
             </AnimatedH1>
             <p className="text-ink/50">
-              Product management across hardware, e-commerce, and service — from early-stage startups to a global enterprise.
+              Product management across hardware, e-commerce, and service — from early-stage startups to a global enterprise. Click any tag to explore what I worked on.
             </p>
-
           </div>
         </div>
 
