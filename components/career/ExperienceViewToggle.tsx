@@ -54,7 +54,7 @@ const expertiseGroups = [
 /* ─── Search keyword aliases ─────────────────────────────── */
 const keywordAliases: Record<string, string[]> = {
   fintech:        ["payment", "FX", "cross-border", "fintech"],
-  ai:             ["AI", "AI/ML", "OCR", "personalization"],
+  ai:             ["ai-driven", "ai-powered", "ai/ml", "ocr", "personalization"],
   payment:        ["payment", "FX", "cross-border"],
   platform:       ["API", "integration", "system", "pipeline", "dashboard"],
   growth:         ["DAU", "market penetration", "scaled revenue", "user base"],
