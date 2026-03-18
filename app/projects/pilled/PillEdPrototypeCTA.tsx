@@ -29,7 +29,7 @@ export default function PillEdPrototypeCTA({
       {variant === "text" ? (
         <button
           onClick={() => setOpen(true)}
-          className="arrow-hover inline-flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 transition-colors"
+          className="arrow-hover inline-flex items-center gap-2 text-sm font-semibold text-teal-600 hover:text-teal-700 transition-colors"
         >
           Try Prototype
           <span className="arrow">

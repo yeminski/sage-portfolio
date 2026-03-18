@@ -10,6 +10,12 @@ const PrototypeCTA: Record<string, React.ReactNode> = {
   yaya: <YayaPrototypeCTA variant="text" />,
 };
 
+// Solution section accent colors per project
+const solutionColors: Record<string, { border: string; label: string }> = {
+  pilled: { border: "border-teal-600", label: "text-teal-600" },
+  yaya:   { border: "border-amber-700", label: "text-amber-700" },
+};
+
 export default function ProjectsPreview() {
   return (
     <section
@@ -55,14 +61,17 @@ export default function ProjectsPreview() {
                   </p>
                   <p className="text-sm text-ink/60 leading-relaxed">{project.problem}</p>
                 </div>
-                {project.solution && (
-                  <div className="border-l-[3px] border-amber-500 pl-4 mb-6">
-                    <p className="text-[10px] font-bold text-amber-500 uppercase tracking-widest mb-1.5">
-                      Solution
-                    </p>
-                    <p className="text-sm text-ink/60 leading-relaxed">{project.solution}</p>
-                  </div>
-                )}
+                {project.solution && (() => {
+                  const sc = solutionColors[project.id] ?? { border: "border-teal-600", label: "text-teal-600" };
+                  return (
+                    <div className={`border-l-[3px] ${sc.border} pl-4 mb-6`}>
+                      <p className={`text-[10px] font-bold ${sc.label} uppercase tracking-widest mb-1.5`}>
+                        Solution
+                      </p>
+                      <p className="text-sm text-ink/60 leading-relaxed">{project.solution}</p>
+                    </div>
+                  );
+                })()}
                 <div className="flex flex-wrap gap-x-4 gap-y-1 mb-6">
                   {project.tags.map((tag) => (
                     <span key={tag} className="text-xs text-ink/40 font-medium">
