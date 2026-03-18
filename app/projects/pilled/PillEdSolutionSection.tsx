@@ -68,7 +68,7 @@ export default function PillEdSolutionSection() {
   return (
     <section ref={sectionRef} className="reveal-x-left py-20 bg-gray-50">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid gap-12" style={{ gridTemplateColumns: "55fr 45fr", alignItems: "flex-start" }}>
+        <div className="grid gap-12 grid-cols-1 md:grid-cols-[55fr_45fr] md:items-start">
           {/* Left column: section header + buttons + feature description */}
           <div className="flex flex-col gap-8">
             {/* Section header */}
