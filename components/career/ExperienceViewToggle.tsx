@@ -98,7 +98,9 @@ function expandQuery(query: string): string[] {
   const lower = query.toLowerCase().trim();
   const stemmed = lower.endsWith("s") ? lower.slice(0, -1) : null;
   const aliases = keywordAliases[lower] ?? keywordAliases[stemmed ?? ""] ?? [];
-  return [...new Set([lower, ...(stemmed ? [stemmed] : []), ...aliases])];
+  // If explicit aliases exist, use only those — raw term may be too broad (e.g. "ai" matches "pairing")
+  if (aliases.length > 0) return [...new Set(aliases.map((a) => a.toLowerCase()))];
+  return [...new Set([lower, ...(stemmed ? [stemmed] : [])])];
 }
 
 function matchesQuery(item: FlatInitiative, terms: string[]): boolean {
