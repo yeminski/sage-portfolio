@@ -68,7 +68,7 @@ export default function ExperienceCard({ experience }: { experience: ExperienceI
                     {cat.initiatives.map((init, i) => (
                       <div
                         key={i}
-                        className="rounded-lg border border-gray-100 bg-gray-50/60 px-5 py-4"
+                        className="rounded-lg border border-gray-200 bg-transparent hover:bg-gray-50 transition-colors duration-200 px-5 py-4"
                       >
                         <p className="text-sm text-ink/70 leading-relaxed flex gap-2">
                           <span className="font-semibold shrink-0 text-gray-800">• What:</span>
@@ -93,8 +93,8 @@ export default function ExperienceCard({ experience }: { experience: ExperienceI
             {/* Awards */}
             {role.awards && (
               <div className="flex items-center gap-2.5 mt-6 px-4 py-3 rounded-lg border border-accent/15 bg-accent/8">
-                <Trophy size={15} className="flex-shrink-0 text-accent/80" strokeWidth={1.75} />
-                <p className="text-sm font-medium text-accent/80">{role.awards}</p>
+                <Trophy size={15} className="flex-shrink-0 text-gray-800" strokeWidth={1.75} />
+                <p className="text-sm font-medium text-gray-800">{role.awards}</p>
               </div>
             )}
           </div>

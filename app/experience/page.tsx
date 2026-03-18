@@ -28,14 +28,15 @@ export default function ExperiencePage() {
               Experience
             </AnimatedH1>
             <p className="text-ink/50">
-              Product management across hardware, e-commerce, and service — from early-stage startups to a global enterprise. Click any tag to explore what I worked on.
+              Product management across the full product stack — 0-to-1 launches, feature development, monetization systems, and data infrastructure —{" "}
+              <br />from early-stage startups to a global enterprise.
             </p>
           </div>
         </div>
 
         {/* Experience cards */}
         <div className="bg-paper">
-          <div className="max-w-[1200px] mx-auto px-6 py-16">
+          <div className="max-w-[1200px] mx-auto px-6 py-8">
             <ExperienceViewToggle />
           </div>
         </div>

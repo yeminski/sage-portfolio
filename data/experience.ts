@@ -39,10 +39,8 @@ export const experiences: ExperienceItem[] = [
         tags: [
           "API Integration",
           "0-to-1 Product",
-          "Cross-Sell Features",
           "Product Strategy",
           "A/B Testing",
-          "Go-to-Market",
           "Cross-functional Leadership",
           "Monetization",
         ],
@@ -96,10 +94,10 @@ export const experiences: ExperienceItem[] = [
         period: "Jun 2023 – Aug 2023",
         summary:
           "Defined the product vision and financial foundation for a new SaaS solution, translating user needs into AI-driven features and securing executive buy-in.",
-        tags: ["0-to-1 Product", "SaaS", "AI Features", "Financial Modeling", "Executive Storytelling"],
+        tags: ["SaaS", "AI Features", "Financial Modeling"],
         categories: [
           {
-            label: "0-to-1 SaaS",
+            label: "SaaS Strategy",
             initiatives: [
               {
                 what: "Defined the product vision for a new SaaS solution with AI-driven features targeting an underserved internal user segment.",
@@ -126,7 +124,7 @@ export const experiences: ExperienceItem[] = [
         period: "Sep 2023 – Aug 2024",
         summary:
           "Owned the 0-to-1 product roadmap for a companion mobile app at an early-stage AR startup, grounding every decision in deep user research and tight cross-functional execution.",
-        tags: ["0-to-1 Product", "Mobile App", "User Research", "MVP Delivery", "Startup"],
+        tags: ["0-to-1 Product", "Mobile App", "Product-Market Fit", "User Research", "MVP Delivery", "Startup"],
         categories: [
           {
             label: "0-to-1 MVP",
@@ -155,38 +153,26 @@ export const experiences: ExperienceItem[] = [
         title: "Product Manager, Vanity Table Team",
         period: "Nov 2021 – Jun 2022",
         summary:
-          "Led product initiatives spanning cross-border payments, market expansion, and 0-to-1 mobile app development at a multi-market D2C e-commerce platform.",
+          "Joined as one of the first product members on a consumer D2C e-commerce platform, taking full ownership across the product lifecycle — from web optimization and experimentation to a 0-to-1 app launch, personalization at scale, and international market expansion into Japan.",
         tags: [
-          "Cross-border Payments",
-          "Platform Expansion",
+          "0-to-1 Product",
           "Mobile App",
-          "Growth & Experimentation",
-          "Localization",
           "D2C E-commerce",
+          "Personalization",
+          "Growth",
+          "Experimentation",
+          "Market Expansion",
+          "Localization",
+          "Cross-border Payments",
         ],
         categories: [
           {
-            label: "Cross-Border Payments",
+            label: "Web Optimization",
             initiatives: [
               {
-                what: "Expanded the platform's payment infrastructure to Japan, enabling compliant cross-border transactions for a new market.",
-                how: "Localized checkout flows, payment methods, and FX display in compliance with Japanese regulations; coordinated across product, legal, and engineering.",
-                result: "Revenue target exceeded by ~25%",
-              },
-            ],
-          },
-          {
-            label: "Platform Expansion",
-            initiatives: [
-              {
-                what: "Scaled the e-commerce platform from the US to Japan.",
-                how: "Led market research, go-to-market strategy, and end-to-end localization of the customer experience across all touchpoints.",
-                result: "Market penetration target exceeded by 30%",
-              },
-              {
-                what: "Built recommendation and ranking logic to improve product discovery and personalization.",
-                how: "Collaborated with engineering and data science; applied behavioral segmentation and iterative A/B experimentation to refine targeting precision.",
-                result: "Double-digit CTR growth",
+                what: "Improved the core web experience through feature development, funnel analysis, and behavioral data-driven experimentation.",
+                how: "Ran A/B tests to identify drop-off points, shipped targeted feature improvements, and established a repeatable experimentation loop tied to conversion metrics.",
+                result: "Laid the growth foundation that scaled revenue and user base — enabling the app launch and Japan expansion that followed",
               },
             ],
           },
@@ -194,9 +180,34 @@ export const experiences: ExperienceItem[] = [
             label: "0-to-1 Mobile App",
             initiatives: [
               {
-                what: "Launched a 0-to-1 mobile app, migrating an established web user base to a native experience.",
-                how: "Defined MVP scope, migration strategy, and end-to-end onboarding flows to streamline the web-to-app transition and reduce drop-off.",
+                what: "Owned the end-to-end launch of the platform's first native mobile app as the user base outgrew the web experience.",
+                how: "Defined MVP scope, migration strategy, and onboarding and retention flows to streamline the web-to-app transition and reduce early drop-off.",
                 result: "12% growth in DAU · improved early retention",
+              },
+            ],
+          },
+          {
+            label: "Personalization",
+            initiatives: [
+              {
+                what: "Built recommendation and ranking logic to personalize product discovery at scale.",
+                how: "Collaborated with engineering and data science; applied behavioral segmentation and iterative experimentation to refine targeting and surface the right products to the right users.",
+                result: "Double-digit CTR growth · increased time-on-site and user engagement across key surfaces",
+              },
+            ],
+          },
+          {
+            label: "Market Expansion",
+            initiatives: [
+              {
+                what: "Led market research and go-to-market strategy to scale the platform into Japan.",
+                how: "Owned end-to-end localization across UX, content, and checkout — adapting the full customer experience for the Japanese market.",
+                result: "Market penetration target exceeded by 30%",
+              },
+              {
+                what: "Expanded payment infrastructure to support compliant cross-border transactions in Japan.",
+                how: "Localized payment methods, FX display, and checkout flows in compliance with Japanese regulations; coordinated across product, legal, and engineering.",
+                result: "Revenue target exceeded by ~25%",
               },
             ],
           },

@@ -15,6 +15,7 @@ export interface Project {
   tags: string[];
   detailHref?: string;
   image?: string;
+  aiNote?: string;
 }
 
 export interface Capability {
@@ -264,6 +265,7 @@ export const projects: Project[] = [
       "User Research",
       "HIPAA",
     ],
+    aiNote: "Designed OCR-based drug label scanning as the core interaction — patients photograph a medication bottle and the app instantly surfaces drug interaction risks and plain-language safety info. Defined the AI/ML feature spec, scoped the data requirements, and positioned the OCR + interaction-checking combination as the primary defensible differentiator in the competitive analysis.",
     detailHref: "/projects/pilled",
     image: "/pilled_main_image.png",
   },
@@ -289,6 +291,7 @@ export const projects: Project[] = [
     outcome:
       "Finalist at CMU Tepper Tech Innovation Challenge 2022. Judges cited the model outcome flywheel as the most defensible moat in the cohort. Projected $173M incremental revenue for PNC over 5 years.",
     tags: ["FinTech", "Financial Inclusion", "AI/ML", "B2C", "Mobile App", "User Research"],
+    aiNote: "Structured the entire product strategy around a self-improving AI recommendation engine as Yaya's core moat. The model learns from real user outcomes — spending behavior, goal achievement, product adoption — to surface increasingly personalized financial product recommendations over time. Defined the flywheel logic, scoped the MVP data inputs, and used this mechanism as the primary differentiator in the competition narrative.",
     detailHref: "/projects/yaya",
     image: "/yaya_main_image.png",
   },
