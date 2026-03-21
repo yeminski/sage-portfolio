@@ -309,4 +309,23 @@ body {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* Speed up all reveal transitions on mobile */
+  .reveal.is-visible {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .reveal-x-left.is-visible {
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+  }
+  .reveal-x-right.is-visible {
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+  }
+
+  /* Speed up timeline on mobile */
+  .timeline-line {
+    transition: transform 0.4s ease-in-out;
+  }
+  .timeline-item.is-visible {
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+  }
 }

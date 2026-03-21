@@ -107,6 +107,9 @@ export default function CareerTimeline() {
     const line = lineRef.current;
     const mobileLine = mobileLineRef.current;
 
+    const isMobile = window.innerWidth < 768;
+    const staggerDelay = isMobile ? 50 : 150;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -115,12 +118,12 @@ export default function CareerTimeline() {
           timelineItemEls.forEach((el, i) => {
             setTimeout(() => {
               el.classList.add("is-visible");
-            }, i * 150);
+            }, i * staggerDelay);
           });
           observer.disconnect();
         }
       },
-      { threshold: 0.05 }
+      { threshold: 0.03, rootMargin: "0px 0px 60px 0px" }
     );
 
     observer.observe(section);
@@ -150,7 +153,7 @@ export default function CareerTimeline() {
             {timelineItems.map((item, i) => {
               const contentOnLeft = i % 2 === 0;
               return (
-                <div key={i} className="tl-item timeline-item grid grid-cols-[1fr_48px_1fr] items-center gap-0" style={{ transitionDelay: `${i * 150}ms` }}>
+                <div key={i} className="tl-item timeline-item grid grid-cols-[1fr_48px_1fr] items-center gap-0">
                   {/* Left slot */}
                   <div className="pr-5">
                     {contentOnLeft
@@ -183,7 +186,7 @@ export default function CareerTimeline() {
         <div className="md:hidden relative">
           <div ref={mobileLineRef} className="timeline-line absolute left-[91px] top-2 bottom-2 w-px bg-ink/10" />
           {timelineItems.map((item, i) => (
-            <div key={i} className="tl-item timeline-item flex items-start mb-8 last:mb-0" style={{ transitionDelay: `${i * 150}ms` }}>
+            <div key={i} className="tl-item timeline-item flex items-start mb-8 last:mb-0">
               <div className="w-[84px] shrink-0 text-right pr-4 pt-1">
                 {item.isCurrent ? (
                   <span className="inline-block px-2 py-0.5 rounded-full bg-amber-500 text-white text-[10px] font-semibold tracking-wide leading-none">
