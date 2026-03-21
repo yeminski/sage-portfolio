@@ -70,6 +70,10 @@ export default function ExperienceCard({ experience }: { experience: ExperienceI
                         key={i}
                         className="rounded-lg border border-gray-200 bg-transparent hover:bg-gray-50 transition-colors duration-200 px-5 py-4"
                       >
+                        <p className="text-sm leading-relaxed flex gap-2 mb-3 pb-3 border-b border-gray-100">
+                          <span className="font-semibold shrink-0 text-amber-600">• Problem:</span>
+                          <span className="text-ink/65">{init.problem}</span>
+                        </p>
                         <p className="text-sm text-ink/70 leading-relaxed flex gap-2">
                           <span className="font-semibold shrink-0 text-gray-800">• What:</span>
                           {init.what}
