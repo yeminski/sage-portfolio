@@ -88,14 +88,14 @@ export const experiences: ExperienceItem[] = [
         period: "Sep 2023 – Aug 2024",
         description: [
           "At ERA, an early-stage startup developing AR smart glasses and a companion mobile app for cyclists, I owned the 0-to-1 product roadmap for the companion app, balancing rapid MVP delivery with long-term scalability.",
-          "My work centered on grounding product decisions in real user needs — leading extensive customer discovery to validate product-market fit and translate qualitative insights into clear product requirements. This process kept the team aligned around the most critical user problems while enabling fast, focused execution.",
+          "My work centered on grounding product decisions in real user needs, leading extensive customer discovery to validate product-market fit and translate qualitative insights into clear product requirements. This process kept the team aligned around the most critical user problems while enabling fast, focused execution.",
           "Operating in a resource-constrained startup environment sharpened my ability to make high-conviction product decisions with incomplete information, coordinating closely with engineering and design to keep execution tight without sacrificing product quality.",
         ],
         categories: [
           {
             label: "0-to-1 Product Building",
             bullets: [
-              "Owned the 0-to-1 roadmap for the companion app — defining MVP scope, feature prioritization, and release sequencing across engineering and design.",
+              "Owned the 0-to-1 roadmap for the companion app, defining MVP scope, feature prioritization, and release sequencing across engineering and design.",
               "Conducted 100+ user interviews to validate product-market fit; synthesized findings into PRDs that guided MVP development and delivered ahead of schedule, saving ~$100K in runway.",
             ],
           },
@@ -147,16 +147,16 @@ export const experiences: ExperienceItem[] = [
         title: "Overseas Sales Associate (Global B2B Project Management)",
         period: "Aug 2019 – Aug 2021",
         description: [
-          "I began my career at Intercos Korea, a global B2B cosmetics ODM manufacturer. Although my title was in sales, the role functioned much closer to end-to-end project management — I served as the primary point of contact for international clients throughout the entire product lifecycle.",
+          "I began my career at Intercos Korea, a global B2B cosmetics ODM manufacturer. Although my title was in sales, the role functioned much closer to end-to-end project management, I served as the primary point of contact for international clients throughout the entire product lifecycle.",
           "My involvement started at the pitch stage, crafting sales and marketing proposals for prospective clients across Europe and Asia. Once a project was secured, I owned execution from product testing and formula development through procurement and final fulfillment, coordinating closely with R&D, production, and logistics to ensure each launch met client specifications, regulatory requirements, and timeline commitments. This cross-functional ownership across 20+ product launches helped drive 10%+ YoY growth across key accounts.",
-          "Beyond client-facing work, I partnered with Finance and Procurement to support B2B invoicing, AP/AR tracking, and revenue recognition for global accounts — giving me early, hands-on exposure to the financial workflows and cross-border payment dynamics that underpin international commerce.",
+          "Beyond client-facing work, I partnered with Finance and Procurement to support B2B invoicing, AP/AR tracking, and revenue recognition for global accounts, giving me early, hands-on exposure to the financial workflows and cross-border payment dynamics that underpin international commerce.",
         ],
         categories: [
           {
             label: "B2B Sales & Project Management",
             bullets: [
               "Led market research, trend analysis, and client needs assessment to develop strategic pitch decks and product proposals; converted prospects into projects across European and Asian accounts.",
-              "Owned end-to-end project execution from contract to delivery — coordinating across R&D, QA/QC, production, procurement, and logistics to ensure each launch met client specs, regulatory requirements, and timeline commitments across 20+ product launches.",
+              "Owned end-to-end project execution from contract to delivery, coordinating across R&D, QA/QC, production, procurement, and logistics to ensure each launch met client specs, regulatory requirements, and timeline commitments across 20+ product launches.",
               "Accelerated account growth across Europe and Asia by developing segment-specific pricing and product offerings in compliance with regional regulations; secured multi-million dollar B2B deals, driving 10%+ YoY growth.",
             ],
           },

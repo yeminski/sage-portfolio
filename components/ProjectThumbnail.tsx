@@ -18,6 +18,7 @@ export const projectScreens: Record<string, [string, string, string]> = {
 export const projectThemeBg: Record<string, string> = {
   pilled: "#F0FAFA",
   yaya: "#FAF7F2",
+  "echo-japan-payments": "#F0FDFC",
 };
 
 function PhoneCascade({ screens, alt }: { screens: [string, string, string]; alt: string }) {
@@ -61,6 +62,59 @@ function PhoneCascade({ screens, alt }: { screens: [string, string, string]; alt
   );
 }
 
+function EchoJapanVisual() {
+  const outcomes = [
+    { label: "CONFIRMED", color: "#0D9488", bg: "#F0FDFA", border: "#0D9488" },
+    { label: "PARTIAL", color: "#B45309", bg: "#FFFBEB", border: "#F59E0B" },
+    { label: "EXPIRED", color: "#6B7280", bg: "#F9FAFB", border: "#D1D5DB" },
+    { label: "+REFUND", color: "#0D9488", bg: "#F0FDFA", border: "#0D9488" },
+  ];
+  return (
+    <div style={{ width: 300, padding: "8px 0", fontFamily: "inherit" }}>
+      {/* Header label */}
+      <div style={{ textAlign: "center", marginBottom: 20 }}>
+        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", color: "#0D9488", textTransform: "uppercase" }}>
+          Async Payment Flow
+        </span>
+      </div>
+      {/* PENDING node */}
+      <div style={{ display: "flex", justifyContent: "center", marginBottom: 4 }}>
+        <div style={{ border: "2px solid #F59E0B", borderRadius: 8, padding: "8px 24px", background: "#FFFBEB", color: "#92400E", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em" }}>
+          PENDING
+        </div>
+      </div>
+      {/* Stem */}
+      <div style={{ display: "flex", justifyContent: "center", marginBottom: 0 }}>
+        <div style={{ width: 1, height: 12, background: "#D1D5DB" }} />
+      </div>
+      {/* Branch bar */}
+      <div style={{ position: "relative", height: 12, margin: "0 28px" }}>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, borderTop: "1px solid #D1D5DB" }} />
+        {[12.5, 37.5, 62.5, 87.5].map((l) => (
+          <div key={l} style={{ position: "absolute", left: `${l}%`, top: 0, width: 1, height: "100%", background: "#D1D5DB" }} />
+        ))}
+      </div>
+      {/* Outcome nodes */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 5, margin: "0 4px" }}>
+        {outcomes.map((s) => (
+          <div key={s.label} style={{ border: `1.5px solid ${s.border}`, borderRadius: 6, padding: "6px 4px", background: s.bg, color: s.color, fontSize: 8, fontWeight: 700, letterSpacing: "0.04em", textAlign: "center" }}>
+            {s.label}
+          </div>
+        ))}
+      </div>
+      {/* Metrics */}
+      <div style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 24 }}>
+        {[{ value: "+25%", label: "revenue target" }, { value: "+30%", label: "penetration" }].map((m) => (
+          <div key={m.label} style={{ textAlign: "center" }}>
+            <div style={{ fontSize: 18, fontWeight: 700, color: "#0D9488" }}>{m.value}</div>
+            <div style={{ fontSize: 9, color: "#9CA3AF", marginTop: 2 }}>{m.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 interface Props {
   projectId: string;
   alt: string;
@@ -72,7 +126,9 @@ export default function ProjectThumbnail({ projectId, alt, href, className = "" 
   const screens = projectScreens[projectId];
   const bg = projectThemeBg[projectId] ?? "#F0FAFA";
 
-  const inner = screens ? (
+  const inner = projectId === "echo-japan-payments" ? (
+    <EchoJapanVisual />
+  ) : screens ? (
     <PhoneCascade screens={screens} alt={alt} />
   ) : (
     // eslint-disable-next-line @next/next/no-img-element
