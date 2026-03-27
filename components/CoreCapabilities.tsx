@@ -53,7 +53,7 @@ export default function CoreCapabilities() {
             return (
               <div
                 key={item.id}
-                className="cap-card reveal card-hover border-t border-ink/10 pt-5 pb-6"
+                className="cap-card reveal border-t border-ink/10 pt-5 pb-6"
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
                 {/* Icon + title row */}
