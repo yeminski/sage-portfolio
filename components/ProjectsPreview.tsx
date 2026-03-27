@@ -109,7 +109,7 @@ export default function ProjectsPreview() {
                 ) : (
                   <>
                     <div className="order-2 md:order-1">{textCol}</div>
-                    <div className="order-1 md:order-2">{imageCol}</div>
+                    <div className="order-1 md:order-2 self-start mt-[76px]">{imageCol}</div>
                   </>
                 )}
               </div>
