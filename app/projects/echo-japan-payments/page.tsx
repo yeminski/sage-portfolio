@@ -36,6 +36,7 @@ export default function EchoJapanPaymentsPage() {
         <DecisionsSection />
         <FintechTranslationSection />
         <KeyDecisionsSection />
+        <OutcomesSection />
         <PageNav />
       </main>
       <Footer letsTalkBg="bg-white" />
@@ -85,7 +86,7 @@ function PageHero() {
 
         {/* Meta row */}
         <div
-          className="flex flex-wrap gap-8 mb-12 pb-12 border-b border-gray-100 hero-enter"
+          className="flex flex-wrap gap-8 hero-enter"
           style={{ animationDelay: "300ms" }}
         >
           {[
@@ -97,22 +98,6 @@ function PageHero() {
             <div key={label}>
               <p className="text-xs font-semibold text-ink/40 uppercase tracking-widest mb-1">{label}</p>
               <p className="text-sm font-medium text-ink">{value}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Metric cards */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 hero-enter"
-          style={{ animationDelay: "360ms" }}
-        >
-          {metrics.map((m) => (
-            <div key={m.label} className="border border-gray-200 rounded-xl bg-gray-50 px-6 py-5">
-              <p className="text-3xl font-bold font-serif" style={{ color: "#0D9488" }}>
-                {m.value}
-              </p>
-              <p className="text-sm font-medium text-ink mt-1">{m.label}</p>
-              <p className="text-xs text-ink/40 mt-0.5">{m.sub}</p>
             </div>
           ))}
         </div>
@@ -194,7 +179,7 @@ const whatThisBroke = [
 function ContextProblemSection() {
   return (
     <RevealSection direction="up">
-      <section className="py-16 bg-paper border-b border-gray-200">
+      <section className="py-16 bg-white border-b border-gray-200">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left: context + core problem */}
@@ -249,7 +234,7 @@ function ContextProblemSection() {
 function StateDiagramSection() {
   return (
     <RevealSection direction="up">
-      <section className="py-16 bg-white border-b border-gray-200">
+      <section className="py-16 bg-paper border-b border-gray-200">
         <div className="max-w-[1200px] mx-auto px-6">
           <SectionLabel index="03">System Design</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-2">Payment State Diagram</h2>
@@ -269,7 +254,7 @@ function StateDiagramSection() {
 function DecisionsSection() {
   return (
     <RevealSection direction="up">
-      <section className="py-16 bg-paper border-b border-gray-200">
+      <section className="py-16 bg-white border-b border-gray-200">
         <div className="max-w-[1200px] mx-auto px-6">
           <SectionLabel index="04">Design Decisions</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-2">What I Designed</h2>
@@ -295,7 +280,7 @@ const fintechMappings = [
 function FintechTranslationSection() {
   return (
     <RevealSection direction="up">
-      <section className="py-16 bg-white border-b border-gray-200">
+      <section className="py-16 bg-paper border-b border-gray-200">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left: heading + explanation */}
@@ -370,7 +355,7 @@ const keyDecisions = [
 function KeyDecisionsSection() {
   return (
     <RevealSection direction="up">
-      <section className="py-16 bg-paper border-b border-gray-200">
+      <section className="py-16 bg-white border-b border-gray-200">
         <div className="max-w-[1200px] mx-auto px-6">
           <SectionLabel index="06">Trade-offs</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-8">Key Decisions</h2>
@@ -385,6 +370,36 @@ function KeyDecisionsSection() {
                 </div>
                 <p className="text-sm font-bold text-ink mb-2">{d.label}</p>
                 <p className="text-sm text-ink/60 leading-relaxed">{d.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </RevealSection>
+  );
+}
+
+/* ─── 7. Outcomes ────────────────────────────────────────────────────────── */
+
+function OutcomesSection() {
+  return (
+    <RevealSection direction="up">
+      <section className="py-16 bg-paper border-b border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionLabel index="07">Results</SectionLabel>
+          <h2 className="font-serif text-3xl font-bold text-ink mb-2">Outcomes</h2>
+          <p className="text-sm text-ink/50 mb-10 max-w-xl">
+            Japan launched on schedule. The payment architecture has held without rework as the platform
+            expanded to additional markets.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+            {metrics.map((m) => (
+              <div key={m.label} className="border border-gray-200 rounded-xl bg-white px-6 py-5">
+                <p className="text-3xl font-bold font-serif" style={{ color: "#0D9488" }}>
+                  {m.value}
+                </p>
+                <p className="text-sm font-medium text-ink mt-1">{m.label}</p>
+                <p className="text-xs text-ink/40 mt-0.5">{m.sub}</p>
               </div>
             ))}
           </div>
