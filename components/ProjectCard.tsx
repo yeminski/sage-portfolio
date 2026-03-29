@@ -72,7 +72,7 @@ function ProjectInfo({ project }: { project: Project }) {
       {/* Label + Title */}
       <div>
         <p className="text-[10px] font-semibold text-accent tracking-widest uppercase mb-2">
-          Featured Project
+          {project.category}
         </p>
         <h2 className="text-2xl md:text-3xl font-bold text-ink leading-snug">
           {project.detailHref ? (

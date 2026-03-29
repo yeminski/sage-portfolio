@@ -33,6 +33,7 @@ export default function AIFinancialCoachPage() {
         <CompetitorSection />
         <MarketSection />
         <GTMSection />
+        <PageNav />
       </main>
       <Footer letsTalkBg="bg-white" />
     </>
@@ -540,6 +541,29 @@ function MarketSection() {
         </div>
       </section>
     </RevealSection>
+  );
+}
+
+/* ─── Page Nav ───────────────────────────────────────────────────────────── */
+
+function PageNav() {
+  return (
+    <div className="bg-white border-t border-gray-100">
+      <div className="max-w-[1200px] mx-auto px-6 py-8 flex items-center justify-between">
+        <Link
+          href="/projects"
+          className="flex items-center gap-2 text-sm font-medium text-ink/40 hover:text-ink transition-colors"
+        >
+          ← Back to Projects
+        </Link>
+        <Link
+          href="/projects/echo-japan-payments"
+          className="flex items-center gap-2 text-sm font-medium text-ink/40 hover:text-ink transition-colors"
+        >
+          Back to Start: Cross-Border Payments →
+        </Link>
+      </div>
+    </div>
   );
 }
 

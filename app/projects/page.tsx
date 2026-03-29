@@ -20,7 +20,7 @@ export default function ProjectsPage() {
         <div className="bg-white border-b border-gray-200">
           <div className="max-w-[1200px] mx-auto px-6 py-16">
             <span className="text-[10px] font-semibold text-accent uppercase tracking-widest">
-              Case Competitions
+              Featured Work
             </span>
             <AnimatedH1
               className="font-serif text-4xl md:text-5xl font-bold text-ink mt-2 mb-3"

@@ -236,6 +236,29 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
+    id: "echo-japan-payments",
+    slug: "echo-japan-payments",
+    title: "Cross-Border Payments Infrastructure",
+    category: "Professional Work",
+    competition: "Echo Marketing, K-beauty D2C Platform",
+    year: "2022",
+    problem:
+      "Japan's dominant payment methods, Konbini and bank transfer, carry async confirmation latency that our synchronous order system wasn't built for, requiring net-new flow design across inventory logic, order status communication, and edge case handling.",
+    solution:
+      "Designed end-to-end async payment infrastructure: no-hold inventory logic backed by LTV data, 3-stage customer communication, idempotent webhook handling, per-case bank transfer edge case logic, and full payment-state-to-reconciliation-event mapping with finance.",
+    myRole:
+      "Product Manager: owned full async payment flow design for the Japan expansion: defined system architecture, led cross-functional alignment across engineering, finance, and legal, and specified every edge case before launch.",
+    keyDecisions: [
+      "No inventory hold, high LTV, high repeat-purchase segment; cancel rate data validated that stockout collision risk was within acceptable range.",
+      "Idempotent webhook handling, Konbini confirmation events can fire more than once from provider retries; duplicate trigger without idempotency handling would double-fulfill an order.",
+      "All payment states mapped to reconciliation events upfront, finance alignment at design time, not post-launch cleanup.",
+    ],
+    outcome:
+      "Japan launch exceeded revenue target by ~25% and market penetration target by ~30%. Payment architecture built to support future market expansion without reworking core flow.",
+    tags: ["Payments", "Async Flows", "Market Expansion", "Reconciliation", "Edge Case Design", "Fintech"],
+    detailHref: "/projects/echo-japan-payments",
+  },
+  {
     id: "pilled",
     slug: "pilled",
     title: "PillEd: Smart Medication Management",
@@ -268,29 +291,6 @@ export const projects: Project[] = [
     aiNote: "Designed OCR-based drug label scanning as the core interaction, patients photograph a medication bottle and the app instantly surfaces drug interaction risks and plain-language safety info. Defined the AI/ML feature spec, scoped the data requirements, and positioned the OCR + interaction-checking combination as the primary defensible differentiator in the competitive analysis.",
     detailHref: "/projects/pilled",
     image: "/pilled_main_image.png",
-  },
-  {
-    id: "echo-japan-payments",
-    slug: "echo-japan-payments",
-    title: "Cross-Border Payments Infrastructure",
-    category: "Professional Work",
-    competition: "Echo Marketing, K-beauty D2C Platform",
-    year: "2022",
-    problem:
-      "Japan's dominant payment methods, Konbini and bank transfer, carry async confirmation latency that our synchronous order system wasn't built for, requiring net-new flow design across inventory logic, order status communication, and edge case handling.",
-    solution:
-      "Designed end-to-end async payment infrastructure: no-hold inventory logic backed by LTV data, 3-stage customer communication, idempotent webhook handling, per-case bank transfer edge case logic, and full payment-state-to-reconciliation-event mapping with finance.",
-    myRole:
-      "Product Manager: owned full async payment flow design for the Japan expansion: defined system architecture, led cross-functional alignment across engineering, finance, and legal, and specified every edge case before launch.",
-    keyDecisions: [
-      "No inventory hold, high LTV, high repeat-purchase segment; cancel rate data validated that stockout collision risk was within acceptable range.",
-      "Idempotent webhook handling, Konbini confirmation events can fire more than once from provider retries; duplicate trigger without idempotency handling would double-fulfill an order.",
-      "All payment states mapped to reconciliation events upfront, finance alignment at design time, not post-launch cleanup.",
-    ],
-    outcome:
-      "Japan launch exceeded revenue target by ~25% and market penetration target by ~30%. Payment architecture built to support future market expansion without reworking core flow.",
-    tags: ["Payments", "Async Flows", "Market Expansion", "Reconciliation", "Edge Case Design", "Fintech"],
-    detailHref: "/projects/echo-japan-payments",
   },
   {
     id: "yaya",

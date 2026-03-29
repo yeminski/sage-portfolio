@@ -345,10 +345,10 @@ function PageNav() {
           ← Back to Projects
         </Link>
         <Link
-          href="/projects/epson-distributor-api"
+          href="/projects/pilled"
           className="flex items-center gap-2 text-sm font-medium text-ink/40 hover:text-ink transition-colors"
         >
-          Next: Distributor API Integration →
+          Next: PillEd →
         </Link>
       </div>
     </div>
