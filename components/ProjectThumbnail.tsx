@@ -135,7 +135,10 @@ export default function ProjectThumbnail({ projectId, alt, href, className = "" 
     <img src="" alt={alt} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
   );
 
-  const containerStyle = { background: bg, padding: "24px 16px" };
+  const containerStyle = {
+    background: bg,
+    padding: projectId === "echo-japan-payments" ? "12px 16px" : "24px 16px",
+  };
 
   if (href) {
     return (
