@@ -30,6 +30,7 @@ export default function EchoJapanPaymentsPage() {
       <Navbar />
       <main className="pt-16 bg-white min-h-screen">
         <PageHero />
+        <MyContributionSection />
         <ContextProblemSection />
         <StateDiagramSection />
         <DecisionsSection />
@@ -45,7 +46,7 @@ export default function EchoJapanPaymentsPage() {
 /* ─── 0. Hero ─────────────────────────────────────────────────────────────── */
 
 const metrics = [
-  { value: "+25%", label: "vs. revenue target", sub: "Japan launch" },
+  { value: "+25%", label: "vs. revenue target", sub: "3 months post-launch" },
   { value: "+30%", label: "vs. penetration target", sub: "Japan market share" },
 ];
 
@@ -120,7 +121,68 @@ function PageHero() {
   );
 }
 
-/* ─── 1. Context & Problem ───────────────────────────────────────────────── */
+/* ─── 1. My Contribution ─────────────────────────────────────────────────── */
+
+const contributions = [
+  {
+    emoji: "🗺️",
+    title: "Problem Definition & Scoping",
+    description:
+      "Identified the core incompatibility between Japan's async payment methods and our synchronous order system. Defined the full scope of what needed to be redesigned: inventory logic, order status communication, settlement handling, and reconciliation mapping.",
+  },
+  {
+    emoji: "🎨",
+    title: "Mockups & Flow Design",
+    description:
+      "Built end-to-end payment state flows in Figma — covering every state (pending, confirmed, partial, expired, overpayment) with customer-facing communication and edge case logic at each stage.",
+  },
+  {
+    emoji: "📄",
+    title: "PRD & Spec Writing",
+    description:
+      "Wrote the PRD and payment state spec used by in-house engineering for implementation. Defined acceptance criteria and edge case coverage requirements including idempotency handling and partial payment resolution logic.",
+  },
+  {
+    emoji: "🤝",
+    title: "Cross-functional Alignment",
+    description:
+      "Aligned with finance on reconciliation event schema at design time — mapping every state to a tagged finance event before engineering began, so there was no ambiguity at launch.",
+  },
+];
+
+function MyContributionSection() {
+  return (
+    <RevealSection direction="left" stagger>
+      <section className="py-16 bg-paper border-b border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionLabel index="01">My Contribution</SectionLabel>
+          <h2 className="font-serif text-3xl font-bold text-ink mb-2">What I Did as Product Manager</h2>
+          <p className="text-ink/50 max-w-3xl mb-10">
+            As an early team member, I owned end-to-end product definition for Japan market entry — from
+            problem framing through launch. With no existing playbook for async flows, I drove alignment
+            across engineering and finance on every design decision before a single line was written.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {contributions.map((c) => (
+              <div key={c.title} className="stagger-item reveal border-t border-ink/10 pt-5 pb-6">
+                <div className="text-xl mb-3">{c.emoji}</div>
+                <h3 className="font-semibold text-ink mb-2">{c.title}</h3>
+                <p className="text-sm text-ink/50 leading-relaxed">{c.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-8 text-xs text-ink/35 tracking-wide">
+            Early team member · In-house engineering · Direct collaboration with finance
+          </p>
+        </div>
+      </section>
+    </RevealSection>
+  );
+}
+
+/* ─── 2. Context & Problem ───────────────────────────────────────────────── */
 
 const whatThisBroke = [
   "Inventory logic — hold or not while waiting for async confirmation?",
@@ -137,7 +199,7 @@ function ContextProblemSection() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left: context + core problem */}
             <div>
-              <SectionLabel index="01">Background</SectionLabel>
+              <SectionLabel index="02">Background</SectionLabel>
               <h2 className="font-serif text-3xl font-bold text-ink mb-6">Context & Problem</h2>
               <p className="text-ink/65 leading-relaxed mb-8">
                 After stabilizing the US platform, we identified Japan as the next expansion target.
@@ -182,14 +244,14 @@ function ContextProblemSection() {
   );
 }
 
-/* ─── 2. Payment State Diagram ───────────────────────────────────────────── */
+/* ─── 3. Payment State Diagram ───────────────────────────────────────────── */
 
 function StateDiagramSection() {
   return (
     <RevealSection direction="up">
       <section className="py-16 bg-white border-b border-gray-200">
         <div className="max-w-[1200px] mx-auto px-6">
-          <SectionLabel index="02">System Design</SectionLabel>
+          <SectionLabel index="03">System Design</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-2">Payment State Diagram</h2>
           <p className="text-sm text-ink/50 mb-10 max-w-xl">
             Every state a payment can reach, and what the system does at each one.
@@ -202,14 +264,14 @@ function StateDiagramSection() {
   );
 }
 
-/* ─── 3. What I Designed ─────────────────────────────────────────────────── */
+/* ─── 4. What I Designed ─────────────────────────────────────────────────── */
 
 function DecisionsSection() {
   return (
     <RevealSection direction="up">
       <section className="py-16 bg-paper border-b border-gray-200">
         <div className="max-w-[1200px] mx-auto px-6">
-          <SectionLabel index="03">Design Decisions</SectionLabel>
+          <SectionLabel index="04">Design Decisions</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-2">What I Designed</h2>
           <p className="text-sm text-ink/50 mb-8">
             Five decisions that shaped the system. Toggle technical detail for the full engineering rationale.
@@ -221,7 +283,7 @@ function DecisionsSection() {
   );
 }
 
-/* ─── 4. Fintech Translation ─────────────────────────────────────────────── */
+/* ─── 5. Fintech Translation ─────────────────────────────────────────────── */
 
 const fintechMappings = [
   { left: "Konbini / bank transfer async flow", right: "ACH transfer & delayed settlement" },
@@ -238,7 +300,7 @@ function FintechTranslationSection() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left: heading + explanation */}
             <div>
-              <SectionLabel index="04">Domain Connection</SectionLabel>
+              <SectionLabel index="05">Domain Connection</SectionLabel>
               <h2 className="font-serif text-3xl font-bold text-ink mb-6">Fintech Translation</h2>
               <p className="text-ink/65 leading-relaxed mb-6">
                 The design challenge here is identical to core fintech problems: how do you build a
@@ -285,7 +347,7 @@ function FintechTranslationSection() {
   );
 }
 
-/* ─── 5. Key Decisions ───────────────────────────────────────────────────── */
+/* ─── 6. Key Decisions ───────────────────────────────────────────────────── */
 
 const keyDecisions = [
   {
@@ -310,7 +372,7 @@ function KeyDecisionsSection() {
     <RevealSection direction="up">
       <section className="py-16 bg-paper border-b border-gray-200">
         <div className="max-w-[1200px] mx-auto px-6">
-          <SectionLabel index="05">Trade-offs</SectionLabel>
+          <SectionLabel index="06">Trade-offs</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-8">Key Decisions</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {keyDecisions.map((d) => (
