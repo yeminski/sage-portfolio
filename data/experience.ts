@@ -3,6 +3,7 @@ export type Initiative = {
   what: string;
   how: string;
   result: string;
+  projectLink?: { href: string; label: string; description: string };
 };
 
 export type Category = {
@@ -201,6 +202,11 @@ export const experiences: ExperienceItem[] = [
                 what: "Designed the end-to-end async payment flow: inventory logic, 3-stage customer communication, edge case handling, and finance reconciliation alignment.",
                 how: "No-hold inventory decision backed by high-LTV customer data; idempotent webhook handling to prevent duplicate fulfillment; bank transfer edge cases defined (partial, overpayment, unmatched); all payment states mapped to finance reconciliation events.",
                 result: "Revenue target exceeded by ~25% · payment architecture built to support future market expansion without reworking core flow",
+                projectLink: {
+                  href: "/projects/echo-japan-payments",
+                  label: "Cross-Border Payments Infrastructure",
+                  description: "Async payment system design for Japan market entry",
+                },
               },
             ],
           },

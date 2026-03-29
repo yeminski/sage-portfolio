@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Trophy } from "lucide-react";
 import { type ExperienceItem } from "@/data/experience";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -87,6 +88,20 @@ export default function ExperienceCard({ experience }: { experience: ExperienceI
                             {init.result}
                           </p>
                         </div>
+                        {init.projectLink && (
+                          <Link
+                            href={init.projectLink.href}
+                            className="mt-4 flex items-start gap-3 rounded-lg px-4 py-3 border border-accent/20 bg-accent/4 hover:bg-accent/8 transition-colors group"
+                          >
+                            <span className="mt-0.5 text-accent text-xs leading-none">→</span>
+                            <div>
+                              <p className="text-xs font-semibold text-accent group-hover:underline leading-snug">
+                                {init.projectLink.label}
+                              </p>
+                              <p className="text-xs text-ink/45 mt-0.5">{init.projectLink.description}</p>
+                            </div>
+                          </Link>
+                        )}
                       </div>
                     ))}
                   </div>

@@ -75,7 +75,13 @@ function ProjectInfo({ project }: { project: Project }) {
           Featured Project
         </p>
         <h2 className="text-2xl md:text-3xl font-bold text-ink leading-snug">
-          {project.title}
+          {project.detailHref ? (
+            <Link href={project.detailHref} className="hover:text-accent transition-colors">
+              {project.title}
+            </Link>
+          ) : (
+            project.title
+          )}
         </h2>
       </div>
 
