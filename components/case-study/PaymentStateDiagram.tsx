@@ -189,7 +189,7 @@ export default function PaymentStateDiagram() {
     <div className="w-full select-none">
 
       {/* ── Tab toggle ─────────────────────────────────────────────────── */}
-      <div className="flex gap-2 mb-8">
+      <div className="flex gap-2 mb-8 justify-center flex-wrap">
         <button
           onClick={() => setTab("sync")}
           className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
@@ -211,7 +211,7 @@ export default function PaymentStateDiagram() {
           Async: Konbini / Bank Transfer
         </button>
         {tab === "async" && (
-          <span className="ml-1 self-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-[#0D9488]/10 text-[#0D9488]">
+          <span className="self-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-[#0D9488]/10 text-[#0D9488]">
             This project
           </span>
         )}
@@ -221,7 +221,7 @@ export default function PaymentStateDiagram() {
       {tab === "sync" && (
         <div>
           {/* Context callout */}
-          <div className="mb-6 bg-gray-50 border border-gray-200 rounded-xl px-5 py-4 max-w-2xl">
+          <div className="mb-6 bg-gray-50 border border-gray-200 rounded-xl px-5 py-4 max-w-2xl mx-auto">
             <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">How our US system worked</p>
             <p className="text-sm text-gray-600 leading-relaxed">
               Card payments resolve instantly. The entire order system (inventory, CRM, finance) was built assuming
@@ -321,7 +321,7 @@ export default function PaymentStateDiagram() {
       {tab === "async" && (
         <div>
           {/* Context callout */}
-          <div className="mb-6 bg-gray-50 border border-gray-200 rounded-xl px-5 py-4 max-w-2xl">
+          <div className="mb-6 bg-gray-50 border border-gray-200 rounded-xl px-5 py-4 max-w-2xl mx-auto">
             <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">What we had to design for Japan</p>
             <p className="text-sm text-gray-600 leading-relaxed">
               Payment confirmation is decoupled from order creation. The system must handle every possible
