@@ -43,17 +43,20 @@ export default function ProjectsPreview() {
                 projectId={project.id}
                 alt={project.title}
                 href={project.detailHref}
-                className="self-stretch"
               />
             );
 
             const textCol = (
-              <div className="flex flex-col justify-center py-4">
+              <div className="flex flex-col pt-2">
                 <p className="text-[10px] font-semibold text-navy uppercase tracking-widest mb-3">
                   Featured Project
                 </p>
                 <h3 className="text-2xl md:text-3xl font-bold text-ink leading-tight mb-6">
-                  {project.title}
+                  {project.detailHref ? (
+                    <Link href={project.detailHref} className="hover:text-accent transition-colors">
+                      {project.title}
+                    </Link>
+                  ) : project.title}
                 </h3>
                 <div className="border-l-[3px] border-accent pl-4 mb-5">
                   <p className="text-[10px] font-bold text-accent uppercase tracking-widest mb-1.5">
@@ -99,17 +102,17 @@ export default function ProjectsPreview() {
             return (
               <div
                 key={project.id}
-                className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-stretch"
+                className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-start"
               >
                 {imageFirst ? (
                   <>
-                    <div className="self-start">{imageCol}</div>
+                    {imageCol}
                     {textCol}
                   </>
                 ) : (
                   <>
                     <div className="order-2 md:order-1">{textCol}</div>
-                    <div className="order-1 md:order-2 self-start mt-[76px]">{imageCol}</div>
+                    <div className="order-1 md:order-2">{imageCol}</div>
                   </>
                 )}
               </div>

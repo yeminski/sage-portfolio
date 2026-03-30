@@ -15,7 +15,7 @@ export default function LetsTalk({ className = "bg-paper" }: { className?: strin
             </h2>
             <p className="text-ink/50 leading-relaxed">
               Fintech PM roles, product collaborations, or just a good conversation about
-              building things — I&apos;d love to hear from you.
+              building things; I&apos;d love to hear from you.
             </p>
           </div>
 

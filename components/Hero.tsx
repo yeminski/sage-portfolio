@@ -55,7 +55,7 @@ export default function Hero() {
           <div className="hero-image-enter flex-1 flex justify-center" style={{ animationDelay: "500ms" }}>
             <Image
               src="/hero-image.png"
-              alt="Sage — Product Manager"
+              alt="Sage, Product Manager"
               width={1024}
               height={1024}
               className="w-full max-w-md h-auto"

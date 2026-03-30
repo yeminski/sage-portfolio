@@ -8,7 +8,7 @@ import PaymentFlowDiagram from "@/components/case-study/PaymentFlowDiagram";
 export const metadata: Metadata = {
   title: "Cross-Border Payment Infrastructure | Sage",
   description:
-    "A PM's deep dive into cross-border payment infrastructure — FX mechanics, local payment methods, settlement timing, and what it means for product decisions.",
+    "A PM's deep dive into cross-border payment infrastructure: FX mechanics, local payment methods, settlement timing, and what it means for product decisions.",
 };
 
 const cx = "max-w-5xl mx-auto px-6 sm:px-10 lg:px-16";
@@ -94,7 +94,7 @@ function PageHero() {
           Cross-Border Payment Infrastructure
         </h1>
         <p className="text-lg text-ink/50 mb-12 hero-enter" style={{ animationDelay: "220ms" }}>
-          From Echo Japan&apos;s async payment challenge to understanding the global rails that move money —
+          From Echo Japan&apos;s async payment challenge to understanding the global rails that move money:
           FX mechanics, local payment methods, and what it means for product decisions.
         </p>
 
@@ -127,7 +127,7 @@ function IntroSection() {
           <div className="space-y-5">
             <p className="text-ink/65 leading-relaxed">
               Working on Japan market entry at Echo, I had to design around Konbini and bank transfer flows
-              — async payment methods that broke every assumption our sync order system was built on. We
+              - async payment methods that broke every assumption our sync order system was built on. We
               solved the product problem. But the experience left me curious about what was actually
               happening underneath.
             </p>
@@ -136,7 +136,7 @@ function IntroSection() {
               Paris but the fees look completely different? Why did we need a local payment method at all?
             </p>
             <p className="text-ink/65 leading-relaxed">
-              This is my attempt to answer those questions — not as a textbook, but as a PM trying to
+              This is my attempt to answer those questions, not as a textbook, but as a PM trying to
               understand the infrastructure well enough to make better product decisions.
             </p>
             <p className="text-sm text-ink/50">
@@ -167,7 +167,7 @@ function PlayersSection() {
           <h2 className="font-serif text-3xl font-bold text-ink mb-2">Who&apos;s in the room</h2>
           <p className="text-sm text-ink/50 mb-8">
             Before getting into cross-border specifics, it helps to know who&apos;s involved in any card
-            payment — domestic or international.
+            payment, domestic or international.
           </p>
 
           <PaymentFlowDiagram />
@@ -184,7 +184,7 @@ function PlayersSection() {
           <PmInsight>
             PSP choice isn&apos;t just a technical decision. It determines which markets you can enter, how
             FX risk is handled, and whether local payment methods are even available. Stripe and Adyen serve
-            fundamentally different customers — not just different sizes.
+            fundamentally different customers, not just different sizes.
           </PmInsight>
         </div>
       </section>
@@ -200,7 +200,7 @@ const localMethods = [
     country: "Japan",
     method: "Konbini + PayPay",
     type: "Async cash · QR wallet",
-    characteristic: "Konbini: pay at 7-Eleven/FamilyMart with a payment slip — confirmation in hours to days. PayPay (60M+ users) is Japan's dominant QR wallet.",
+    characteristic: "Konbini: pay at 7-Eleven/FamilyMart with a payment slip; confirmation in hours to days. PayPay (60M+ users) is Japan's dominant QR wallet.",
     pmNote:
       "Two separate integrations. Konbini requires full async state machine design. PayPay is instant but needs QR-based checkout flow, not a card form.",
   },
@@ -211,7 +211,7 @@ const localMethods = [
     type: "Super-app wallet · Carrier billing",
     characteristic: "Kakao Pay: auth via KakaoTalk push (95%+ app penetration). Naver Pay: dominant for e-commerce. 통신사 소액결제: charge to monthly phone bill via SKT/KT/LGU+.",
     pmNote:
-      "Carrier billing settles monthly — completely different reconciliation cycle. KakaoTalk Business verification takes weeks. Skipping Kakao Pay means missing the auth method embedded in the app nearly every Korean opens daily.",
+      "Carrier billing settles monthly, a completely different reconciliation cycle. KakaoTalk Business verification takes weeks. Skipping Kakao Pay means missing the auth method embedded in the app nearly every Korean opens daily.",
   },
   {
     flag: "🇨🇳",
@@ -220,7 +220,7 @@ const localMethods = [
     type: "Super-app ecosystem",
     characteristic: "QR-code-first (not NFC). WeChat Pay embedded in 1.3B-user super-app. Alipay backed by Ant Group / Alibaba ecosystem.",
     pmNote:
-      "You're not integrating a payment method — you're integrating into an ecosystem. Separate merchant portals, mini-program frameworks, platform-managed dispute resolution. Cards are largely irrelevant for domestic consumers.",
+      "You're not integrating a payment method, you're integrating into an ecosystem. Separate merchant portals, mini-program frameworks, platform-managed dispute resolution. Cards are largely irrelevant for domestic consumers.",
   },
   {
     flag: "🇮🇳",
@@ -229,7 +229,7 @@ const localMethods = [
     type: "Instant bank transfer",
     characteristic: "VPA (Virtual Payment Address) instead of card number. Interoperable across all banks. Zero MDR mandated by RBI.",
     pmNote:
-      "If your revenue model depends on interchange, UPI breaks it — zero merchant fee is law. Checkout UX is QR or VPA entry, not a card form. A completely different product surface.",
+      "If your revenue model depends on interchange, UPI breaks it: zero merchant fee is law. Checkout UX is QR or VPA entry, not a card form. A completely different product surface.",
   },
   {
     flag: "🇧🇷",
@@ -238,7 +238,7 @@ const localMethods = [
     type: "Instant bank transfer",
     characteristic: "Central Bank mandated. Operates 24/7/365 including holidays. Settlement in seconds. Free for consumers.",
     pmNote:
-      "Pix QR codes have configurable expiry. Lower fraud risk than cards (bank auth required). Now dominant — card-first checkout underperforms significantly.",
+      "Pix QR codes have configurable expiry. Lower fraud risk than cards (bank auth required). Now dominant: card-first checkout underperforms significantly.",
   },
   {
     flag: "🇳🇱",
@@ -247,7 +247,7 @@ const localMethods = [
     type: "Direct bank transfer",
     characteristic: "~70% of Dutch online payments. Bank redirect-based: user authenticates in their own bank's app.",
     pmNote:
-      "Card-only checkout will underperform significantly. The redirect UX requires careful handling — users leave your checkout to their bank app and return.",
+      "Card-only checkout will underperform significantly. The redirect UX requires careful handling, as users leave your checkout to their bank app and return.",
   },
   {
     flag: "🇩🇪",
@@ -256,7 +256,7 @@ const localMethods = [
     type: "Bank transfer",
     characteristic: "Cultural aversion to credit. SEPA mandate-based: customer authorizes recurring or one-time debit from bank account.",
     pmNote:
-      "Requires a signed SEPA mandate upfront — adds a step before first payment. T+1 to T+2 settlement. Chargeback window is 8 weeks for unauthorized transactions.",
+      "Requires a signed SEPA mandate upfront, adding a step before first payment. T+1 to T+2 settlement. Chargeback window is 8 weeks for unauthorized transactions.",
   },
 ];
 
@@ -269,7 +269,7 @@ const designPatterns = [
       "Order state machine: Pending → Confirmed / Expired / Partial",
       "Inventory hold decision: hold = stockout risk; no-hold = fulfillment risk",
       "Customer comms at every state transition",
-      "Idempotent webhook handling (providers retry — duplicates happen)",
+      "Idempotent webhook handling (providers retry, duplicates happen)",
     ],
     pmExample: {
       label: "Echo Japan",
@@ -282,14 +282,14 @@ const designPatterns = [
     examples: "Kakao Pay · Naver Pay (KR) · WeChat Pay · Alipay (CN)",
     timing: "Instant (in-app)",
     changes: [
-      "SDK integration, not just API — checkout is inside their ecosystem",
+      "SDK integration, not just API: checkout is inside their ecosystem",
       "Auth via the platform's own flow (KakaoTalk push, WeChat payment password)",
       "Platform-managed disputes, not standard chargebacks",
       "Korea carrier billing: charges monthly phone bill; T+30 settlement, separate integration per telecom (SKT, KT, LGU+)",
     ],
     pmExample: {
       label: "Korea launch",
-      text: "KakaoTalk Business verification takes weeks — it's not a same-day API key. If you're planning a Korean launch, start the merchant account process months before target date. Miss it and you're excluding the auth method in the app 95% of Koreans open every day.",
+      text: "KakaoTalk Business verification takes weeks, it's not a same-day API key. If you're planning a Korean launch, start the merchant account process months before target date. Miss it and you're excluding the auth method in the app 95% of Koreans open every day.",
     },
     accent: true,
   },
@@ -300,12 +300,12 @@ const designPatterns = [
     changes: [
       "Different checkout surface: QR code or VPA/alias, not a card form",
       "Different failure modes: bank server unavailable ≠ card declined",
-      "UPI: zero MDR mandated — interchange-dependent revenue models don't work",
-      "Pix QR codes expire — must handle regeneration in checkout",
+      "UPI: zero MDR mandated, interchange-dependent revenue models don't work",
+      "Pix QR codes expire, must handle regeneration in checkout",
     ],
     pmExample: {
       label: "India entry",
-      text: "For a fintech product with a revenue model built on interchange rebates, UPI is a structural problem. The pricing model has to be redesigned before launch — not patched after. This is a pre-roadmap decision, not a post-launch optimization.",
+      text: "For a fintech product with a revenue model built on interchange rebates, UPI is a structural problem. The pricing model has to be redesigned before launch, not patched after. This is a pre-roadmap decision, not a post-launch optimization.",
     },
     accent: false,
   },
@@ -319,7 +319,7 @@ function LocalPaymentMethodsSection() {
           <SectionLabel index="02">Local Payment Methods</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-2">The payment method is the market</h2>
           <p className="text-sm text-ink/55 mb-10">
-            Living across Japan, Korea, and the US — and working on a Japan market entry — made this visceral.
+            Living across Japan, Korea, and the US, and working on a Japan market entry, made this visceral.
             The same product needs completely different payment infrastructure in each country. And the infrastructure
             shapes the product design, not the other way around.
           </p>
@@ -357,7 +357,7 @@ function LocalPaymentMethodsSection() {
             </h3>
             <p className="text-sm text-ink/50 mb-6">
               Local payment methods aren&apos;t interchangeable. Each type demands fundamentally different
-              product architecture decisions — before engineering starts.
+              product architecture decisions, before engineering starts.
             </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
@@ -424,7 +424,7 @@ function LocalPaymentMethodsSection() {
                   <li>Best for: startups, SMBs, developers</li>
                 </ul>
                 <p className="text-xs text-ink/40">
-                  <span className="font-semibold text-ink/50">Limitation:</span> local method coverage thinner outside core markets — Konbini, carrier billing, WeChat Pay often require separate integrations
+                  <span className="font-semibold text-ink/50">Limitation:</span> local method coverage thinner outside core markets; Konbini, carrier billing, WeChat Pay often require separate integrations
                 </p>
               </div>
               <div
@@ -438,7 +438,7 @@ function LocalPaymentMethodsSection() {
                   <li>Best for: enterprise, global-first products</li>
                 </ul>
                 <p className="text-xs text-ink/45">
-                  <span className="font-semibold text-ink/55">Why Uber and Netflix use Adyen:</span> one platform, every market — FX + local methods + acquiring in one stack
+                  <span className="font-semibold text-ink/55">Why Uber and Netflix use Adyen:</span> one platform, every market: FX + local methods + acquiring in one stack
                 </p>
               </div>
             </div>
@@ -446,7 +446,7 @@ function LocalPaymentMethodsSection() {
 
           <PmInsight>
             PSP selection upstream determines whether local payment support is even possible. The Echo Japan
-            decision to support Konbini and bank transfer wasn&apos;t a feature addition — it was a market
+            decision to support Konbini and bank transfer wasn&apos;t a feature addition, it was a market
             entry requirement. Make the PSP decision based on where you&apos;re going, not just where you are.
           </PmInsight>
         </div>
@@ -516,13 +516,13 @@ function FxConversionBlock() {
 
         <p className="text-sm text-ink/60 leading-relaxed mt-4">
           <span className="font-semibold text-ink/80">Why Visa&apos;s rate beats a bank branch:</span>{" "}
-          Visa processes hundreds of millions of transactions daily — banks offer wholesale rates that
+          Visa processes hundreds of millions of transactions daily; banks offer wholesale rates that
           individuals can never access. Even with the spread, it&apos;s better than most retail FX options.
         </p>
       </div>
 
       <p className="text-xs font-bold uppercase tracking-widest text-ink/40 mb-3">
-        Spot vs. Guaranteed Rate — merchant&apos;s choice
+        Spot vs. Guaranteed Rate: merchant&apos;s choice
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="border border-gray-200 rounded-xl bg-white px-5 py-5">
@@ -571,7 +571,7 @@ function CrossBorderFeeBlock() {
       <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
         <p className="text-sm text-ink/65 leading-relaxed mb-4">
           This is the &ldquo;foreign transaction fee&rdquo; on your card statement. Charged by the
-          Issuer — not Visa — for three reasons:
+          Issuer, not Visa, for three reasons:
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {[
@@ -587,7 +587,7 @@ function CrossBorderFeeBlock() {
                 {item.n}
               </span>
               <p className="text-sm text-ink/65 leading-relaxed">
-                <span className="font-semibold text-ink/80">{item.title}</span> — {item.body}
+                <span className="font-semibold text-ink/80">{item.title}</span>: {item.body}
               </p>
             </div>
           ))}
@@ -601,7 +601,7 @@ function CrossBorderFeeBlock() {
 function DccBlock() {
   return (
     <div className="mb-12">
-      <h3 className="font-serif text-xl font-bold text-ink mb-4">DCC — The Trap</h3>
+      <h3 className="font-serif text-xl font-bold text-ink mb-4">DCC: The Trap</h3>
       <DccWarning>
         <p className="mb-3">
           DCC (Dynamic Currency Conversion) happens when a terminal abroad asks: &ldquo;Pay in KRW?&rdquo;
@@ -698,12 +698,12 @@ const pmInsights = [
   {
     n: "4",
     title: "Async payment flows require product architecture decisions upfront",
-    body: "Konbini and bank transfer taught me this directly. Inventory hold logic, order state communication, idempotency handling, and reconciliation mapping all need to be designed before engineering starts — not discovered during QA.",
+    body: "Konbini and bank transfer taught me this directly. Inventory hold logic, order state communication, idempotency handling, and reconciliation mapping all need to be designed before engineering starts, not discovered during QA.",
   },
   {
     n: "5",
     title: "Compliance and licensing are moats",
-    body: "Adyen's strength isn't technology — it's the years spent acquiring banking licenses and local payment network memberships in 150+ markets. PSP selection is partly a bet on whose compliance infrastructure you want to sit on.",
+    body: "Adyen's strength isn't just technology, it's the years spent acquiring banking licenses and local payment network memberships in 150+ markets. PSP selection is partly a bet on whose compliance infrastructure you want to sit on.",
   },
 ];
 
@@ -716,7 +716,7 @@ function PmLensSection() {
           <h2 className="font-serif text-3xl font-bold text-ink mb-2">What this means for product decisions</h2>
           <p className="text-sm text-ink/50 mb-10">
             Payment infrastructure decisions aren&apos;t made by engineers. They&apos;re made by PMs who
-            understand what the infrastructure can and can&apos;t do — and what it costs to find out the
+            understand what the infrastructure can and can&apos;t do, and what it costs to find out the
             hard way.
           </p>
 
@@ -737,8 +737,8 @@ function PmLensSection() {
 
           <div className="text-center border border-gray-200 rounded-xl bg-white px-8 py-8">
             <p className="text-base font-medium text-ink/70 leading-relaxed max-w-2xl mx-auto">
-              &ldquo;The checkout button is the surface. Everything covered here is what makes it work — or
-              not — when your customer is 6,000 miles away.&rdquo;
+              &ldquo;The checkout button is the surface. Everything covered here is what makes it work, or
+              not, when your customer is 6,000 miles away.&rdquo;
             </p>
           </div>
         </div>

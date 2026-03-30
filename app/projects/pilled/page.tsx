@@ -7,9 +7,9 @@ import PillEdSolutionSection from "./PillEdSolutionSection";
 import RevealSection from "@/components/RevealSection";
 
 export const metadata: Metadata = {
-  title: "PillEd — Smart Medication Management | Sage",
+  title: "PillEd: Smart Medication Management | Sage",
   description:
-    "Product case study: PillEd — solving polypharmacy, medication nonadherence, and poor health literacy through an integrated mobile platform.",
+    "Product case study: PillEd, solving polypharmacy, medication nonadherence, and poor health literacy through an integrated mobile platform.",
 };
 
 export default function PillEdPage() {
@@ -82,7 +82,7 @@ function PageHero() {
         <h1 className="font-serif text-4xl md:text-5xl font-bold text-ink mb-2 hero-enter" style={{ animationDelay: "100ms" }}>PillEd</h1>
         <p className="text-xl text-ink/50 mb-10 max-w-3xl hero-enter" style={{ animationDelay: "220ms" }}>
           A user-friendly mobile platform tackling polypharmacy, medication nonadherence,
-          and poor health literacy — making medication management safer, smarter, and simpler.
+          and poor health literacy, making medication management safer, smarter, and simpler.
         </p>
 
         <div className="flex flex-wrap gap-10 hero-enter" style={{ animationDelay: "360ms" }}>
@@ -281,7 +281,7 @@ function UserJourneySection() {
           <SectionLabel index="05">User Journey</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-4">End-to-End Experience Flow</h2>
           <p className="text-ink/50 max-w-3xl mb-10">
-            From onboarding to daily medication management — a seamless, guided experience designed for users with low health literacy.
+            From onboarding to daily medication management, a seamless, guided experience designed for users with low health literacy.
           </p>
 
           <div className="overflow-x-auto pb-4">
@@ -382,9 +382,9 @@ function CompetitorSection() {
 
 function MarketSection() {
   const funnel = [
-    { label: "TAM — $565B", sub: "Total market: 11.3M users × $50/yr subscription", widthClass: "w-full", color: "bg-accent" },
-    { label: "SAM — $200.5B", sub: "30% caregivers + 40% pregnant willing to download", widthClass: "w-[70%]", color: "bg-blue-500" },
-    { label: "SOM — $16M", sub: "10% caregivers + 5% pregnant actually subscribe", widthClass: "w-[35%]", color: "bg-purple-500" },
+    { label: "TAM: $565B", sub: "Total market: 11.3M users × $50/yr subscription", widthClass: "w-full", color: "bg-accent" },
+    { label: "SAM: $200.5B", sub: "30% caregivers + 40% pregnant willing to download", widthClass: "w-[70%]", color: "bg-blue-500" },
+    { label: "SOM: $16M", sub: "10% caregivers + 5% pregnant actually subscribe", widthClass: "w-[35%]", color: "bg-purple-500" },
   ];
 
   const drivers = [
@@ -440,7 +440,7 @@ const phases = [
   {
     date: "Q2 2023",
     title: "Clinical Channel Expansion",
-    description: "Partner with skilled nursing facilities, obstetricians, and geriatricians to promote app downloads — targeting under-resourced settings with high polypharmacy prevalence.",
+    description: "Partner with skilled nursing facilities, obstetricians, and geriatricians to promote app downloads, targeting under-resourced settings with high polypharmacy prevalence.",
   },
   {
     date: "Q4 2023",
@@ -462,7 +462,7 @@ function GTMSection() {
           <SectionLabel index="09">Go-to-Market Strategy</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-4">Phased Market Entry</h2>
           <p className="text-ink/50 max-w-3xl mb-10">
-            A B2B-first approach to build medical credibility before scaling to consumers — reducing CAC by leveraging
+            A B2B-first approach to build medical credibility before scaling to consumers, reducing CAC by leveraging
             distribution channels that already have patient trust.
           </p>
 
@@ -534,7 +534,7 @@ function ArchSection() {
           <SectionLabel index="06">Technical Architecture</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-4">System Overview</h2>
           <p className="text-ink/50 max-w-3xl mb-10">
-            Modular architecture designed for scalability — dedicated processing modules for OCR, drug interaction analysis,
+            Modular architecture designed for scalability, with dedicated processing modules for OCR, drug interaction analysis,
             and notification delivery, fed by a multi-source external data layer.
           </p>
 

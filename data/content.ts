@@ -243,17 +243,17 @@ export const projects: Project[] = [
     competition: "Personal Research",
     year: "2026",
     problem:
-      "Working on Japan market entry at Echo, async payment methods broke every assumption our sync order system was built on. That experience left me curious about the infrastructure underneath — why do cross-border payments work the way they do, and what does it mean for product decisions?",
+      "Working on Japan market entry at Echo, async payment methods broke every assumption our sync order system was built on. That experience left me curious about the infrastructure underneath: why do cross-border payments work the way they do, and what does it mean for product decisions?",
     solution:
       "A PM-focused breakdown of cross-border payment infrastructure: who's in the payment chain, how FX conversion and fees work, why settlement timing creates margin risk, and what local payment methods mean for market entry across Japan, Korea, Brazil, India, and more.",
-    myRole: "Author — independent research and writing",
+    myRole: "Author, independent research and writing",
     keyDecisions: [
-      "Framed every mechanism in terms of the product decision it affects — PSP selection, FX strategy, local method support, and async flow design.",
+      "Framed every mechanism in terms of the product decision it affects: PSP selection, FX strategy, local method support, and async flow design.",
       "Covered spot vs. hedged FX, DCC traps, settlement currency mismatch, and Adyen's natural-hedge model.",
       "Built an interactive payment chain diagram and 7-country local methods grid.",
     ],
     outcome:
-      "A reference resource connecting payment infrastructure to real PM decision points — written as a PM, for PMs.",
+      "A reference resource connecting payment infrastructure to real PM decision points, written as a PM, for PMs.",
     tags: ["Payments", "Infrastructure", "Cross-Border", "FX", "Local Payment Methods", "Deep Dive"],
     detailHref: "/projects/cross-border-payments",
   },

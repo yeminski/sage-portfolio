@@ -6,9 +6,9 @@ const players = [
   { id: "cardholder", label: "Cardholder", desc: "Pays with a card" },
   { id: "merchant", label: "Merchant", desc: "Accepts the payment (e.g. Starbucks)" },
   { id: "psp", label: "PSP / Gateway", desc: "Abstracts card infrastructure into an API (e.g. Stripe, Adyen)" },
-  { id: "acquirer", label: "Acquirer", desc: "Merchant's bank — holds Card Network membership, handles settlement" },
+  { id: "acquirer", label: "Acquirer", desc: "Merchant's bank; holds Card Network membership, handles settlement" },
   { id: "network", label: "Card Network", desc: "Routes messages, sets rules (e.g. Visa, Mastercard)" },
-  { id: "issuer", label: "Issuer", desc: "Cardholder's bank — makes the final approve/decline decision (e.g. Chase, Shinhan)" },
+  { id: "issuer", label: "Issuer", desc: "Cardholder's bank; makes the final approve/decline decision (e.g. Chase, Shinhan)" },
 ];
 
 export default function PaymentFlowDiagram() {

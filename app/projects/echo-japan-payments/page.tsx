@@ -9,7 +9,7 @@ import DecisionCards from "@/components/case-study/DecisionCards";
 export const metadata: Metadata = {
   title: "Cross-Border Payments | Sage",
   description:
-    "Case study: designing an async payment system for Japan market entry — local payment methods, FX handling, reconciliation, and edge case logic.",
+    "Case study: designing an async payment system for Japan market entry, covering local payment methods, FX handling, reconciliation, and edge case logic.",
 };
 
 /* ─── Shared helpers ─────────────────────────────────────────────────────── */
@@ -80,7 +80,7 @@ function PageHero() {
           className="text-lg text-ink/50 max-w-2xl mb-12 hero-enter"
           style={{ animationDelay: "220ms" }}
         >
-          Designing an async payment system for Japan market entry — local payment methods, FX handling,
+          Designing an async payment system for Japan market entry: local payment methods, FX handling,
           reconciliation, and edge case logic for a K-beauty e-commerce platform.
         </p>
 
@@ -119,7 +119,7 @@ const contributions = [
     emoji: "🎨",
     title: "Mockups & Flow Design",
     description:
-      "Built end-to-end payment state flows in Figma — covering every state (pending, confirmed, partial, expired, overpayment) with customer-facing communication and edge case logic at each stage.",
+      "Built end-to-end payment state flows in Figma, covering every state (pending, confirmed, partial, expired, overpayment) with customer-facing communication and edge case logic at each stage.",
   },
   {
     emoji: "📄",
@@ -131,7 +131,7 @@ const contributions = [
     emoji: "🤝",
     title: "Cross-functional Alignment",
     description:
-      "Aligned with finance on reconciliation event schema at design time — mapping every state to a tagged finance event before engineering began, so there was no ambiguity at launch.",
+      "Aligned with finance on reconciliation event schema at design time, mapping every state to a tagged finance event before engineering began, so there was no ambiguity at launch.",
   },
 ];
 
@@ -143,7 +143,7 @@ function MyContributionSection() {
           <SectionLabel index="01">My Contribution</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-2">What I Did as Product Manager</h2>
           <p className="text-ink/50 max-w-3xl mb-10">
-            As an early team member, I owned end-to-end product definition for Japan market entry — from
+            As an early team member, I owned end-to-end product definition for Japan market entry, from
             problem framing through launch. With no existing playbook for async flows, I drove alignment
             across engineering and finance on every design decision before a single line was written.
           </p>
@@ -170,10 +170,10 @@ function MyContributionSection() {
 /* ─── 2. Context & Problem ───────────────────────────────────────────────── */
 
 const whatThisBroke = [
-  "Inventory logic — hold or not while waiting for async confirmation?",
-  "Order status communication — what do we tell the customer before payment clears?",
-  "Settlement timing — confirmation events needed idempotent handling to prevent duplicates",
-  "Reconciliation — every payment state needed a finance mapping",
+  "Inventory logic: hold or not while waiting for async confirmation?",
+  "Order status communication: what do we tell the customer before payment clears?",
+  "Settlement timing: confirmation events needed idempotent handling to prevent duplicates",
+  "Reconciliation: every payment state needed a finance mapping",
 ];
 
 function ContextProblemSection() {
@@ -196,7 +196,7 @@ function ContextProblemSection() {
                 <p className="text-[10px] font-bold uppercase tracking-widest text-amber-600 mb-2">The Core Problem</p>
                 <p className="text-base font-medium text-ink/85 leading-relaxed">
                   Our entire order system was built on synchronous payment confirmation. Konbini and bank
-                  transfer — Japan&apos;s dominant payment methods — break that assumption. Confirmation can
+                  transfer (Japan&apos;s dominant payment methods) break that assumption. Confirmation can
                   take hours to days.
                 </p>
               </div>
@@ -348,7 +348,7 @@ const keyDecisions = [
   {
     label: "Reconciliation Mapped Upfront",
     description:
-      "Finance alignment at design time, not post-launch cleanup. Every state transition pre-defined as a reconciliation event — real-time AR visibility from day one.",
+      "Finance alignment at design time, not post-launch cleanup. Every state transition pre-defined as a reconciliation event, giving real-time AR visibility from day one.",
   },
 ];
 

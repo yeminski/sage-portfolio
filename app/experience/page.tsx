@@ -7,7 +7,7 @@ import AnimatedH1 from "@/components/career/AnimatedH1";
 export const metadata: Metadata = {
   title: "Experience | Sage",
   description:
-    "Sage's full work history — product management across B2B, consumer, and startup environments.",
+    "Sage's full work history: product management across B2B, consumer, and startup environments.",
 };
 
 export default function ExperiencePage() {
@@ -28,7 +28,7 @@ export default function ExperiencePage() {
               Experience
             </AnimatedH1>
             <p className="text-ink/50">
-              Product management across the full product stack — 0-to-1 launches, feature development, monetization systems, and data infrastructure —{" "}
+              Product management across the full product stack: 0-to-1 launches, feature development, monetization systems, and data infrastructure,{" "}
               <br />from early-stage startups to a global enterprise.
             </p>
           </div>

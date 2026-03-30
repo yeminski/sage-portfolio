@@ -22,42 +22,42 @@ const screens = [
     screenIndex: 0,
     accent: "#0D9488",
     title: "Personalized Savings Dashboard",
-    description: "Analyzes your spending against similar households in your geography to surface specific, actionable savings opportunities — down to the merchant level.",
+    description: "Analyzes your spending against similar households in your geography to surface specific, actionable savings opportunities, down to the merchant level.",
   },
   {
     label: "Onboarding",
     screenIndex: 1,
     accent: "#8b5cf6",
     title: "AI-Powered Onboarding",
-    description: "Income level, savings targets, and household context — collected in under two minutes and used to cold-start the recommendation engine with zero prior data.",
+    description: "Income level, savings targets, and household context: collected in under two minutes and used to cold-start the recommendation engine with zero prior data.",
   },
   {
     label: "Spending",
     screenIndex: 2,
     accent: "#ef4444",
     title: "Spending Alerts",
-    description: "Real-time push alerts when predicted budgets are exceeded, paired with contextual guidance to help users course-correct immediately — not at month-end.",
+    description: "Real-time push alerts when predicted budgets are exceeded, paired with contextual guidance to help users course-correct immediately, not at month-end.",
   },
   {
     label: "Recommendations",
     screenIndex: 3,
     accent: "#6366f1",
     title: "Vetted Financial Products",
-    description: "Curated credit cards, loans, and insurance ranked by a personalized fit score — protecting users from predatory offerings while expanding their financial options.",
+    description: "Curated credit cards, loans, and insurance ranked by a personalized fit score, protecting users from predatory offerings while expanding their financial options.",
   },
   {
     label: "Goals",
     screenIndex: 4,
     accent: "#f59e0b",
     title: "Goal Planning",
-    description: "Input a goal, timeline, and cost — the app breaks it into manageable monthly milestones and tracks progress automatically against real spending data.",
+    description: "Input a goal, timeline, and cost; the app breaks it into manageable monthly milestones and tracks progress automatically against real spending data.",
   },
   {
     label: "Learn",
     screenIndex: 5,
     accent: "#3b82f6",
     title: "Financial Education",
-    description: "Curated content partnerships promote financial literacy alongside portfolio growth — so users build knowledge and confidence as their financial health improves.",
+    description: "Curated content partnerships promote financial literacy alongside portfolio growth, so users build knowledge and confidence as their financial health improves.",
   },
 ];
 
@@ -74,10 +74,10 @@ export default function YayaSolutionSection() {
           <div className="flex flex-col gap-8">
             {/* Section header */}
             <div>
-              <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">04 — Solution</p>
+              <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">04: Solution</p>
               <h2 className="text-3xl font-bold text-ink mb-4">Core Features</h2>
               <p className="text-ink/60 mb-6">
-                AI Financial Coach combines real-time spending intelligence, personalized product access, and long-term goal planning — powered by a self-improving data engine.
+                AI Financial Coach combines real-time spending intelligence, personalized product access, and long-term goal planning, powered by a self-improving data engine.
               </p>
               <p className="cta-bounce text-sm text-accent">
                 Click a button below to see each feature in action<br />&amp; tap inside the app to explore interactively.{" "}

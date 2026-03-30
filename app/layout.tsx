@@ -18,7 +18,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Sage | Product Manager",
   description:
-    "Sage — Product Manager with a background in hardware/service PM at Epson America, pivoting to Fintech. CFA. Fintech Enthusiast.",
+    "Sage, Product Manager with a background in hardware/service PM at Epson America, pivoting to Fintech. CFA. Fintech Enthusiast.",
 };
 
 export default function RootLayout({

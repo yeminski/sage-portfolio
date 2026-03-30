@@ -67,7 +67,7 @@ const timelineItems: TimelineItem[] = [
     title: "Overseas Sales Associate",
     company: "Intercos Korea",
     description:
-      "Managed end-to-end B2B project execution across 20+ product launches for European and Asian clients at a global cosmetics ODM, my foundation in cross-functional coordination and international business.",
+      "Managed end-to-end B2B project execution across 20+ product launches for European and Asian clients at a global cosmetics ODM, building my foundation in cross-functional coordination and international business.",
   },
 ];
 
@@ -141,7 +141,7 @@ export default function CareerTimeline() {
           Professional Timeline
         </h2>
         <p className="text-ink/50 mb-14">
-          From global B2B to startup to enterprise — the path that shaped how I build products
+          From global B2B to startup to enterprise: the path that shaped how I build products
         </p>
 
         {/* ── Desktop: alternating zigzag ── */}

@@ -40,13 +40,13 @@ const expertiseGroupMap: Record<string, string[]> = {
 };
 
 const expertiseGroups = [
-  { key: "0-to-1 Product",      shortLabel: "0-to-1",          description: "Building net-new products from problem definition through scoping, validation, and launch — across mobile, web, and companion apps." },
-  { key: "Mobile App",           shortLabel: "mobile",          description: "Owning end-to-end mobile product launches — from MVP scoping and onboarding flows to retention and DAU growth." },
+  { key: "0-to-1 Product",      shortLabel: "0-to-1",          description: "Building net-new products from problem definition through scoping, validation, and launch, across mobile, web, and companion apps." },
+  { key: "Mobile App",           shortLabel: "mobile",          description: "Owning end-to-end mobile product launches, from MVP scoping and onboarding flows to retention and DAU growth." },
   { key: "UX & Experimentation",    shortLabel: "UX",     description: "Improving user flows through funnel analysis, behavioral data, and iterative A/B testing to drive activation and retention." },
   { key: "Growth & Experimentation", shortLabel: "growth", description: "Driving user and revenue growth through A/B experimentation, personalization, behavioral segmentation, and data-driven iteration." },
   { key: "API & Platform",           shortLabel: "API",    description: "Connecting internal and external systems through API-driven integrations to automate workflows and enable data-driven product decisions." },
   { key: "Monetization",         shortLabel: "monetization",    description: "Designing pricing models, monetization systems, and pricing strategies that drive revenue growth across customer segments." },
-  { key: "Market Expansion",     shortLabel: "expansion",       description: "Leading international expansion — from market research and GTM strategy to localization, compliance, and payments." },
+  { key: "Market Expansion",     shortLabel: "expansion",       description: "Leading international expansion, from market research and GTM strategy to localization, compliance, and payments." },
   { key: "B2B & Operations",     shortLabel: "B2B",             description: "Managing end-to-end B2B project execution and partner integrations across global accounts, from pitch through delivery." },
   { key: "SaaS & AI",            shortLabel: "SaaS & AI",       description: "Translating user needs into AI-driven SaaS feature concepts, validated through financial modeling and executive alignment." },
 ];

@@ -8,7 +8,7 @@ import AnimatedH1 from "@/components/career/AnimatedH1";
 export const metadata: Metadata = {
   title: "Projects | Sage",
   description:
-    "Case competition projects showcasing Sage's product thinking in Fintech — from embedded wallets to ESG robo-advisors.",
+    "Case competition projects showcasing Sage's product thinking in Fintech, from embedded wallets to ESG robo-advisors.",
 };
 
 export default function ProjectsPage() {
@@ -29,7 +29,7 @@ export default function ProjectsPage() {
               Projects
             </AnimatedH1>
             <p className="text-ink/50">
-              0-to-1 product work built outside of work — research, roadmap, and interactive prototypes to explore.
+              0-to-1 product work built outside of work: research, roadmap, and interactive prototypes to explore.
             </p>
           </div>
         </div>

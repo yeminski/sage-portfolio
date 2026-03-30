@@ -7,9 +7,9 @@ import YayaSolutionSection from "./YayaSolutionSection";
 import RevealSection from "@/components/RevealSection";
 
 export const metadata: Metadata = {
-  title: "AI Financial Coach — AI-Powered Financial Inclusion Platform | Sage",
+  title: "AI Financial Coach: AI-Powered Financial Inclusion Platform | Sage",
   description:
-    "Product case study: AI Financial Coach — helping working mothers of disadvantaged backgrounds achieve economic mobility through personalized, AI-driven financial guidance.",
+    "Product case study: AI Financial Coach, helping working mothers of disadvantaged backgrounds achieve economic mobility through personalized, AI-driven financial guidance.",
 };
 
 export default function AIFinancialCoachPage() {
@@ -120,7 +120,7 @@ const contributions = [
     bg: "bg-purple-50",
     title: "Prototyping",
     description:
-      "Built the product prototype illustrating key user flows — spending dashboard, personalized recommendations, and financial product access — used in the final CMU presentation.",
+      "Built the product prototype illustrating key user flows (spending dashboard, personalized recommendations, and financial product access) used in the final CMU presentation.",
   },
   {
     emoji: "🎤",
@@ -139,7 +139,7 @@ function MyRoleSection() {
           <SectionLabel index="01">My Contribution</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-2">What I Did as Product Manager</h2>
           <p className="text-ink/50 max-w-3xl mb-10">
-            As PM on a 4-person team, I led product strategy, user research, and prototyping —
+            As PM on a 4-person team, I led product strategy, user research, and prototyping,
             translating a complex financial inclusion problem into a concrete, user-centered product
             vision that took us to the CMU Tepper finals.
           </p>
@@ -184,7 +184,7 @@ function ProblemSection() {
           <h2 className="font-serif text-3xl font-bold text-ink mb-4">Millions Are Left Behind by the Financial System</h2>
           <p className="text-ink/50 max-w-3xl mb-10">
             Underbanked, low-income Americans lack the financial tools and literacy to manage everyday expenses,
-            avoid predatory products, and build toward long-term goals — trapping families in cycles of debt
+            avoid predatory products, and build toward long-term goals, trapping families in cycles of debt
             across generations.
           </p>
 
@@ -287,7 +287,7 @@ function UserJourneySection() {
           <SectionLabel index="05">User Journey</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-4">End-to-End Experience Flow</h2>
           <p className="text-ink/50 max-w-3xl mb-10">
-            From first download to first personalized recommendation — AI Financial Coach is designed to deliver
+            From first download to first personalized recommendation, AI Financial Coach is designed to deliver
             immediate, tangible value.
           </p>
 
@@ -364,7 +364,7 @@ function ArchSection() {
           <SectionLabel index="06">Technical Architecture</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-4">AI Financial Coach&apos;s Model Outcome Flywheel</h2>
           <p className="text-ink/50 max-w-3xl mb-10">
-            AI Financial Coach&apos;s strategic moat is its data engine — a self-improving flywheel that gets smarter with
+            AI Financial Coach&apos;s strategic moat is its data engine, a self-improving flywheel that gets smarter with
             every user outcome, creating recommendations competitors cannot replicate.
           </p>
 
@@ -435,7 +435,7 @@ function CompetitorSection() {
           <h2 className="font-serif text-3xl font-bold text-ink mb-4">Feature Comparison Matrix</h2>
           <p className="text-ink/50 max-w-3xl mb-10">
             AI Financial Coach is the only platform combining bank-level data access, cross-institution spending
-            visibility, and a self-improving recommendation engine — all tailored to an underserved segment.
+            visibility, and a self-improving recommendation engine, all tailored to an underserved segment.
           </p>
 
           <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white">
@@ -482,19 +482,19 @@ function CompetitorSection() {
 function MarketSection() {
   const funnel = [
     {
-      label: "TAM — $8.3B",
+      label: "TAM: $8.3B",
       sub: "US personal finance app and consumer financial product platform market (2022)",
       widthClass: "w-full",
       color: "bg-accent",
     },
     {
-      label: "SAM — $2.75B",
+      label: "SAM: $2.75B",
       sub: "25M working mothers under $70K household income × $110 avg annual platform value",
       widthClass: "w-[70%]",
       color: "bg-blue-500",
     },
     {
-      label: "SOM (Y5) — $165M",
+      label: "SOM (Y5): $165M",
       sub: "1.5M users at 3% penetration by Year 5 × $110 avg annual platform value",
       widthClass: "w-[35%]",
       color: "bg-purple-500",
@@ -514,7 +514,7 @@ function MarketSection() {
           <SectionLabel index="08">Market Opportunity</SectionLabel>
           <h2 className="font-serif text-3xl font-bold text-ink mb-4">Market Sizing</h2>
           <p className="text-ink/50 max-w-3xl mb-10">
-            Targeting working mothers with household incomes under $70K — a 25M-person segment
+            Targeting working mothers with household incomes under $70K, a 25M-person segment
             underserved by existing financial tools and highly motivated to adopt better solutions.
           </p>
 
@@ -592,7 +592,7 @@ const phases = [
     phase: "Long-term",
     title: "Generational Retention",
     description:
-      "Encourage mothers to open PNC accounts for their children — creating a generational retention flywheel and expanding AI Financial Coach's addressable market over time.",
+      "Encourage mothers to open PNC accounts for their children, creating a generational retention flywheel and expanding AI Financial Coach's addressable market over time.",
   },
 ];
 

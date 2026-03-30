@@ -28,14 +28,14 @@ const screens = [
     screenIndex: 1,
     accent: "#6366f1",
     title: "Personalized Onboarding",
-    description: "Age, weight, pregnancy status, known allergies — collected once and used throughout the app to tailor every alert and recommendation to the individual.",
+    description: "Age, weight, pregnancy status, known allergies: collected once and used throughout the app to tailor every alert and recommendation to the individual.",
   },
   {
     label: "Scan",
     screenIndex: 2,
     accent: "#0D9488",
     title: "OCR Medication Scan",
-    description: "Point your camera at any pill or label. Image recognition matches it against a comprehensive drug database at 90%+ accuracy — no manual typing required.",
+    description: "Point your camera at any pill or label. Image recognition matches it against a comprehensive drug database at 90%+ accuracy, no manual typing required.",
   },
   {
     label: "Interactions",
@@ -49,14 +49,14 @@ const screens = [
     screenIndex: 4,
     accent: "#8b5cf6",
     title: "Drug Info Library",
-    description: "Medical jargon translated into plain language. Dosage, storage, side effects, and precautions — readable by anyone regardless of health literacy level.",
+    description: "Medical jargon translated into plain language. Dosage, storage, side effects, and precautions, readable by anyone regardless of health literacy level.",
   },
   {
     label: "Schedule",
     screenIndex: 5,
     accent: "#3b82f6",
     title: "Medication Schedule",
-    description: "Dosing times, snooze support, and adherence tracking — all synced to push notifications so users never miss a dose.",
+    description: "Dosing times, snooze support, and adherence tracking, all synced to push notifications so users never miss a dose.",
   },
 ];
 
@@ -73,10 +73,10 @@ export default function PillEdSolutionSection() {
           <div className="flex flex-col gap-8">
             {/* Section header */}
             <div>
-              <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">04 — Solution</p>
+              <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">04: Solution</p>
               <h2 className="text-3xl font-bold text-ink mb-4">Core Features</h2>
               <p className="text-ink/60 mb-6">
-                PillEd integrates six critical capabilities into a single app — a combination no competitor currently offers.
+                PillEd integrates six critical capabilities into a single app, a combination no competitor currently offers.
               </p>
               <p className="cta-bounce text-sm text-accent">
                 Click a button below to see each feature in action &amp; tap inside the app to explore interactively.{" "}

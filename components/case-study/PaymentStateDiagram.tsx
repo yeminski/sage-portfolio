@@ -85,7 +85,7 @@ const asyncStates: Record<StateId, StateInfo> = {
       "Partial received notice + exact shortfall amount + deadline to complete. Unresolved: cancel + refund.",
     edgeCases: [
       "Customer sends second transfer covering shortfall: matched, moves to CONFIRMED",
-      "Deadline passes with balance outstanding — order cancelled, received amount refunded",
+      "Deadline passes with balance outstanding: order cancelled, received amount refunded",
     ],
   },
   confirmed_refund: {
