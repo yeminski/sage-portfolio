@@ -18,7 +18,7 @@ export const projectScreens: Record<string, [string, string, string]> = {
 export const projectThemeBg: Record<string, string> = {
   pilled: "#F0FAFA",
   yaya: "#FAF7F2",
-  "echo-japan-payments": "#F0FDFC",
+  "echo-japan-payments": "#F6F6F6",
   "cross-border-payments": "#F0F4FF",
 };
 
@@ -244,13 +244,27 @@ export default function ProjectThumbnail({ projectId, alt, href, className = "" 
           display: "flex",
           flexDirection: "column" as const,
           gap: 0,
-          marginTop: "90px",
-          marginBottom: "90px",
+          marginTop: "40px",
+          marginBottom: "40px",
         }
-      : {
-          background: bg,
-          padding: "24px",
-        };
+      : projectId === "echo-japan-payments"
+        ? {
+            background: bg,
+            padding: "70px 24px",
+            marginTop: "70px",
+            marginBottom: "70px",
+          }
+        : projectId === "yaya"
+          ? {
+              background: bg,
+              padding: "24px",
+              marginTop: "40px",
+              marginBottom: "40px",
+            }
+          : {
+              background: bg,
+              padding: "24px",
+            };
 
   if (href) {
     return (
