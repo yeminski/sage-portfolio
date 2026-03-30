@@ -236,31 +236,9 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
-    id: "cross-border-payments",
-    slug: "cross-border-payments",
-    title: "A PM's Deep Dive: Cross-Border Payment Infrastructure",
-    category: "Research & Writing",
-    competition: "Personal Research",
-    year: "2026",
-    problem:
-      "Working on Japan market entry at Echo, async payment methods broke every assumption our sync order system was built on. That experience left me curious about the infrastructure underneath: why do cross-border payments work the way they do, and what does it mean for product decisions?",
-    solution:
-      "A PM-focused breakdown of cross-border payment infrastructure: who's in the payment chain, how FX conversion and fees work, why settlement timing creates margin risk, and what local payment methods mean for market entry across Japan, Korea, Brazil, India, and more.",
-    myRole: "Author, independent research and writing",
-    keyDecisions: [
-      "Framed every mechanism in terms of the product decision it affects: PSP selection, FX strategy, local method support, and async flow design.",
-      "Covered spot vs. hedged FX, DCC traps, settlement currency mismatch, and Adyen's natural-hedge model.",
-      "Built an interactive payment chain diagram and 7-country local methods grid.",
-    ],
-    outcome:
-      "A reference resource connecting payment infrastructure to real PM decision points, written as a PM, for PMs.",
-    tags: ["Payments", "Infrastructure", "Cross-Border", "FX", "Local Payment Methods", "Deep Dive"],
-    detailHref: "/projects/cross-border-payments",
-  },
-  {
     id: "echo-japan-payments",
     slug: "echo-japan-payments",
-    title: "Cross-Border Payments Infrastructure",
+    title: "Japan Expansion: Shipping Async Payment Infrastructure",
     category: "Professional Work",
     competition: "Echo Marketing, K-beauty D2C Platform",
     year: "2022",
@@ -279,6 +257,54 @@ export const projects: Project[] = [
       "Japan launch exceeded revenue target by ~25% and market penetration target by ~30%. Payment architecture built to support future market expansion without reworking core flow.",
     tags: ["Payments", "Async Flows", "Market Expansion", "Reconciliation", "Edge Case Design", "Fintech"],
     detailHref: "/projects/echo-japan-payments",
+  },
+  {
+    id: "cross-border-payments",
+    slug: "cross-border-payments",
+    title: "A PM's Deep Dive: Cross-Border Payment Infrastructure",
+    category: "Research & Writing",
+    competition: "Personal Research",
+    year: "2026",
+    problem:
+      "At Echo, building Japan market entry, async payment methods broke every assumption our sync order system was built on. I wanted to understand the infrastructure underneath—and what it actually means for product decisions.",
+    solution:
+      "A PM-focused breakdown of cross-border rails: who's in the chain, how FX works, why settlement timing creates margin risk, and what local payment methods mean for market entry across 7 markets.",
+    myRole: "Author, independent research and writing",
+    keyDecisions: [
+      "Framed every mechanism in terms of the product decision it affects: PSP selection, FX strategy, local method support, and async flow design.",
+      "Covered spot vs. hedged FX, DCC traps, settlement currency mismatch, and Adyen's natural-hedge model.",
+      "Built an interactive payment chain diagram and 7-country local methods grid.",
+    ],
+    outcome:
+      "A reference resource connecting payment infrastructure to real PM decision points, written as a PM, for PMs.",
+    tags: ["Payments", "Infrastructure", "Cross-Border", "FX", "Local Payment Methods", "Deep Dive"],
+    detailHref: "/projects/cross-border-payments",
+  },
+  {
+    id: "yaya",
+    slug: "yaya",
+    title: "AI-Powered Personal Finance Assistant",
+    category: "Case Competition",
+    competition: "CMU Tepper Tech Innovation Challenge 2022",
+    year: "2022",
+    problem:
+      "Millions of underbanked Americans lack the financial tools and literacy to manage everyday expenses, avoid predatory products, and build toward long-term goals.",
+    solution:
+      "Built an AI-powered mobile platform that delivers personalized spending insights, vetted financial product recommendations, and goal-based planning, helping low-income families achieve economic mobility.",
+    myRole:
+      "Product Manager, led product strategy, user research, persona development, and prototyping. Structured the competition narrative from problem framing through financials, securing finalist placement at CMU Tepper.",
+    keyDecisions: [
+      "Built a self-improving model outcome flywheel as Yaya's core moat, recommendations get smarter with every user outcome, creating a defensible edge competitors cannot quickly replicate.",
+      "Prioritized 'Monica' (new working mother, $70K HHI) as the primary persona over broader segments, highest urgency, most acute expense shock, and clearest product-market fit.",
+      "Chose B2C-first GTM through referral and digital channels before layering in B2B partnerships, to seed the flywheel with real user data before institutional distribution.",
+      "Scoped MVP to two features only (Savings Recommendations + Spending Alerts), enough to demonstrate immediate value and start the data flywheel without overbuilding.",
+    ],
+    outcome:
+      "Finalist at CMU Tepper Tech Innovation Challenge 2022. Judges cited the model outcome flywheel as the most defensible moat in the cohort. Projected $173M incremental revenue for PNC over 5 years.",
+    tags: ["FinTech", "Financial Inclusion", "AI/ML", "B2C", "Mobile App", "User Research"],
+    aiNote: "Structured the entire product strategy around a self-improving AI recommendation engine as Yaya's core moat. The model learns from real user outcomes, spending behavior, goal achievement, product adoption, to surface increasingly personalized financial product recommendations over time. Defined the flywheel logic, scoped the MVP data inputs, and used this mechanism as the primary differentiator in the competition narrative.",
+    detailHref: "/projects/yaya",
+    image: "/yaya_main_image.png",
   },
   {
     id: "pilled",
@@ -313,32 +339,6 @@ export const projects: Project[] = [
     aiNote: "Designed OCR-based drug label scanning as the core interaction, patients photograph a medication bottle and the app instantly surfaces drug interaction risks and plain-language safety info. Defined the AI/ML feature spec, scoped the data requirements, and positioned the OCR + interaction-checking combination as the primary defensible differentiator in the competitive analysis.",
     detailHref: "/projects/pilled",
     image: "/pilled_main_image.png",
-  },
-  {
-    id: "yaya",
-    slug: "yaya",
-    title: "AI-Powered Personal Finance Assistant",
-    category: "Case Competition",
-    competition: "CMU Tepper Tech Innovation Challenge 2022",
-    year: "2022",
-    problem:
-      "Millions of underbanked Americans lack the financial tools and literacy to manage everyday expenses, avoid predatory products, and build toward long-term goals.",
-    solution:
-      "Built an AI-powered mobile platform that delivers personalized spending insights, vetted financial product recommendations, and goal-based planning, helping low-income families achieve economic mobility.",
-    myRole:
-      "Product Manager, led product strategy, user research, persona development, and prototyping. Structured the competition narrative from problem framing through financials, securing finalist placement at CMU Tepper.",
-    keyDecisions: [
-      "Built a self-improving model outcome flywheel as Yaya's core moat, recommendations get smarter with every user outcome, creating a defensible edge competitors cannot quickly replicate.",
-      "Prioritized 'Monica' (new working mother, $70K HHI) as the primary persona over broader segments, highest urgency, most acute expense shock, and clearest product-market fit.",
-      "Chose B2C-first GTM through referral and digital channels before layering in B2B partnerships, to seed the flywheel with real user data before institutional distribution.",
-      "Scoped MVP to two features only (Savings Recommendations + Spending Alerts), enough to demonstrate immediate value and start the data flywheel without overbuilding.",
-    ],
-    outcome:
-      "Finalist at CMU Tepper Tech Innovation Challenge 2022. Judges cited the model outcome flywheel as the most defensible moat in the cohort. Projected $173M incremental revenue for PNC over 5 years.",
-    tags: ["FinTech", "Financial Inclusion", "AI/ML", "B2C", "Mobile App", "User Research"],
-    aiNote: "Structured the entire product strategy around a self-improving AI recommendation engine as Yaya's core moat. The model learns from real user outcomes, spending behavior, goal achievement, product adoption, to surface increasingly personalized financial product recommendations over time. Defined the flywheel logic, scoped the MVP data inputs, and used this mechanism as the primary differentiator in the competition narrative.",
-    detailHref: "/projects/yaya",
-    image: "/yaya_main_image.png",
   },
 ];
 

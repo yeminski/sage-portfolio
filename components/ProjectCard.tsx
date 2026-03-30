@@ -66,6 +66,7 @@ export default function ProjectCard({ project, index }: Props) {
 
 function ProjectInfo({ project }: { project: Project }) {
   const href = project.detailHref ?? `/projects#${project.slug}`;
+  const isDeepDive = project.id === "cross-border-payments";
 
   return (
     <>
@@ -74,27 +75,44 @@ function ProjectInfo({ project }: { project: Project }) {
         <p className="text-[10px] font-semibold text-accent tracking-widest uppercase mb-2">
           {project.category}
         </p>
-        <h2 className="text-2xl md:text-3xl font-bold text-ink leading-snug">
-          {project.detailHref ? (
-            <Link href={project.detailHref} className="hover:text-accent transition-colors">
-              {project.title}
-            </Link>
-          ) : (
-            project.title
-          )}
-        </h2>
+        {isDeepDive ? (
+          <>
+            <h2 className="text-2xl md:text-3xl font-bold text-ink leading-snug">
+              <Link href={project.detailHref!} className="hover:text-accent transition-colors">
+                A PM&apos;s Deep Dive:
+              </Link>
+            </h2>
+            <p className="text-base md:text-lg font-semibold text-ink/70 mt-1 leading-snug">
+              Cross-Border Payment Infrastructure
+            </p>
+          </>
+        ) : (
+          <h2 className="text-2xl md:text-3xl font-bold text-ink leading-snug">
+            {project.detailHref ? (
+              <Link href={project.detailHref} className="hover:text-accent transition-colors">
+                {project.title}
+              </Link>
+            ) : (
+              project.title
+            )}
+          </h2>
+        )}
       </div>
 
-      {/* Problem */}
+      {/* Problem / Why */}
       <div className="border-l-2 border-gray-200 pl-4">
-        <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">Problem</p>
+        <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">
+          {isDeepDive ? "Why?" : "Problem"}
+        </p>
         <p className="text-sm text-ink/55 leading-relaxed">{project.problem}</p>
       </div>
 
-      {/* Solution */}
+      {/* Solution / What */}
       {project.solution && (
         <div className="border-l-2 border-accent pl-4">
-          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">Solution</p>
+          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-2">
+            {isDeepDive ? "What?" : "Solution"}
+          </p>
           <p className="text-sm text-ink/80 leading-relaxed">{project.solution}</p>
         </div>
       )}

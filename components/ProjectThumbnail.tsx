@@ -117,98 +117,95 @@ function EchoJapanVisual() {
 }
 
 function CrossBorderVisual() {
-  const currencies = [
-    { code: "USD", flag: "🇺🇸" },
-    { code: "EUR", flag: "🇪🇺" },
-    { code: "KRW", flag: "🇰🇷" },
-    { code: "JPY", flag: "🇯🇵" },
+  const markets = [
+    { flag: "🇺🇸", method: "Card" },
+    { flag: "🇯🇵", method: "Konbini" },
+    { flag: "🇧🇷", method: "Pix" },
+    { flag: "🇳🇱", method: "iDEAL" },
+    { flag: "🇰🇷", method: "Kakao Pay" },
   ];
-  const methods = [
-    { name: "Konbini", flag: "🇯🇵" },
-    { name: "iDEAL",   flag: "🇳🇱" },
-    { name: "Pix",     flag: "🇧🇷" },
-    { name: "UPI",     flag: "🇮🇳" },
+  const infra = [
+    { icon: "💱", label: "FX Conversion" },
+    { icon: "⏱", label: "Settlement Timing" },
+    { icon: "⚠️", label: "Local Rails" },
   ];
 
   return (
     <div style={{ width: "100%", fontFamily: "inherit" }}>
       {/* Header */}
-      <div style={{ textAlign: "center", marginBottom: 20 }}>
+      <div style={{ textAlign: "center", marginBottom: 16 }}>
         <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", color: "#4F46E5", textTransform: "uppercase" }}>
-          Cross-Border Payment Rails
+          Cross-Border Payment Methods
         </span>
       </div>
 
-      {/* Currency flow */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginBottom: 16 }}>
-        {currencies.map((c, i) => (
-          <div key={c.code} style={{ display: "flex", alignItems: "center", gap: 6 }}>
-            <div style={{
-              border: "1.5px solid #C7D2FE",
-              borderRadius: 10,
-              padding: "8px 12px",
-              background: "#EEF2FF",
-              textAlign: "center",
-              minWidth: 56,
-            }}>
-              <div style={{ fontSize: 20, lineHeight: 1 }}>{c.flag}</div>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#4338CA", letterSpacing: "0.04em", marginTop: 4 }}>{c.code}</div>
-            </div>
-            {i < currencies.length - 1 && (
-              <div style={{ fontSize: 13, color: "#A5B4FC", fontWeight: 700 }}>→</div>
-            )}
+      {/* Top row — country + method cards */}
+      <div style={{ display: "flex", alignItems: "stretch", justifyContent: "center", gap: 5, marginBottom: 16 }}>
+        {markets.map((m) => (
+          <div key={m.method} style={{
+            border: "1.5px solid #C7D2FE",
+            borderRadius: 10,
+            padding: "8px 6px",
+            background: "#EEF2FF",
+            textAlign: "center",
+            flex: 1,
+          }}>
+            <div style={{ fontSize: 18, lineHeight: 1 }}>{m.flag}</div>
+            <div style={{ fontSize: 9, fontWeight: 700, color: "#4338CA", letterSpacing: "0.03em", marginTop: 5 }}>{m.method}</div>
           </div>
         ))}
-      </div>
-
-      {/* FX rate pill */}
-      <div style={{ display: "flex", justifyContent: "center", marginBottom: 18 }}>
-        <div style={{
-          fontSize: 11,
-          color: "#4F46E5",
-          background: "#E0E7FF",
-          borderRadius: 999,
-          border: "1px solid #C7D2FE",
-          padding: "6px 16px",
-          fontWeight: 600,
-          letterSpacing: "0.02em",
-        }}>
-          Visa spot rate + 0.5–1% spread
-        </div>
       </div>
 
       {/* Divider */}
-      <div style={{ borderTop: "1px solid #E0E7FF", marginBottom: 18 }} />
+      <div style={{ borderTop: "1px solid #C7D2FE", marginBottom: 16, position: "relative" }}>
+        <div style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          background: "#EEF2FF",
+          border: "1px solid #C7D2FE",
+          borderRadius: 999,
+          padding: "2px 10px",
+          fontSize: 8,
+          fontWeight: 600,
+          color: "#818CF8",
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          whiteSpace: "nowrap",
+        }}>
+          shared infrastructure
+        </div>
+      </div>
 
-      {/* Local methods with country flags */}
-      <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap", marginBottom: 22 }}>
-        {methods.map((m) => (
-          <div key={m.name} style={{
+      {/* Bottom row — infrastructure pills */}
+      <div style={{ display: "flex", justifyContent: "center", gap: 6, marginBottom: 18, marginTop: 8 }}>
+        {infra.map((item) => (
+          <div key={item.label} style={{
             display: "flex",
             alignItems: "center",
-            gap: 5,
-            fontSize: 11,
+            gap: 4,
+            fontSize: 10,
             fontWeight: 600,
-            color: "#374151",
-            background: "#F9FAFB",
-            border: "1px solid #E5E7EB",
-            borderRadius: 6,
+            color: "#4338CA",
+            background: "#E0E7FF",
+            border: "1px solid #C7D2FE",
+            borderRadius: 999,
             padding: "5px 10px",
+            whiteSpace: "nowrap",
           }}>
-            <span style={{ fontSize: 14 }}>{m.flag}</span>
-            {m.name}
+            <span style={{ fontSize: 11 }}>{item.icon}</span>
+            {item.label}
           </div>
         ))}
       </div>
 
-      {/* Stats row — mirrors Echo Japan metrics */}
-      <div style={{ display: "flex", justifyContent: "center", gap: 32 }}>
-        {[{ value: "7", label: "markets" }, { value: "150+", label: "local methods" }].map((s) => (
-          <div key={s.label} style={{ textAlign: "center" }}>
-            <div style={{ fontSize: 20, fontWeight: 700, color: "#4F46E5" }}>{s.value}</div>
-            <div style={{ fontSize: 9, color: "#9CA3AF", marginTop: 2 }}>{s.label}</div>
-          </div>
-        ))}
+      {/* Caption */}
+      <div style={{ textAlign: "center", marginTop: 4 }}>
+        <p style={{ fontSize: 9, color: "#818CF8", lineHeight: 1.5, margin: 0 }}>
+          Every market has a different method on top —<br />
+          same infrastructure complexity underneath.
+        </p>
       </div>
     </div>
   );
@@ -236,35 +233,11 @@ export default function ProjectThumbnail({ projectId, alt, href, className = "" 
     <img src="" alt={alt} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
   );
 
-  const containerStyle =
-    projectId === "cross-border-payments"
-      ? {
-          background: bg,
-          padding: "70px 24px",
-          display: "flex",
-          flexDirection: "column" as const,
-          gap: 0,
-          marginTop: "40px",
-          marginBottom: "40px",
-        }
-      : projectId === "echo-japan-payments"
-        ? {
-            background: bg,
-            padding: "70px 24px",
-            marginTop: "70px",
-            marginBottom: "70px",
-          }
-        : projectId === "yaya"
-          ? {
-              background: bg,
-              padding: "24px",
-              marginTop: "40px",
-              marginBottom: "40px",
-            }
-          : {
-              background: bg,
-              padding: "24px",
-            };
+  const containerStyle: React.CSSProperties = {
+    background: bg,
+    padding: "24px",
+    ...(projectId === "cross-border-payments" && { display: "flex", flexDirection: "column", gap: 0 }),
+  };
 
   if (href) {
     return (
