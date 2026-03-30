@@ -19,6 +19,7 @@ export const projectThemeBg: Record<string, string> = {
   pilled: "#F0FAFA",
   yaya: "#FAF7F2",
   "echo-japan-payments": "#F0FDFC",
+  "cross-border-payments": "#F0F4FF",
 };
 
 function PhoneCascade({ screens, alt }: { screens: [string, string, string]; alt: string }) {
@@ -115,6 +116,78 @@ function EchoJapanVisual() {
   );
 }
 
+function CrossBorderVisual() {
+  const currencies = [
+    { code: "USD", flag: "🇺🇸" },
+    { code: "EUR", flag: "🇪🇺" },
+    { code: "KRW", flag: "🇰🇷" },
+    { code: "JPY", flag: "🇯🇵" },
+  ];
+  const methods = ["Konbini", "iDEAL", "Pix", "UPI"];
+
+  return (
+    <div style={{ width: 280, fontFamily: "inherit", padding: "4px 0" }}>
+      <div style={{ textAlign: "center", marginBottom: 16 }}>
+        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", color: "#4F46E5", textTransform: "uppercase" }}>
+          Cross-Border Payment Rails
+        </span>
+      </div>
+
+      {/* Currency flow */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 4, marginBottom: 14 }}>
+        {currencies.map((c, i) => (
+          <div key={c.code} style={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <div style={{
+              border: "1.5px solid #C7D2FE",
+              borderRadius: 8,
+              padding: "5px 8px",
+              background: "#EEF2FF",
+              textAlign: "center",
+              minWidth: 44,
+            }}>
+              <div style={{ fontSize: 12 }}>{c.flag}</div>
+              <div style={{ fontSize: 9, fontWeight: 700, color: "#4338CA", letterSpacing: "0.05em" }}>{c.code}</div>
+            </div>
+            {i < currencies.length - 1 && (
+              <div style={{ fontSize: 9, color: "#A5B4FC", fontWeight: 700 }}>→</div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* FX label */}
+      <div style={{ textAlign: "center", marginBottom: 14 }}>
+        <span style={{ fontSize: 8, color: "#6366F1", background: "#E0E7FF", borderRadius: 4, padding: "2px 8px", fontWeight: 600, letterSpacing: "0.06em" }}>
+          Visa spot rate + 0.5–1% spread
+        </span>
+      </div>
+
+      {/* Local methods row */}
+      <div style={{ display: "flex", gap: 5, justifyContent: "center", flexWrap: "wrap" }}>
+        {methods.map((m) => (
+          <span key={m} style={{
+            fontSize: 8,
+            fontWeight: 600,
+            color: "#6B7280",
+            background: "#F3F4F6",
+            border: "1px solid #E5E7EB",
+            borderRadius: 4,
+            padding: "3px 7px",
+            letterSpacing: "0.04em",
+          }}>
+            {m}
+          </span>
+        ))}
+      </div>
+
+      {/* Bottom label */}
+      <div style={{ textAlign: "center", marginTop: 14 }}>
+        <span style={{ fontSize: 8, color: "#9CA3AF" }}>7 markets · FX · Settlement · Local methods</span>
+      </div>
+    </div>
+  );
+}
+
 interface Props {
   projectId: string;
   alt: string;
@@ -126,7 +199,9 @@ export default function ProjectThumbnail({ projectId, alt, href, className = "" 
   const screens = projectScreens[projectId];
   const bg = projectThemeBg[projectId] ?? "#F0FAFA";
 
-  const inner = projectId === "echo-japan-payments" ? (
+  const inner = projectId === "cross-border-payments" ? (
+    <CrossBorderVisual />
+  ) : projectId === "echo-japan-payments" ? (
     <EchoJapanVisual />
   ) : screens ? (
     <PhoneCascade screens={screens} alt={alt} />
@@ -137,7 +212,7 @@ export default function ProjectThumbnail({ projectId, alt, href, className = "" 
 
   const containerStyle = {
     background: bg,
-    padding: projectId === "echo-japan-payments" ? "12px 16px" : "24px 16px",
+    padding: (projectId === "echo-japan-payments" || projectId === "cross-border-payments") ? "12px 16px" : "24px 16px",
   };
 
   if (href) {
