@@ -103,7 +103,7 @@ export default function ProjectsPreview() {
               >
                 {imageFirst ? (
                   <>
-                    {imageCol}
+                    <div className="self-start">{imageCol}</div>
                     {textCol}
                   </>
                 ) : (

@@ -126,21 +126,21 @@ function CrossBorderVisual() {
   const methods = ["Konbini", "iDEAL", "Pix", "UPI"];
 
   return (
-    <div style={{ width: 280, fontFamily: "inherit", padding: "4px 0" }}>
-      <div style={{ textAlign: "center", marginBottom: 16 }}>
+    <div style={{ width: 280, fontFamily: "inherit", padding: "2px 0" }}>
+      <div style={{ textAlign: "center", marginBottom: 10 }}>
         <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", color: "#4F46E5", textTransform: "uppercase" }}>
           Cross-Border Payment Rails
         </span>
       </div>
 
       {/* Currency flow */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 4, marginBottom: 14 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 4, marginBottom: 10 }}>
         {currencies.map((c, i) => (
           <div key={c.code} style={{ display: "flex", alignItems: "center", gap: 4 }}>
             <div style={{
               border: "1.5px solid #C7D2FE",
               borderRadius: 8,
-              padding: "5px 8px",
+              padding: "4px 7px",
               background: "#EEF2FF",
               textAlign: "center",
               minWidth: 44,
@@ -156,7 +156,7 @@ function CrossBorderVisual() {
       </div>
 
       {/* FX label */}
-      <div style={{ textAlign: "center", marginBottom: 14 }}>
+      <div style={{ textAlign: "center", marginBottom: 10 }}>
         <span style={{ fontSize: 8, color: "#6366F1", background: "#E0E7FF", borderRadius: 4, padding: "2px 8px", fontWeight: 600, letterSpacing: "0.06em" }}>
           Visa spot rate + 0.5–1% spread
         </span>
@@ -181,7 +181,7 @@ function CrossBorderVisual() {
       </div>
 
       {/* Bottom label */}
-      <div style={{ textAlign: "center", marginTop: 14 }}>
+      <div style={{ textAlign: "center", marginTop: 10 }}>
         <span style={{ fontSize: 8, color: "#9CA3AF" }}>7 markets · FX · Settlement · Local methods</span>
       </div>
     </div>
