@@ -67,6 +67,7 @@ export default function ProjectCard({ project, index }: Props) {
 function ProjectInfo({ project }: { project: Project }) {
   const href = project.detailHref ?? `/projects#${project.slug}`;
   const isDeepDive = project.id === "cross-border-payments";
+  const isJapan = project.id === "echo-japan-payments";
 
   return (
     <>
@@ -84,6 +85,17 @@ function ProjectInfo({ project }: { project: Project }) {
             </h2>
             <p className="text-base md:text-lg font-semibold text-ink/70 mt-1 leading-snug">
               Cross-Border Payment Infrastructure
+            </p>
+          </>
+        ) : isJapan ? (
+          <>
+            <h2 className="text-2xl md:text-3xl font-bold text-ink leading-snug">
+              <Link href={project.detailHref!} className="hover:text-accent transition-colors">
+                Shipping Async Payment Infrastructure
+              </Link>
+            </h2>
+            <p className="text-base md:text-lg font-semibold text-ink/70 mt-1 leading-snug">
+              Japan Expansion · Konbini & Bank Transfer
             </p>
           </>
         ) : (

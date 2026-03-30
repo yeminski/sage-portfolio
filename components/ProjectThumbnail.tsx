@@ -235,7 +235,11 @@ export default function ProjectThumbnail({ projectId, alt, href, className = "" 
 
   const containerStyle: React.CSSProperties = {
     background: bg,
-    padding: "24px",
+    ...(projectId === "echo-japan-payments"
+      ? { padding: "90px 24px" }
+      : projectId === "cross-border-payments"
+        ? { padding: "90px 24px" }
+        : { padding: "48px 24px" }),
     ...(projectId === "cross-border-payments" && { display: "flex", flexDirection: "column", gap: 0 }),
   };
 
