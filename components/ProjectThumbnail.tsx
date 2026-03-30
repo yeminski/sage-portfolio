@@ -236,10 +236,21 @@ export default function ProjectThumbnail({ projectId, alt, href, className = "" 
     <img src="" alt={alt} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
   );
 
-  const containerStyle = {
-    background: bg,
-    padding: "24px",
-  };
+  const containerStyle =
+    projectId === "cross-border-payments"
+      ? {
+          background: bg,
+          padding: "70px 24px",
+          display: "flex",
+          flexDirection: "column" as const,
+          gap: 0,
+          marginTop: "90px",
+          marginBottom: "90px",
+        }
+      : {
+          background: bg,
+          padding: "24px",
+        };
 
   if (href) {
     return (
