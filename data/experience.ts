@@ -33,7 +33,7 @@ export const experiences: ExperienceItem[] = [
     location: "Los Alamitos, CA",
     roles: [
       {
-        title: "Associate Product Manager II",
+        title: "Product Manager",
         period: "Aug 2024 – Present",
         isCurrentRole: true,
         summary:
