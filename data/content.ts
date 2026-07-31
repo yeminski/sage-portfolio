@@ -236,6 +236,32 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
+    id: "yaya",
+    slug: "yaya",
+    title: "AI-Powered Personal Finance Assistant",
+    category: "Case Competition",
+    competition: "CMU Tepper Tech Innovation Challenge 2022",
+    year: "2022",
+    problem:
+      "Millions of underbanked Americans lack the financial tools and literacy to manage everyday expenses, avoid predatory products, and build toward long-term goals.",
+    solution:
+      "Built an AI-powered mobile platform that delivers personalized spending insights, vetted financial product recommendations, and goal-based planning, helping low-income families achieve economic mobility.",
+    myRole:
+      "Product Manager, led product strategy, user research, persona development, and prototyping. Structured the competition narrative from problem framing through financials, securing finalist placement at CMU Tepper.",
+    keyDecisions: [
+      "Built a self-improving model outcome flywheel as Yaya's core moat, recommendations get smarter with every user outcome, creating a defensible edge competitors cannot quickly replicate.",
+      "Prioritized 'Monica' (new working mother, $70K HHI) as the primary persona over broader segments, highest urgency, most acute expense shock, and clearest product-market fit.",
+      "Chose B2C-first GTM through referral and digital channels before layering in B2B partnerships, to seed the flywheel with real user data before institutional distribution.",
+      "Scoped MVP to two features only (Savings Recommendations + Spending Alerts), enough to demonstrate immediate value and start the data flywheel without overbuilding.",
+    ],
+    outcome:
+      "Finalist at CMU Tepper Tech Innovation Challenge 2022. Judges cited the model outcome flywheel as the most defensible moat in the cohort. Projected $173M incremental revenue for PNC over 5 years.",
+    tags: ["FinTech", "Financial Inclusion", "AI/ML", "B2C", "Mobile App", "User Research"],
+    aiNote: "Structured the entire product strategy around a self-improving AI recommendation engine as Yaya's core moat. The model learns from real user outcomes, spending behavior, goal achievement, product adoption, to surface increasingly personalized financial product recommendations over time. Defined the flywheel logic, scoped the MVP data inputs, and used this mechanism as the primary differentiator in the competition narrative.",
+    detailHref: "/projects/yaya",
+    image: "/yaya_main_image.png",
+  },
+  {
     id: "echo-japan-payments",
     slug: "echo-japan-payments",
     title: "Japan Expansion: Shipping Async Payment Infrastructure",
@@ -279,32 +305,6 @@ export const projects: Project[] = [
       "A reference resource connecting payment infrastructure to real PM decision points, written as a PM, for PMs.",
     tags: ["Payments", "Infrastructure", "Cross-Border", "FX", "Local Payment Methods", "Deep Dive"],
     detailHref: "/projects/cross-border-payments",
-  },
-  {
-    id: "yaya",
-    slug: "yaya",
-    title: "AI-Powered Personal Finance Assistant",
-    category: "Case Competition",
-    competition: "CMU Tepper Tech Innovation Challenge 2022",
-    year: "2022",
-    problem:
-      "Millions of underbanked Americans lack the financial tools and literacy to manage everyday expenses, avoid predatory products, and build toward long-term goals.",
-    solution:
-      "Built an AI-powered mobile platform that delivers personalized spending insights, vetted financial product recommendations, and goal-based planning, helping low-income families achieve economic mobility.",
-    myRole:
-      "Product Manager, led product strategy, user research, persona development, and prototyping. Structured the competition narrative from problem framing through financials, securing finalist placement at CMU Tepper.",
-    keyDecisions: [
-      "Built a self-improving model outcome flywheel as Yaya's core moat, recommendations get smarter with every user outcome, creating a defensible edge competitors cannot quickly replicate.",
-      "Prioritized 'Monica' (new working mother, $70K HHI) as the primary persona over broader segments, highest urgency, most acute expense shock, and clearest product-market fit.",
-      "Chose B2C-first GTM through referral and digital channels before layering in B2B partnerships, to seed the flywheel with real user data before institutional distribution.",
-      "Scoped MVP to two features only (Savings Recommendations + Spending Alerts), enough to demonstrate immediate value and start the data flywheel without overbuilding.",
-    ],
-    outcome:
-      "Finalist at CMU Tepper Tech Innovation Challenge 2022. Judges cited the model outcome flywheel as the most defensible moat in the cohort. Projected $173M incremental revenue for PNC over 5 years.",
-    tags: ["FinTech", "Financial Inclusion", "AI/ML", "B2C", "Mobile App", "User Research"],
-    aiNote: "Structured the entire product strategy around a self-improving AI recommendation engine as Yaya's core moat. The model learns from real user outcomes, spending behavior, goal achievement, product adoption, to surface increasingly personalized financial product recommendations over time. Defined the flywheel logic, scoped the MVP data inputs, and used this mechanism as the primary differentiator in the competition narrative.",
-    detailHref: "/projects/yaya",
-    image: "/yaya_main_image.png",
   },
   {
     id: "pilled",
