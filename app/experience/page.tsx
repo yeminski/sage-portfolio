@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ExperienceViewToggle from "@/components/career/ExperienceViewToggle";
+import ExperienceSection from "@/components/career/ExperienceSection";
 import AnimatedH1 from "@/components/career/AnimatedH1";
+import { experienceSummary } from "@/data/experience";
 
 export const metadata: Metadata = {
   title: "Experience | Sage",
@@ -27,17 +28,14 @@ export default function ExperiencePage() {
             >
               Experience
             </AnimatedH1>
-            <p className="text-ink/50">
-              Product management across the full product stack: 0-to-1 launches, feature development, monetization systems, and data infrastructure,{" "}
-              <br />from early-stage startups to a global enterprise.
-            </p>
+            <p className="text-ink/50">{experienceSummary}</p>
           </div>
         </div>
 
         {/* Experience cards */}
         <div className="bg-paper">
           <div className="max-w-[1200px] mx-auto px-6 py-8">
-            <ExperienceViewToggle />
+            <ExperienceSection />
           </div>
         </div>
       </main>
