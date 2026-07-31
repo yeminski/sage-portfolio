@@ -34,7 +34,7 @@ export const experiences: ExperienceItem[] = [
     period: "Aug 2024 – Present",
     isCurrentRole: true,
     intro:
-      "Own Epson's service platform end-to-end, from the backend systems that power pricing and eligibility to the customer-facing flows that drive conversion and retention.",
+      "Own Epson's service platform end-to-end, from the backend systems to the customer-facing flows that drive conversion and retention.",
     tags: ["API Integration", "Monetization", "AI Features", "A/B Testing", "SaaS"],
     clusters: [
       {

@@ -12,7 +12,7 @@ export default function ExperienceCard({ experience }: { experience: ExperienceI
     <div ref={cardRef} className="reveal-x-left border border-gray-200 rounded-xl bg-white overflow-hidden">
       {/* Company header */}
       <div className="px-6 py-5 bg-gray-50 border-b border-gray-200">
-        <h2 className="text-lg font-bold" style={{ color: "#166534" }}>{experience.company}</h2>
+        <h2 className="text-2xl font-bold" style={{ color: "#166534" }}>{experience.company}</h2>
         <p className="text-sm text-ink/50 mt-0.5">{experience.location}</p>
         {experience.tags && experience.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mt-3">
