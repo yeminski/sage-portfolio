@@ -18,7 +18,7 @@ const solutionColors: Record<string, { border: string; label: string }> = {
   yaya:   { border: "border-amber-700",  label: "text-amber-700"  },
 };
 
-const ALL_PROJECT_IDS = ["echo-japan-payments", "yaya", "cross-border-payments", "pilled"];
+const ALL_PROJECT_IDS = ["yaya", "echo-japan-payments", "cross-border-payments", "pilled"];
 
 export default function ProjectsPreview() {
   const [active, setActive] = useState(0);
