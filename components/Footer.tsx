@@ -24,13 +24,6 @@ export default function Footer({ letsTalkBg }: { letsTalkBg?: string }) {
           >
             LinkedIn
           </a>
-          <a
-            href="/sage-resume.pdf"
-            download="Yeji (Sage) Seo - Resume.pdf"
-            className="text-sm text-accent hover:text-accent/80 transition-colors"
-          >
-            Resume Download
-          </a>
         </div>
 
         <p className="text-xs text-paper/60" style={{ marginTop: "15px" }}>
