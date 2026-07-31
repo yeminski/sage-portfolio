@@ -30,7 +30,7 @@ export const experiences: ExperienceItem[] = [
   {
     company: "Epson America, Inc.",
     location: "Los Alamitos, CA",
-    role: "Associate Product Manager II",
+    role: "Product Manager",
     period: "Aug 2024 – Present",
     isCurrentRole: true,
     intro:
